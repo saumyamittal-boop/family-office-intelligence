@@ -39,6 +39,15 @@ repository. Publishing (GitHub, hosting accounts) stays the owner's action.
 - **Cons**: A bigger change, a new service to run, and credentials to manage.
 - **Why not**: Not needed for a demo that uses the always-available demo families.
 
+## Update, 18 Oct 2026: deployed with a public repository
+
+Streamlit Community Cloud could not see the private repo. Granting access means a GitHub OAuth permission that gives
+full control of every private repository on the account, including an unrelated private project, so the owner chose to
+make this repository public instead, after confirming it holds no secrets, database, market data or personal names. The
+access code (in Streamlit's Secrets and the local `.env`, never in the repo) keeps the app itself closed. The app went
+live at an unguessable address with the code in force; a reload after a minute is needed to confirm the gate has taken
+effect. Trade-off accepted: the code and docs are world-readable.
+
 ## Consequences
 
 ### Positive

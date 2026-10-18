@@ -37,7 +37,8 @@ a VM with a persistent disk, the Dockerfile is the way to use it.
 
 ## Steps for Community Cloud (you do these)
 
-1. **Create a private GitHub repository** (for example `family-office-intelligence`). A private repo gives a private app.
+1. **Create a GitHub repository** (for example `family-office-intelligence`). We planned a private one, but ended up using a
+   public one: see "Deployed on 18 Oct 2026" below for why.
 2. **Push the project.** In PowerShell:
    ```powershell
    cd D:\family-office-intelligence
@@ -95,6 +96,24 @@ with Docker and fix anything that fails before the mentor depends on it.
 - **Synthetic data only.** Real client or market data needs the licensing step (ADR-0011) and a privacy review first. If
   real personal financial data is ever involved, India's Digital Personal Data Protection Act, 2023 becomes relevant.
 - **Persistent multi-user accounts at scale** need an external database instead of SQLite. That is a later decision.
+
+## Deployed on 18 Oct 2026
+
+- **Live app:** the address is in the owner's Streamlit dashboard, and is deliberately **not written in this public repo**.
+  The access-code lockout is shared by all visitors (8 wrong codes lock the gate for 10 minutes), so a stranger who knew the
+  address could lock the mentor out by guessing. The random address and the code are the two layers that prevent that.
+- **The repository was made public.** Streamlit can only see public repos by default. Deploying a private one needs a GitHub
+  OAuth grant described as "full control of private repositories", and that grant covers *every* private repo on the
+  account, not just this one. The owner has another private project, so the grant was declined. The repo was checked first:
+  no secrets, database, market data or personal names. The access code lives only in Streamlit's Secrets box and the local
+  `.env`, so a public repo does not expose it.
+- **The access code is what protects the app.** Anyone can read the code on GitHub; nobody can use the app without the code.
+- **Python 3.12** was selected (Streamlit offered 3.14 by default; everything was tested on 3.12).
+- **Secrets take about a minute to apply after a first deploy.** The very first page load showed the sign-in screen without
+  the gate; a reload a minute later showed the gate. Before sharing a link, reload it and confirm the gate appears.
+- **To change the access code:** edit the Secrets in the app's settings on share.streamlit.io, reboot the app, and update
+  `.env` to match.
+- **To update the app:** push to the `main` branch; it redeploys by itself.
 
 ## Facts checked on 18 Oct 2026
 
