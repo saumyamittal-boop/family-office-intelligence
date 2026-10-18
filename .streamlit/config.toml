@@ -1,0 +1,37 @@
+# Look and feel inspired by IndMoney's public site: white canvas, near-black text, a single green accent,
+# Inter type, large radii and pill buttons. Only style patterns are borrowed; no logos, names or assets.
+[theme]
+base = "light"
+primaryColor = "#089958"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F5F6F7"
+textColor = "#121313"
+borderColor = "#E6E8EA"
+greenColor = "#089958"
+redColor = "#E5484D"
+orangeColor = "#F5A623"
+blueColor = "#1890FF"
+font = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+baseRadius = "1rem"
+buttonRadius = "full"
+showWidgetBorder = true
+linkUnderline = false
+metricValueFontSize = "1.75rem"
+metricValueFontWeight = 700
+headingFontWeights = [800, 700, 700, 600, 600, 600]
+chartCategoricalColors = ["#089958", "#6CC5A0", "#1890FF", "#F5A623", "#B5B8BC", "#212529"]
+paddingTop = "2rem"
+paddingBottom = "3rem"
+
+[theme.sidebar]
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F5F6F7"
+borderColor = "#E6E8EA"
+textColor = "#121313"
+primaryColor = "#089958"
+
+[server]
+headless = true
+
+[browser]
+gatherUsageStats = false

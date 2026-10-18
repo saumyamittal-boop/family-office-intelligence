@@ -1,0 +1,17 @@
+.venv
+venv
+.git
+.gitignore
+__pycache__
+*.pyc
+.pytest_cache
+.claude
+tests
+docs
+conftest.py
+README.md
+data/app.db
+data/app.db-*
+data/snapshot
+.streamlit/secrets.toml
+.env

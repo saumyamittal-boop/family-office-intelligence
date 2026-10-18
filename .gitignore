@@ -1,0 +1,17 @@
+# Environments and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local data and secrets: never commit these.
+# The accounts database holds (hashed) passwords; the market snapshot may be licensed data (ADR-0011).
+data/app.db
+data/app.db-*
+data/snapshot/
+.streamlit/secrets.toml
+.env
+
+# Editor and tooling state
+.claude/
