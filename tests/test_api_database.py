@@ -15,8 +15,8 @@ def tables(path):
 
 
 def test_migrating_a_fresh_database_creates_everything_once(db_path):
-    assert db.migrate(db_path) == [1]
-    assert {"users", "profiles", "sessions", "schema_version"} <= tables(db_path)
+    assert db.migrate(db_path) == [1, 2]
+    assert {"users", "profiles", "sessions", "dashboard_preferences", "schema_version"} <= tables(db_path)
     assert db.migrate(db_path) == []  # nothing left to apply the second time
 
 

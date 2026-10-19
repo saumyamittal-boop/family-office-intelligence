@@ -6,16 +6,10 @@ import type { Analysis, PlanAnswers } from "./api/client";
 import { analysis, META, portfolio, session } from "./test/fixtures";
 import { json, jsonBy, renderWithProviders, serve } from "./test/render";
 import { CONFIG, previewFor } from "./test/planFixtures";
-
-const PROFILES = [{ id: 1, name: "Gap family", corpus_cr: 1000 }];
+import { appRoutes, PROFILES } from "./test/phase4Fixtures";
 
 function signedIn(data: Analysis = analysis()) {
-  return serve({
-    "GET /api/auth/me": json(session),
-    "GET /api/meta": json(META),
-    "GET /api/profiles": json(PROFILES),
-    "GET /api/profiles/1/analysis": json(data),
-  });
+  return serve(appRoutes(data));
 }
 
 afterEach(() => vi.unstubAllGlobals());
@@ -33,11 +27,9 @@ describe("signed out", () => {
 
   it("opens a demo family, defaults to the stricter cover and shows the figures", async () => {
     serve({
+      ...appRoutes(),
       "GET /api/auth/me": json({ detail: "Please sign in." }, 401),
-      "GET /api/meta": json(META),
       "POST /api/auth/demo": json(session),
-      "GET /api/profiles": json(PROFILES),
-      "GET /api/profiles/1/analysis": json(analysis()),
     });
     const user = userEvent.setup();
     renderWithProviders(<App />);
@@ -117,11 +109,12 @@ describe("overview", () => {
     const user = userEvent.setup();
     signedIn();
     renderWithProviders(<App />);
-    expect(await screen.findByText("Why the Balanced mix")).toBeInTheDocument();
+    expect(await screen.findByText("Balanced mix")).toBeInTheDocument(); // the default choice
     await user.click(screen.getByRole("radio", { name: "Current" }));
     expect(screen.getByText("Where you are now")).toBeInTheDocument();
+    expect(screen.getByText("Your current mix")).toBeInTheDocument();
     await user.click(screen.getByRole("radio", { name: "Growth" }));
-    expect(screen.getByText("Reason one for the Growth mix.")).toBeInTheDocument();
+    expect(screen.getByText("Growth mix")).toBeInTheDocument();
     expect(screen.getByText("What to buy and sell")).toBeInTheDocument();
   });
 
@@ -135,18 +128,23 @@ describe("overview", () => {
     expect(within(card).getByText("−₹490.0 Cr")).toBeInTheDocument();
   });
 
-  it("flags the liquidity shortfall in the comparison and names the basis in force", async () => {
-    const user = userEvent.setup();
+  it("names the cover basis in force on the dashboard", async () => {
     signedIn();
     renderWithProviders(<App />);
-    const card = (await screen.findByRole("heading", { name: /Compare your options/ })).closest("section") as HTMLElement;
-    // The visible text joins "−₹" and "137.5 Cr" with invisible characters so it cannot wrap mid-amount.
-    expect(within(card).getByText(/Current −⁠?₹137\.5\sCr/)).toBeInTheDocument();
-    await user.click(within(card).getByRole("radio", { name: "Table" }));
+    expect(await screen.findByText(/Cover basis in force: Cash, debt and gold only/)).toBeInTheDocument();
+  });
+
+  it("flags the liquidity shortfall in the scenario comparison on the Scenarios page", async () => {
+    const user = userEvent.setup();
+    signedIn();
+    renderWithProviders(<App />, "/scenarios");
+    const card = (await screen.findByRole("heading", { name: /Compare your options under one scenario/ })).closest("section") as HTMLElement;
+    const chart = await within(card).findByRole("img", { name: /Under "Equities fall 25%"/ });
+    expect(chart).toHaveAccessibleName(/Current .*safety net short at 0\.4x/);
+    await user.click(within(card).getAllByRole("radio", { name: "Table" })[0]!);
     const row = within(card).getByRole("row", { name: /Current/ });
     expect(row).toHaveTextContent("0.4x");
     expect(row).toHaveTextContent("Short");
-    expect(screen.getByText(/Cover basis in force: Cash, debt and gold only/)).toBeInTheDocument();
   });
 
   it("labels the illiquid holding as fixed", async () => {

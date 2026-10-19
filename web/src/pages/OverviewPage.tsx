@@ -1,29 +1,30 @@
-import { useState } from "react";
-import { ApiError } from "../api/client";
-import type { Analysis, PortfolioOut, SessionInfo } from "../api/client";
-import { AllocationChart } from "../charts/AllocationChart";
-import { OutflowsChart } from "../charts/OutflowsChart";
-import { ProjectionChart } from "../charts/ProjectionChart";
-import { ScenarioChart } from "../charts/ScenarioChart";
-import type { GlossaryKey } from "../content/glossary";
-import { cr, pct, tidyText, times } from "../format";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import type { ModuleId, PortfolioOut, SessionInfo } from "../api/client";
+import { useDashboard } from "../api/hooks";
+import { CustomisePanel } from "../dashboard/CustomisePanel";
+import { cr, pct, times } from "../format";
+import { MODULES, MODULE_ORDER } from "../modules/catalog";
+import { ModuleCard, isBuilt } from "../modules/registry";
+import { PortfolioSwitch, usePortfolioChoice } from "../modules/usePortfolioChoice";
+import { shownFor } from "../modules/types";
 import { displayName } from "../user";
-import { ButtonLink } from "../ui/Button";
-import { Card } from "../ui/Card";
-import { SegmentedControl } from "../ui/Controls";
+import { Button, ButtonLink } from "../ui/Button";
+import { LoadingBlock } from "../ui/States";
 import { StatTile } from "../ui/StatTile";
 import { Banner } from "../ui/Status";
-import { EmptyState, ErrorState, LoadingBlock } from "../ui/States";
-import { ActionPlanCard } from "../workspace/ActionPlanCard";
+import { AnalysisGate } from "../workspace/AnalysisGate";
+import type { Ready } from "../workspace/AnalysisGate";
 import { AttentionBar } from "../workspace/AttentionBar";
-import { GlossaryPanel } from "../workspace/GlossaryPanel";
+import { GlossaryProvider, useGlossary } from "../workspace/GlossaryContext";
 import { useWorkspace } from "../workspace/WorkspaceProvider";
 import { WorkspaceBar } from "../workspace/WorkspaceBar";
-import { useLocation } from "react-router-dom";
 
-const DEFAULT_CHOICE = "Balanced";
+/** Used only if the saved choice can't be fetched, so the page is never empty. The server's default is the same four. */
+const FALLBACK: ModuleId[] = ["allocation_actions", "liquidity_commitments", "risk_exposure", "stress_scenarios"];
 
-function Headline({ portfolio, onInfo }: { portfolio: PortfolioOut; onInfo: (term: GlossaryKey) => void }) {
+function Headline({ portfolio }: { portfolio: PortfolioOut }) {
+  const glossary = useGlossary();
   const ratio = portfolio.required_cover_cr > 0 ? portfolio.available_cover_cr / portfolio.required_cover_cr : Infinity;
   return (
     <div className="grid-tiles">
@@ -32,116 +33,128 @@ function Headline({ portfolio, onInfo }: { portfolio: PortfolioOut; onInfo: (ter
         value={pct(portfolio.exp_return)}
         sub={`${pct(portfolio.exp_real)} after inflation`}
         tone={portfolio.meets_target ? "good" : "warn"}
-        onInfo={() => onInfo("expectedReturn")}
+        onInfo={() => glossary.open("expectedReturn")}
       />
-      <StatTile
-        label="Volatility"
-        value={pct(portfolio.vol)}
-        sub="Annual, including illiquid holdings"
-        onInfo={() => onInfo("volatility")}
-      />
+      <StatTile label="Volatility" value={pct(portfolio.vol)} sub="Annual, including illiquid holdings" onInfo={() => glossary.open("volatility")} />
       <StatTile
         label="Worst drawdown"
         value={pct(portfolio.max_dd)}
         sub={portfolio.dd_ok ? "Within your limit" : "Above your limit"}
         tone={portfolio.dd_ok ? "good" : "bad"}
-        onInfo={() => onInfo("worstDrawdown")}
+        onInfo={() => glossary.open("worstDrawdown")}
       />
       <StatTile
         label="Liquidity cover"
         value={times(ratio)}
         sub={`${cr(portfolio.available_cover_cr, 0)} counted vs ${cr(portfolio.required_cover_cr, 0)} needed`}
         tone={ratio >= 1.5 ? "good" : ratio >= 1 ? "warn" : "bad"}
-        onInfo={() => onInfo("liquidityCover")}
+        onInfo={() => glossary.open("liquidityCover")}
       />
     </div>
   );
 }
 
-function Loaded({ analysis, corpusCr }: { analysis: Analysis; corpusCr: number }) {
-  const labels = ["Current", ...analysis.options.map((o) => o.portfolio.label)];
-  const [choice, setChoice] = useState(labels.includes(DEFAULT_CHOICE) ? DEFAULT_CHOICE : (labels[1] ?? "Current"));
-  const [term, setTerm] = useState<GlossaryKey | null>(null);
+/** Modules not on the dashboard, each still one click away on its own page. */
+function ElsewhereList({ shown, search }: { shown: readonly ModuleId[]; search: string }) {
+  const rest = MODULE_ORDER.filter((id) => !shown.includes(id));
+  if (rest.length === 0) return null;
+  return (
+    <section aria-labelledby="elsewhere-title" className="elsewhere">
+      <h2 id="elsewhere-title">Not on your dashboard</h2>
+      <ul>
+        {rest.map((id) => (
+          <li key={id}>
+            {isBuilt(id) ? (
+              <ButtonLink to={{ pathname: MODULES[id].page, search }} variant="ghost">
+                {MODULES[id].title}{" "}
+                <span className="sr-only">in {MODULES[id].pageLabel}</span>
+              </ButtonLink>
+            ) : (
+              <span className="muted">{MODULES[id].title} (arrives in phase 5)</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
 
-  const isCurrent = choice === "Current";
-  const detail = analysis.options.find((o) => o.portfolio.label === choice);
-  // The comparison pages need a recommendation to compare with; when "Current" is shown, use Balanced.
-  const reference = detail ?? analysis.options.find((o) => o.portfolio.label === DEFAULT_CHOICE) ?? analysis.options[0];
-  const shown = isCurrent ? analysis.current : (detail?.portfolio ?? analysis.current);
+function DashboardBody({ ready, dashboard }: { ready: Ready; dashboard: ReturnType<typeof useDashboard> }) {
+  const { analysis, profileId, basis, corpusCr } = ready;
+  const [choice, setChoice] = usePortfolioChoice(analysis);
+  const [panel, setPanel] = useState(false);
+  const [notice, setNotice] = useState("");
+  const { search } = useLocation();
+  const ctx = { analysis, profileId, basis, corpusCr, choice };
+  const shown = shownFor(analysis, choice);
+  const modules: ModuleId[] = dashboard.data?.modules ?? FALLBACK;
+
+  useEffect(() => {
+    if (!notice) return;
+    const timer = window.setTimeout(() => setNotice(""), 5000);
+    return () => window.clearTimeout(timer);
+  }, [notice]);
 
   return (
     <div className="stack-lg">
       <AttentionBar analysis={analysis} />
 
-      <SegmentedControl
-        label="Portfolio to show"
-        value={choice}
-        onChange={setChoice}
-        options={labels.map((l) => ({ value: l, label: l }))}
-      />
-
-      <Headline portfolio={shown} onInfo={setTerm} />
-
-      <div className="grid-2">
-        <AllocationChart title={isCurrent ? "Your current mix" : `${choice} mix`} weights={shown.weights_total} corpusCr={corpusCr} />
-        {isCurrent || !detail ? (
-          <Card title="Where you are now">
-            <p className="muted">
-              This is your current mix. Choose Growth, Balanced or Defensive above to see what to buy and sell to move
-              towards it.
-            </p>
-          </Card>
-        ) : (
-          <ActionPlanCard rows={detail.action_plan} label={choice} />
-        )}
+      <div className="dash-toolbar">
+        <PortfolioSwitch analysis={analysis} value={choice} onChange={setChoice} />
+        <Button icon="customise" onClick={() => setPanel(true)} disabled={!dashboard.data}>
+          Customise dashboard
+        </Button>
       </div>
 
-      {reference && (
-        <div className="grid-2">
-          <ProjectionChart
-            current={analysis.current_projection}
-            selected={reference.projection}
-            selectedLabel={reference.portfolio.label}
-          />
-          <OutflowsChart rows={analysis.upcoming_outflows} />
+      {notice && (
+        <Banner tone="good" live>
+          {notice}
+        </Banner>
+      )}
+
+      <Headline portfolio={shown.portfolio} />
+
+      {dashboard.isError && (
+        <Banner tone="warn" title="Couldn't load your saved dashboard." action={<Button onClick={() => void dashboard.refetch()}>Try again</Button>}>
+          Showing the default four modules for now.
+        </Banner>
+      )}
+
+      {dashboard.isPending ? (
+        <LoadingBlock label="Loading your dashboard" rows={6} />
+      ) : (
+        <div className="module-grid" role="group" aria-label="Your dashboard">
+          {modules.map((id) => (
+            <ModuleCard key={id} id={id} ctx={ctx} search={search} />
+          ))}
         </div>
       )}
 
-      <ScenarioChart scenario={analysis.comparison_scenario} rows={analysis.comparison} />
-
-      {reference && (
-        <div className="grid-2">
-          <Card title={isCurrent ? `Why the ${reference.portfolio.label} mix` : `Why the ${choice} mix`}>
-            <ul className="reasons">
-              {reference.portfolio.explanation.map((line) => (
-                <li key={line}>{tidyText(line)}</li>
-              ))}
-            </ul>
-          </Card>
-          <Card title="What stands out">
-            <div className="stack">
-              {[...reference.insights, ...analysis.comparison_insights].map((note) => (
-                <Banner key={note.body} tone={note.tone === "good" ? "good" : note.tone === "warn" ? "warn" : "info"} title={note.title ? `${note.title}.` : undefined}>
-                  {tidyText(note.body)}
-                </Banner>
-              ))}
-            </div>
-          </Card>
-        </div>
-      )}
+      <ElsewhereList shown={modules} search={search} />
 
       <p className="hint">
-        Cover basis in force: {analysis.basis_label}. Data: {analysis.data_source}. Illustrative simulation, not
-        investment advice.
+        Cover basis in force: {analysis.basis_label}. Data: {analysis.data_source}. Illustrative simulation, not investment advice.
       </p>
-      <GlossaryPanel term={term} onClose={() => setTerm(null)} />
+
+      {dashboard.data && (
+        <CustomisePanel
+          open={panel}
+          onOpenChange={setPanel}
+          saved={dashboard.data}
+          onDone={(message) => {
+            setPanel(false);
+            if (message) setNotice(message);
+          }}
+        />
+      )}
     </div>
   );
 }
 
 export function OverviewPage({ session }: { session: SessionInfo }) {
-  const { profiles, profile, analysis } = useWorkspace();
+  const { profile } = useWorkspace();
   const { search } = useLocation();
+  const dashboard = useDashboard();
 
   return (
     <div className="page">
@@ -157,31 +170,13 @@ export function OverviewPage({ session }: { session: SessionInfo }) {
 
       <WorkspaceBar />
 
-      {profiles.isPending && <LoadingBlock label="Loading your family profiles" />}
-      {profiles.isError && (
-        <ErrorState
-          title="Can't load your profiles"
-          message={profiles.error instanceof ApiError ? profiles.error.message : "Something went wrong."}
-          onRetry={() => profiles.refetch()}
-        />
-      )}
-      {profiles.isSuccess && !profile && (
-        <EmptyState icon="profile" title="No family profile yet">
-          Profile creation arrives with the guided plan in phase 3.
-        </EmptyState>
-      )}
-
-      {profile && analysis.isPending && <LoadingBlock label="Running the allocation model" rows={5} />}
-      {profile && analysis.isError && (
-        <ErrorState
-          title="The analysis could not be run"
-          message={analysis.error instanceof ApiError ? analysis.error.message : "Something went wrong."}
-          onRetry={() => analysis.refetch()}
-        />
-      )}
-      {profile && analysis.data && (
-        <Loaded key={`${analysis.data.profile_id}-${analysis.data.basis}`} analysis={analysis.data} corpusCr={profile.corpus_cr} />
-      )}
+      <AnalysisGate>
+        {(ready) => (
+          <GlossaryProvider>
+            <DashboardBody ready={ready} dashboard={dashboard} />
+          </GlossaryProvider>
+        )}
+      </AnalysisGate>
     </div>
   );
 }

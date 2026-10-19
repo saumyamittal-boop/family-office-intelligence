@@ -12,6 +12,8 @@ export const ASSUMPTIONS = {
     Gold: 0.065,
     "Cash & liquid": 0.06,
   },
+  /** How far from the safest mix to the highest-return mix each recommendation sits. */
+  riskPositions: { Growth: 0.75, Balanced: 0.5, Defensive: 0.25 },
   haircuts: {
     "Cash & liquid": 0,
     Debt: 0.08,

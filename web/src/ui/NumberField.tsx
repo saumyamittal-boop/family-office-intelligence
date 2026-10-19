@@ -24,7 +24,8 @@ export function NumberField({
   error,
 }: {
   label: string;
-  value: number;
+  /** The current number, or null while the box is empty or not a number. */
+  value: number | null;
   onChange: (value: number | null) => void;
   min?: number;
   max?: number;
@@ -34,11 +35,11 @@ export function NumberField({
   error?: string | null;
 }) {
   const id = useId();
-  const [text, setText] = useState(String(value));
+  const [text, setText] = useState(value === null ? "" : String(value));
 
   // Follow the value when it changes from outside (a preset, a reset, a restored draft) but not while typing.
   useEffect(() => {
-    if (parseNumber(text) !== value) setText(String(value));
+    if (parseNumber(text) !== value) setText(value === null ? "" : String(value));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
@@ -55,7 +56,12 @@ export function NumberField({
     <div className="field">
       <label htmlFor={id} className="field-label">
         {label}
-        {unit && <span className="muted"> ({unit})</span>}
+        {unit && (
+          <>
+            {" "}
+            <span className="muted">({unit})</span>
+          </>
+        )}
       </label>
       <input
         id={id}

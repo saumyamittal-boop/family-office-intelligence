@@ -57,6 +57,16 @@ the personalised dashboard in phase 4.
 | Instant switches | comfort level | Anything derivable from data already on the page must not call the server |
 | Draft | `plan/draft` | Session storage only, read defensively, never sent anywhere |
 
+## Dashboard and modules (Phase 4)
+
+- **A module is one card with two sizes.** On the dashboard (`ModuleCard`) it is a glance with a "Full view" link; on the analyst pages (`ModuleSection`) it is drawn in full. The cards a module draws
+  inside its dashboard card lose their own frame, and their titles become level-3 headings (`HeadingLevel` in `ui/Card.tsx`), so the page reads: page title, module, its parts.
+- **Failure stays local.** Each module sits in its own error boundary and loads its own extra data (`QueryBlock`: loading, error with retry, loaded), so one failing module never blanks the dashboard.
+- **Customising is a form, not a drag.** Four labelled slots, a swap when a module is picked twice, move buttons, a text preview and a list of where every module lives. It works with a keyboard and a screen reader, and on a phone.
+- **A status is words as well as colour.** Scenario results say "Within drawdown limit", "Safety net 9.2x" and "Real corpus 0.85x" in text; the measures table writes Yes and No.
+- **Dials** (`ui/Slider.tsx`) read their value in words (`aria-valuetext`) and wait 0.3 s before asking the server, keeping the last result visible and dimmed.
+- **Names run together for screen readers when a hidden span carries the space.** Put the space in the visible text, outside the span.
+
 ## Layout
 
 The sidebar is 15.5 rem, or 4.5 rem collapsed to icons; its state is remembered. Below 900 px it becomes a drawer. The selected family and
@@ -64,5 +74,5 @@ cover basis live in the address (`?profile=5&basis=strict`), so reloads and shar
 
 ## What is not built yet
 
-Pages marked "Soon" in the navigation are honest placeholders with no invented numbers. The personalised dashboard, the guided plan, the analyst
-workspace, holdings import and the assistant belong to phases 3 to 6.
+Pages marked "Soon" in the navigation (Holdings, Assistant) are honest placeholders with no invented numbers. The holdings import and the assistant belong to phases 5 and 6;
+the dashboard module "Holdings consolidation" waits for the former.

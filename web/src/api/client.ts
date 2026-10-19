@@ -16,6 +16,16 @@ export type PlanStrategies = Schemas["PlanStrategiesOut"];
 export type Strategy = Schemas["StrategyOut"];
 export type RiskKey = PlanAnswers["risk"];
 export type Commitment = Schemas["CommitmentIn"];
+export type History = Schemas["HistoryOut"];
+export type PortfolioHistory = Schemas["PortfolioHistory"];
+export type ScenarioRequest = Schemas["ScenarioRequest"];
+export type ScenarioComparison = Schemas["ScenarioComparison"];
+export type ScenarioPreset = Schemas["ScenarioPreset"];
+export type CustomScenario = Schemas["CustomScenario"];
+export type Dashboard = Schemas["DashboardOut"];
+export type ModuleId = Schemas["DashboardOut"]["modules"][number];
+export type ProfileFull = Schemas["ProfileOut"];
+export type ProfileInput = Schemas["ProfileIn"];
 
 /** What the server says went wrong, in words that can be shown to a person. */
 export class ApiError extends Error {
@@ -68,8 +78,19 @@ export const api = {
   demo: (family: DemoFamily) => request<SessionInfo>("POST", "/api/auth/demo", { family }),
   logout: () => request<void>("POST", "/api/auth/logout"),
   profiles: () => request<ProfileSummary[]>("GET", "/api/profiles"),
+  profile: (id: number) => request<ProfileFull>("GET", `/api/profiles/${id}`),
+  createProfile: (body: ProfileInput) => request<ProfileFull>("POST", "/api/profiles", body),
+  updateProfile: (id: number, body: ProfileInput) => request<ProfileFull>("PUT", `/api/profiles/${id}`, body),
+  deleteProfile: (id: number) => request<void>("DELETE", `/api/profiles/${id}`),
   analysis: (profileId: number, basis: Basis) =>
     request<Analysis>("GET", `/api/profiles/${profileId}/analysis?basis=${basis}`),
+  history: (profileId: number, basis: Basis) =>
+    request<History>("GET", `/api/profiles/${profileId}/history?basis=${basis}`),
+  scenario: (profileId: number, body: ScenarioRequest) =>
+    request<ScenarioComparison>("POST", `/api/profiles/${profileId}/scenarios`, body),
+  dashboard: () => request<Dashboard>("GET", "/api/dashboard"),
+  saveDashboard: (modules: ModuleId[]) => request<Dashboard>("PUT", "/api/dashboard", { modules }),
+  resetDashboard: () => request<Dashboard>("DELETE", "/api/dashboard"),
   planConfig: () => request<PlanConfig>("GET", "/api/plan/config"),
   planPreview: (answers: PlanAnswers) => request<PlanPreview>("POST", "/api/plan/preview", answers),
   planStrategies: (answers: PlanAnswers) => request<PlanStrategies>("POST", "/api/plan/strategies", answers),

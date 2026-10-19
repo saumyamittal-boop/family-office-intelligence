@@ -89,7 +89,7 @@ describe("collapsible sidebar", () => {
     await user.click(toggle);
     expect(screen.getByRole("button", { name: "Expand sidebar" })).toHaveAttribute("aria-expanded", "false");
     expect(document.querySelector(".shell")).toHaveClass("is-collapsed");
-    expect(screen.getByRole("link", { name: /Recommendation.*coming soon/ })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Holdings.*coming soon/ })).toBeInTheDocument();
     expect(window.localStorage.getItem("foi.sidebar")).toBe("collapsed");
 
     unmount();

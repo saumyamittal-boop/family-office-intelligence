@@ -2,6 +2,19 @@
 
 ## Unreleased: React + FastAPI migration (branch `react-migration`)
 
+### Phase 4: Personalised dashboard and analyst workspace (2026-10-19)
+- Added the dashboard: the person picks exactly four of the modules, orders them, and the choice is saved to their account (restored after sign-out, private to the account, default allocation / liquidity / risk / stress scenarios).
+  The customise panel has four slots (picking a module that is already used swaps the two), move up and down, a preview and a list of where every module lives. Warnings and the headline tiles are never hidden by the choice.
+- Added seven modules, each in a glance size and a full size: Allocation and actions, Liquidity and commitments, Risk exposure, Stress scenarios, Net worth and projection, Historical performance, Why this recommendation. Holdings consolidation is listed and waits for Phase 5.
+- Added the analyst pages: Recommendation (mixes side by side, measures table, projection, reasons, method and limits), Risk and liquidity (drawdown against your limit, CVaR, liquidity ladder, outflows, value history, calendar-year returns),
+  Scenarios (what each built-in scenario assumes, six custom dials with a live result, every option compared under one scenario) and Family profile (edit every input, several profiles, save as new, delete with confirmation).
+- Added to the API: `GET/PUT/DELETE /api/dashboard` (migration `002`), `GET /api/profiles/{id}/history`, `POST /api/profiles/{id}/scenarios`; `/api/meta` lists the built-in scenarios and the dial limits; the analysis carries `current_ladder` and `current_scenarios`.
+- **Fixed the intermittent test stall** open since Phase 1. Cause: SciPy's bundled HiGHS solver hangs (spinning a core) or crashes the process when a thread that has used it exits, on Windows. A bare script hung in 27 of 30 runs;
+  with a thread that stays alive, 0 of 30. Engine threads are now pooled and never exit. The engine and every number are unchanged. See the Phase 4 report for the evidence and what is still unproven.
+- The golden master gained two fields per family and basis, added without regenerating the rest (every existing value re-verified first). The profile editor is tested against 115 recorded server verdicts.
+- Fixed while testing: link and label names could be read run together by screen readers (a hidden span carried its own leading space); the editor accepted a holdings total of exactly 99.5% or 100.5% and a name over 60 characters, which the server refuses.
+- Details and evidence: [docs/migration/phase-4-report.md](docs/migration/phase-4-report.md). Decision: [ADR-0019](docs/adr/0019-personalised-dashboard-and-analyst-workspace.md).
+
 ### Phase 3: Guided planning (2026-10-19)
 - Added the six-step "Plan my money" flow in React: about you, what's coming, comfort with a bad year, safety net, what you own, then Strategy A, B and C.
 - Made it live: a read-out ("what this means so far") follows the answers as they are typed and keeps the previous figure on screen while it updates;

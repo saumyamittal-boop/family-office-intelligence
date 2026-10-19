@@ -57,6 +57,8 @@ def expected_for(golden_case: dict) -> dict:
     return {
         "current": pick(golden_case["current"]),
         "current_projection": rename(golden_case["current_projection"], RENAMES["projection"]),
+        "current_ladder": rename(golden_case["current_ladder"], RENAMES["ladder"]),
+        "current_scenarios": rename(golden_case["current_scenarios"], RENAMES["scenarios"]),
         "options": options,
         "upcoming_outflows": rename(golden_case["upcoming_outflows"], RENAMES["outflows"]),
         "comparison": rename(golden_case["compare_equities_fall_25"], RENAMES["compare"]),

@@ -81,6 +81,8 @@ def analysis(profile, daily, inputs, basis: str) -> dict:
     return {
         "current": portfolio_dict(current),
         "current_projection": plain(engine.project_corpus(profile, current.exp_return)),
+        "current_ladder": plain(engine.liquidity_ladder(profile, current, years=min(profile.horizon_years, 12))),
+        "current_scenarios": plain(engine.run_scenarios(profile, current)),
         "portfolios": [portfolio_dict(pf) for pf in options],
         "per_portfolio": by_label,
         "upcoming_outflows": plain(engine.upcoming_outflows(profile, 5)),

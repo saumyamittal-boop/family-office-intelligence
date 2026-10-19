@@ -1,14 +1,18 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { QueryClient } from "@tanstack/react-query";
 import { markFreshSignup } from "../plan/draft";
 import { api, ApiError, setCsrf } from "./client";
-import type { Basis, DemoFamily, SessionInfo } from "./client";
+import type { Basis, DemoFamily, ModuleId, ProfileInput, ScenarioRequest, SessionInfo } from "./client";
 
 export const keys = {
   session: ["session"] as const,
   meta: ["meta"] as const,
   profiles: ["profiles"] as const,
   analysis: (id: number, basis: Basis) => ["analysis", id, basis] as const,
+  history: (id: number, basis: Basis) => ["history", id, basis] as const,
+  scenario: (id: number, request: ScenarioRequest | null) => ["scenario", id, JSON.stringify(request)] as const,
+  dashboard: ["dashboard"] as const,
+  profile: (id: number) => ["profile", id] as const,
 };
 
 /** The signed-in session, or null when nobody is signed in. */
@@ -45,6 +49,106 @@ export function useAnalysis(profileId: number | null, basis: Basis) {
     enabled: profileId !== null,
     retry: false,
     staleTime: 5 * 60 * 1000,
+  });
+}
+
+/** Value and drawdown curves for the current mix and the three options. Reuses the server's cached analysis. */
+export function useHistory(profileId: number | null, basis: Basis) {
+  return useQuery({
+    queryKey: keys.history(profileId ?? 0, basis),
+    queryFn: () => api.history(profileId as number, basis),
+    enabled: profileId !== null,
+    retry: false,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
+/** One scenario (a built-in one or the custom dials) applied to every option. Keeps the last answer on screen while a new one loads. */
+export function useScenarioComparison(profileId: number | null, request: ScenarioRequest | null) {
+  return useQuery({
+    queryKey: keys.scenario(profileId ?? 0, request),
+    queryFn: () => api.scenario(profileId as number, request as ScenarioRequest),
+    enabled: profileId !== null && request !== null,
+    retry: false,
+    staleTime: 5 * 60 * 1000,
+    placeholderData: keepPreviousData,
+  });
+}
+
+/** The person's chosen dashboard modules (the default four until they save their own). */
+export function useDashboard() {
+  return useQuery({ queryKey: keys.dashboard, queryFn: api.dashboard, retry: false, staleTime: 5 * 60 * 1000 });
+}
+
+export function useSaveDashboard() {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: (modules: ModuleId[]) => api.saveDashboard(modules),
+    onSuccess: (saved) => client.setQueryData(keys.dashboard, saved),
+  });
+}
+
+export function useResetDashboard() {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: () => api.resetDashboard(),
+    onSuccess: (saved) => client.setQueryData(keys.dashboard, saved),
+  });
+}
+
+/** The full profile being edited. Never refetched in the background: a refetch would hand the form new data while someone is typing.
+ * It changes only through the editor itself, which updates this cache when it saves. */
+export function useProfile(profileId: number | null) {
+  return useQuery({
+    queryKey: keys.profile(profileId ?? 0),
+    queryFn: () => api.profile(profileId as number),
+    enabled: profileId !== null,
+    retry: false,
+    staleTime: Infinity,
+  });
+}
+
+const RESULTS = ["analysis", "history", "scenario"];
+const isResultOf = (profileId: number) => (q: { queryKey: readonly unknown[] }) =>
+  RESULTS.includes(String(q.queryKey[0])) && q.queryKey[1] === profileId;
+
+/** Saving a profile changes everything computed from it: reset those results so no old number lingers, and recompute what is on screen. */
+function resetResultsFor(client: QueryClient, profileId: number): void {
+  void client.resetQueries({ predicate: isResultOf(profileId) });
+}
+
+export function useSaveProfile() {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: ({ id, body }: { id: number; body: ProfileInput }) => api.updateProfile(id, body),
+    onSuccess: (saved) => {
+      resetResultsFor(client, saved.id);
+      client.setQueryData(keys.profile(saved.id), saved);
+      void client.invalidateQueries({ queryKey: keys.profiles });
+    },
+  });
+}
+
+export function useCreateProfile() {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: (body: ProfileInput) => api.createProfile(body),
+    onSuccess: (created) => {
+      client.setQueryData(keys.profile(created.id), created);
+      void client.invalidateQueries({ queryKey: keys.profiles });
+    },
+  });
+}
+
+export function useDeleteProfile() {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: (id: number) => api.deleteProfile(id),
+    onSuccess: (_, id) => {
+      client.removeQueries({ predicate: isResultOf(id) });
+      client.removeQueries({ queryKey: keys.profile(id) });
+      void client.invalidateQueries({ queryKey: keys.profiles });
+    },
   });
 }
 

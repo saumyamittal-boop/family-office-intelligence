@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends
 from fo import accounts, engine
 from fo.data import ASSET_CLASSES
 
-from .. import deps
+from .. import deps, scenarios
 from .. import schemas as s
 from ..analysis import AnalysisService
 from ..config import Settings
@@ -30,4 +30,5 @@ def meta(cfg: Settings = Depends(deps.settings), svc: AnalysisService = Depends(
         app="Family Office Intelligence", version=VERSION, data_source=svc.source, disclaimer=DISCLAIMER,
         asset_classes=ASSET_CLASSES, cover_bases=engine.COVER_BASES, demo_login=cfg.demo_login,
         demo_families=list(accounts.DEMO_ACCOUNTS) if cfg.demo_login else [],
+        scenario_presets=scenarios.presets(), custom_scenario_ranges=scenarios.custom_ranges(),
     )

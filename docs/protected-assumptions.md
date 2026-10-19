@@ -55,3 +55,8 @@ crash and a 2022 rate shock injected. **These are properties of the sample, not 
 8. **Zero safety-net requirement crashes the scenario step.** `engine.scenario_row` divides by the required cover, which is zero when spending is zero
    and no commitment falls inside the safety-net window, so it raises `ZeroDivisionError` (the Streamlit app would hit it too). The engine is
    unchanged; the API refuses such answers with a clear message (guided plan) or a 422 (stored profile).
+9. **SciPy's HiGHS solver hangs or crashes when a thread that used it exits (Windows, SciPy 1.18.1).** The engine calls `linprog` (`fo/engine.py:201`).
+   The engine is unchanged; the API keeps its engine threads alive for the life of the process (`api/analysis.py`). The Streamlit app runs the same solver
+   on Streamlit's own short-lived threads and is not protected the same way. Evidence: [Phase 4 report](migration/phase-4-report.md).
+10. **Where the risk levels are quoted on screen** (the 75% / 50% / 25% positions, the long-run priors, the inflation rate, the haircuts), the web app reads them
+    from `web/src/content/assumptions.ts`, and a test compares each with the golden master, so the wording cannot drift from the model.

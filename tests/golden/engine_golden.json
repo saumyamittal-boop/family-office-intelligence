@@ -499,6 +499,80 @@
       "Mid-cap equity": 0.05
      }
     },
+    "current_ladder": [
+     {
+      "Liquid sleeve value (INR cr)": 208.28125000000003,
+      "Months of spending covered": 257.1127392344498,
+      "Outflows (INR cr)": 8.0,
+      "Year": 1
+     },
+     {
+      "Liquid sleeve value (INR cr)": 204.87664550781255,
+      "Months of spending covered": 242.01906797470593,
+      "Outflows (INR cr)": 20.36,
+      "Year": 2
+     },
+     {
+      "Liquid sleeve value (INR cr)": 212.81868493118296,
+      "Months of spending covered": 240.57505524116928,
+      "Outflows (INR cr)": 8.736199999999998,
+      "Year": 3
+     },
+     {
+      "Liquid sleeve value (INR cr)": 201.0141270013621,
+      "Months of spending covered": 217.44585258112832,
+      "Outflows (INR cr)": 29.129329,
+      "Year": 4
+     },
+     {
+      "Liquid sleeve value (INR cr)": 207.83778447256677,
+      "Months of spending covered": 215.14574547158932,
+      "Outflows (INR cr)": 9.540148804999998,
+      "Year": 5
+     },
+     {
+      "Liquid sleeve value (INR cr)": 214.7876236135617,
+      "Months of spending covered": 212.76550604199608,
+      "Outflows (INR cr)": 9.969455501224997,
+      "Year": 6
+     },
+     {
+      "Liquid sleeve value (INR cr)": 206.8545975995731,
+      "Months of spending covered": 196.083411945019,
+      "Outflows (INR cr)": 25.41808099878012,
+      "Year": 7
+     },
+     {
+      "Liquid sleeve value (INR cr)": 212.80696004168817,
+      "Months of spending covered": 193.03906908963472,
+      "Outflows (INR cr)": 10.886894643725226,
+      "Year": 8
+     },
+     {
+      "Liquid sleeve value (INR cr)": 218.753971729889,
+      "Months of spending covered": 189.88866584470128,
+      "Outflows (INR cr)": 11.376804902692859,
+      "Year": 9
+     },
+     {
+      "Liquid sleeve value (INR cr)": 224.67315111771128,
+      "Months of spending covered": 186.62850722356126,
+      "Outflows (INR cr)": 11.888761123314037,
+      "Year": 10
+     },
+     {
+      "Liquid sleeve value (INR cr)": 230.53919445202433,
+      "Months of spending covered": 183.2547695117027,
+      "Outflows (INR cr)": 12.423755373863168,
+      "Year": 11
+     },
+     {
+      "Liquid sleeve value (INR cr)": 236.32370138469747,
+      "Months of spending covered": 179.76349578207157,
+      "Outflows (INR cr)": 12.98282436568701,
+      "Year": 12
+     }
+    ],
     "current_projection": [
      {
       "In today's rupees (INR cr)": 250.0,
@@ -579,6 +653,62 @@
       "In today's rupees (INR cr)": 213.04832273708098,
       "Nominal (INR cr)": 412.30867852309046,
       "Year": 15
+     }
+    ],
+    "current_scenarios": [
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 4.636593505534261,
+      "Portfolio value change": 0.0,
+      "Real corpus at horizon (x today)": 0.852193290948324,
+      "Scenario": "Baseline (no shock)",
+      "Value change (INR cr)": 0.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 4.409144332842718,
+      "Portfolio value change": -0.05,
+      "Real corpus at horizon (x today)": 0.7689471137018795,
+      "Scenario": "Equities fall 25%",
+      "Value change (INR cr)": -12.5,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 4.276987939465499,
+      "Portfolio value change": -0.118,
+      "Real corpus at horizon (x today)": 0.6557323126467154,
+      "Scenario": "Market crash",
+      "Value change (INR cr)": -29.5,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 4.3439759328448755,
+      "Portfolio value change": -0.0635,
+      "Real corpus at horizon (x today)": 0.7464706458453395,
+      "Scenario": "Inflation and rate spike",
+      "Value change (INR cr)": -15.875,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 4.097454725820976,
+      "Portfolio value change": -0.08,
+      "Real corpus at horizon (x today)": 0.718999407354013,
+      "Scenario": "Large unexpected expense",
+      "Value change (INR cr)": -20.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 4.636593505534261,
+      "Portfolio value change": 0.0,
+      "Real corpus at horizon (x today)": 0.34912200002206595,
+      "Scenario": "Lost decade",
+      "Value change (INR cr)": 0.0,
+      "Within drawdown limit": true
      }
     ],
     "per_portfolio": {
@@ -1736,6 +1866,80 @@
       "Mid-cap equity": 0.05
      }
     },
+    "current_ladder": [
+     {
+      "Liquid sleeve value (INR cr)": 208.28125000000003,
+      "Months of spending covered": 206.6618383672249,
+      "Outflows (INR cr)": 8.0,
+      "Year": 1
+     },
+     {
+      "Liquid sleeve value (INR cr)": 204.87664550781255,
+      "Months of spending covered": 194.52986132269243,
+      "Outflows (INR cr)": 20.36,
+      "Year": 2
+     },
+     {
+      "Liquid sleeve value (INR cr)": 212.81868493118296,
+      "Months of spending covered": 193.369194110998,
+      "Outflows (INR cr)": 8.736199999999998,
+      "Year": 3
+     },
+     {
+      "Liquid sleeve value (INR cr)": 201.0141270013621,
+      "Months of spending covered": 174.77842511244762,
+      "Outflows (INR cr)": 29.129329,
+      "Year": 4
+     },
+     {
+      "Liquid sleeve value (INR cr)": 207.83778447256677,
+      "Months of spending covered": 172.9296471595769,
+      "Outflows (INR cr)": 9.540148804999998,
+      "Year": 5
+     },
+     {
+      "Liquid sleeve value (INR cr)": 214.7876236135617,
+      "Months of spending covered": 171.01646052503466,
+      "Outflows (INR cr)": 9.969455501224997,
+      "Year": 6
+     },
+     {
+      "Liquid sleeve value (INR cr)": 206.8545975995731,
+      "Months of spending covered": 157.60774244999348,
+      "Outflows (INR cr)": 25.41808099878012,
+      "Year": 7
+     },
+     {
+      "Liquid sleeve value (INR cr)": 212.80696004168817,
+      "Months of spending covered": 155.16076338163955,
+      "Outflows (INR cr)": 10.886894643725226,
+      "Year": 8
+     },
+     {
+      "Liquid sleeve value (INR cr)": 218.753971729889,
+      "Months of spending covered": 152.6285351920346,
+      "Outflows (INR cr)": 11.376804902692859,
+      "Year": 9
+     },
+     {
+      "Liquid sleeve value (INR cr)": 224.67315111771128,
+      "Months of spending covered": 150.00808792824037,
+      "Outflows (INR cr)": 11.888761123314037,
+      "Year": 10
+     },
+     {
+      "Liquid sleeve value (INR cr)": 230.53919445202433,
+      "Months of spending covered": 147.29634816856338,
+      "Outflows (INR cr)": 12.423755373863168,
+      "Year": 11
+     },
+     {
+      "Liquid sleeve value (INR cr)": 236.32370138469747,
+      "Months of spending covered": 144.49013541785698,
+      "Outflows (INR cr)": 12.98282436568701,
+      "Year": 12
+     }
+    ],
     "current_projection": [
      {
       "In today's rupees (INR cr)": 250.0,
@@ -1816,6 +2020,62 @@
       "In today's rupees (INR cr)": 213.04832273708098,
       "Nominal (INR cr)": 412.30867852309046,
       "Year": 15
+     }
+    ],
+    "current_scenarios": [
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 3.7267968147680905,
+      "Portfolio value change": 0.0,
+      "Real corpus at horizon (x today)": 0.852193290948324,
+      "Scenario": "Baseline (no shock)",
+      "Value change (INR cr)": 0.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 3.7267968147680905,
+      "Portfolio value change": -0.05,
+      "Real corpus at horizon (x today)": 0.7689471137018795,
+      "Scenario": "Equities fall 25%",
+      "Value change (INR cr)": -12.5,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 3.7058377947067367,
+      "Portfolio value change": -0.118,
+      "Real corpus at horizon (x today)": 0.6557323126467154,
+      "Scenario": "Market crash",
+      "Value change (INR cr)": -29.5,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 3.54942015624242,
+      "Portfolio value change": -0.0635,
+      "Real corpus at horizon (x today)": 0.7464706458453395,
+      "Scenario": "Inflation and rate spike",
+      "Value change (INR cr)": -15.875,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 3.1876580350548047,
+      "Portfolio value change": -0.08,
+      "Real corpus at horizon (x today)": 0.718999407354013,
+      "Scenario": "Large unexpected expense",
+      "Value change (INR cr)": -20.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 3.7267968147680905,
+      "Portfolio value change": 0.0,
+      "Real corpus at horizon (x today)": 0.34912200002206595,
+      "Scenario": "Lost decade",
+      "Value change (INR cr)": 0.0,
+      "Within drawdown limit": true
      }
     ],
     "per_portfolio": {
@@ -2975,6 +3235,80 @@
       "Mid-cap equity": 0.05
      }
     },
+    "current_ladder": [
+     {
+      "Liquid sleeve value (INR cr)": 184.60000000000002,
+      "Months of spending covered": 220.1951196172249,
+      "Outflows (INR cr)": 33.0,
+      "Year": 1
+     },
+     {
+      "Liquid sleeve value (INR cr)": 192.48480000000006,
+      "Months of spending covered": 219.7131963096084,
+      "Outflows (INR cr)": 8.36,
+      "Year": 2
+     },
+     {
+      "Liquid sleeve value (INR cr)": 185.6872624000001,
+      "Months of spending covered": 202.82688691061534,
+      "Outflows (INR cr)": 23.736199999999997,
+      "Year": 3
+     },
+     {
+      "Liquid sleeve value (INR cr)": 192.89841249120013,
+      "Months of spending covered": 201.63028991267902,
+      "Outflows (INR cr)": 9.129328999999998,
+      "Year": 4
+     },
+     {
+      "Liquid sleeve value (INR cr)": 200.33332398542575,
+      "Months of spending covered": 200.3844549521481,
+      "Outflows (INR cr)": 9.540148804999998,
+      "Year": 5
+     },
+     {
+      "Liquid sleeve value (INR cr)": 177.99320099491825,
+      "Months of spending covered": 170.37189483640583,
+      "Outflows (INR cr)": 39.969455501225,
+      "Year": 6
+     },
+     {
+      "Liquid sleeve value (INR cr)": 183.23852168369095,
+      "Months of spending covered": 167.8398292650809,
+      "Outflows (INR cr)": 10.418080998780122,
+      "Year": 7
+     },
+     {
+      "Liquid sleeve value (INR cr)": 188.47661694813056,
+      "Months of spending covered": 165.20357343579724,
+      "Outflows (INR cr)": 10.886894643725226,
+      "Year": 8
+     },
+     {
+      "Liquid sleeve value (INR cr)": 193.6857543368732,
+      "Months of spending covered": 162.45884009392097,
+      "Outflows (INR cr)": 11.376804902692859,
+      "Year": 9
+     },
+     {
+      "Liquid sleeve value (INR cr)": 198.84133959520403,
+      "Months of spending covered": 159.60116557146992,
+      "Outflows (INR cr)": 11.888761123314037,
+      "Year": 10
+     },
+     {
+      "Liquid sleeve value (INR cr)": 203.91562210571882,
+      "Months of spending covered": 156.6259025279993,
+      "Outflows (INR cr)": 12.423755373863168,
+      "Year": 11
+     },
+     {
+      "Liquid sleeve value (INR cr)": 208.8773724853351,
+      "Months of spending covered": 153.5282123927878,
+      "Outflows (INR cr)": 12.98282436568701,
+      "Year": 12
+     }
+    ],
     "current_projection": [
      {
       "In today's rupees (INR cr)": 400.0,
@@ -3040,6 +3374,62 @@
       "In today's rupees (INR cr)": 549.3432534633223,
       "Nominal (INR cr)": 931.6210237647397,
       "Year": 12
+     }
+    ],
+    "current_scenarios": [
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 4.018375241779496,
+      "Portfolio value change": 0.0,
+      "Real corpus at horizon (x today)": 1.3733581336583058,
+      "Scenario": "Baseline (no shock)",
+      "Value change (INR cr)": 0.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 3.6919729206963248,
+      "Portfolio value change": -0.05,
+      "Real corpus at horizon (x today)": 1.2767077906438162,
+      "Scenario": "Equities fall 25%",
+      "Value change (INR cr)": -20.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 3.5262572533849124,
+      "Portfolio value change": -0.1755,
+      "Real corpus at horizon (x today)": 1.0341154296774477,
+      "Scenario": "Market crash",
+      "Value change (INR cr)": -70.19999999999999,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 3.7657640232108314,
+      "Portfolio value change": -0.060000000000000005,
+      "Real corpus at horizon (x today)": 1.2573777220409184,
+      "Scenario": "Inflation and rate spike",
+      "Value change (INR cr)": -24.000000000000004,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 3.244680851063829,
+      "Portfolio value change": -0.08,
+      "Real corpus at horizon (x today)": 1.2187175848351226,
+      "Scenario": "Large unexpected expense",
+      "Value change (INR cr)": -32.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 4.018375241779496,
+      "Portfolio value change": 0.0,
+      "Real corpus at horizon (x today)": 0.811562515857139,
+      "Scenario": "Lost decade",
+      "Value change (INR cr)": 0.0,
+      "Within drawdown limit": true
      }
     ],
     "per_portfolio": {
@@ -4169,6 +4559,80 @@
       "Mid-cap equity": 0.05
      }
     },
+    "current_ladder": [
+     {
+      "Liquid sleeve value (INR cr)": 184.60000000000002,
+      "Months of spending covered": 148.65157894736845,
+      "Outflows (INR cr)": 33.0,
+      "Year": 1
+     },
+     {
+      "Liquid sleeve value (INR cr)": 192.48480000000006,
+      "Months of spending covered": 148.32623721984396,
+      "Outflows (INR cr)": 8.36,
+      "Year": 2
+     },
+     {
+      "Liquid sleeve value (INR cr)": 185.6872624000001,
+      "Months of spending covered": 136.92645434037934,
+      "Outflows (INR cr)": 23.736199999999997,
+      "Year": 3
+     },
+     {
+      "Liquid sleeve value (INR cr)": 192.89841249120013,
+      "Months of spending covered": 136.11864337065336,
+      "Outflows (INR cr)": 9.129328999999998,
+      "Year": 4
+     },
+     {
+      "Liquid sleeve value (INR cr)": 200.33332398542575,
+      "Months of spending covered": 135.27759233231663,
+      "Outflows (INR cr)": 9.540148804999998,
+      "Year": 5
+     },
+     {
+      "Liquid sleeve value (INR cr)": 177.99320099491825,
+      "Months of spending covered": 115.0164055393787,
+      "Outflows (INR cr)": 39.969455501225,
+      "Year": 6
+     },
+     {
+      "Liquid sleeve value (INR cr)": 183.23852168369095,
+      "Months of spending covered": 113.3070327529608,
+      "Outflows (INR cr)": 10.418080998780122,
+      "Year": 7
+     },
+     {
+      "Liquid sleeve value (INR cr)": 188.47661694813056,
+      "Months of spending covered": 111.5273221389678,
+      "Outflows (INR cr)": 10.886894643725226,
+      "Year": 8
+     },
+     {
+      "Liquid sleeve value (INR cr)": 193.6857543368732,
+      "Months of spending covered": 109.67437941358565,
+      "Outflows (INR cr)": 11.376804902692859,
+      "Year": 9
+     },
+     {
+      "Liquid sleeve value (INR cr)": 198.84133959520403,
+      "Months of spending covered": 107.74519119806814,
+      "Outflows (INR cr)": 11.888761123314037,
+      "Year": 10
+     },
+     {
+      "Liquid sleeve value (INR cr)": 203.91562210571882,
+      "Months of spending covered": 105.73662011818004,
+      "Outflows (INR cr)": 12.423755373863168,
+      "Year": 11
+     },
+     {
+      "Liquid sleeve value (INR cr)": 208.8773724853351,
+      "Months of spending covered": 103.64539970199034,
+      "Outflows (INR cr)": 12.98282436568701,
+      "Year": 12
+     }
+    ],
     "current_projection": [
      {
       "In today's rupees (INR cr)": 400.0,
@@ -4234,6 +4698,62 @@
       "In today's rupees (INR cr)": 549.3432534633223,
       "Nominal (INR cr)": 931.6210237647397,
       "Year": 12
+     }
+    ],
+    "current_scenarios": [
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 2.7127659574468086,
+      "Portfolio value change": 0.0,
+      "Real corpus at horizon (x today)": 1.3733581336583058,
+      "Scenario": "Baseline (no shock)",
+      "Value change (INR cr)": 0.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 2.7127659574468086,
+      "Portfolio value change": -0.05,
+      "Real corpus at horizon (x today)": 1.2767077906438162,
+      "Scenario": "Equities fall 25%",
+      "Value change (INR cr)": -20.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 2.706624758220503,
+      "Portfolio value change": -0.1755,
+      "Real corpus at horizon (x today)": 1.0341154296774477,
+      "Scenario": "Market crash",
+      "Value change (INR cr)": -70.19999999999999,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 2.6255319148936174,
+      "Portfolio value change": -0.060000000000000005,
+      "Real corpus at horizon (x today)": 1.2573777220409184,
+      "Scenario": "Inflation and rate spike",
+      "Value change (INR cr)": -24.000000000000004,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 1.939071566731141,
+      "Portfolio value change": -0.08,
+      "Real corpus at horizon (x today)": 1.2187175848351226,
+      "Scenario": "Large unexpected expense",
+      "Value change (INR cr)": -32.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 2.7127659574468086,
+      "Portfolio value change": 0.0,
+      "Real corpus at horizon (x today)": 0.811562515857139,
+      "Scenario": "Lost decade",
+      "Value change (INR cr)": 0.0,
+      "Within drawdown limit": true
      }
     ],
     "per_portfolio": {
@@ -5365,6 +5885,80 @@
       "Mid-cap equity": 0.2
      }
     },
+    "current_ladder": [
+     {
+      "Liquid sleeve value (INR cr)": 129.16875,
+      "Months of spending covered": 377.3087171052631,
+      "Outflows (INR cr)": 3.0,
+      "Year": 1
+     },
+     {
+      "Liquid sleeve value (INR cr)": 139.1322685546875,
+      "Months of spending covered": 388.91165473609453,
+      "Outflows (INR cr)": 3.135,
+      "Year": 2
+     },
+     {
+      "Liquid sleeve value (INR cr)": 139.96507516281127,
+      "Months of spending covered": 374.3919334570867,
+      "Outflows (INR cr)": 13.276074999999999,
+      "Year": 3
+     },
+     {
+      "Liquid sleeve value (INR cr)": 150.7349101910401,
+      "Months of spending covered": 385.8374310614539,
+      "Outflows (INR cr)": 3.4234983749999994,
+      "Year": 4
+     },
+     {
+      "Liquid sleeve value (INR cr)": 162.44281637572522,
+      "Months of spending covered": 397.9007254115114,
+      "Outflows (INR cr)": 3.577555801874999,
+      "Year": 5
+     },
+     {
+      "Liquid sleeve value (INR cr)": 175.1769874108667,
+      "Months of spending covered": 410.6151634906914,
+      "Outflows (INR cr)": 3.738545812959374,
+      "Year": 6
+     },
+     {
+      "Liquid sleeve value (INR cr)": 189.03424841595736,
+      "Months of spending covered": 424.0158922616452,
+      "Outflows (INR cr)": 3.906780374542546,
+      "Year": 7
+     },
+     {
+      "Liquid sleeve value (INR cr)": 189.12091717799106,
+      "Months of spending covered": 405.9428668231266,
+      "Outflows (INR cr)": 19.08258549139696,
+      "Year": 8
+     },
+     {
+      "Liquid sleeve value (INR cr)": 204.03265834706187,
+      "Months of spending covered": 419.0913977625927,
+      "Outflows (INR cr)": 4.266301838509822,
+      "Year": 9
+     },
+     {
+      "Liquid sleeve value (INR cr)": 220.2645596863258,
+      "Months of spending covered": 432.9496505425412,
+      "Outflows (INR cr)": 4.458285421242763,
+      "Year": 10
+     },
+     {
+      "Liquid sleeve value (INR cr)": 237.9418544268186,
+      "Months of spending covered": 447.55593401231647,
+      "Outflows (INR cr)": 4.658908265198688,
+      "Year": 11
+     },
+     {
+      "Liquid sleeve value (INR cr)": 257.2020864651555,
+      "Months of spending covered": 462.95062482847163,
+      "Outflows (INR cr)": 4.868559137132629,
+      "Year": 12
+     }
+    ],
     "current_projection": [
      {
       "In today's rupees (INR cr)": 150.0,
@@ -5495,6 +6089,62 @@
       "In today's rupees (INR cr)": 466.7344559561186,
       "Nominal (INR cr)": 1402.7398159836137,
       "Year": 25
+     }
+    ],
+    "current_scenarios": [
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 30.524999999999995,
+      "Portfolio value change": 0.0,
+      "Real corpus at horizon (x today)": 3.111563039707457,
+      "Scenario": "Baseline (no shock)",
+      "Value change (INR cr)": 0.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 26.400000000000002,
+      "Portfolio value change": -0.125,
+      "Real corpus at horizon (x today)": 2.5320332940228623,
+      "Scenario": "Equities fall 25%",
+      "Value change (INR cr)": -18.75,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 24.118250000000003,
+      "Portfolio value change": -0.23550000000000001,
+      "Real corpus at horizon (x today)": 2.01972899883768,
+      "Scenario": "Market crash",
+      "Value change (INR cr)": -35.325,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 27.914,
+      "Portfolio value change": -0.08549999999999999,
+      "Real corpus at horizon (x today)": 2.7151646936591955,
+      "Scenario": "Inflation and rate spike",
+      "Value change (INR cr)": -12.825,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 26.524999999999995,
+      "Portfolio value change": -0.08,
+      "Real corpus at horizon (x today)": 2.7406640024693187,
+      "Scenario": "Large unexpected expense",
+      "Value change (INR cr)": -12.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 30.524999999999995,
+      "Portfolio value change": 0.0,
+      "Real corpus at horizon (x today)": 0.9926352452512216,
+      "Scenario": "Lost decade",
+      "Value change (INR cr)": 0.0,
+      "Within drawdown limit": true
      }
     ],
     "per_portfolio": {
@@ -6803,6 +7453,80 @@
       "Mid-cap equity": 0.2
      }
     },
+    "current_ladder": [
+     {
+      "Liquid sleeve value (INR cr)": 129.16875,
+      "Months of spending covered": 173.3580592105263,
+      "Outflows (INR cr)": 3.0,
+      "Year": 1
+     },
+     {
+      "Liquid sleeve value (INR cr)": 139.1322685546875,
+      "Months of spending covered": 178.68913866252993,
+      "Outflows (INR cr)": 3.135,
+      "Year": 2
+     },
+     {
+      "Liquid sleeve value (INR cr)": 139.96507516281127,
+      "Months of spending covered": 172.01791537217497,
+      "Outflows (INR cr)": 13.276074999999999,
+      "Year": 3
+     },
+     {
+      "Liquid sleeve value (INR cr)": 150.7349101910401,
+      "Months of spending covered": 177.27665751472205,
+      "Outflows (INR cr)": 3.4234983749999994,
+      "Year": 4
+     },
+     {
+      "Liquid sleeve value (INR cr)": 162.44281637572522,
+      "Months of spending covered": 182.81925221609984,
+      "Outflows (INR cr)": 3.577555801874999,
+      "Year": 5
+     },
+     {
+      "Liquid sleeve value (INR cr)": 175.1769874108667,
+      "Months of spending covered": 188.6610210632906,
+      "Outflows (INR cr)": 3.738545812959374,
+      "Year": 6
+     },
+     {
+      "Liquid sleeve value (INR cr)": 189.03424841595736,
+      "Months of spending covered": 194.81811266075593,
+      "Outflows (INR cr)": 3.906780374542546,
+      "Year": 7
+     },
+     {
+      "Liquid sleeve value (INR cr)": 189.12091717799106,
+      "Months of spending covered": 186.5142901619771,
+      "Outflows (INR cr)": 19.08258549139696,
+      "Year": 8
+     },
+     {
+      "Liquid sleeve value (INR cr)": 204.03265834706187,
+      "Months of spending covered": 192.55550708011012,
+      "Outflows (INR cr)": 4.266301838509822,
+      "Year": 9
+     },
+     {
+      "Liquid sleeve value (INR cr)": 220.2645596863258,
+      "Months of spending covered": 198.92281241143783,
+      "Outflows (INR cr)": 4.458285421242763,
+      "Year": 10
+     },
+     {
+      "Liquid sleeve value (INR cr)": 237.9418544268186,
+      "Months of spending covered": 205.6338075191724,
+      "Outflows (INR cr)": 4.658908265198688,
+      "Year": 11
+     },
+     {
+      "Liquid sleeve value (INR cr)": 257.2020864651555,
+      "Months of spending covered": 212.70704384010855,
+      "Outflows (INR cr)": 4.868559137132629,
+      "Year": 12
+     }
+    ],
     "current_projection": [
      {
       "In today's rupees (INR cr)": 150.0,
@@ -6933,6 +7657,62 @@
       "In today's rupees (INR cr)": 466.7344559561186,
       "Nominal (INR cr)": 1402.7398159836137,
       "Year": 25
+     }
+    ],
+    "current_scenarios": [
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 14.025,
+      "Portfolio value change": 0.0,
+      "Real corpus at horizon (x today)": 3.111563039707457,
+      "Scenario": "Baseline (no shock)",
+      "Value change (INR cr)": 0.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 14.025,
+      "Portfolio value change": -0.125,
+      "Real corpus at horizon (x today)": 2.5320332940228623,
+      "Scenario": "Equities fall 25%",
+      "Value change (INR cr)": -18.75,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 13.993250000000002,
+      "Portfolio value change": -0.23550000000000001,
+      "Real corpus at horizon (x today)": 2.01972899883768,
+      "Scenario": "Market crash",
+      "Value change (INR cr)": -35.325,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 13.574000000000003,
+      "Portfolio value change": -0.08549999999999999,
+      "Real corpus at horizon (x today)": 2.7151646936591955,
+      "Scenario": "Inflation and rate spike",
+      "Value change (INR cr)": -12.825,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 10.025,
+      "Portfolio value change": -0.08,
+      "Real corpus at horizon (x today)": 2.7406640024693187,
+      "Scenario": "Large unexpected expense",
+      "Value change (INR cr)": -12.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 14.025,
+      "Portfolio value change": 0.0,
+      "Real corpus at horizon (x today)": 0.9926352452512216,
+      "Scenario": "Lost decade",
+      "Value change (INR cr)": 0.0,
+      "Within drawdown limit": true
      }
     ],
     "per_portfolio": {
@@ -8243,6 +9023,80 @@
       "Mid-cap equity": 0.0
      }
     },
+    "current_ladder": [
+     {
+      "Liquid sleeve value (INR cr)": 546.25,
+      "Months of spending covered": 227.38636363636365,
+      "Outflows (INR cr)": 120.0,
+      "Year": 1
+     },
+     {
+      "Liquid sleeve value (INR cr)": 585.6651041666667,
+      "Months of spending covered": 233.29531861678993,
+      "Outflows (INR cr)": 20.9,
+      "Year": 2
+     },
+     {
+      "Liquid sleeve value (INR cr)": 628.491792751736,
+      "Months of spending covered": 239.5741722941568,
+      "Outflows (INR cr)": 21.840499999999995,
+      "Year": 3
+     },
+     {
+      "Liquid sleeve value (INR cr)": 675.0644390347402,
+      "Months of spending covered": 246.2460802089026,
+      "Outflows (INR cr)": 22.823322499999996,
+      "Year": 4
+     },
+     {
+      "Liquid sleeve value (INR cr)": 725.7524321656595,
+      "Months of spending covered": 253.33564743091125,
+      "Outflows (INR cr)": 23.850372012499996,
+      "Year": 5
+     },
+     {
+      "Liquid sleeve value (INR cr)": 780.9639577975552,
+      "Months of spending covered": 260.8690192995927,
+      "Outflows (INR cr)": 24.923638753062495,
+      "Year": 6
+     },
+     {
+      "Liquid sleeve value (INR cr)": 841.1501923074181,
+      "Months of spending covered": 268.8739778442642,
+      "Outflows (INR cr)": 26.045202496950303,
+      "Year": 7
+     },
+     {
+      "Liquid sleeve value (INR cr)": 906.8099560987157,
+      "Months of spending covered": 277.3800442404163,
+      "Outflows (INR cr)": 27.217236609313066,
+      "Year": 8
+     },
+     {
+      "Liquid sleeve value (INR cr)": 978.49487649455,
+      "Months of spending covered": 286.4185876797087,
+      "Outflows (INR cr)": 28.44201225673215,
+      "Year": 9
+     },
+     {
+      "Liquid sleeve value (INR cr)": 1056.8151162992049,
+      "Months of spending covered": 296.0229410551929,
+      "Outflows (INR cr)": 29.721902808285094,
+      "Year": 10
+     },
+     {
+      "Liquid sleeve value (INR cr)": 1142.4457302892508,
+      "Months of spending covered": 306.22852388839283,
+      "Outflows (INR cr)": 31.05938843465792,
+      "Year": 11
+     },
+     {
+      "Liquid sleeve value (INR cr)": 1236.1337187611382,
+      "Months of spending covered": 317.0729729515817,
+      "Outflows (INR cr)": 32.45706091421753,
+      "Year": 12
+     }
+    ],
     "current_projection": [
      {
       "In today's rupees (INR cr)": 1000.0,
@@ -8323,6 +9177,62 @@
       "In today's rupees (INR cr)": 1499.657508426784,
       "Nominal (INR cr)": 2902.2608467081777,
       "Year": 15
+     }
+    ],
+    "current_scenarios": [
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 3.6249999999999996,
+      "Portfolio value change": 0.0,
+      "Real corpus at horizon (x today)": 1.499657508426784,
+      "Scenario": "Baseline (no shock)",
+      "Value change (INR cr)": 0.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 2.822916666666666,
+      "Portfolio value change": -0.13749999999999998,
+      "Real corpus at horizon (x today)": 1.2098720954108062,
+      "Scenario": "Equities fall 25%",
+      "Value change (INR cr)": -137.49999999999997,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 2.5020833333333328,
+      "Portfolio value change": -0.27249999999999996,
+      "Real corpus at horizon (x today)": 0.9253555080860276,
+      "Scenario": "Market crash",
+      "Value change (INR cr)": -272.49999999999994,
+      "Within drawdown limit": false
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 3.2399999999999993,
+      "Portfolio value change": -0.086,
+      "Real corpus at horizon (x today)": 1.3184099046495177,
+      "Scenario": "Inflation and rate spike",
+      "Value change (INR cr)": -86.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 2.958333333333333,
+      "Portfolio value change": -0.08,
+      "Real corpus at horizon (x today)": 1.3310550863083972,
+      "Scenario": "Large unexpected expense",
+      "Value change (INR cr)": -80.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": true,
+      "Liquidity cover (x required)": 3.6249999999999996,
+      "Portfolio value change": 0.0,
+      "Real corpus at horizon (x today)": 0.7798654017926414,
+      "Scenario": "Lost decade",
+      "Value change (INR cr)": 0.0,
+      "Within drawdown limit": true
      }
     ],
     "per_portfolio": {
@@ -9498,6 +10408,80 @@
       "Mid-cap equity": 0.0
      }
     },
+    "current_ladder": [
+     {
+      "Liquid sleeve value (INR cr)": 546.25,
+      "Months of spending covered": 26.136363636363637,
+      "Outflows (INR cr)": 120.0,
+      "Year": 1
+     },
+     {
+      "Liquid sleeve value (INR cr)": 585.6651041666667,
+      "Months of spending covered": 26.81555386399884,
+      "Outflows (INR cr)": 20.9,
+      "Year": 2
+     },
+     {
+      "Liquid sleeve value (INR cr)": 628.491792751736,
+      "Months of spending covered": 27.53726118323641,
+      "Outflows (INR cr)": 21.840499999999995,
+      "Year": 3
+     },
+     {
+      "Liquid sleeve value (INR cr)": 675.0644390347402,
+      "Months of spending covered": 28.304147150448575,
+      "Outflows (INR cr)": 22.823322499999996,
+      "Year": 4
+     },
+     {
+      "Liquid sleeve value (INR cr)": 725.7524321656595,
+      "Months of spending covered": 29.1190399345875,
+      "Outflows (INR cr)": 23.850372012499996,
+      "Year": 5
+     },
+     {
+      "Liquid sleeve value (INR cr)": 780.9639577975552,
+      "Months of spending covered": 29.98494474707962,
+      "Outflows (INR cr)": 24.923638753062495,
+      "Year": 6
+     },
+     {
+      "Liquid sleeve value (INR cr)": 841.1501923074181,
+      "Months of spending covered": 30.90505492462807,
+      "Outflows (INR cr)": 26.045202496950303,
+      "Year": 7
+     },
+     {
+      "Liquid sleeve value (INR cr)": 906.8099560987157,
+      "Months of spending covered": 31.882763705794975,
+      "Outflows (INR cr)": 27.217236609313066,
+      "Year": 8
+     },
+     {
+      "Liquid sleeve value (INR cr)": 978.49487649455,
+      "Months of spending covered": 32.9216767447941,
+      "Outflows (INR cr)": 28.44201225673215,
+      "Year": 9
+     },
+     {
+      "Liquid sleeve value (INR cr)": 1056.8151162992049,
+      "Months of spending covered": 34.02562540864287,
+      "Outflows (INR cr)": 29.721902808285094,
+      "Year": 10
+     },
+     {
+      "Liquid sleeve value (INR cr)": 1142.4457302892508,
+      "Months of spending covered": 35.198680906711814,
+      "Outflows (INR cr)": 31.05938843465792,
+      "Year": 11
+     },
+     {
+      "Liquid sleeve value (INR cr)": 1236.1337187611382,
+      "Months of spending covered": 36.445169304779505,
+      "Outflows (INR cr)": 32.45706091421753,
+      "Year": 12
+     }
+    ],
     "current_projection": [
      {
       "In today's rupees (INR cr)": 1000.0,
@@ -9578,6 +10562,62 @@
       "In today's rupees (INR cr)": 1499.657508426784,
       "Nominal (INR cr)": 2902.2608467081777,
       "Year": 15
+     }
+    ],
+    "current_scenarios": [
+     {
+      "Cover held": false,
+      "Liquidity cover (x required)": 0.41666666666666663,
+      "Portfolio value change": 0.0,
+      "Real corpus at horizon (x today)": 1.499657508426784,
+      "Scenario": "Baseline (no shock)",
+      "Value change (INR cr)": 0.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": false,
+      "Liquidity cover (x required)": 0.41666666666666663,
+      "Portfolio value change": -0.13749999999999998,
+      "Real corpus at horizon (x today)": 1.2098720954108062,
+      "Scenario": "Equities fall 25%",
+      "Value change (INR cr)": -137.49999999999997,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": false,
+      "Liquidity cover (x required)": 0.41666666666666663,
+      "Portfolio value change": -0.27249999999999996,
+      "Real corpus at horizon (x today)": 0.9253555080860276,
+      "Scenario": "Market crash",
+      "Value change (INR cr)": -272.49999999999994,
+      "Within drawdown limit": false
+     },
+     {
+      "Cover held": false,
+      "Liquidity cover (x required)": 0.41666666666666663,
+      "Portfolio value change": -0.086,
+      "Real corpus at horizon (x today)": 1.3184099046495177,
+      "Scenario": "Inflation and rate spike",
+      "Value change (INR cr)": -86.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": false,
+      "Liquidity cover (x required)": -0.25000000000000006,
+      "Portfolio value change": -0.08,
+      "Real corpus at horizon (x today)": 1.3310550863083972,
+      "Scenario": "Large unexpected expense",
+      "Value change (INR cr)": -80.0,
+      "Within drawdown limit": true
+     },
+     {
+      "Cover held": false,
+      "Liquidity cover (x required)": 0.41666666666666663,
+      "Portfolio value change": 0.0,
+      "Real corpus at horizon (x today)": 0.7798654017926414,
+      "Scenario": "Lost decade",
+      "Value change (INR cr)": 0.0,
+      "Within drawdown limit": true
      }
     ],
     "per_portfolio": {

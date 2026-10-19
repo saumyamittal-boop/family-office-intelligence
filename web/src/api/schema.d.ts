@@ -92,6 +92,28 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/dashboard": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Dashboard */
+        get: operations["get_dashboard_api_dashboard_get"];
+        /** Save Dashboard */
+        put: operations["save_dashboard_api_dashboard_put"];
+        post?: never;
+        /**
+         * Reset Dashboard
+         * @description Back to the default four.
+         */
+        delete: operations["reset_dashboard_api_dashboard_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/health": {
         parameters: {
             query?: never;
@@ -254,6 +276,46 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/profiles/{profile_id}/history": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * History
+         * @description How the current mix and each recommendation would have behaved over the sample years.
+         */
+        get: operations["history_api_profiles__profile_id__history_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/profiles/{profile_id}/scenarios": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Scenarios
+         * @description Hit the current mix and each recommendation with one scenario: a built-in one or the six custom dials.
+         */
+        post: operations["scenarios_api_profiles__profile_id__scenarios_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -289,8 +351,12 @@ export interface components {
             /** Comparison Scenario */
             comparison_scenario: string;
             current: components["schemas"]["PortfolioOut"];
+            /** Current Ladder */
+            current_ladder: components["schemas"]["LadderRow"][];
             /** Current Projection */
             current_projection: components["schemas"]["ProjectionRow"][];
+            /** Current Scenarios */
+            current_scenarios: components["schemas"]["ScenarioRow"][];
             /** Data Source */
             data_source: string;
             /** Options */
@@ -299,6 +365,20 @@ export interface components {
             profile_id: number;
             /** Upcoming Outflows */
             upcoming_outflows: components["schemas"]["OutflowRow"][];
+        };
+        /** AnnualReturn */
+        AnnualReturn: {
+            /**
+             * Partial
+             * @description True when the sample holds only part of this calendar year.
+             */
+            partial: boolean;
+            /** Portfolio Return */
+            portfolio_return: number;
+            /** Trading Days */
+            trading_days: number;
+            /** Year */
+            year: number;
         };
         /** Bounds */
         Bounds: {
@@ -406,6 +486,66 @@ export interface components {
             /** Username */
             username: string;
         };
+        /**
+         * CustomScenario
+         * @description The six dials of "build your own". The mid-cap shock is 1.25 times the equity shock, never worse than -95%.
+         */
+        CustomScenario: {
+            /**
+             * Debt Shock
+             * @default -0.03
+             */
+            debt_shock: number;
+            /**
+             * Equity Shock
+             * @default -0.25
+             */
+            equity_shock: number;
+            /**
+             * Gold Shock
+             * @default 0.05
+             */
+            gold_shock: number;
+            /**
+             * Illiquid Markdown
+             * @default -0.1
+             */
+            illiquid_markdown: number;
+            /**
+             * One Off Expense
+             * @default 0.05
+             */
+            one_off_expense: number;
+            /**
+             * Return Drag
+             * @default 0
+             */
+            return_drag: number;
+        };
+        /** DashboardIn */
+        DashboardIn: {
+            /**
+             * Modules
+             * @description Exactly four different modules, in display order.
+             */
+            modules: ("allocation_actions" | "liquidity_commitments" | "risk_exposure" | "stress_scenarios" | "net_worth_projection" | "historical_performance" | "recommendation_rationale" | "holdings_consolidation")[];
+        };
+        /** DashboardOut */
+        DashboardOut: {
+            /** Catalog */
+            catalog: components["schemas"]["ModuleInfo"][];
+            /** Default Modules */
+            default_modules: ("allocation_actions" | "liquidity_commitments" | "risk_exposure" | "stress_scenarios" | "net_worth_projection" | "historical_performance" | "recommendation_rationale" | "holdings_consolidation")[];
+            /**
+             * Is Default
+             * @description True until the person saves a choice of their own.
+             */
+            is_default: boolean;
+            /** Modules */
+            modules: ("allocation_actions" | "liquidity_commitments" | "risk_exposure" | "stress_scenarios" | "net_worth_projection" | "historical_performance" | "recommendation_rationale" | "holdings_consolidation")[];
+            /** Updated */
+            updated: string | null;
+        };
         /** DemoRequest */
         DemoRequest: {
             /**
@@ -413,6 +553,37 @@ export interface components {
              * @enum {string}
              */
             family: "legacy" | "business" | "nextgen" | "gap";
+        };
+        /** HistoryOut */
+        HistoryOut: {
+            /**
+             * Basis
+             * @enum {string}
+             */
+            basis: "all" | "strict";
+            /** Data Source */
+            data_source: string;
+            /**
+             * Dates
+             * @description ISO dates. The first is the base day (value 100); the rest close each step.
+             */
+            dates: string[];
+            /** Drawdown Limit */
+            drawdown_limit: number;
+            /** Note */
+            note: string;
+            /**
+             * Portfolios
+             * @description The current mix first, then the three recommendations.
+             */
+            portfolios: components["schemas"]["PortfolioHistory"][];
+            /** Profile Id */
+            profile_id: number;
+            /**
+             * Step Days
+             * @description Trading days between points. Drawdowns keep the deepest day in each step.
+             */
+            step_days: number;
         };
         /** IlliquidModel */
         IlliquidModel: {
@@ -467,6 +638,10 @@ export interface components {
             cover_bases: {
                 [key: string]: string;
             };
+            /** Custom Scenario Ranges */
+            custom_scenario_ranges: {
+                [key: string]: components["schemas"]["Range"];
+            };
             /** Data Source */
             data_source: string;
             /** Demo Families */
@@ -475,8 +650,23 @@ export interface components {
             demo_login: boolean;
             /** Disclaimer */
             disclaimer: string;
+            /** Scenario Presets */
+            scenario_presets: components["schemas"]["ScenarioPreset"][];
             /** Version */
             version: string;
+        };
+        /** ModuleInfo */
+        ModuleInfo: {
+            /**
+             * Available
+             * @description False for modules whose data source is not built yet.
+             */
+            available: boolean;
+            /**
+             * Id
+             * @enum {string}
+             */
+            id: "allocation_actions" | "liquidity_commitments" | "risk_exposure" | "stress_scenarios" | "net_worth_projection" | "historical_performance" | "recommendation_rationale" | "holdings_consolidation";
         };
         /** OneOffModel */
         OneOffModel: {
@@ -651,6 +841,30 @@ export interface components {
             scenarios: components["schemas"]["ScenarioRow"][];
             year_range: components["schemas"]["YearRange"];
         };
+        /** PortfolioHistory */
+        PortfolioHistory: {
+            /** Annual */
+            annual: components["schemas"]["AnnualReturn"][];
+            /** Cvar21 */
+            cvar21: number;
+            /**
+             * Drawdown
+             * @description Fall from the previous peak (zero or negative); the deepest day inside each step.
+             */
+            drawdown: number[];
+            /** Label */
+            label: string;
+            /**
+             * Max Drawdown
+             * @description The worst fall over the whole sample, measured on every day (the engine's number).
+             */
+            max_drawdown: number;
+            /**
+             * Value
+             * @description Growth of 100 invested at the start, one point per entry in `dates`.
+             */
+            value: number[];
+        };
         /** PortfolioOut */
         PortfolioOut: {
             /** Available Cover Cr */
@@ -821,6 +1035,15 @@ export interface components {
             /** Year */
             year: number;
         };
+        /** Range */
+        Range: {
+            /** Default */
+            default: number;
+            /** Max */
+            max: number;
+            /** Min */
+            min: number;
+        };
         /** SafetyNet */
         SafetyNet: {
             /** Commitments Cr */
@@ -846,6 +1069,75 @@ export interface components {
              * @enum {string}
              */
             strategy: "Protect" | "Balance" | "Grow";
+        };
+        /** ScenarioComparison */
+        ScenarioComparison: {
+            /** @description Exactly what was applied, so the screen can show it. */
+            applied: components["schemas"]["ScenarioPreset"];
+            /**
+             * Basis
+             * @enum {string}
+             */
+            basis: "all" | "strict";
+            /** Description */
+            description: string;
+            /** Insights */
+            insights: components["schemas"]["InsightOut"][];
+            /** Is Custom */
+            is_custom: boolean;
+            /** Name */
+            name: string;
+            /** Profile Id */
+            profile_id: number;
+            /**
+             * Rows
+             * @description The current mix first, then the three recommendations, all hit by the same scenario.
+             */
+            rows: components["schemas"]["CompareRow"][];
+        };
+        /** ScenarioPreset */
+        ScenarioPreset: {
+            /** Description */
+            description: string;
+            /**
+             * Extra Outflow
+             * @description A one-off bill, as a share of the corpus.
+             */
+            extra_outflow: number;
+            /**
+             * Illiquid
+             * @description One-off change in the illiquid holdings.
+             */
+            illiquid: number;
+            /** Name */
+            name: string;
+            /**
+             * Return Drag
+             * @description Yearly reduction in expected return for the whole horizon.
+             */
+            return_drag: number;
+            /**
+             * Shocks
+             * @description One-off price change per market class.
+             */
+            shocks: {
+                [key: string]: number;
+            };
+        };
+        /** ScenarioRequest */
+        ScenarioRequest: {
+            /**
+             * Basis
+             * @default all
+             * @enum {string}
+             */
+            basis: "all" | "strict";
+            custom?: components["schemas"]["CustomScenario"] | null;
+            /**
+             * Preset
+             * @description Name of a built-in scenario.
+             */
+            preset?: string | null;
         };
         /** ScenarioRow */
         ScenarioRow: {
@@ -1311,6 +1603,259 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["SessionOut"];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+        };
+    };
+    get_dashboard_api_dashboard_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DashboardOut"];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+        };
+    };
+    save_dashboard_api_dashboard_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DashboardIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DashboardOut"];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+        };
+    };
+    reset_dashboard_api_dashboard_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DashboardOut"];
                 };
             };
             /** @description Not signed in. */
@@ -2210,6 +2755,183 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["AnalysisOut"];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+        };
+    };
+    history_api_profiles__profile_id__history_get: {
+        parameters: {
+            query?: {
+                /** @description Which assets count towards the liquidity cover. */
+                basis?: "all" | "strict";
+            };
+            header?: never;
+            path: {
+                profile_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HistoryOut"];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+        };
+    };
+    scenarios_api_profiles__profile_id__scenarios_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                profile_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ScenarioRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ScenarioComparison"];
                 };
             };
             /** @description Not signed in. */

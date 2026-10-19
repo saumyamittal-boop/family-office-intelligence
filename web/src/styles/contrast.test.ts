@@ -32,6 +32,8 @@ const TEXT: [string, string][] = [
   ["brand-ink", "brand"], ["brand-ink", "brand-hover"],
   ["brand-text", "surface"], ["brand-text", "brand-soft"], ["brand-text", "bg"],
   ["good-ink", "good-bg"], ["warn-ink", "warn-bg"], ["bad-ink", "bad-bg"], ["info-ink", "info-bg"],
+  // Scenario headlines are drawn straight on the card surface (phase 4).
+  ["good-ink", "surface"], ["bad-ink", "surface"],
 ];
 
 const NON_TEXT: [string, string][] = [

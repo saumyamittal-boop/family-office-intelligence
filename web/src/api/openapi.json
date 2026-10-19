@@ -74,11 +74,25 @@
           "current": {
             "$ref": "#/components/schemas/PortfolioOut"
           },
+          "current_ladder": {
+            "items": {
+              "$ref": "#/components/schemas/LadderRow"
+            },
+            "title": "Current Ladder",
+            "type": "array"
+          },
           "current_projection": {
             "items": {
               "$ref": "#/components/schemas/ProjectionRow"
             },
             "title": "Current Projection",
+            "type": "array"
+          },
+          "current_scenarios": {
+            "items": {
+              "$ref": "#/components/schemas/ScenarioRow"
+            },
+            "title": "Current Scenarios",
             "type": "array"
           },
           "data_source": {
@@ -111,6 +125,8 @@
           "data_source",
           "current",
           "current_projection",
+          "current_ladder",
+          "current_scenarios",
           "options",
           "upcoming_outflows",
           "comparison_scenario",
@@ -118,6 +134,35 @@
           "comparison_insights"
         ],
         "title": "AnalysisOut",
+        "type": "object"
+      },
+      "AnnualReturn": {
+        "properties": {
+          "partial": {
+            "description": "True when the sample holds only part of this calendar year.",
+            "title": "Partial",
+            "type": "boolean"
+          },
+          "portfolio_return": {
+            "title": "Portfolio Return",
+            "type": "number"
+          },
+          "trading_days": {
+            "title": "Trading Days",
+            "type": "integer"
+          },
+          "year": {
+            "title": "Year",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "year",
+          "portfolio_return",
+          "trading_days",
+          "partial"
+        ],
+        "title": "AnnualReturn",
         "type": "object"
       },
       "Bounds": {
@@ -404,6 +449,156 @@
         "title": "Credentials",
         "type": "object"
       },
+      "CustomScenario": {
+        "additionalProperties": false,
+        "description": "The six dials of \"build your own\". The mid-cap shock is 1.25 times the equity shock, never worse than -95%.",
+        "properties": {
+          "debt_shock": {
+            "default": -0.03,
+            "maximum": 0.1,
+            "minimum": -0.2,
+            "title": "Debt Shock",
+            "type": "number"
+          },
+          "equity_shock": {
+            "default": -0.25,
+            "maximum": 0.2,
+            "minimum": -0.6,
+            "title": "Equity Shock",
+            "type": "number"
+          },
+          "gold_shock": {
+            "default": 0.05,
+            "maximum": 0.4,
+            "minimum": -0.3,
+            "title": "Gold Shock",
+            "type": "number"
+          },
+          "illiquid_markdown": {
+            "default": -0.1,
+            "maximum": 0.1,
+            "minimum": -0.5,
+            "title": "Illiquid Markdown",
+            "type": "number"
+          },
+          "one_off_expense": {
+            "default": 0.05,
+            "maximum": 0.4,
+            "minimum": 0.0,
+            "title": "One Off Expense",
+            "type": "number"
+          },
+          "return_drag": {
+            "default": 0.0,
+            "maximum": 0.08,
+            "minimum": 0.0,
+            "title": "Return Drag",
+            "type": "number"
+          }
+        },
+        "title": "CustomScenario",
+        "type": "object"
+      },
+      "DashboardIn": {
+        "additionalProperties": false,
+        "properties": {
+          "modules": {
+            "description": "Exactly four different modules, in display order.",
+            "items": {
+              "enum": [
+                "allocation_actions",
+                "liquidity_commitments",
+                "risk_exposure",
+                "stress_scenarios",
+                "net_worth_projection",
+                "historical_performance",
+                "recommendation_rationale",
+                "holdings_consolidation"
+              ],
+              "type": "string"
+            },
+            "maxItems": 4,
+            "minItems": 4,
+            "title": "Modules",
+            "type": "array"
+          }
+        },
+        "required": [
+          "modules"
+        ],
+        "title": "DashboardIn",
+        "type": "object"
+      },
+      "DashboardOut": {
+        "properties": {
+          "catalog": {
+            "items": {
+              "$ref": "#/components/schemas/ModuleInfo"
+            },
+            "title": "Catalog",
+            "type": "array"
+          },
+          "default_modules": {
+            "items": {
+              "enum": [
+                "allocation_actions",
+                "liquidity_commitments",
+                "risk_exposure",
+                "stress_scenarios",
+                "net_worth_projection",
+                "historical_performance",
+                "recommendation_rationale",
+                "holdings_consolidation"
+              ],
+              "type": "string"
+            },
+            "title": "Default Modules",
+            "type": "array"
+          },
+          "is_default": {
+            "description": "True until the person saves a choice of their own.",
+            "title": "Is Default",
+            "type": "boolean"
+          },
+          "modules": {
+            "items": {
+              "enum": [
+                "allocation_actions",
+                "liquidity_commitments",
+                "risk_exposure",
+                "stress_scenarios",
+                "net_worth_projection",
+                "historical_performance",
+                "recommendation_rationale",
+                "holdings_consolidation"
+              ],
+              "type": "string"
+            },
+            "title": "Modules",
+            "type": "array"
+          },
+          "updated": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updated"
+          }
+        },
+        "required": [
+          "modules",
+          "is_default",
+          "updated",
+          "default_modules",
+          "catalog"
+        ],
+        "title": "DashboardOut",
+        "type": "object"
+      },
       "DemoRequest": {
         "additionalProperties": false,
         "properties": {
@@ -422,6 +617,67 @@
           "family"
         ],
         "title": "DemoRequest",
+        "type": "object"
+      },
+      "HistoryOut": {
+        "properties": {
+          "basis": {
+            "enum": [
+              "all",
+              "strict"
+            ],
+            "title": "Basis",
+            "type": "string"
+          },
+          "data_source": {
+            "title": "Data Source",
+            "type": "string"
+          },
+          "dates": {
+            "description": "ISO dates. The first is the base day (value 100); the rest close each step.",
+            "items": {
+              "type": "string"
+            },
+            "title": "Dates",
+            "type": "array"
+          },
+          "drawdown_limit": {
+            "title": "Drawdown Limit",
+            "type": "number"
+          },
+          "note": {
+            "title": "Note",
+            "type": "string"
+          },
+          "portfolios": {
+            "description": "The current mix first, then the three recommendations.",
+            "items": {
+              "$ref": "#/components/schemas/PortfolioHistory"
+            },
+            "title": "Portfolios",
+            "type": "array"
+          },
+          "profile_id": {
+            "title": "Profile Id",
+            "type": "integer"
+          },
+          "step_days": {
+            "description": "Trading days between points. Drawdowns keep the deepest day in each step.",
+            "title": "Step Days",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "profile_id",
+          "basis",
+          "data_source",
+          "dates",
+          "step_days",
+          "drawdown_limit",
+          "portfolios",
+          "note"
+        ],
+        "title": "HistoryOut",
         "type": "object"
       },
       "IlliquidModel": {
@@ -572,6 +828,13 @@
             "title": "Cover Bases",
             "type": "object"
           },
+          "custom_scenario_ranges": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Range"
+            },
+            "title": "Custom Scenario Ranges",
+            "type": "object"
+          },
           "data_source": {
             "title": "Data Source",
             "type": "string"
@@ -591,6 +854,13 @@
             "title": "Disclaimer",
             "type": "string"
           },
+          "scenario_presets": {
+            "items": {
+              "$ref": "#/components/schemas/ScenarioPreset"
+            },
+            "title": "Scenario Presets",
+            "type": "array"
+          },
           "version": {
             "title": "Version",
             "type": "string"
@@ -604,9 +874,40 @@
           "asset_classes",
           "cover_bases",
           "demo_login",
-          "demo_families"
+          "demo_families",
+          "scenario_presets",
+          "custom_scenario_ranges"
         ],
         "title": "MetaOut",
+        "type": "object"
+      },
+      "ModuleInfo": {
+        "properties": {
+          "available": {
+            "description": "False for modules whose data source is not built yet.",
+            "title": "Available",
+            "type": "boolean"
+          },
+          "id": {
+            "enum": [
+              "allocation_actions",
+              "liquidity_commitments",
+              "risk_exposure",
+              "stress_scenarios",
+              "net_worth_projection",
+              "historical_performance",
+              "recommendation_rationale",
+              "holdings_consolidation"
+            ],
+            "title": "Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "available"
+        ],
+        "title": "ModuleInfo",
         "type": "object"
       },
       "OneOffModel": {
@@ -1133,6 +1434,56 @@
         "title": "PortfolioDetail",
         "type": "object"
       },
+      "PortfolioHistory": {
+        "properties": {
+          "annual": {
+            "items": {
+              "$ref": "#/components/schemas/AnnualReturn"
+            },
+            "title": "Annual",
+            "type": "array"
+          },
+          "cvar21": {
+            "title": "Cvar21",
+            "type": "number"
+          },
+          "drawdown": {
+            "description": "Fall from the previous peak (zero or negative); the deepest day inside each step.",
+            "items": {
+              "type": "number"
+            },
+            "title": "Drawdown",
+            "type": "array"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "max_drawdown": {
+            "description": "The worst fall over the whole sample, measured on every day (the engine's number).",
+            "title": "Max Drawdown",
+            "type": "number"
+          },
+          "value": {
+            "description": "Growth of 100 invested at the start, one point per entry in `dates`.",
+            "items": {
+              "type": "number"
+            },
+            "title": "Value",
+            "type": "array"
+          }
+        },
+        "required": [
+          "label",
+          "value",
+          "drawdown",
+          "max_drawdown",
+          "cvar21",
+          "annual"
+        ],
+        "title": "PortfolioHistory",
+        "type": "object"
+      },
       "PortfolioOut": {
         "properties": {
           "available_cover_cr": {
@@ -1564,6 +1915,29 @@
         "title": "ProjectionRow",
         "type": "object"
       },
+      "Range": {
+        "properties": {
+          "default": {
+            "title": "Default",
+            "type": "number"
+          },
+          "max": {
+            "title": "Max",
+            "type": "number"
+          },
+          "min": {
+            "title": "Min",
+            "type": "number"
+          }
+        },
+        "required": [
+          "min",
+          "max",
+          "default"
+        ],
+        "title": "Range",
+        "type": "object"
+      },
       "SafetyNet": {
         "properties": {
           "commitments_cr": {
@@ -1630,6 +2004,150 @@
           "strategy"
         ],
         "title": "SaveRequest",
+        "type": "object"
+      },
+      "ScenarioComparison": {
+        "properties": {
+          "applied": {
+            "$ref": "#/components/schemas/ScenarioPreset",
+            "description": "Exactly what was applied, so the screen can show it."
+          },
+          "basis": {
+            "enum": [
+              "all",
+              "strict"
+            ],
+            "title": "Basis",
+            "type": "string"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "insights": {
+            "items": {
+              "$ref": "#/components/schemas/InsightOut"
+            },
+            "title": "Insights",
+            "type": "array"
+          },
+          "is_custom": {
+            "title": "Is Custom",
+            "type": "boolean"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "profile_id": {
+            "title": "Profile Id",
+            "type": "integer"
+          },
+          "rows": {
+            "description": "The current mix first, then the three recommendations, all hit by the same scenario.",
+            "items": {
+              "$ref": "#/components/schemas/CompareRow"
+            },
+            "title": "Rows",
+            "type": "array"
+          }
+        },
+        "required": [
+          "profile_id",
+          "basis",
+          "name",
+          "description",
+          "is_custom",
+          "applied",
+          "rows",
+          "insights"
+        ],
+        "title": "ScenarioComparison",
+        "type": "object"
+      },
+      "ScenarioPreset": {
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "extra_outflow": {
+            "description": "A one-off bill, as a share of the corpus.",
+            "title": "Extra Outflow",
+            "type": "number"
+          },
+          "illiquid": {
+            "description": "One-off change in the illiquid holdings.",
+            "title": "Illiquid",
+            "type": "number"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "return_drag": {
+            "description": "Yearly reduction in expected return for the whole horizon.",
+            "title": "Return Drag",
+            "type": "number"
+          },
+          "shocks": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "description": "One-off price change per market class.",
+            "title": "Shocks",
+            "type": "object"
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "shocks",
+          "illiquid",
+          "extra_outflow",
+          "return_drag"
+        ],
+        "title": "ScenarioPreset",
+        "type": "object"
+      },
+      "ScenarioRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "basis": {
+            "default": "all",
+            "enum": [
+              "all",
+              "strict"
+            ],
+            "title": "Basis",
+            "type": "string"
+          },
+          "custom": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CustomScenario"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "preset": {
+            "anyOf": [
+              {
+                "maxLength": 60,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Name of a built-in scenario.",
+            "title": "Preset"
+          }
+        },
+        "title": "ScenarioRequest",
         "type": "object"
       },
       "ScenarioRow": {
@@ -2341,6 +2859,286 @@
         "summary": "Signup",
         "tags": [
           "auth"
+        ]
+      }
+    },
+    "/api/dashboard": {
+      "delete": {
+        "description": "Back to the default four.",
+        "operationId": "reset_dashboard_api_dashboard_delete",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Reset Dashboard",
+        "tags": [
+          "dashboard"
+        ]
+      },
+      "get": {
+        "operationId": "get_dashboard_api_dashboard_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Get Dashboard",
+        "tags": [
+          "dashboard"
+        ]
+      },
+      "put": {
+        "operationId": "save_dashboard_api_dashboard_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DashboardIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Save Dashboard",
+        "tags": [
+          "dashboard"
         ]
       }
     },
@@ -3400,6 +4198,242 @@
           }
         },
         "summary": "Analysis",
+        "tags": [
+          "profiles"
+        ]
+      }
+    },
+    "/api/profiles/{profile_id}/history": {
+      "get": {
+        "description": "How the current mix and each recommendation would have behaved over the sample years.",
+        "operationId": "history_api_profiles__profile_id__history_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Which assets count towards the liquidity cover.",
+            "in": "query",
+            "name": "basis",
+            "required": false,
+            "schema": {
+              "default": "all",
+              "description": "Which assets count towards the liquidity cover.",
+              "enum": [
+                "all",
+                "strict"
+              ],
+              "title": "Basis",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoryOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "History",
+        "tags": [
+          "profiles"
+        ]
+      }
+    },
+    "/api/profiles/{profile_id}/scenarios": {
+      "post": {
+        "description": "Hit the current mix and each recommendation with one scenario: a built-in one or the six custom dials.",
+        "operationId": "scenarios_api_profiles__profile_id__scenarios_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScenarioRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScenarioComparison"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Scenarios",
         "tags": [
           "profiles"
         ]

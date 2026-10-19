@@ -9,6 +9,7 @@ import "./styles/base.css";
 import "./styles/ui.css";
 import "./styles/layout.css";
 import "./styles/plan.css";
+import "./styles/modules.css";
 import { ThemeProvider } from "./theme/ThemeProvider";
 import { ErrorBoundary } from "./ui/ErrorBoundary";
 import { TooltipProvider } from "./ui/Overlays";

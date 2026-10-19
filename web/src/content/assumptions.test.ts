@@ -10,6 +10,8 @@ describe("the assumptions quoted on screen match the frozen Python golden master
   it("inflation", () => expect(ASSUMPTIONS.inflation).toBe(frozen.inflation));
   it("long-run return priors", () => expect(ASSUMPTIONS.priors).toEqual(frozen.prior_returns));
   it("liquidity haircuts", () => expect(ASSUMPTIONS.haircuts).toEqual(frozen.haircuts));
+  it("where Growth, Balanced and Defensive sit between the safest and the highest-return mix", () =>
+    expect(Object.entries(ASSUMPTIONS.riskPositions)).toEqual(frozen.risk_positions));
 });
 
 describe("the glossary wording", () => {

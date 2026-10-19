@@ -1,9 +1,16 @@
 """The engine runs on one dedicated thread, and a slow or stuck analysis can never hang a request."""
+import os
+import subprocess
+import sys
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
 
 import pytest
 
+from api import analysis as analysis_module
+from api.analysis import AnalysisService
 from fo import engine
 from fo.personas import PERSONAS
 from tests.helpers import demo
@@ -85,7 +92,104 @@ def test_simultaneous_analyses_each_return_exactly_what_the_engine_gives_alone(m
             assert api_option["portfolio"]["weights_sleeve"] == pytest.approx(list(direct.weights_sleeve), abs=1e-12)
 
 
-def test_the_service_shuts_its_engine_thread_down_with_the_app(make_client):
-    c = make_client()
-    thread = next(t for t in __import__("threading").enumerate() if t.name == "engine")
-    assert thread.daemon  # a stuck solve can never keep the server from exiting
+def test_the_engine_thread_is_a_daemon_so_a_stuck_solve_cannot_keep_the_server_from_exiting(make_client):
+    make_client()
+    thread = next(t for t in threading.enumerate() if t.name == "engine")
+    assert thread.daemon
+
+
+# ---- An engine thread never exits (SciPy's HiGHS solver hangs or crashes the process when a thread that used it ends) -------
+def make_service(sample_returns, timeout=5.0):
+    return AnalysisService(sample_returns, "sample", timeout)
+
+
+def engine_threads() -> list[threading.Thread]:
+    return [t for t in threading.enumerate() if t.name == "engine"]
+
+
+def test_a_closed_service_hands_its_thread_to_the_next_one_instead_of_ending_it(sample_returns):
+    first = make_service(sample_returns)
+    thread = first._engine
+    first.close()
+    deadline = time.time() + 5
+    while time.time() < deadline and thread not in analysis_module._POOL:
+        time.sleep(0.01)
+    second = make_service(sample_returns)
+    assert second._engine is thread  # reused, not replaced
+    assert second._engine.call(lambda: threading.current_thread().name, 5) == "engine"
+    second.close()
+
+
+def test_opening_and_closing_many_services_does_not_grow_the_number_of_engine_threads(sample_returns):
+    before = len(engine_threads())
+    for _ in range(25):
+        service = make_service(sample_returns)
+        assert service._engine.call(lambda: 1 + 1, 5) == 2
+        service.close()
+        time.sleep(0.01)
+    assert len(engine_threads()) <= before + 1  # at most the one the loop itself needed
+    assert all(t.is_alive() for t in engine_threads())  # and none of them ended
+
+
+def test_a_thread_still_busy_when_its_service_closes_finishes_that_job_before_anyone_reuses_it(sample_returns):
+    service = make_service(sample_returns)
+    thread = service._engine
+    started, results = threading.Event(), []
+
+    def slow():
+        started.set()
+        time.sleep(0.4)
+        results.append("done")
+
+    with ThreadPoolExecutor(1) as pool:
+        running = pool.submit(thread.call, slow, 5)
+        assert started.wait(5)
+        service.close()  # the job is still running
+        other = make_service(sample_returns)
+        assert other._engine is not thread  # not free yet, so a different thread is used
+        other.close()
+        running.result()
+    assert results == ["done"]
+    deadline = time.time() + 5
+    while time.time() < deadline and thread not in analysis_module._POOL:
+        time.sleep(0.01)
+    assert thread in analysis_module._POOL  # and now it is free again
+
+
+SCRIPT = """
+import sys
+from scipy.optimize import linprog
+from api.analysis import _EngineThread
+
+def solve():
+    r = linprog(c=[1.0, 2.0, 3.0], A_ub=[[-1, -1, -1]], b_ub=[-1], bounds=[(0, None)] * 3, method="highs")
+    return bool(r.success)
+
+# Back to back, with nothing in between: the next thread is created while the last one is still leaving.
+for i in range(int(sys.argv[1])):
+    thread = _EngineThread()
+    assert thread.call(solve, 20) is True
+    thread.release()
+print("finished", flush=True)
+"""
+
+
+def test_releasing_engine_threads_after_real_linprog_solves_never_hangs_or_crashes_the_process(tmp_path):
+    """Regression for the stall seen since Phase 1.
+
+    Run in a separate process with a time limit, because the failure is the whole process freezing (or crashing) in native
+    code, which a test in this process could not survive. With engine threads that exit, a bare loop like this hung in
+    27 of 30 runs; with threads that stay alive it ran clean 30 of 30.
+    """
+    script = tmp_path / "close_after_solve.py"
+    script.write_text(SCRIPT, encoding="utf-8")
+    root = Path(__file__).resolve().parent.parent
+    try:
+        done = subprocess.run(
+            [sys.executable, str(script), "400"], cwd=root, env={**os.environ, "PYTHONPATH": str(root)},
+            capture_output=True, text=True, timeout=120,
+        )
+    except subprocess.TimeoutExpired:
+        pytest.fail("The process froze: a thread that used SciPy's HiGHS solver ended. Engine threads must never exit.")
+    assert done.returncode == 0, f"the process crashed (exit {done.returncode}): {done.stderr[-800:]}"
+    assert "finished" in done.stdout

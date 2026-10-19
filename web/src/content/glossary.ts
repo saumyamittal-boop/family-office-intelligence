@@ -1,7 +1,7 @@
 import { pct } from "../format";
 import { ASSUMPTIONS } from "./assumptions";
 
-export type GlossaryKey = "expectedReturn" | "volatility" | "worstDrawdown" | "liquidityCover";
+export type GlossaryKey = "expectedReturn" | "volatility" | "worstDrawdown" | "liquidityCover" | "cvar";
 
 export type GlossaryEntry = {
   title: string;
@@ -57,6 +57,18 @@ export const GLOSSARY: Record<GlossaryKey, GlossaryEntry> = {
     limits: [
       "Illiquid holdings grow smoothly in this replay, so real drawdowns would look worse than shown.",
       "A history cannot contain every bad outcome. A future fall can be larger.",
+    ],
+  },
+  cvar: {
+    title: "95% one-month CVaR",
+    summary: "The average loss in the worst 5% of one-month stretches in the sample history.",
+    how: [
+      "The mix is replayed over the sample years at constant weights, and every rolling 21-trading-day stretch is measured.",
+      "Take the worst 5% of those stretches and average their losses. That average is the number shown.",
+    ],
+    limits: [
+      "It describes the sample history only. A worse month than any in the sample is possible, and the sample here is synthetic.",
+      "Illiquid holdings are assumed to grow smoothly in the replay, so the true figure would be higher than shown.",
     ],
   },
   liquidityCover: {

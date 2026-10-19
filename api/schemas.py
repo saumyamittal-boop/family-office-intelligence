@@ -215,11 +215,116 @@ class AnalysisOut(BaseModel):
     data_source: str
     current: PortfolioOut
     current_projection: list[ProjectionRow]
+    current_ladder: list[LadderRow]
+    current_scenarios: list[ScenarioRow]
     options: list[PortfolioDetail]
     upcoming_outflows: list[OutflowRow]
     comparison_scenario: str
     comparison: list[CompareRow]
     comparison_insights: list[InsightOut]
+
+
+# ---- History (the replay of the portfolio over the sample years) ------------------------------------------------------
+class AnnualReturn(BaseModel):
+    year: int
+    portfolio_return: float
+    trading_days: int
+    partial: bool = Field(description="True when the sample holds only part of this calendar year.")
+
+
+class PortfolioHistory(BaseModel):
+    label: str
+    value: list[float] = Field(description="Growth of 100 invested at the start, one point per entry in `dates`.")
+    drawdown: list[float] = Field(description="Fall from the previous peak (zero or negative); the deepest day inside each step.")
+    max_drawdown: float = Field(description="The worst fall over the whole sample, measured on every day (the engine's number).")
+    cvar21: float
+    annual: list[AnnualReturn]
+
+
+class HistoryOut(BaseModel):
+    profile_id: int
+    basis: Basis
+    data_source: str
+    dates: list[str] = Field(description="ISO dates. The first is the base day (value 100); the rest close each step.")
+    step_days: int = Field(description="Trading days between points. Drawdowns keep the deepest day in each step.")
+    drawdown_limit: float
+    portfolios: list[PortfolioHistory] = Field(description="The current mix first, then the three recommendations.")
+    note: str
+
+
+# ---- Scenarios -----------------------------------------------------------------------------------------------------
+class ScenarioPreset(BaseModel):
+    name: str
+    description: str
+    shocks: dict[str, float] = Field(description="One-off price change per market class.")
+    illiquid: float = Field(description="One-off change in the illiquid holdings.")
+    extra_outflow: float = Field(description="A one-off bill, as a share of the corpus.")
+    return_drag: float = Field(description="Yearly reduction in expected return for the whole horizon.")
+
+
+class Range(BaseModel):
+    min: float
+    max: float
+    default: float
+
+
+class CustomScenario(Strict):
+    """The six dials of "build your own". The mid-cap shock is 1.25 times the equity shock, never worse than -95%."""
+
+    equity_shock: Annotated[float, Field(ge=-0.60, le=0.20)] = -0.25
+    debt_shock: Annotated[float, Field(ge=-0.20, le=0.10)] = -0.03
+    gold_shock: Annotated[float, Field(ge=-0.30, le=0.40)] = 0.05
+    illiquid_markdown: Annotated[float, Field(ge=-0.50, le=0.10)] = -0.10
+    one_off_expense: Annotated[float, Field(ge=0.0, le=0.40)] = 0.05
+    return_drag: Annotated[float, Field(ge=0.0, le=0.08)] = 0.0
+
+
+class ScenarioRequest(Strict):
+    basis: Basis = "all"
+    preset: Annotated[str, Field(min_length=1, max_length=60)] | None = Field(None, description="Name of a built-in scenario.")
+    custom: CustomScenario | None = None
+
+
+class ScenarioComparison(BaseModel):
+    profile_id: int
+    basis: Basis
+    name: str
+    description: str
+    is_custom: bool
+    applied: ScenarioPreset = Field(description="Exactly what was applied, so the screen can show it.")
+    rows: list[CompareRow] = Field(description="The current mix first, then the three recommendations, all hit by the same scenario.")
+    insights: list[InsightOut]
+
+
+# ---- Dashboard ------------------------------------------------------------------------------------------------------
+ModuleId = Literal[
+    "allocation_actions", "liquidity_commitments", "risk_exposure", "stress_scenarios",
+    "net_worth_projection", "historical_performance", "recommendation_rationale", "holdings_consolidation",
+]
+
+
+class ModuleInfo(BaseModel):
+    id: ModuleId
+    available: bool = Field(description="False for modules whose data source is not built yet.")
+
+
+class DashboardIn(Strict):
+    modules: list[ModuleId] = Field(min_length=4, max_length=4, description="Exactly four different modules, in display order.")
+
+    @field_validator("modules")
+    @classmethod
+    def _different(cls, v: list) -> list:
+        if len(set(v)) != len(v):
+            raise ValueError("choose four different modules")
+        return v
+
+
+class DashboardOut(BaseModel):
+    modules: list[ModuleId]
+    is_default: bool = Field(description="True until the person saves a choice of their own.")
+    updated: str | None
+    default_modules: list[ModuleId]
+    catalog: list[ModuleInfo]
 
 
 class MetaOut(BaseModel):
@@ -231,6 +336,8 @@ class MetaOut(BaseModel):
     cover_bases: dict[str, str]
     demo_login: bool
     demo_families: list[str]
+    scenario_presets: list[ScenarioPreset]
+    custom_scenario_ranges: dict[str, Range]
 
 
 class Problem(BaseModel):

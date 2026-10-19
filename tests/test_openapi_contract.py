@@ -20,6 +20,7 @@ def test_every_endpoint_is_in_the_contract_and_states_how_it_authenticates():
         "/api/health", "/api/meta", "/api/auth/login", "/api/auth/signup", "/api/auth/demo", "/api/auth/me",
         "/api/auth/logout", "/api/profiles", "/api/profiles/{profile_id}", "/api/profiles/{profile_id}/analysis",
         "/api/plan/config", "/api/plan/preview", "/api/plan/strategies", "/api/plan/save",
+        "/api/profiles/{profile_id}/history", "/api/profiles/{profile_id}/scenarios", "/api/dashboard",
     }
     assert set(paths) == expected
 

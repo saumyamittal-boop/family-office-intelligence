@@ -6,6 +6,7 @@ from fastapi import APIRouter, Depends, Path, Query
 from fo import accounts, engine
 
 from .. import convert, deps
+from .. import scenarios as scenario_module
 from .. import schemas as s
 from ..analysis import AnalysisService, AnalysisTimeout
 from ..config import Settings
@@ -66,19 +67,55 @@ def delete_profile(profile_id: int = ProfileId, user: dict = Depends(deps.user_w
         raise ApiError(409, "You always keep at least one profile.")
 
 
-@router.get("/{profile_id}/analysis", response_model=s.AnalysisOut)
-def analysis(
-    profile_id: int = ProfileId,
-    basis: s.Basis = Query("all", description="Which assets count towards the liquidity cover."),
-    user: dict = Depends(deps.current_user),
-    svc: AnalysisService = Depends(deps.service),
-):
-    profile = _own(user, profile_id)
+def _run(call):
+    """Run an engine-backed call and turn the engine's refusals into the API's one error shape."""
     try:
-        return svc.analyse(profile_id, profile, basis)
+        return call()
     except ValueError as err:  # e.g. class limits that cannot add up to 100%
         raise ApiError(422, f"This profile can't be analysed yet: {err}") from None
     except ZeroDivisionError:  # the engine divides by the safety-net requirement, which is zero with no spending
         raise ApiError(422, "This profile can't be analysed yet: it needs some yearly spending, or a commitment inside the safety-net window.") from None
     except AnalysisTimeout:
         raise ApiError(503, "The allocation model is busy. Please try again in a minute.", headers={"Retry-After": "30"}) from None
+
+
+BasisQuery = Query("all", description="Which assets count towards the liquidity cover.")
+
+
+@router.get("/{profile_id}/analysis", response_model=s.AnalysisOut)
+def analysis(
+    profile_id: int = ProfileId,
+    basis: s.Basis = BasisQuery,
+    user: dict = Depends(deps.current_user),
+    svc: AnalysisService = Depends(deps.service),
+):
+    profile = _own(user, profile_id)
+    return _run(lambda: svc.analyse(profile_id, profile, basis))
+
+
+@router.get("/{profile_id}/history", response_model=s.HistoryOut)
+def history(
+    profile_id: int = ProfileId,
+    basis: s.Basis = BasisQuery,
+    user: dict = Depends(deps.current_user),
+    svc: AnalysisService = Depends(deps.service),
+):
+    """How the current mix and each recommendation would have behaved over the sample years."""
+    profile = _own(user, profile_id)
+    return _run(lambda: svc.history(profile_id, profile, basis))
+
+
+@router.post("/{profile_id}/scenarios", response_model=s.ScenarioComparison)
+def scenarios(
+    body: s.ScenarioRequest,
+    profile_id: int = ProfileId,
+    user: dict = Depends(deps.user_with_csrf),
+    svc: AnalysisService = Depends(deps.service),
+):
+    """Hit the current mix and each recommendation with one scenario: a built-in one or the six custom dials."""
+    profile = _own(user, profile_id)
+    try:
+        scenario_module.resolve(body)  # reject a bad request before any engine work
+    except ValueError as err:
+        raise ApiError(422, str(err)) from None
+    return _run(lambda: svc.compare(profile_id, profile, body.basis, body))

@@ -1,0 +1,86 @@
+/* ---- Dashboard and modules (phase 4) ---- */
+.dash-toolbar { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: space-between; }
+
+.module-grid { display: grid; gap: var(--space-4); grid-template-columns: minmax(0, 1fr); align-items: start; }
+@media (min-width: 1100px) { .module-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* A module is one card. The cards a module draws inside it lose their own frame, so the dashboard is not boxes in boxes. */
+.module .module-body { display: grid; gap: var(--space-4); min-width: 0; }
+.module .module-body > .card { border: 0; box-shadow: none; padding: 0; background: transparent; border-radius: 0; }
+.module .module-body > * + .card { border-top: 1px solid var(--line); padding-top: var(--space-4); }
+
+.tiles-3 { grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); }
+
+.analyst-section { display: grid; gap: var(--space-4); min-width: 0; }
+.analyst-section > .grid-tiles { grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); }
+
+.is-updating { opacity: 0.65; transition: opacity 0.15s; }
+
+.elsewhere h2 { font-size: var(--text-md); margin-bottom: var(--space-2); }
+.elsewhere ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+/* ---- Scenario cards ---- */
+.scn-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); }
+.scn {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface);
+  display: grid;
+  gap: var(--space-1);
+  align-content: start;
+  min-width: 0;
+}
+.scn-name { font-weight: 620; }
+.scn-desc, .scn-sub { color: var(--ink-2); font-size: var(--text-sm); }
+.scn-big { font-size: var(--text-xl); font-weight: 650; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.scn-big.neg { color: var(--bad-ink); }
+.scn-big.pos { color: var(--good-ink); }
+.scn .pills { margin-top: var(--space-2); }
+
+.slider-value { margin-left: var(--space-2); font-weight: 650; font-variant-numeric: tabular-nums; }
+.lab { display: grid; gap: var(--space-5); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 900px) { .lab { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; } }
+.lab-dials { display: grid; gap: var(--space-4); }
+
+.disclosure { border: 1px solid var(--line); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); background: var(--surface); }
+.disclosure summary { cursor: pointer; font-weight: 600; }
+.disclosure[open] summary { margin-bottom: var(--space-3); }
+
+/* ---- Customise panel ---- */
+.slots { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+.slot { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--space-3); align-items: end; }
+.slot-number {
+  width: 1.75rem; height: 1.75rem; border-radius: 50%; display: grid; place-items: center; margin-bottom: 0.4rem;
+  background: var(--brand-soft); color: var(--brand-text); font-weight: 650; font-size: var(--text-sm);
+}
+.slot-moves { display: flex; gap: var(--space-1); }
+
+.layout-preview {
+  list-style: none; margin: 0 0 var(--space-2); padding: var(--space-3); display: grid; gap: var(--space-2);
+  grid-template-columns: repeat(2, minmax(0, 1fr)); background: var(--surface-2); border-radius: var(--radius-md);
+}
+.layout-preview li {
+  display: flex; align-items: center; gap: var(--space-2); background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius-sm); padding: var(--space-2) var(--space-3); min-height: 3.25rem; font-size: var(--text-sm); font-weight: 600;
+}
+
+.module-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+.module-list li { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-3); }
+.module-list li > div { min-width: 0; }
+.panel-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); position: sticky; bottom: 0; background: var(--surface); padding: var(--space-3) 0; border-top: 1px solid var(--line); }
+
+/* ---- Family profile editor ---- */
+.profile-layout { display: grid; gap: var(--space-4); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1000px) { .profile-layout { grid-template-columns: 16rem minmax(0, 1fr); align-items: start; } }
+.profile-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.profile-item { display: block; width: 100%; text-align: left; padding: var(--space-3); border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); cursor: pointer; }
+.profile-item[aria-current="true"] { border-color: var(--brand); box-shadow: inset 3px 0 0 var(--brand); background: var(--brand-soft); }
+.profile-item small { display: block; color: var(--ink-2); }
+.form-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+.form-section { display: grid; gap: var(--space-4); }
+.form-section + .form-section { border-top: 1px solid var(--line); padding-top: var(--space-5); }
+.row-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+.row-item { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)) auto; align-items: end; }
+.sum-note { font-variant-numeric: tabular-nums; }
+.form-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); }

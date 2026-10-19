@@ -23,10 +23,10 @@ export type Route = (init: RequestInit | undefined) => Response | Promise<Respon
 
 /** Replace fetch with canned answers, keyed "METHOD /path" (query strings are ignored). Returns the recorded calls. */
 export function serve(routes: Record<string, Route>) {
-  const calls: { path: string; method: string; body?: string }[] = [];
+  const calls: { path: string; method: string; body?: string; headers: Record<string, string> }[] = [];
   vi.stubGlobal("fetch", (path: string, init?: RequestInit) => {
     const method = init?.method ?? "GET";
-    calls.push({ path, method, body: typeof init?.body === "string" ? init.body : undefined });
+    calls.push({ path, method, body: typeof init?.body === "string" ? init.body : undefined, headers: { ...(init?.headers as Record<string, string> | undefined) } });
     const route = routes[`${method} ${path.split("?")[0]}`];
     return Promise.resolve(route ? route(init) : new Response(JSON.stringify({ detail: "Not found." }), { status: 404 }));
   });

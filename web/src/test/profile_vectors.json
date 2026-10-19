@@ -1,0 +1,6569 @@
+{
+ "cases": [
+  {
+   "label": "base",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "corpus=0.99",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 0.99,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "corpus=1",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 1,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "corpus=1000000",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 1000000,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "corpus=1000001",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 1000001,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "corpus=0",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 0,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "corpus=-5",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": -5,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "spending=-0.1",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": -0.1,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "spending=0",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 0,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "spending=100000",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 100000,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "spending=100001",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 100001,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "horizon=0",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 0,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "horizon=1",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 1,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "horizon=60",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 60,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "horizon=61",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 61,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "horizon=1.5",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 1.5,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "horizon=15.0",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15.0,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "maxDrawdown=0.9",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 0.9,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "maxDrawdown=1",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 1,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "maxDrawdown=80",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 80,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "maxDrawdown=80.1",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 80.1,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "coverMonths=0",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 0,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "coverMonths=1",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 1,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "coverMonths=240",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 240,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "coverMonths=241",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 241,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "coverMonths=2.5",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 2.5,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "target=-5.1",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": -5.1,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "target=-5",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": -5,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "target=25",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 25,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "target=25.1",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 25.1,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "target=0",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 0,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "name empty",
+   "form": {
+    "name": "",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "name spaces",
+   "form": {
+    "name": "   ",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "name 60",
+   "form": {
+    "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "name 61",
+   "form": {
+    "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "ill description empty",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "illiquid.expectedReturn=-10.1",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": -10.1,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "illiquid.expectedReturn=-10",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": -10,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "illiquid.expectedReturn=40",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 40,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "illiquid.expectedReturn=40.1",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 40.1,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "illiquid.volatility=-0.1",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": -0.1,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "illiquid.volatility=0",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 0,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "illiquid.volatility=80",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 80,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "illiquid.volatility=80.1",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 80.1,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "illiquid.lockIn=-1",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": -1,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "illiquid.lockIn=0",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 0,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "illiquid.lockIn=30",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 30,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "illiquid.lockIn=31",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 31,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "illiquid.lockIn=1.5",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 1.5,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "illiquid.corr=-0.01",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": -0.01
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "illiquid.corr=0",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "illiquid.corr=1",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 1
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "illiquid.corr=1.01",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 1.01
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "holdings debt=29",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 29,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "holdings debt=29.4",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 29.4,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "holdings debt=29.5",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 29.5,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "holdings debt=29.6",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 29.6,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "holdings debt=30",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "holdings debt=30.4",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30.4,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "holdings debt=30.5",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30.5,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "holdings debt=30.6",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30.6,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "holdings debt=31",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 31,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "holdings debt=20",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 20,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "holdings debt=40",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 40,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "holdings shift 0.49",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5.49,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "holdings shift 0.5",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5.5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "holdings shift 0.51",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5.51,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "holdings shift -0.49",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 4.51,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "holdings shift -0.5",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 4.5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "holdings shift -0.51",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 4.49,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "holdings illiquid 95",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 0,
+     "Gold": 0,
+     "Cash & liquid": 5,
+     "Illiquid": 95,
+     "Large cap equity": 0,
+     "Mid cap equity": 0
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "holdings illiquid 95.5",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 0,
+     "Gold": 0,
+     "Cash & liquid": 4.5,
+     "Illiquid": 95.5,
+     "Large cap equity": 0,
+     "Mid cap equity": 0
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "holdings illiquid 100",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 0,
+     "Gold": 0,
+     "Cash & liquid": 0,
+     "Illiquid": 100,
+     "Large cap equity": 0,
+     "Mid cap equity": 0
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "holdings negative",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 40,
+     "Gold": -5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "holdings over 100",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 101,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limit Large-cap equity 0-100",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 0,
+      "max": 100
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "limit Large-cap equity 30-20",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 30,
+      "max": 20
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limit Large-cap equity -1-20",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": -1,
+      "max": 20
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limit Large-cap equity 0-101",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 0,
+      "max": 101
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limit Large-cap equity 10-10",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 10,
+      "max": 10
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "limit Mid-cap equity 0-100",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 100
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "limit Mid-cap equity 30-20",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 30,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limit Mid-cap equity -1-20",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": -1,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limit Mid-cap equity 0-101",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 101
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limit Mid-cap equity 10-10",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 10,
+      "max": 10
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "limit Debt 0-100",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 0,
+      "max": 100
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "limit Debt 30-20",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 30,
+      "max": 20
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limit Debt -1-20",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": -1,
+      "max": 20
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limit Debt 0-101",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 0,
+      "max": 101
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limit Debt 10-10",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 10
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "limit Gold 0-100",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 100
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "limit Gold 30-20",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 30,
+      "max": 20
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limit Gold -1-20",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": -1,
+      "max": 20
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limit Gold 0-101",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 101
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limit Gold 10-10",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 10,
+      "max": 10
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "limit Cash & liquid 0-100",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 0,
+      "max": 100
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "limit Cash & liquid 30-20",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 30,
+      "max": 20
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limit Cash & liquid -1-20",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": -1,
+      "max": 20
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limit Cash & liquid 0-101",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 0,
+      "max": 101
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limit Cash & liquid 10-10",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 10,
+      "max": 10
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "limits max total 50",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 0,
+      "max": 10
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 10
+     },
+     "Debt": {
+      "min": 0,
+      "max": 10
+     },
+     "Gold": {
+      "min": 0,
+      "max": 10
+     },
+     "Cash & liquid": {
+      "min": 0,
+      "max": 10
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limits min total 125",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 25,
+      "max": 100
+     },
+     "Mid-cap equity": {
+      "min": 25,
+      "max": 100
+     },
+     "Debt": {
+      "min": 25,
+      "max": 100
+     },
+     "Gold": {
+      "min": 25,
+      "max": 100
+     },
+     "Cash & liquid": {
+      "min": 25,
+      "max": 100
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "limits min total 100",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 20,
+      "max": 100
+     },
+     "Mid-cap equity": {
+      "min": 20,
+      "max": 100
+     },
+     "Debt": {
+      "min": 20,
+      "max": 100
+     },
+     "Gold": {
+      "min": 20,
+      "max": 100
+     },
+     "Cash & liquid": {
+      "min": 20,
+      "max": 100
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "limits max total 100",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 0,
+      "max": 20
+     },
+     "Gold": {
+      "min": 0,
+      "max": 20
+     },
+     "Cash & liquid": {
+      "min": 0,
+      "max": 20
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "one-offs none",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "one-offs year 0",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 0,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "one-offs last year",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 15,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "one-offs past horizon",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 16,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "one-offs amount 0",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 0
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "one-offs amount negative",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": -1
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "one-offs tiny amount",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 0.01
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "one-offs three",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 1,
+      "amount": 1
+     },
+     {
+      "year": 2,
+      "amount": 2
+     },
+     {
+      "year": 3,
+      "amount": 3
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  },
+  {
+   "label": "one-offs four",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 1,
+      "amount": 1
+     },
+     {
+      "year": 2,
+      "amount": 2
+     },
+     {
+      "year": 3,
+      "amount": 3
+     },
+     {
+      "year": 4,
+      "amount": 4
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "one-offs fractional year",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 2.5,
+      "amount": 5
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": false
+  },
+  {
+   "label": "one-offs same year twice",
+   "form": {
+    "name": "Vector family",
+    "constraint": "",
+    "corpus": 100,
+    "spending": 3,
+    "horizon": 15,
+    "maxDrawdown": 15,
+    "coverMonths": 24,
+    "target": 4,
+    "holdings": {
+     "Large-cap equity": 20,
+     "Mid-cap equity": 10,
+     "Debt": 30,
+     "Gold": 5,
+     "Cash & liquid": 10,
+     "Illiquid": 25
+    },
+    "illiquid": {
+     "description": "Real estate",
+     "expectedReturn": 8,
+     "volatility": 12,
+     "lockIn": 2,
+     "corr": 0.2
+    },
+    "oneOffs": [
+     {
+      "year": 3,
+      "amount": 5
+     },
+     {
+      "year": 3,
+      "amount": 6
+     }
+    ],
+    "limits": {
+     "Large-cap equity": {
+      "min": 5,
+      "max": 40
+     },
+     "Mid-cap equity": {
+      "min": 0,
+      "max": 20
+     },
+     "Debt": {
+      "min": 10,
+      "max": 60
+     },
+     "Gold": {
+      "min": 0,
+      "max": 15
+     },
+     "Cash & liquid": {
+      "min": 5,
+      "max": 30
+     }
+    }
+   },
+   "valid": true
+  }
+ ]
+}

@@ -5,8 +5,10 @@ import type { SessionInfo } from "./api/client";
 import { AppShell } from "./layout/AppShell";
 import { ComingSoonPage } from "./pages/ComingSoonPage";
 import { LoginPage } from "./pages/LoginPage";
+import { RecommendationPage, RiskPage, ScenariosPage } from "./pages/AnalystPages";
 import { OverviewPage } from "./pages/OverviewPage";
 import { PlanPage } from "./pages/PlanPage";
+import { ProfilePage } from "./pages/ProfilePage";
 import { clearFreshSignup, isFreshSignup } from "./plan/draft";
 import { ErrorState, LoadingBlock } from "./ui/States";
 import { WorkspaceProvider } from "./workspace/WorkspaceProvider";
@@ -27,6 +29,10 @@ function SignedIn({ session }: { session: SessionInfo }) {
         <Route element={<AppShell session={session} />}>
           <Route index element={<Home session={session} />} />
           <Route path="plan" element={<PlanPage />} />
+          <Route path="recommendation" element={<RecommendationPage />} />
+          <Route path="risk" element={<RiskPage />} />
+          <Route path="scenarios" element={<ScenariosPage />} />
+          <Route path="profile" element={<ProfilePage />} />
           <Route path="*" element={<ComingSoonPage />} />
         </Route>
       </Routes>
