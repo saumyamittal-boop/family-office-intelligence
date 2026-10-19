@@ -354,6 +354,11 @@ export interface components {
             amount_cr: number;
             /** Kind */
             kind: string;
+            /**
+             * Label
+             * @description The family's own name for a custom expense. Only allowed when the kind is Custom.
+             */
+            label?: string | null;
             /** Year */
             year: number;
         };

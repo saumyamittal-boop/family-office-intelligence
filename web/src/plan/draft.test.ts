@@ -42,6 +42,28 @@ describe("the plan draft (kept in this tab only)", () => {
     expect(readDraft(CONFIG)).toEqual({ answers: defaultAnswers(CONFIG), furthest: 1 });
   });
 
+  it("carries over a draft saved before \"Other\" became \"Custom\"", () => {
+    const old = { ...good, answers: { ...good.answers, commitments: [{ kind: "Other", year: 3, amount_cr: 4 }] } };
+    window.sessionStorage.setItem(KEY, JSON.stringify(old));
+    expect(readDraft(CONFIG).answers.commitments).toEqual([{ kind: "Custom", year: 3, amount_cr: 4 }]);
+  });
+
+  it("keeps the name of a custom expense, tidied", () => {
+    const named = { ...good, answers: { ...good.answers, commitments: [{ kind: "Custom", year: 3, amount_cr: 4, label: "  School fees  " }] } };
+    window.sessionStorage.setItem(KEY, JSON.stringify(named));
+    expect(readDraft(CONFIG).answers.commitments).toEqual([{ kind: "Custom", year: 3, amount_cr: 4, label: "School fees" }]);
+  });
+
+  it.each([
+    ["an unknown kind", { kind: "Yacht", year: 3, amount_cr: 4 }],
+    ["a name on a preset kind", { kind: "Wedding", year: 3, amount_cr: 4, label: "My wedding" }],
+    ["a name that is too long", { kind: "Custom", year: 3, amount_cr: 4, label: "x".repeat(41) }],
+    ["a name that is not text", { kind: "Custom", year: 3, amount_cr: 4, label: 7 }],
+  ])("falls back to a clean form for %s", (_name, commitment) => {
+    window.sessionStorage.setItem(KEY, JSON.stringify({ ...good, answers: { ...good.answers, commitments: [commitment] } }));
+    expect(readDraft(CONFIG)).toEqual({ answers: defaultAnswers(CONFIG), furthest: 1 });
+  });
+
   it("keeps the furthest step inside the real range", () => {
     window.sessionStorage.setItem(KEY, JSON.stringify({ ...good, furthest: 99 }));
     expect(readDraft(CONFIG).furthest).toBe(6);

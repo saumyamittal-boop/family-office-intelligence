@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 from fo import plan as fo_plan
 from fo.data import ASSET_CLASSES
@@ -12,6 +12,11 @@ from fo.personas import ILLIQUID
 from .schemas import ActionRow, OutflowRow, PortfolioOut, ProfileOut, Strict, YearRange
 
 RiskKey = Literal["Protect", "Balance", "Grow"]
+CUSTOM_KIND = "Custom"
+# The kinds of big upcoming spending a family can pick. The last is "Custom": the family names it themselves.
+# (The shared fo.plan list still ends in "Other" for the Streamlit app; the engine ignores the kind either way.)
+COMMITMENT_KINDS = [k for k in fo_plan.COMMITMENT_KINDS if k != "Other"] + [CUSTOM_KIND]
+LABEL_MAX = 40
 CLASSES = ASSET_CLASSES + [ILLIQUID]
 Money = Annotated[float, Field(ge=0.0, le=1_000_000.0)]
 
@@ -21,13 +26,27 @@ class CommitmentIn(Strict):
     kind: Annotated[str, Field(min_length=1, max_length=40)]
     year: Annotated[int, Field(ge=1, le=fo_plan.HORIZON_YEARS)]
     amount_cr: Annotated[float, Field(gt=0.0, le=10_000_000.0)]
+    label: Annotated[str, Field(max_length=LABEL_MAX)] | None = Field(
+        default=None, description="The family's own name for a custom expense. Only allowed when the kind is Custom."
+    )
 
     @field_validator("kind")
     @classmethod
     def _known_kind(cls, v: str) -> str:
-        if v not in fo_plan.COMMITMENT_KINDS:
-            raise ValueError(f"kind must be one of: {', '.join(fo_plan.COMMITMENT_KINDS)}")
+        if v not in COMMITMENT_KINDS:
+            raise ValueError(f"kind must be one of: {', '.join(COMMITMENT_KINDS)}")
         return v
+
+    @field_validator("label")
+    @classmethod
+    def _tidy_label(cls, v: str | None) -> str | None:
+        return (v.strip() or None) if v is not None else None
+
+    @model_validator(mode="after")
+    def _only_custom_has_a_name(self) -> "CommitmentIn":
+        if self.label and self.kind != CUSTOM_KIND:
+            raise ValueError("Only a custom expense can have its own name.")
+        return self
 
 
 class PlanAnswersIn(Strict):

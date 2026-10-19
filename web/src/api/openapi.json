@@ -259,6 +259,19 @@
             "title": "Kind",
             "type": "string"
           },
+          "label": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The family's own name for a custom expense. Only allowed when the kind is Custom.",
+            "title": "Label"
+          },
           "year": {
             "maximum": 25.0,
             "minimum": 1.0,

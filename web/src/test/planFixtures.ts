@@ -19,7 +19,7 @@ export const CONFIG: PlanConfig = {
     { key: "Grow", letter: "C", headline: "Grow as much as is sensible", blurb: "We can ride out big falls because we have time and a safety net.", max_drawdown: 0.25, target_real_return: 0.06, portfolio: "Growth" },
   ],
   classes: CLASS_NAMES.map((name) => ({ name, label: LABELS[name]?.[0] ?? name, description: LABELS[name]?.[1] ?? "" })),
-  commitment_kinds: ["Education", "Wedding", "Property purchase", "Business investment", "Medical or emergency", "Other"],
+  commitment_kinds: ["Education", "Wedding", "Property purchase", "Business investment", "Medical or emergency", "Custom"],
   max_commitments: 3,
   horizon_years: 25,
   wealth: { min: 1, max: 1_000_000 },

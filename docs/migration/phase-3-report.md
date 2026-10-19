@@ -47,8 +47,8 @@ The engine (`fo/engine.py`) was not touched in this phase.
 |---|---|
 | Plan API tests | **60 passed** (`tests/test_api_plan.py`): auth, CSRF, validation, the preview against the engine, the strategies, saving, isolation, limits |
 | Financial parity | The strategies for both guided golden cases match the frozen golden master field by field, through the real HTTP API; the saved profile analyses to exactly the strategy's numbers |
-| Python suite | **289 passed in 168 s** (the earlier 229 plus 60 new), run with nothing else running |
-| Web suite | **240 passed in 16 files**; type check clean; production build succeeds (861 KB JavaScript, 259 KB gzipped) |
+| Python suite | **298 passed in 181 s** (229 before Phase 3, plus 60 plan API tests, plus 9 for custom expenses), run with nothing else running |
+| Web suite | **255 passed in 17 files**; type check clean; production build succeeds (about 861 KB JavaScript, 259 KB gzipped) |
 | Accessibility (axe, WCAG 2.2 AA) | Every question step, the results as pictures and as tables, and after saving: zero violations in light and dark |
 | Contrast in the real browser | 196 text elements on the results and 69 on step 5: zero failures in both themes |
 | Real-browser walk-through | Sign-up lands on the plan; all six steps, validation, adding and removing commitments, comfort, the safety net, an amount that breaks the 95% rule, results, comfort switch, safety-net change, saving twice, editing an answer and returning, browser Back |
@@ -64,7 +64,28 @@ The engine (`fo/engine.py`) was not touched in this phase.
 4. **A latent engine defect** (protected, not changed): with zero spending and no commitment inside the safety-net window, `scenario_row` divides by zero. The
    Streamlit app would hit it too. The API refuses such answers with a clear message.
 5. A Phase 1 test slept a fixed time and failed once on a busy machine; it now polls.
-6. Bundle size is now 861 KB (259 KB gzipped). Route-level code splitting is a later optimisation.
+6. Bundle size is now about 861 KB (259 KB gzipped). Route-level code splitting is a later optimisation.
+7. **The unexplained test stall from Phase 1 recurred once** (a full Python run stopped making progress after 111 tests, at
+   `test_changing_the_comfort_level_returns_the_same_strategies_without_recalculating`, having used about 500 CPU-seconds in 10 minutes). The earlier stalls were also in
+   analysis-heavy tests. It did not recur in the next two full runs, one of them under a watchdog that records every thread's stack, so there is still no stack
+   trace and no cause. It points at the optimiser (SLSQP or the linear-programming step) spinning in native code on rare occasions; the engine thread and
+   request timeout contain the effect in the API, but the plan would answer "busy" rather than hang. **Still open; the evidence so far is in this paragraph.**
+
+## Change after review: custom expenses
+
+After reviewing the plan, the owner asked that the commitment type "Other" become **Custom**, so a family can create and name an expense of their own.
+In the React app the type list now ends with Custom; choosing it (or the "Add your own expense" button) shows an optional "Name this expense" box
+(up to 40 characters). The name appears wherever the commitment is mentioned: the answers list and the "Why Strategy" reasons on the results.
+
+- **No effect on any number.** The engine models a commitment as a year and an amount; the name is for the family's reading only. A test proves that a named
+  custom expense and a wedding of the same year and amount give identical strategies and read-outs.
+- **A saved profile keeps the year and amount but not the name**, for the same reason (the engine's profile has no labels). Saving the same plan with the
+  expense named differently returns the existing profile.
+- Only a custom expense may carry a name (the API refuses one on a preset type); a blank name counts as no name and reads "Custom expense". "Other" is no
+  longer accepted by the new API. The shared `fo/plan.py` list the Streamlit app uses still ends in "Other", untouched.
+- A draft saved in a tab before this change is carried over ("Other" becomes "Custom"); anything unexpected falls back to a clean form.
+- Tests: 9 more API tests and 15 more web tests (kinds and names, nothing changes the numbers, the name box and what is sent, the shortcut and the limit of three,
+  the name in the review and reasons, draft migration, and an accessibility audit with a custom row).
 
 ## Not done and not verified
 

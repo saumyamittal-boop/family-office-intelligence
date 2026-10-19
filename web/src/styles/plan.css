@@ -86,6 +86,9 @@
 }
 @container (min-width: 620px) { .commitment-row { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr) auto; } }
 
+.commitment-name { grid-column: 1 / -1; }
+.add-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+
 .own-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
 .own-bar, .split-bar { display: flex; height: 1.1rem; border-radius: var(--radius-pill); overflow: hidden; background: var(--surface-2); border: 1px solid var(--line); }
 .own-seg { display: block; height: 100%; min-width: 0; }

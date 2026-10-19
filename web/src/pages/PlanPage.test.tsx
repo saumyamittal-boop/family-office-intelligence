@@ -154,6 +154,83 @@ describe("step 2: what's coming", () => {
   });
 });
 
+describe("step 2: custom expenses", () => {
+  const lastPreview = (calls: Call[]) => bodies(calls, "/api/plan/preview").at(-1);
+
+  it("lets the family name an expense of their own, and sends the name only for a custom expense", async () => {
+    const calls = servePlan();
+    const user = userEvent.setup();
+    renderWithProviders(<PlanPage />, "/plan");
+    await next(user);
+    await user.click(await screen.findByRole("button", { name: "Add a commitment" }));
+    expect(screen.queryByLabelText("Name this expense")).not.toBeInTheDocument(); // a preset kind has no name box
+
+    await user.selectOptions(screen.getByLabelText("What"), "Custom");
+    const name = screen.getByLabelText("Name this expense");
+    expect(name).toHaveAccessibleDescription("Optional. For example: a daughter's wedding abroad.");
+    expect(name).toHaveAttribute("maxlength", "40");
+    await user.type(name, "Aarav's school fees");
+    await waitFor(() => expect(lastPreview(calls)?.commitments[0]).toMatchObject({ kind: "Custom", label: "Aarav's school fees" }), SLOW);
+    expect(screen.getByRole("button", { name: "Continue" })).toBeEnabled();
+
+    await user.selectOptions(screen.getByLabelText("What"), "Wedding"); // back to a preset: the name box goes and no name is sent
+    expect(screen.queryByLabelText("Name this expense")).not.toBeInTheDocument();
+    await waitFor(() => expect(lastPreview(calls)?.commitments[0]).toEqual({ kind: "Wedding", year: 3, amount_cr: 5 }), SLOW);
+  });
+
+  it("has a shortcut for adding an expense of one's own, and a custom expense needs no name", async () => {
+    const calls = servePlan();
+    const user = userEvent.setup();
+    renderWithProviders(<PlanPage />, "/plan");
+    await next(user);
+    await user.click(await screen.findByRole("button", { name: "Add your own expense" }));
+    expect(screen.getByLabelText("What")).toHaveValue("Custom");
+    expect(screen.getByLabelText("Name this expense")).toHaveValue("");
+    expect(screen.getByRole("button", { name: "Continue" })).toBeEnabled();
+    await waitFor(() => expect(lastPreview(calls)?.commitments).toEqual([{ kind: "Custom", year: 3, amount_cr: 5 }]), SLOW); // no empty name is sent
+  });
+
+  it("stops at three expenses whichever button is used", async () => {
+    servePlan();
+    const user = userEvent.setup();
+    renderWithProviders(<PlanPage />, "/plan");
+    await next(user);
+    await user.click(await screen.findByRole("button", { name: "Add your own expense" }));
+    await user.click(screen.getByRole("button", { name: "Add your own expense" }));
+    await user.click(screen.getByRole("button", { name: "Add a commitment" }));
+    expect(screen.getAllByRole("listitem", { name: /Commitment \d/ })).toHaveLength(3);
+    expect(screen.getByRole("button", { name: "Add your own expense" })).toBeDisabled();
+    expect(screen.getByRole("button", { name: "Add a commitment" })).toBeDisabled();
+  });
+
+  it("shows the name the family chose in the answers list and in the reasons on the results", async () => {
+    servePlan();
+    const user = userEvent.setup();
+    renderWithProviders(<PlanPage />, "/plan");
+    await next(user);
+    await user.click(await screen.findByRole("button", { name: "Add your own expense" }));
+    await user.type(screen.getByLabelText("Name this expense"), "Aarav's school fees");
+    for (const label of ["Continue", "Continue", "Continue", "See my strategies"]) await next(user, label); // from step 2
+    await screen.findByRole("heading", { name: /Three ways to run/ }, { timeout: 6000 });
+
+    const review = screen.getByRole("heading", { name: "Your answers" }).closest("section") as HTMLElement;
+    expect(within(review).getByText("Aarav's school fees in 3 years (₹5.0 Cr)")).toBeInTheDocument();
+    const why = screen.getByRole("heading", { name: "Why Strategy B" }).closest("section") as HTMLElement;
+    expect(why).toHaveTextContent("Your upcoming commitments are built in: Aarav's school fees in 3 years (₹5.0 Cr).");
+  });
+
+  it("a custom expense with no name reads as a custom expense", async () => {
+    servePlan();
+    const user = userEvent.setup();
+    renderWithProviders(<PlanPage />, "/plan");
+    await next(user);
+    await user.click(await screen.findByRole("button", { name: "Add your own expense" }));
+    for (const label of ["Continue", "Continue", "Continue", "See my strategies"]) await next(user, label); // from step 2
+    await screen.findByRole("heading", { name: /Three ways to run/ }, { timeout: 6000 });
+    expect(screen.getAllByText(/Custom expense in 3 years/).length).toBeGreaterThan(0);
+  });
+});
+
 describe("step 3: comfort and step 4: safety net", () => {
   it("shows what a bad year would cost in rupees, from the server, and the choice changes the read-out", async () => {
     servePlan();

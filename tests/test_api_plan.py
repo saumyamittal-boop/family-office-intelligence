@@ -45,7 +45,8 @@ def test_the_config_is_public_and_describes_the_form_from_the_model_itself(clien
         k: (v["max_dd"], v["target"], v["strategy"]) for k, v in fo_plan.RISK_CHOICES.items()
     }
     assert [c["name"] for c in cfg["classes"]] == ASSET_CLASSES + [ILLIQUID]
-    assert cfg["commitment_kinds"] == fo_plan.COMMITMENT_KINDS and cfg["max_commitments"] == 3 and cfg["horizon_years"] == 25
+    assert cfg["commitment_kinds"] == ["Education", "Wedding", "Property purchase", "Business investment", "Medical or emergency", "Custom"]
+    assert cfg["max_commitments"] == 3 and cfg["horizon_years"] == 25
     assert cfg["defaults"]["risk"] == "Balance" and cfg["months"] == {"min": 3, "max": 36}
 
 
@@ -85,6 +86,10 @@ def test_saving_needs_a_signed_in_user_and_the_csrf_token(client):
     {"commitments": [{"kind": "Wedding", "year": 0, "amount_cr": 1.0}]},
     {"commitments": [{"kind": "Wedding", "year": 2, "amount_cr": 0}]},
     {"commitments": [{"kind": "Wedding", "year": 2, "amount_cr": 1.0, "extra": 1}]},
+    {"commitments": [{"kind": "Other", "year": 2, "amount_cr": 1.0}]},  # "Other" became "Custom"
+    {"commitments": [{"kind": "Wedding", "year": 2, "amount_cr": 1.0, "label": "A named wedding"}]},  # only a custom expense has its own name
+    {"commitments": [{"kind": "Custom", "year": 2, "amount_cr": 1.0, "label": "x" * 41}]},
+    {"commitments": [{"kind": "Custom", "year": 2, "amount_cr": 1.0, "label": 5}]},
     {"amounts": {"Crypto": 5.0}}, {"amounts": {"Debt": -1.0}}, {"amounts": {"Debt": "much"}},
     {"user_id": 1}, {"profile_id": 3},
 ])
@@ -104,7 +109,7 @@ def test_error_bodies_do_not_echo_the_answers(me):
 
 def test_answers_that_pass_the_schema_but_break_a_rule_come_back_as_plain_problems(me):
     client, headers = me
-    four = [{"kind": "Other", "year": 1, "amount_cr": 1.0}] * 4
+    four = [{"kind": "Custom", "year": 1, "amount_cr": 1.0}] * 4
     p = client.post("/api/plan/preview", json=with_(commitments=four), headers=headers).json()
     assert any("at most" in m for m in p["problems"]) and p["safety_net"] is None
 
@@ -388,7 +393,7 @@ def test_saving_malformed_requests_is_refused(me, body):
 
 def test_saving_answers_that_break_a_rule_says_why(me):
     client, headers = me
-    four = [{"kind": "Other", "year": 1, "amount_cr": 1.0}] * 4
+    four = [{"kind": "Custom", "year": 1, "amount_cr": 1.0}] * 4
     r = client.post("/api/plan/save", json={"answers": with_(commitments=four), "strategy": "Grow"}, headers=headers)
     assert r.status_code == 422 and "at most" in r.json()["problems"][0]
 
@@ -399,3 +404,49 @@ def test_the_analysis_now_carries_the_historical_year_range_for_every_option(cli
     for option in client.get(f"/api/profiles/{pid}/analysis").json()["options"]:
         yr = option["year_range"]
         assert yr["worst"] <= yr["low"] <= yr["median"] <= yr["high"] <= yr["best"]
+
+
+# ---- Custom expenses: the family names their own ---------------------------------------------------------------------------------
+CUSTOM = {"kind": "Custom", "year": 3, "amount_cr": 9.0, "label": "Aarav's school fees abroad"}
+
+
+def test_a_custom_expense_can_be_named_and_the_name_is_tidied_and_echoed_back(me):
+    client, headers = me
+    padded = {**CUSTOM, "label": "  Aarav's school fees abroad  "}
+    data = client.post("/api/plan/strategies", json=with_(commitments=[padded]), headers=headers).json()
+    assert data["commitments"] == [CUSTOM]  # trimmed, and sent back so the screens can show it
+
+
+def test_a_custom_expense_without_a_name_is_allowed_and_a_blank_name_counts_as_none(me):
+    client, headers = me
+    plain = {"kind": "Custom", "year": 3, "amount_cr": 9.0}
+    blank = {**plain, "label": "   "}
+    for commitment in (plain, blank):
+        r = client.post("/api/plan/preview", json=with_(commitments=[commitment]), headers=headers)
+        assert r.status_code == 200 and r.json()["problems"] == []
+    echoed = client.post("/api/plan/strategies", json=with_(commitments=[blank]), headers=headers).json()["commitments"]
+    assert echoed == [{**plain, "label": None}]
+
+
+def test_the_name_of_an_expense_never_changes_any_number(me):
+    client, headers = me
+    named = client.post("/api/plan/strategies", json=with_(commitments=[CUSTOM]), headers=headers).json()
+    wedding = client.post("/api/plan/strategies", json=with_(commitments=[{"kind": "Wedding", "year": 3, "amount_cr": 9.0}]), headers=headers).json()
+    assert named["strategies"] == wedding["strategies"]  # only the echoed commitments differ
+    p_named = client.post("/api/plan/preview", json=with_(commitments=[CUSTOM]), headers=headers).json()
+    p_wedding = client.post("/api/plan/preview", json=with_(commitments=[{"kind": "Wedding", "year": 3, "amount_cr": 9.0}]), headers=headers).json()
+    assert p_named == p_wedding
+
+
+def test_a_saved_plan_keeps_the_year_and_amount_of_a_custom_expense_but_not_its_name(me):
+    # The engine's profile has dated amounts only, so a name lives in the plan but not in the saved profile.
+    client, headers = me
+    saved = client.post("/api/plan/save", json={"answers": with_(commitments=[CUSTOM]), "strategy": "Balance"}, headers=headers)
+    assert saved.status_code == 201 and saved.json()["profile"]["one_offs"] == [{"year": 3, "amount_cr": 9.0}]
+    again = client.post("/api/plan/save", json={"answers": with_(commitments=[{"kind": "Wedding", "year": 3, "amount_cr": 9.0}]), "strategy": "Balance"}, headers=headers)
+    assert again.status_code == 200 and again.json()["created"] is False  # same plan, however the expense was named
+
+
+def test_the_list_of_kinds_ends_with_custom_and_has_no_other(client):
+    kinds = client.get("/api/plan/config").json()["commitment_kinds"]
+    assert kinds[-1] == "Custom" and "Other" not in kinds and len(kinds) == len(set(kinds))

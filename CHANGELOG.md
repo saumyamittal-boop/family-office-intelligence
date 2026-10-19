@@ -14,6 +14,8 @@
 - Copy: "In a crash like 2020" is "In a severe market crash" in the React app, with the preset's actual shocks.
 - Fixed while testing: focus did not move to a new step in production builds; the answer review was invalid HTML; step buttons had a run-together accessible name.
 - Found, not fixed (engine is protected): zero spending with no commitment in the safety-net window makes the scenario step divide by zero; the API now refuses it clearly.
+- After review: the commitment type "Other" is now **Custom** in the React app; a family can name their own expense, and the name shows in the answers list
+  and the reasons. It changes no number, and the saved profile keeps only the year and amount.
 - Details and evidence: [docs/migration/phase-3-report.md](docs/migration/phase-3-report.md). Decision: [ADR-0018](docs/adr/0018-guided-plan-api-and-live-recalculation.md).
 
 ### Phase 2: Design system, navigation and overview (2026-10-19)

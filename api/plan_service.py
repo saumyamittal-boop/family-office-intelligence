@@ -76,7 +76,7 @@ def config() -> p.PlanConfigOut:
             p.ClassInfo(name=name, label=fo_plan.INSTRUMENTS[name][0], description=fo_plan.INSTRUMENTS[name][1])
             for name in p.CLASSES
         ],
-        commitment_kinds=list(fo_plan.COMMITMENT_KINDS),
+        commitment_kinds=list(p.COMMITMENT_KINDS),
         max_commitments=fo_plan.MAX_COMMITMENTS,
         horizon_years=fo_plan.HORIZON_YEARS,
         wealth=p.Bounds(min=1.0, max=1_000_000.0),

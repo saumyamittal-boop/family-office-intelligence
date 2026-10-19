@@ -4,6 +4,7 @@ import { classColor, HATCH_CSS } from "../charts/colors";
 import { cr, pct } from "../format";
 import { Button } from "../ui/Button";
 import { Select, SegmentedControl, TextField } from "../ui/Controls";
+import { CUSTOM_KIND, LABEL_MAX } from "./names";
 import { NumberField } from "../ui/NumberField";
 import { Banner } from "../ui/Status";
 
@@ -69,12 +70,12 @@ export function AboutStep({ answers, update, config, onValid }: StepProps) {
 }
 
 // ---- 2. What's coming -------------------------------------------------------------------------------------------------------
-type Row = { id: number; kind: string; year: number | null; amount: number | null };
+type Row = { id: number; kind: string; label: string; year: number | null; amount: number | null };
 
 export function ComingStep({ answers, update, config, onValid }: StepProps) {
   const nextId = useRef(answers.commitments.length);
   const [rows, setRows] = useState<Row[]>(() =>
-    answers.commitments.map((c, i) => ({ id: i, kind: c.kind, year: c.year, amount: c.amount_cr })),
+    answers.commitments.map((c, i) => ({ id: i, kind: c.kind, label: c.label ?? "", year: c.year, amount: c.amount_cr })),
   );
 
   const rowOk = (r: Row) => inRange(r.year, 1, config.horizon_years) && Number.isInteger(r.year) && r.amount !== null && r.amount > 0;
@@ -84,23 +85,27 @@ export function ComingStep({ answers, update, config, onValid }: StepProps) {
   function commit(next: Row[]) {
     setRows(next);
     if (next.every(rowOk)) {
-      const commitments: Commitment[] = next.map((r) => ({ kind: r.kind, year: r.year as number, amount_cr: r.amount as number }));
+      // A name is sent only for a custom expense, and only when the family typed one.
+      const commitments: Commitment[] = next.map((r) => ({
+        kind: r.kind, year: r.year as number, amount_cr: r.amount as number,
+        ...(r.kind === CUSTOM_KIND && r.label.trim() ? { label: r.label.trim() } : {}),
+      }));
       update({ commitments });
     }
   }
 
   const change = (id: number, patch: Partial<Row>) => commit(rows.map((r) => (r.id === id ? { ...r, ...patch } : r)));
-  const add = () =>
+  const add = (kind: string = config.commitment_kinds[0] ?? CUSTOM_KIND) =>
     commit([
       ...rows,
-      { id: nextId.current++, kind: config.commitment_kinds[0] ?? "Other", year: 3, amount: Math.max(0.1, Math.round(answers.wealth * 0.05 * 10) / 10) },
+      { id: nextId.current++, kind, label: "", year: 3, amount: Math.max(0.1, Math.round(answers.wealth * 0.05 * 10) / 10) },
     ]);
 
   return (
     <>
       <p className="muted">
-        For example a child's education, a wedding, buying a property or investing in a business. Add up to {config.max_commitments}. Leave it empty if
-        nothing is planned.
+        For example a child's education, a wedding, buying a property or investing in a business. Choose Custom to name an expense of your own. Add up to{" "}
+        {config.max_commitments}. Leave it empty if nothing is planned.
       </p>
       {rows.length === 0 && <p className="empty-note">Nothing planned. That is fine; you can add something at any time.</p>}
       <ul className="commitment-list">
@@ -116,12 +121,26 @@ export function ComingStep({ answers, update, config, onValid }: StepProps) {
             <NumberField label="In how many years" integer min={1} max={config.horizon_years} value={row.year ?? 0} onChange={(v) => change(row.id, { year: v })} />
             <NumberField label="Amount" unit={"₹ Cr"} min={0.01} value={row.amount ?? 0} onChange={(v) => change(row.id, { amount: v })} />
             <Button variant="ghost" icon="close" aria-label={`Remove commitment ${index + 1}`} onClick={() => commit(rows.filter((r) => r.id !== row.id))} />
+            {row.kind === CUSTOM_KIND && (
+              <div className="commitment-name">
+                <TextField
+                  label="Name this expense"
+                  hint="Optional. For example: a daughter's wedding abroad."
+                  value={row.label}
+                  maxLength={LABEL_MAX}
+                  onChange={(e) => change(row.id, { label: e.target.value })}
+                />
+              </div>
+            )}
           </li>
         ))}
       </ul>
-      <div>
-        <Button icon="plus" onClick={add} disabled={rows.length >= config.max_commitments}>
+      <div className="add-row">
+        <Button icon="plus" onClick={() => add()} disabled={rows.length >= config.max_commitments}>
           Add a commitment
+        </Button>
+        <Button icon="plus" onClick={() => add(CUSTOM_KIND)} disabled={rows.length >= config.max_commitments}>
+          Add your own expense
         </Button>
         {rows.length >= config.max_commitments && <span className="hint"> You can add up to {config.max_commitments}.</span>}
       </div>

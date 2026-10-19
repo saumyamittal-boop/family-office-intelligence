@@ -44,7 +44,8 @@ describe.each(["light", "dark"] as const)("the plan is accessible in the %s them
     await next(user);
     await screen.findByRole("heading", { name: "Anything big coming up?" });
     await user.click(screen.getByRole("button", { name: "Add a commitment" }));
-    await user.click(screen.getByRole("button", { name: "Add a commitment" }));
+    await user.click(screen.getByRole("button", { name: "Add your own expense" }));
+    expect(screen.getByLabelText("Name this expense")).toBeInTheDocument();
     expect((await audit()).join(" | ")).toBe("");
     await user.click(screen.getByRole("button", { name: "Remove commitment 2" }));
     await user.click(screen.getByRole("button", { name: "Remove commitment 1" }));

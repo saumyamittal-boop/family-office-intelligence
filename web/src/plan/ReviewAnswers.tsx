@@ -2,13 +2,14 @@ import type { PlanAnswers, PlanConfig } from "../api/client";
 import { cr } from "../format";
 import { Button } from "../ui/Button";
 import { Card } from "../ui/Card";
+import { commitmentPhrase } from "./names";
 
 /** Every answer in one place, each with an Edit button that jumps to its step and comes straight back to the strategies. */
 export function ReviewAnswers({ answers, config, onEdit }: { answers: PlanAnswers; config: PlanConfig; onEdit: (step: number) => void }) {
   const comfort = config.comfort.find((c) => c.key === answers.risk);
   const owned = answers.amounts ? cr(Object.values(answers.amounts).reduce((a, b) => a + b, 0), 0) : `a typical split of ${cr(answers.wealth, 0)}`;
   const commitments = answers.commitments.length
-    ? answers.commitments.map((c) => `${c.kind.toLowerCase()} in ${c.year} ${c.year === 1 ? "year" : "years"} (${cr(c.amount_cr)})`).join(", ")
+    ? answers.commitments.map(commitmentPhrase).join(", ")
     : "Nothing planned";
 
   const rows: { label: string; value: string; step: number }[] = [

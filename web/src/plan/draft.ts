@@ -1,4 +1,5 @@
-import type { PlanAnswers, PlanConfig } from "../api/client";
+import type { Commitment, PlanAnswers, PlanConfig } from "../api/client";
+import { CUSTOM_KIND, LABEL_MAX } from "./names";
 
 const KEY = "foi.plan.draft";
 const LANDING_KEY = "foi.fresh-signup";
@@ -25,16 +26,22 @@ export function readDraft(config: PlanConfig): Draft {
     const { answers: a, furthest } = parsed as { answers?: Record<string, unknown>; furthest?: unknown };
     if (!a || typeof a.name !== "string" || !isNumber(a.wealth) || !isNumber(a.spending) || !isNumber(a.months)) return fresh;
     if (!config.comfort.some((c) => c.key === a.risk)) return fresh;
-    const commitments = Array.isArray(a.commitments) ? a.commitments : [];
-    const valid = commitments.every(
-      (c) => typeof c === "object" && c !== null && typeof (c as { kind?: unknown }).kind === "string" &&
-        isNumber((c as { year?: unknown }).year) && isNumber((c as { amount_cr?: unknown }).amount_cr),
-    );
-    if (!valid || commitments.length > config.max_commitments) return fresh;
+    const commitments: Commitment[] = [];
+    for (const c of Array.isArray(a.commitments) ? a.commitments : []) {
+      if (typeof c !== "object" || c === null) return fresh;
+      const { kind, year, amount_cr, label } = c as Record<string, unknown>;
+      if (typeof kind !== "string" || !isNumber(year) || !isNumber(amount_cr)) return fresh;
+      const migrated = kind === "Other" ? CUSTOM_KIND : kind; // "Other" was renamed "Custom"
+      if (!config.commitment_kinds.includes(migrated)) return fresh;
+      const named = label !== undefined && label !== null;
+      if (named && (typeof label !== "string" || label.length > LABEL_MAX || migrated !== CUSTOM_KIND)) return fresh;
+      commitments.push({ kind: migrated, year, amount_cr, ...(typeof label === "string" && label.trim() ? { label: label.trim() } : {}) });
+    }
+    if (commitments.length > config.max_commitments) return fresh;
     const amounts = a.amounts && typeof a.amounts === "object" ? (a.amounts as Record<string, number>) : null;
     if (amounts && !Object.values(amounts).every(isNumber)) return fresh;
     return {
-      answers: { name: a.name, wealth: a.wealth, spending: a.spending, risk: a.risk as PlanAnswers["risk"], months: a.months, commitments: commitments as PlanAnswers["commitments"], amounts },
+      answers: { name: a.name, wealth: a.wealth, spending: a.spending, risk: a.risk as PlanAnswers["risk"], months: a.months, commitments, amounts },
       furthest: isNumber(furthest) ? Math.min(Math.max(1, Math.round(furthest)), config.steps.length) : 1,
     };
   } catch {

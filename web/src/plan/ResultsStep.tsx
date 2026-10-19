@@ -8,6 +8,7 @@ import { Card } from "../ui/Card";
 import { Banner } from "../ui/Status";
 import { ErrorState, LoadingBlock, Skeleton } from "../ui/States";
 import { BuyList } from "./BuyList";
+import { commitmentPhrase } from "./names";
 import { usePlanStrategies, useSavePlan } from "./hooks";
 import { ReviewAnswers } from "./ReviewAnswers";
 import { StrategyCards } from "./StrategyCards";
@@ -110,7 +111,7 @@ export function ResultsStep({
         {data.commitments.length > 0 && (
           <p className="reasons-note">
             Your upcoming commitments are built in:{" "}
-            {data.commitments.map((c) => `${c.kind.toLowerCase()} in ${c.year} ${c.year === 1 ? "year" : "years"} (${cr(c.amount_cr)})`).join(", ")}.
+            {data.commitments.map(commitmentPhrase).join(", ")}.
           </p>
         )}
       </Card>
