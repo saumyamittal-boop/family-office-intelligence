@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => {
       environment: "jsdom",
       globals: true,
       setupFiles: ["./src/test/setup.ts"],
-      css: false,
+      css: { include: [/tokens\.css/] }, // only the tokens file is read (by the contrast test); other CSS stays blank
     },
   };
 });

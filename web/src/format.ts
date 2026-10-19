@@ -54,6 +54,14 @@ export function signedCr(value: number, digits = 1): string {
   return text === "n/a" ? text : `${value >= 0 ? "+" : MINUS}${RUPEE}${withThousands(text)} Cr`;
 }
 
+/**
+ * Keep a money amount in one piece when text wraps: no break between a sign and the rupee symbol, or between a
+ * number and "Cr". For display of sentences only; the numbers themselves are untouched.
+ */
+export function tidyText(text: string): string {
+  return text.replace(/([−+])₹/g, "$1⁠₹").replace(/(\d) Cr\b/g, "$1 Cr");
+}
+
 /** 3.14159 -> "3.1x" (cover ratios) */
 export function times(value: number, digits = 1): string {
   const text = halfUp(value, digits);

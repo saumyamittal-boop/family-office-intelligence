@@ -1,17 +1,46 @@
+import { Route, Routes } from "react-router-dom";
 import { useSession } from "./api/hooks";
-import { HomePage } from "./pages/HomePage";
+import type { SessionInfo } from "./api/client";
+import { AppShell } from "./layout/AppShell";
+import { ComingSoonPage } from "./pages/ComingSoonPage";
 import { LoginPage } from "./pages/LoginPage";
+import { OverviewPage } from "./pages/OverviewPage";
+import { ErrorState, LoadingBlock } from "./ui/States";
+import { WorkspaceProvider } from "./workspace/WorkspaceProvider";
+
+function SignedIn({ session }: { session: SessionInfo }) {
+  return (
+    <WorkspaceProvider session={session}>
+      <Routes>
+        <Route element={<AppShell session={session} />}>
+          <Route index element={<OverviewPage session={session} />} />
+          <Route path="*" element={<ComingSoonPage />} />
+        </Route>
+      </Routes>
+    </WorkspaceProvider>
+  );
+}
 
 export default function App() {
   const session = useSession();
 
-  if (session.isPending) return <p className="muted center">Loading…</p>;
-  if (session.isError) {
+  if (session.isPending) {
     return (
-      <p role="alert" className="banner bad center">
-        Can't reach the server. Check that the API is running (port 8100), then reload.
-      </p>
+      <main className="login">
+        <LoadingBlock label="Loading" />
+      </main>
     );
   }
-  return session.data ? <HomePage session={session.data} /> : <LoginPage />;
+  if (session.isError) {
+    return (
+      <main className="login">
+        <ErrorState
+          title="Can't reach the server"
+          message="Check that the API is running (port 8100), then try again."
+          onRetry={() => session.refetch()}
+        />
+      </main>
+    );
+  }
+  return session.data ? <SignedIn session={session.data} /> : <LoginPage />;
 }

@@ -1,0 +1,39 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { render } from "@testing-library/react";
+import type { ReactElement } from "react";
+import { MemoryRouter } from "react-router-dom";
+import { vi } from "vitest";
+import { ThemeProvider } from "../theme/ThemeProvider";
+import { TooltipProvider } from "../ui/Overlays";
+
+export function renderWithProviders(ui: ReactElement, route = "/") {
+  const client = new QueryClient({ defaultOptions: { queries: { retry: false } } });
+  return render(
+    <ThemeProvider>
+      <QueryClientProvider client={client}>
+        <MemoryRouter initialEntries={[route]}>
+          <TooltipProvider>{ui}</TooltipProvider>
+        </MemoryRouter>
+      </QueryClientProvider>
+    </ThemeProvider>,
+  );
+}
+
+type Route = (init: RequestInit | undefined) => Response | Promise<Response>;
+
+/** Replace fetch with canned answers, keyed "METHOD /path" (query strings are ignored). Returns the recorded calls. */
+export function serve(routes: Record<string, Route>) {
+  const calls: { path: string; method: string; body?: string }[] = [];
+  vi.stubGlobal("fetch", (path: string, init?: RequestInit) => {
+    const method = init?.method ?? "GET";
+    calls.push({ path, method, body: typeof init?.body === "string" ? init.body : undefined });
+    const route = routes[`${method} ${path.split("?")[0]}`];
+    return Promise.resolve(route ? route(init) : new Response(JSON.stringify({ detail: "Not found." }), { status: 404 }));
+  });
+  return calls;
+}
+
+export const json =
+  (body: unknown, status = 200) =>
+  () =>
+    new Response(JSON.stringify(body), { status });

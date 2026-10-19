@@ -1,0 +1,122 @@
+/*
+ * Design tokens: the single source of truth for colour, type, space and shape.
+ * ThemeProvider sets data-theme="light" | "dark" on <html>; every component reads these variables only,
+ * so a theme switch is instant and nothing hard-codes a colour.
+ * src/styles/contrast.test.ts checks the WCAG contrast of the pairs that matter, in both themes.
+ */
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  /* Surfaces and text */
+  --bg: #f3f5f8;
+  --surface: #ffffff;
+  --surface-2: #eaeff4;
+  --ink: #0e1a2b;
+  --ink-2: #44546a;
+  --line: #d5dde6;
+  --line-strong: #7c8da3; /* borders of inputs and controls: at least 3:1 on the surface */
+
+  /* Brand and status. Each *-ink is the readable text colour on its *-bg. */
+  --brand: #0a7a5a;
+  --brand-hover: #086548;
+  --brand-ink: #ffffff;
+  --brand-soft: #e2f4ee;
+  --brand-text: #076348;
+  --good-ink: #075e43;
+  --good-bg: #e2f4ee;
+  --warn-ink: #7a4a00;
+  --warn-bg: #fff1d4;
+  --bad-ink: #a3231b;
+  --bad-bg: #fdece9;
+  --info-ink: #174f92;
+  --info-bg: #e6effa;
+  --focus: #1d6fe0;
+
+  /* Chart series: one fixed colour per asset class, and two for comparisons. Never the only cue: charts have
+     direct labels and a table view. */
+  --chart-large: #2458c7;
+  --chart-mid: #6b3fc2;
+  --chart-debt: #0a7a5a;
+  --chart-gold: #b07a00;
+  --chart-cash: #5b6b80;
+  --chart-illiquid: #b5482a;
+  --chart-a: #2458c7;
+  --chart-b: #0a7a5a;
+  --chart-grid: #d5dde6;
+
+  --shadow-1: 0 1px 2px rgb(14 26 43 / 0.06), 0 1px 3px rgb(14 26 43 / 0.05);
+  --shadow-2: 0 8px 24px rgb(14 26 43 / 0.12);
+  --scrim: rgb(14 26 43 / 0.45);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #0a111d;
+  --surface: #111a2a;
+  --surface-2: #182338;
+  --ink: #e8eef7;
+  --ink-2: #a3b3c9;
+  --line: #25334b;
+  --line-strong: #6e819c;
+
+  --brand: #34d3a0;
+  --brand-hover: #5be0b4;
+  --brand-ink: #04231a;
+  --brand-soft: #0f2d26;
+  --brand-text: #5be0b4;
+  --good-ink: #6ee0b8;
+  --good-bg: #0e2b24;
+  --warn-ink: #f4c26b;
+  --warn-bg: #2f2409;
+  --bad-ink: #ff9b92;
+  --bad-bg: #381815;
+  --info-ink: #8fbbf5;
+  --info-bg: #12263f;
+  --focus: #6ea8ff;
+
+  --chart-large: #6ea8ff;
+  --chart-mid: #b79cff;
+  --chart-debt: #4fd1a5;
+  --chart-gold: #f2c14e;
+  --chart-cash: #9fb0c6;
+  --chart-illiquid: #f08a64;
+  --chart-a: #6ea8ff;
+  --chart-b: #4fd1a5;
+  --chart-grid: #25334b;
+
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-2: 0 8px 24px rgb(0 0 0 / 0.5);
+  --scrim: rgb(0 0 0 / 0.6);
+}
+
+:root {
+  /* Type */
+  --font-sans: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: clamp(1.9rem, 4vw, 2.6rem);
+
+  /* Space, shape, layout */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+  --sidebar-w: 15.5rem;
+  --sidebar-w-collapsed: 4.5rem;
+  --topbar-h: 3.5rem;
+  --content-max: 76rem;
+  --control-h: 2.5rem; /* 40px: comfortable touch and pointer target */
+}

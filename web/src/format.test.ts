@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { cr, halfUp, pct, signedCr, signedPct, times } from "./format";
+import { cr, halfUp, pct, signedCr, signedPct, tidyText, times } from "./format";
+import { displayName } from "./user";
 import vectors from "./test/format_vectors.json";
 
 type Case = { value: number; digits: number; expected: string };
@@ -47,5 +48,25 @@ describe("the figures the slide and the mentor care about", () => {
   it("formats cover ratios", () => {
     expect(times(0.4)).toBe("0.4x");
     expect(times(3.25)).toBe("3.3x");
+  });
+});
+
+describe("tidyText keeps money amounts in one piece when text wraps", () => {
+  it("joins a sign to the rupee symbol and a number to Cr, without changing what is read", () => {
+    const tidy = tidyText("against −₹137.5 Cr for your mix, and +₹1,500 Cr later");
+    expect(tidy).toContain("−⁠₹137.5 Cr");
+    expect(tidy).toContain("+⁠₹1,500 Cr");
+    expect(tidy.replace(/[⁠]/g, "").replace(/ /g, " ")).toBe("against −₹137.5 Cr for your mix, and +₹1,500 Cr later");
+  });
+  it("leaves other text alone", () => {
+    expect(tidyText("Crash of 5 Crores")).toBe("Crash of 5 Crores");
+    expect(tidyText("no money here")).toBe("no money here");
+  });
+});
+
+describe("displayName", () => {
+  it("shows a demo copy as 'Demo family' and a real person by username", () => {
+    expect(displayName({ id: 1, username: "demo-gap-1a2b3c4d", is_demo: true })).toBe("Demo family");
+    expect(displayName({ id: 2, username: "asha", is_demo: false })).toBe("asha");
   });
 });
