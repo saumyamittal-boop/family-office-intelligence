@@ -12,6 +12,14 @@ data/app.db-*
 data/snapshot/
 .streamlit/secrets.toml
 .env
+.env.*
+!.env.example
+
+# Frontend build output and dependencies
+web/node_modules/
+web/dist/
+web/.vite/
+*.tsbuildinfo
 
 # Editor and tooling state
 .claude/

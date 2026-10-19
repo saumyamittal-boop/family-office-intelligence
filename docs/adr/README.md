@@ -18,8 +18,10 @@
 | [0014](0014-app-structure-and-visual-direction.md) | App structure and visual direction | accepted | 2026-10-17 |
 | [0015](0015-guided-plan-and-strategies-by-comfort-level.md) | Guided plan, with strategies built for each comfort level | accepted | 2026-10-18 |
 | [0016](0016-hosting-and-public-link-protections.md) | Hosting approach and public-link protections | accepted | 2026-10-18 |
+| [0017](0017-react-fastapi-migration.md) | React and FastAPI front and back end over the unchanged engine | accepted | 2026-10-19 |
 
 ADR-0013 amends parts of ADR-0003, ADR-0005 and ADR-0006. ADR-0014 builds on ADR-0009 and ADR-0010. ADR-0016 builds on ADR-0010 and ADR-0014.
+ADR-0017 builds on ADR-0009, ADR-0010, ADR-0014 and ADR-0016 and leaves the engine decisions (0004 to 0007, 0013) untouched.
 
 Requirements: [../requirements.md](../requirements.md). Blank template: [template.md](template.md).
 

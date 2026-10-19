@@ -125,7 +125,15 @@ def esc(text) -> str:
 
 
 def cr(value: float, digits: int = 1) -> str:
-    return f"₹{value:,.{digits}f} Cr"
+    text = _half_up(value, digits)
+    return text if text == "n/a" else f"₹{_with_commas(text)} Cr"
+
+
+def _with_commas(text: str) -> str:
+    """Group the whole-number part of a decimal string in thousands: '-1234.50' -> '-1,234.50'."""
+    sign = "-" if text.startswith("-") else ""
+    whole, _, fraction = text.lstrip("-").partition(".")
+    return f"{sign}{int(whole):,}" + (f".{fraction}" if fraction else "")
 
 
 def _half_up(value: float, digits: int) -> str:
@@ -143,8 +151,10 @@ def pct(value: float, digits: int = 1) -> str:
 
 
 def signed_cr(value: float, digits: int = 1) -> str:
-    sign = "+" if value >= 0 else "−"
-    return f"{sign}₹{abs(value):,.{digits}f} Cr"
+    text = _half_up(abs(float(value)), digits)
+    if text == "n/a":
+        return text
+    return f"{'+' if value >= 0 else '−'}₹{_with_commas(text)} Cr"
 
 
 def signed_pct(value: float, digits: int = 1) -> str:

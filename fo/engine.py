@@ -269,6 +269,7 @@ class Portfolio:
     bounds_hit: list = field(default_factory=list)
     explanation: list = field(default_factory=list)
     replay_returns: pd.Series | None = None
+    optimiser_converged: bool = True  # False if the solver reported failure for the mix that was kept
 
 
 def _stats(profile: Profile, inputs: Inputs, w_sleeve: np.ndarray) -> tuple[float, float, float]:
@@ -349,6 +350,7 @@ def recommend(
             required_cover_cr=need_cr, available_cover_cr=available, cover_fraction=cover_fraction,
             liquidity_binding=binding, liquidity_infeasible=sol.liquidity_infeasible, cost_of_liquidity=cost,
             liquid_return=float(w @ inputs.mu), bounds_hit=hits, replay_returns=r,
+            optimiser_converged=sol.success,
         )
         pf.explanation = _explain(profile, pf)
         out.append(pf)
@@ -357,6 +359,11 @@ def recommend(
 
 def _explain(profile: Profile, pf: Portfolio) -> list[str]:
     lines = []
+    if not pf.optimiser_converged:
+        lines.append(
+            "The optimiser did not report a clean solution for this mix, so treat the weights as approximate "
+            "and check them before relying on them."
+        )
     if not pf.dd_ok:
         lines.append(
             f"Even the safest permitted mix has a historical worst drawdown of {pf.max_dd:.1%}, above your "

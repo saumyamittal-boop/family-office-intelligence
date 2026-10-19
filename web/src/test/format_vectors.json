@@ -1,0 +1,6760 @@
+{
+ "pct": [
+  {
+   "value": 0.1375,
+   "digits": 0,
+   "expected": "14%"
+  },
+  {
+   "value": 0.1375,
+   "digits": 1,
+   "expected": "13.8%"
+  },
+  {
+   "value": 0.1375,
+   "digits": 2,
+   "expected": "13.75%"
+  },
+  {
+   "value": 0.0875,
+   "digits": 0,
+   "expected": "9%"
+  },
+  {
+   "value": 0.0875,
+   "digits": 1,
+   "expected": "8.8%"
+  },
+  {
+   "value": 0.0875,
+   "digits": 2,
+   "expected": "8.75%"
+  },
+  {
+   "value": 0.125,
+   "digits": 0,
+   "expected": "13%"
+  },
+  {
+   "value": 0.125,
+   "digits": 1,
+   "expected": "12.5%"
+  },
+  {
+   "value": 0.125,
+   "digits": 2,
+   "expected": "12.50%"
+  },
+  {
+   "value": 0.0005,
+   "digits": 0,
+   "expected": "0%"
+  },
+  {
+   "value": 0.0005,
+   "digits": 1,
+   "expected": "0.1%"
+  },
+  {
+   "value": 0.0005,
+   "digits": 2,
+   "expected": "0.05%"
+  },
+  {
+   "value": 0.00049999,
+   "digits": 0,
+   "expected": "0%"
+  },
+  {
+   "value": 0.00049999,
+   "digits": 1,
+   "expected": "0.0%"
+  },
+  {
+   "value": 0.00049999,
+   "digits": 2,
+   "expected": "0.05%"
+  },
+  {
+   "value": 0.995,
+   "digits": 0,
+   "expected": "100%"
+  },
+  {
+   "value": 0.995,
+   "digits": 1,
+   "expected": "99.5%"
+  },
+  {
+   "value": 0.995,
+   "digits": 2,
+   "expected": "99.50%"
+  },
+  {
+   "value": 0.9995,
+   "digits": 0,
+   "expected": "100%"
+  },
+  {
+   "value": 0.9995,
+   "digits": 1,
+   "expected": "100.0%"
+  },
+  {
+   "value": 0.9995,
+   "digits": 2,
+   "expected": "99.95%"
+  },
+  {
+   "value": 1.0,
+   "digits": 0,
+   "expected": "100%"
+  },
+  {
+   "value": 1.0,
+   "digits": 1,
+   "expected": "100.0%"
+  },
+  {
+   "value": 1.0,
+   "digits": 2,
+   "expected": "100.00%"
+  },
+  {
+   "value": 0.0,
+   "digits": 0,
+   "expected": "0%"
+  },
+  {
+   "value": 0.0,
+   "digits": 1,
+   "expected": "0.0%"
+  },
+  {
+   "value": 0.0,
+   "digits": 2,
+   "expected": "0.00%"
+  },
+  {
+   "value": 1e-05,
+   "digits": 0,
+   "expected": "0%"
+  },
+  {
+   "value": 1e-05,
+   "digits": 1,
+   "expected": "0.0%"
+  },
+  {
+   "value": 1e-05,
+   "digits": 2,
+   "expected": "0.00%"
+  },
+  {
+   "value": 0.045,
+   "digits": 0,
+   "expected": "5%"
+  },
+  {
+   "value": 0.045,
+   "digits": 1,
+   "expected": "4.5%"
+  },
+  {
+   "value": 0.045,
+   "digits": 2,
+   "expected": "4.50%"
+  },
+  {
+   "value": 0.0455,
+   "digits": 0,
+   "expected": "5%"
+  },
+  {
+   "value": 0.0455,
+   "digits": 1,
+   "expected": "4.6%"
+  },
+  {
+   "value": 0.0455,
+   "digits": 2,
+   "expected": "4.55%"
+  },
+  {
+   "value": 0.04549999,
+   "digits": 0,
+   "expected": "5%"
+  },
+  {
+   "value": 0.04549999,
+   "digits": 1,
+   "expected": "4.5%"
+  },
+  {
+   "value": 0.04549999,
+   "digits": 2,
+   "expected": "4.55%"
+  },
+  {
+   "value": 0.15,
+   "digits": 0,
+   "expected": "15%"
+  },
+  {
+   "value": 0.15,
+   "digits": 1,
+   "expected": "15.0%"
+  },
+  {
+   "value": 0.15,
+   "digits": 2,
+   "expected": "15.00%"
+  },
+  {
+   "value": 0.085,
+   "digits": 0,
+   "expected": "9%"
+  },
+  {
+   "value": 0.085,
+   "digits": 1,
+   "expected": "8.5%"
+  },
+  {
+   "value": 0.085,
+   "digits": 2,
+   "expected": "8.50%"
+  },
+  {
+   "value": 0.0725,
+   "digits": 0,
+   "expected": "7%"
+  },
+  {
+   "value": 0.0725,
+   "digits": 1,
+   "expected": "7.3%"
+  },
+  {
+   "value": 0.0725,
+   "digits": 2,
+   "expected": "7.25%"
+  },
+  {
+   "value": 0.01,
+   "digits": 0,
+   "expected": "1%"
+  },
+  {
+   "value": 0.01,
+   "digits": 1,
+   "expected": "1.0%"
+  },
+  {
+   "value": 0.01,
+   "digits": 2,
+   "expected": "1.00%"
+  },
+  {
+   "value": 0.2,
+   "digits": 0,
+   "expected": "20%"
+  },
+  {
+   "value": 0.2,
+   "digits": 1,
+   "expected": "20.0%"
+  },
+  {
+   "value": 0.2,
+   "digits": 2,
+   "expected": "20.00%"
+  },
+  {
+   "value": 0.3,
+   "digits": 0,
+   "expected": "30%"
+  },
+  {
+   "value": 0.3,
+   "digits": 1,
+   "expected": "30.0%"
+  },
+  {
+   "value": 0.3,
+   "digits": 2,
+   "expected": "30.00%"
+  },
+  {
+   "value": 0.30000000000000004,
+   "digits": 0,
+   "expected": "30%"
+  },
+  {
+   "value": 0.30000000000000004,
+   "digits": 1,
+   "expected": "30.0%"
+  },
+  {
+   "value": 0.30000000000000004,
+   "digits": 2,
+   "expected": "30.00%"
+  },
+  {
+   "value": 0.3333333333333333,
+   "digits": 0,
+   "expected": "33%"
+  },
+  {
+   "value": 0.3333333333333333,
+   "digits": 1,
+   "expected": "33.3%"
+  },
+  {
+   "value": 0.3333333333333333,
+   "digits": 2,
+   "expected": "33.33%"
+  },
+  {
+   "value": 0.6666666666666666,
+   "digits": 0,
+   "expected": "67%"
+  },
+  {
+   "value": 0.6666666666666666,
+   "digits": 1,
+   "expected": "66.7%"
+  },
+  {
+   "value": 0.6666666666666666,
+   "digits": 2,
+   "expected": "66.67%"
+  },
+  {
+   "value": 1.2345,
+   "digits": 0,
+   "expected": "123%"
+  },
+  {
+   "value": 1.2345,
+   "digits": 1,
+   "expected": "123.5%"
+  },
+  {
+   "value": 1.2345,
+   "digits": 2,
+   "expected": "123.45%"
+  },
+  {
+   "value": 12.345,
+   "digits": 0,
+   "expected": "1235%"
+  },
+  {
+   "value": 12.345,
+   "digits": 1,
+   "expected": "1234.5%"
+  },
+  {
+   "value": 12.345,
+   "digits": 2,
+   "expected": "1234.50%"
+  },
+  {
+   "value": -0.1375,
+   "digits": 0,
+   "expected": "-14%"
+  },
+  {
+   "value": -0.1375,
+   "digits": 1,
+   "expected": "-13.8%"
+  },
+  {
+   "value": -0.1375,
+   "digits": 2,
+   "expected": "-13.75%"
+  },
+  {
+   "value": -0.0875,
+   "digits": 0,
+   "expected": "-9%"
+  },
+  {
+   "value": -0.0875,
+   "digits": 1,
+   "expected": "-8.8%"
+  },
+  {
+   "value": -0.0875,
+   "digits": 2,
+   "expected": "-8.75%"
+  },
+  {
+   "value": -0.125,
+   "digits": 0,
+   "expected": "-13%"
+  },
+  {
+   "value": -0.125,
+   "digits": 1,
+   "expected": "-12.5%"
+  },
+  {
+   "value": -0.125,
+   "digits": 2,
+   "expected": "-12.50%"
+  },
+  {
+   "value": -0.0005,
+   "digits": 0,
+   "expected": "-0%"
+  },
+  {
+   "value": -0.0005,
+   "digits": 1,
+   "expected": "-0.1%"
+  },
+  {
+   "value": -0.0005,
+   "digits": 2,
+   "expected": "-0.05%"
+  },
+  {
+   "value": -0.00049999,
+   "digits": 0,
+   "expected": "-0%"
+  },
+  {
+   "value": -0.00049999,
+   "digits": 1,
+   "expected": "-0.0%"
+  },
+  {
+   "value": -0.00049999,
+   "digits": 2,
+   "expected": "-0.05%"
+  },
+  {
+   "value": -0.995,
+   "digits": 0,
+   "expected": "-100%"
+  },
+  {
+   "value": -0.995,
+   "digits": 1,
+   "expected": "-99.5%"
+  },
+  {
+   "value": -0.995,
+   "digits": 2,
+   "expected": "-99.50%"
+  },
+  {
+   "value": -0.9995,
+   "digits": 0,
+   "expected": "-100%"
+  },
+  {
+   "value": -0.9995,
+   "digits": 1,
+   "expected": "-100.0%"
+  },
+  {
+   "value": -0.9995,
+   "digits": 2,
+   "expected": "-99.95%"
+  },
+  {
+   "value": -1.0,
+   "digits": 0,
+   "expected": "-100%"
+  },
+  {
+   "value": -1.0,
+   "digits": 1,
+   "expected": "-100.0%"
+  },
+  {
+   "value": -1.0,
+   "digits": 2,
+   "expected": "-100.00%"
+  },
+  {
+   "value": -0.0,
+   "digits": 0,
+   "expected": "-0%"
+  },
+  {
+   "value": -0.0,
+   "digits": 1,
+   "expected": "-0.0%"
+  },
+  {
+   "value": -0.0,
+   "digits": 2,
+   "expected": "-0.00%"
+  },
+  {
+   "value": -1e-05,
+   "digits": 0,
+   "expected": "-0%"
+  },
+  {
+   "value": -1e-05,
+   "digits": 1,
+   "expected": "-0.0%"
+  },
+  {
+   "value": -1e-05,
+   "digits": 2,
+   "expected": "-0.00%"
+  },
+  {
+   "value": -0.045,
+   "digits": 0,
+   "expected": "-5%"
+  },
+  {
+   "value": -0.045,
+   "digits": 1,
+   "expected": "-4.5%"
+  },
+  {
+   "value": -0.045,
+   "digits": 2,
+   "expected": "-4.50%"
+  },
+  {
+   "value": -0.0455,
+   "digits": 0,
+   "expected": "-5%"
+  },
+  {
+   "value": -0.0455,
+   "digits": 1,
+   "expected": "-4.6%"
+  },
+  {
+   "value": -0.0455,
+   "digits": 2,
+   "expected": "-4.55%"
+  },
+  {
+   "value": -0.04549999,
+   "digits": 0,
+   "expected": "-5%"
+  },
+  {
+   "value": -0.04549999,
+   "digits": 1,
+   "expected": "-4.5%"
+  },
+  {
+   "value": -0.04549999,
+   "digits": 2,
+   "expected": "-4.55%"
+  },
+  {
+   "value": -0.15,
+   "digits": 0,
+   "expected": "-15%"
+  },
+  {
+   "value": -0.15,
+   "digits": 1,
+   "expected": "-15.0%"
+  },
+  {
+   "value": -0.15,
+   "digits": 2,
+   "expected": "-15.00%"
+  },
+  {
+   "value": -0.085,
+   "digits": 0,
+   "expected": "-9%"
+  },
+  {
+   "value": -0.085,
+   "digits": 1,
+   "expected": "-8.5%"
+  },
+  {
+   "value": -0.085,
+   "digits": 2,
+   "expected": "-8.50%"
+  },
+  {
+   "value": -0.0725,
+   "digits": 0,
+   "expected": "-7%"
+  },
+  {
+   "value": -0.0725,
+   "digits": 1,
+   "expected": "-7.3%"
+  },
+  {
+   "value": -0.0725,
+   "digits": 2,
+   "expected": "-7.25%"
+  },
+  {
+   "value": -0.01,
+   "digits": 0,
+   "expected": "-1%"
+  },
+  {
+   "value": -0.01,
+   "digits": 1,
+   "expected": "-1.0%"
+  },
+  {
+   "value": -0.01,
+   "digits": 2,
+   "expected": "-1.00%"
+  },
+  {
+   "value": -0.2,
+   "digits": 0,
+   "expected": "-20%"
+  },
+  {
+   "value": -0.2,
+   "digits": 1,
+   "expected": "-20.0%"
+  },
+  {
+   "value": -0.2,
+   "digits": 2,
+   "expected": "-20.00%"
+  },
+  {
+   "value": -0.3,
+   "digits": 0,
+   "expected": "-30%"
+  },
+  {
+   "value": -0.3,
+   "digits": 1,
+   "expected": "-30.0%"
+  },
+  {
+   "value": -0.3,
+   "digits": 2,
+   "expected": "-30.00%"
+  },
+  {
+   "value": -0.30000000000000004,
+   "digits": 0,
+   "expected": "-30%"
+  },
+  {
+   "value": -0.30000000000000004,
+   "digits": 1,
+   "expected": "-30.0%"
+  },
+  {
+   "value": -0.30000000000000004,
+   "digits": 2,
+   "expected": "-30.00%"
+  },
+  {
+   "value": -0.3333333333333333,
+   "digits": 0,
+   "expected": "-33%"
+  },
+  {
+   "value": -0.3333333333333333,
+   "digits": 1,
+   "expected": "-33.3%"
+  },
+  {
+   "value": -0.3333333333333333,
+   "digits": 2,
+   "expected": "-33.33%"
+  },
+  {
+   "value": -0.6666666666666666,
+   "digits": 0,
+   "expected": "-67%"
+  },
+  {
+   "value": -0.6666666666666666,
+   "digits": 1,
+   "expected": "-66.7%"
+  },
+  {
+   "value": -0.6666666666666666,
+   "digits": 2,
+   "expected": "-66.67%"
+  },
+  {
+   "value": -1.2345,
+   "digits": 0,
+   "expected": "-123%"
+  },
+  {
+   "value": -1.2345,
+   "digits": 1,
+   "expected": "-123.5%"
+  },
+  {
+   "value": -1.2345,
+   "digits": 2,
+   "expected": "-123.45%"
+  },
+  {
+   "value": -12.345,
+   "digits": 0,
+   "expected": "-1235%"
+  },
+  {
+   "value": -12.345,
+   "digits": 1,
+   "expected": "-1234.5%"
+  },
+  {
+   "value": -12.345,
+   "digits": 2,
+   "expected": "-1234.50%"
+  },
+  {
+   "value": -0.5285017055005129,
+   "digits": 0,
+   "expected": "-53%"
+  },
+  {
+   "value": -0.5285017055005129,
+   "digits": 1,
+   "expected": "-52.9%"
+  },
+  {
+   "value": -0.5285017055005129,
+   "digits": 2,
+   "expected": "-52.85%"
+  },
+  {
+   "value": -1.0474524782264942,
+   "digits": 0,
+   "expected": "-105%"
+  },
+  {
+   "value": -1.0474524782264942,
+   "digits": 1,
+   "expected": "-104.7%"
+  },
+  {
+   "value": -1.0474524782264942,
+   "digits": 2,
+   "expected": "-104.75%"
+  },
+  {
+   "value": 0.4528034191195611,
+   "digits": 0,
+   "expected": "45%"
+  },
+  {
+   "value": 0.4528034191195611,
+   "digits": 1,
+   "expected": "45.3%"
+  },
+  {
+   "value": 0.4528034191195611,
+   "digits": 2,
+   "expected": "45.28%"
+  },
+  {
+   "value": -1.2826911399973717,
+   "digits": 0,
+   "expected": "-128%"
+  },
+  {
+   "value": -1.2826911399973717,
+   "digits": 1,
+   "expected": "-128.3%"
+  },
+  {
+   "value": -1.2826911399973717,
+   "digits": 2,
+   "expected": "-128.27%"
+  },
+  {
+   "value": 0.10764601292006759,
+   "digits": 0,
+   "expected": "11%"
+  },
+  {
+   "value": 0.10764601292006759,
+   "digits": 1,
+   "expected": "10.8%"
+  },
+  {
+   "value": 0.10764601292006759,
+   "digits": 2,
+   "expected": "10.76%"
+  },
+  {
+   "value": -0.4029332492622433,
+   "digits": 0,
+   "expected": "-40%"
+  },
+  {
+   "value": -0.4029332492622433,
+   "digits": 1,
+   "expected": "-40.3%"
+  },
+  {
+   "value": -0.4029332492622433,
+   "digits": 2,
+   "expected": "-40.29%"
+  },
+  {
+   "value": -1.3260032256758796,
+   "digits": 0,
+   "expected": "-133%"
+  },
+  {
+   "value": -1.3260032256758796,
+   "digits": 1,
+   "expected": "-132.6%"
+  },
+  {
+   "value": -1.3260032256758796,
+   "digits": 2,
+   "expected": "-132.60%"
+  },
+  {
+   "value": 0.02230719956826066,
+   "digits": 0,
+   "expected": "2%"
+  },
+  {
+   "value": 0.02230719956826066,
+   "digits": 1,
+   "expected": "2.2%"
+  },
+  {
+   "value": 0.02230719956826066,
+   "digits": 2,
+   "expected": "2.23%"
+  },
+  {
+   "value": -1.3875130246740452,
+   "digits": 0,
+   "expected": "-139%"
+  },
+  {
+   "value": -1.3875130246740452,
+   "digits": 1,
+   "expected": "-138.8%"
+  },
+  {
+   "value": -1.3875130246740452,
+   "digits": 2,
+   "expected": "-138.75%"
+  },
+  {
+   "value": -0.19906294901284238,
+   "digits": 0,
+   "expected": "-20%"
+  },
+  {
+   "value": -0.19906294901284238,
+   "digits": 1,
+   "expected": "-19.9%"
+  },
+  {
+   "value": -0.19906294901284238,
+   "digits": 2,
+   "expected": "-19.91%"
+  },
+  {
+   "value": -1.2904337292761432,
+   "digits": 0,
+   "expected": "-129%"
+  },
+  {
+   "value": -1.2904337292761432,
+   "digits": 1,
+   "expected": "-129.0%"
+  },
+  {
+   "value": -1.2904337292761432,
+   "digits": 2,
+   "expected": "-129.04%"
+  },
+  {
+   "value": -1.227860959968405,
+   "digits": 0,
+   "expected": "-123%"
+  },
+  {
+   "value": -1.227860959968405,
+   "digits": 1,
+   "expected": "-122.8%"
+  },
+  {
+   "value": -1.227860959968405,
+   "digits": 2,
+   "expected": "-122.79%"
+  },
+  {
+   "value": -0.2264424325724581,
+   "digits": 0,
+   "expected": "-23%"
+  },
+  {
+   "value": -0.2264424325724581,
+   "digits": 1,
+   "expected": "-22.6%"
+  },
+  {
+   "value": -0.2264424325724581,
+   "digits": 2,
+   "expected": "-22.64%"
+  },
+  {
+   "value": 0.9805563740161141,
+   "digits": 0,
+   "expected": "98%"
+  },
+  {
+   "value": 0.9805563740161141,
+   "digits": 1,
+   "expected": "98.1%"
+  },
+  {
+   "value": 0.9805563740161141,
+   "digits": 2,
+   "expected": "98.06%"
+  },
+  {
+   "value": -1.1285941165510631,
+   "digits": 0,
+   "expected": "-113%"
+  },
+  {
+   "value": -1.1285941165510631,
+   "digits": 1,
+   "expected": "-112.9%"
+  },
+  {
+   "value": -1.1285941165510631,
+   "digits": 2,
+   "expected": "-112.86%"
+  },
+  {
+   "value": -0.8302831061789564,
+   "digits": 0,
+   "expected": "-83%"
+  },
+  {
+   "value": -0.8302831061789564,
+   "digits": 1,
+   "expected": "-83.0%"
+  },
+  {
+   "value": -0.8302831061789564,
+   "digits": 2,
+   "expected": "-83.03%"
+  },
+  {
+   "value": 0.3822996672167678,
+   "digits": 0,
+   "expected": "38%"
+  },
+  {
+   "value": 0.3822996672167678,
+   "digits": 1,
+   "expected": "38.2%"
+  },
+  {
+   "value": 0.3822996672167678,
+   "digits": 2,
+   "expected": "38.23%"
+  },
+  {
+   "value": 1.3431268273710169,
+   "digits": 0,
+   "expected": "134%"
+  },
+  {
+   "value": 1.3431268273710169,
+   "digits": 1,
+   "expected": "134.3%"
+  },
+  {
+   "value": 1.3431268273710169,
+   "digits": 2,
+   "expected": "134.31%"
+  },
+  {
+   "value": 0.2313088458524959,
+   "digits": 0,
+   "expected": "23%"
+  },
+  {
+   "value": 0.2313088458524959,
+   "digits": 1,
+   "expected": "23.1%"
+  },
+  {
+   "value": 0.2313088458524959,
+   "digits": 2,
+   "expected": "23.13%"
+  },
+  {
+   "value": -0.30995857604765953,
+   "digits": 0,
+   "expected": "-31%"
+  },
+  {
+   "value": -0.30995857604765953,
+   "digits": 1,
+   "expected": "-31.0%"
+  },
+  {
+   "value": -0.30995857604765953,
+   "digits": 2,
+   "expected": "-31.00%"
+  },
+  {
+   "value": 1.42876531677876,
+   "digits": 0,
+   "expected": "143%"
+  },
+  {
+   "value": 1.42876531677876,
+   "digits": 1,
+   "expected": "142.9%"
+  },
+  {
+   "value": 1.42876531677876,
+   "digits": 2,
+   "expected": "142.88%"
+  },
+  {
+   "value": -1.3602519581467312,
+   "digits": 0,
+   "expected": "-136%"
+  },
+  {
+   "value": -1.3602519581467312,
+   "digits": 1,
+   "expected": "-136.0%"
+  },
+  {
+   "value": -1.3602519581467312,
+   "digits": 2,
+   "expected": "-136.03%"
+  },
+  {
+   "value": 1.0754053771460388,
+   "digits": 0,
+   "expected": "108%"
+  },
+  {
+   "value": 1.0754053771460388,
+   "digits": 1,
+   "expected": "107.5%"
+  },
+  {
+   "value": 1.0754053771460388,
+   "digits": 2,
+   "expected": "107.54%"
+  },
+  {
+   "value": -0.6311721410049712,
+   "digits": 0,
+   "expected": "-63%"
+  },
+  {
+   "value": -0.6311721410049712,
+   "digits": 1,
+   "expected": "-63.1%"
+  },
+  {
+   "value": -0.6311721410049712,
+   "digits": 2,
+   "expected": "-63.12%"
+  },
+  {
+   "value": -1.0672347499276875,
+   "digits": 0,
+   "expected": "-107%"
+  },
+  {
+   "value": -1.0672347499276875,
+   "digits": 1,
+   "expected": "-106.7%"
+  },
+  {
+   "value": -1.0672347499276875,
+   "digits": 2,
+   "expected": "-106.72%"
+  },
+  {
+   "value": -1.1466232857648948,
+   "digits": 0,
+   "expected": "-115%"
+  },
+  {
+   "value": -1.1466232857648948,
+   "digits": 1,
+   "expected": "-114.7%"
+  },
+  {
+   "value": -1.1466232857648948,
+   "digits": 2,
+   "expected": "-114.66%"
+  },
+  {
+   "value": -0.5745545276941969,
+   "digits": 0,
+   "expected": "-57%"
+  },
+  {
+   "value": -0.5745545276941969,
+   "digits": 1,
+   "expected": "-57.5%"
+  },
+  {
+   "value": -0.5745545276941969,
+   "digits": 2,
+   "expected": "-57.46%"
+  },
+  {
+   "value": 0.9483790773600944,
+   "digits": 0,
+   "expected": "95%"
+  },
+  {
+   "value": 0.9483790773600944,
+   "digits": 1,
+   "expected": "94.8%"
+  },
+  {
+   "value": 0.9483790773600944,
+   "digits": 2,
+   "expected": "94.84%"
+  },
+  {
+   "value": -0.9578208602281876,
+   "digits": 0,
+   "expected": "-96%"
+  },
+  {
+   "value": -0.9578208602281876,
+   "digits": 1,
+   "expected": "-95.8%"
+  },
+  {
+   "value": -0.9578208602281876,
+   "digits": 2,
+   "expected": "-95.78%"
+  },
+  {
+   "value": 0.24480049098739887,
+   "digits": 0,
+   "expected": "24%"
+  },
+  {
+   "value": 0.24480049098739887,
+   "digits": 1,
+   "expected": "24.5%"
+  },
+  {
+   "value": 0.24480049098739887,
+   "digits": 2,
+   "expected": "24.48%"
+  },
+  {
+   "value": 0.41674040677855206,
+   "digits": 0,
+   "expected": "42%"
+  },
+  {
+   "value": 0.41674040677855206,
+   "digits": 1,
+   "expected": "41.7%"
+  },
+  {
+   "value": 0.41674040677855206,
+   "digits": 2,
+   "expected": "41.67%"
+  },
+  {
+   "value": -0.38280737182280644,
+   "digits": 0,
+   "expected": "-38%"
+  },
+  {
+   "value": -0.38280737182280644,
+   "digits": 1,
+   "expected": "-38.3%"
+  },
+  {
+   "value": -0.38280737182280644,
+   "digits": 2,
+   "expected": "-38.28%"
+  },
+  {
+   "value": 0.14323339712867345,
+   "digits": 0,
+   "expected": "14%"
+  },
+  {
+   "value": 0.14323339712867345,
+   "digits": 1,
+   "expected": "14.3%"
+  },
+  {
+   "value": 0.14323339712867345,
+   "digits": 2,
+   "expected": "14.32%"
+  },
+  {
+   "value": -1.3116330750800307,
+   "digits": 0,
+   "expected": "-131%"
+  },
+  {
+   "value": -1.3116330750800307,
+   "digits": 1,
+   "expected": "-131.2%"
+  },
+  {
+   "value": -1.3116330750800307,
+   "digits": 2,
+   "expected": "-131.16%"
+  },
+  {
+   "value": -1.321196490101302,
+   "digits": 0,
+   "expected": "-132%"
+  },
+  {
+   "value": -1.321196490101302,
+   "digits": 1,
+   "expected": "-132.1%"
+  },
+  {
+   "value": -1.321196490101302,
+   "digits": 2,
+   "expected": "-132.12%"
+  },
+  {
+   "value": -0.8821238615420204,
+   "digits": 0,
+   "expected": "-88%"
+  },
+  {
+   "value": -0.8821238615420204,
+   "digits": 1,
+   "expected": "-88.2%"
+  },
+  {
+   "value": -0.8821238615420204,
+   "digits": 2,
+   "expected": "-88.21%"
+  },
+  {
+   "value": 0.5411999195453578,
+   "digits": 0,
+   "expected": "54%"
+  },
+  {
+   "value": 0.5411999195453578,
+   "digits": 1,
+   "expected": "54.1%"
+  },
+  {
+   "value": 0.5411999195453578,
+   "digits": 2,
+   "expected": "54.12%"
+  },
+  {
+   "value": -0.21722308299179138,
+   "digits": 0,
+   "expected": "-22%"
+  },
+  {
+   "value": -0.21722308299179138,
+   "digits": 1,
+   "expected": "-21.7%"
+  },
+  {
+   "value": -0.21722308299179138,
+   "digits": 2,
+   "expected": "-21.72%"
+  },
+  {
+   "value": -0.5575584888696254,
+   "digits": 0,
+   "expected": "-56%"
+  },
+  {
+   "value": -0.5575584888696254,
+   "digits": 1,
+   "expected": "-55.8%"
+  },
+  {
+   "value": -0.5575584888696254,
+   "digits": 2,
+   "expected": "-55.76%"
+  },
+  {
+   "value": 0.2566855905229162,
+   "digits": 0,
+   "expected": "26%"
+  },
+  {
+   "value": 0.2566855905229162,
+   "digits": 1,
+   "expected": "25.7%"
+  },
+  {
+   "value": 0.2566855905229162,
+   "digits": 2,
+   "expected": "25.67%"
+  },
+  {
+   "value": -0.14044687088767382,
+   "digits": 0,
+   "expected": "-14%"
+  },
+  {
+   "value": -0.14044687088767382,
+   "digits": 1,
+   "expected": "-14.0%"
+  },
+  {
+   "value": -0.14044687088767382,
+   "digits": 2,
+   "expected": "-14.04%"
+  },
+  {
+   "value": -0.6006990094089529,
+   "digits": 0,
+   "expected": "-60%"
+  },
+  {
+   "value": -0.6006990094089529,
+   "digits": 1,
+   "expected": "-60.1%"
+  },
+  {
+   "value": -0.6006990094089529,
+   "digits": 2,
+   "expected": "-60.07%"
+  },
+  {
+   "value": 0.8831384445674733,
+   "digits": 0,
+   "expected": "88%"
+  },
+  {
+   "value": 0.8831384445674733,
+   "digits": 1,
+   "expected": "88.3%"
+  },
+  {
+   "value": 0.8831384445674733,
+   "digits": 2,
+   "expected": "88.31%"
+  },
+  {
+   "value": 0.5969833011887138,
+   "digits": 0,
+   "expected": "60%"
+  },
+  {
+   "value": 0.5969833011887138,
+   "digits": 1,
+   "expected": "59.7%"
+  },
+  {
+   "value": 0.5969833011887138,
+   "digits": 2,
+   "expected": "59.70%"
+  },
+  {
+   "value": -0.7677104678335414,
+   "digits": 0,
+   "expected": "-77%"
+  },
+  {
+   "value": -0.7677104678335414,
+   "digits": 1,
+   "expected": "-76.8%"
+  },
+  {
+   "value": -0.7677104678335414,
+   "digits": 2,
+   "expected": "-76.77%"
+  },
+  {
+   "value": 0.22327113077601313,
+   "digits": 0,
+   "expected": "22%"
+  },
+  {
+   "value": 0.22327113077601313,
+   "digits": 1,
+   "expected": "22.3%"
+  },
+  {
+   "value": 0.22327113077601313,
+   "digits": 2,
+   "expected": "22.33%"
+  },
+  {
+   "value": 0.07558951143435433,
+   "digits": 0,
+   "expected": "8%"
+  },
+  {
+   "value": 0.07558951143435433,
+   "digits": 1,
+   "expected": "7.6%"
+  },
+  {
+   "value": 0.07558951143435433,
+   "digits": 2,
+   "expected": "7.56%"
+  },
+  {
+   "value": 1.1254124867202866,
+   "digits": 0,
+   "expected": "113%"
+  },
+  {
+   "value": 1.1254124867202866,
+   "digits": 1,
+   "expected": "112.5%"
+  },
+  {
+   "value": 1.1254124867202866,
+   "digits": 2,
+   "expected": "112.54%"
+  },
+  {
+   "value": 0.6883358683176528,
+   "digits": 0,
+   "expected": "69%"
+  },
+  {
+   "value": 0.6883358683176528,
+   "digits": 1,
+   "expected": "68.8%"
+  },
+  {
+   "value": 0.6883358683176528,
+   "digits": 2,
+   "expected": "68.83%"
+  },
+  {
+   "value": -0.6361867053294404,
+   "digits": 0,
+   "expected": "-64%"
+  },
+  {
+   "value": -0.6361867053294404,
+   "digits": 1,
+   "expected": "-63.6%"
+  },
+  {
+   "value": -0.6361867053294404,
+   "digits": 2,
+   "expected": "-63.62%"
+  },
+  {
+   "value": 1.4405245424777462,
+   "digits": 0,
+   "expected": "144%"
+  },
+  {
+   "value": 1.4405245424777462,
+   "digits": 1,
+   "expected": "144.1%"
+  },
+  {
+   "value": 1.4405245424777462,
+   "digits": 2,
+   "expected": "144.05%"
+  },
+  {
+   "value": -1.1458026652351136,
+   "digits": 0,
+   "expected": "-115%"
+  },
+  {
+   "value": -1.1458026652351136,
+   "digits": 1,
+   "expected": "-114.6%"
+  },
+  {
+   "value": -1.1458026652351136,
+   "digits": 2,
+   "expected": "-114.58%"
+  },
+  {
+   "value": -0.24563153464431853,
+   "digits": 0,
+   "expected": "-25%"
+  },
+  {
+   "value": -0.24563153464431853,
+   "digits": 1,
+   "expected": "-24.6%"
+  },
+  {
+   "value": -0.24563153464431853,
+   "digits": 2,
+   "expected": "-24.56%"
+  },
+  {
+   "value": 0.7714227886957481,
+   "digits": 0,
+   "expected": "77%"
+  },
+  {
+   "value": 0.7714227886957481,
+   "digits": 1,
+   "expected": "77.1%"
+  },
+  {
+   "value": 0.7714227886957481,
+   "digits": 2,
+   "expected": "77.14%"
+  },
+  {
+   "value": -1.0440463960184858,
+   "digits": 0,
+   "expected": "-104%"
+  },
+  {
+   "value": -1.0440463960184858,
+   "digits": 1,
+   "expected": "-104.4%"
+  },
+  {
+   "value": -1.0440463960184858,
+   "digits": 2,
+   "expected": "-104.40%"
+  },
+  {
+   "value": -0.033110698572583086,
+   "digits": 0,
+   "expected": "-3%"
+  },
+  {
+   "value": -0.033110698572583086,
+   "digits": 1,
+   "expected": "-3.3%"
+  },
+  {
+   "value": -0.033110698572583086,
+   "digits": 2,
+   "expected": "-3.31%"
+  },
+  {
+   "value": -1.3823782288576871,
+   "digits": 0,
+   "expected": "-138%"
+  },
+  {
+   "value": -1.3823782288576871,
+   "digits": 1,
+   "expected": "-138.2%"
+  },
+  {
+   "value": -1.3823782288576871,
+   "digits": 2,
+   "expected": "-138.24%"
+  },
+  {
+   "value": 0.5046475696031854,
+   "digits": 0,
+   "expected": "50%"
+  },
+  {
+   "value": 0.5046475696031854,
+   "digits": 1,
+   "expected": "50.5%"
+  },
+  {
+   "value": 0.5046475696031854,
+   "digits": 2,
+   "expected": "50.46%"
+  },
+  {
+   "value": 0.7937125986384395,
+   "digits": 0,
+   "expected": "79%"
+  },
+  {
+   "value": 0.7937125986384395,
+   "digits": 1,
+   "expected": "79.4%"
+  },
+  {
+   "value": 0.7937125986384395,
+   "digits": 2,
+   "expected": "79.37%"
+  },
+  {
+   "value": 0.219077820832152,
+   "digits": 0,
+   "expected": "22%"
+  },
+  {
+   "value": 0.219077820832152,
+   "digits": 1,
+   "expected": "21.9%"
+  },
+  {
+   "value": 0.219077820832152,
+   "digits": 2,
+   "expected": "21.91%"
+  },
+  {
+   "value": 1.1264334354926646,
+   "digits": 0,
+   "expected": "113%"
+  },
+  {
+   "value": 1.1264334354926646,
+   "digits": 1,
+   "expected": "112.6%"
+  },
+  {
+   "value": 1.1264334354926646,
+   "digits": 2,
+   "expected": "112.64%"
+  },
+  {
+   "value": -0.5587574614557097,
+   "digits": 0,
+   "expected": "-56%"
+  },
+  {
+   "value": -0.5587574614557097,
+   "digits": 1,
+   "expected": "-55.9%"
+  },
+  {
+   "value": -0.5587574614557097,
+   "digits": 2,
+   "expected": "-55.88%"
+  },
+  {
+   "value": 0.585886098820978,
+   "digits": 0,
+   "expected": "59%"
+  },
+  {
+   "value": 0.585886098820978,
+   "digits": 1,
+   "expected": "58.6%"
+  },
+  {
+   "value": 0.585886098820978,
+   "digits": 2,
+   "expected": "58.59%"
+  },
+  {
+   "value": 0.2831096313150554,
+   "digits": 0,
+   "expected": "28%"
+  },
+  {
+   "value": 0.2831096313150554,
+   "digits": 1,
+   "expected": "28.3%"
+  },
+  {
+   "value": 0.2831096313150554,
+   "digits": 2,
+   "expected": "28.31%"
+  },
+  {
+   "value": 0.23968561284747647,
+   "digits": 0,
+   "expected": "24%"
+  },
+  {
+   "value": 0.23968561284747647,
+   "digits": 1,
+   "expected": "24.0%"
+  },
+  {
+   "value": 0.23968561284747647,
+   "digits": 2,
+   "expected": "23.97%"
+  },
+  {
+   "value": -0.13138400609576095,
+   "digits": 0,
+   "expected": "-13%"
+  },
+  {
+   "value": -0.13138400609576095,
+   "digits": 1,
+   "expected": "-13.1%"
+  },
+  {
+   "value": -0.13138400609576095,
+   "digits": 2,
+   "expected": "-13.14%"
+  },
+  {
+   "value": 1.0199033415376242,
+   "digits": 0,
+   "expected": "102%"
+  },
+  {
+   "value": 1.0199033415376242,
+   "digits": 1,
+   "expected": "102.0%"
+  },
+  {
+   "value": 1.0199033415376242,
+   "digits": 2,
+   "expected": "101.99%"
+  },
+  {
+   "value": 1.334043285323812,
+   "digits": 0,
+   "expected": "133%"
+  },
+  {
+   "value": 1.334043285323812,
+   "digits": 1,
+   "expected": "133.4%"
+  },
+  {
+   "value": 1.334043285323812,
+   "digits": 2,
+   "expected": "133.40%"
+  },
+  {
+   "value": -0.07770498774106649,
+   "digits": 0,
+   "expected": "-8%"
+  },
+  {
+   "value": -0.07770498774106649,
+   "digits": 1,
+   "expected": "-7.8%"
+  },
+  {
+   "value": -0.07770498774106649,
+   "digits": 2,
+   "expected": "-7.77%"
+  },
+  {
+   "value": 0.4924566164240234,
+   "digits": 0,
+   "expected": "49%"
+  },
+  {
+   "value": 0.4924566164240234,
+   "digits": 1,
+   "expected": "49.2%"
+  },
+  {
+   "value": 0.4924566164240234,
+   "digits": 2,
+   "expected": "49.25%"
+  },
+  {
+   "value": -1.3179917172083409,
+   "digits": 0,
+   "expected": "-132%"
+  },
+  {
+   "value": -1.3179917172083409,
+   "digits": 1,
+   "expected": "-131.8%"
+  },
+  {
+   "value": -1.3179917172083409,
+   "digits": 2,
+   "expected": "-131.80%"
+  },
+  {
+   "value": 0.6044760639132716,
+   "digits": 0,
+   "expected": "60%"
+  },
+  {
+   "value": 0.6044760639132716,
+   "digits": 1,
+   "expected": "60.4%"
+  },
+  {
+   "value": 0.6044760639132716,
+   "digits": 2,
+   "expected": "60.45%"
+  },
+  {
+   "value": 0.4413865635830063,
+   "digits": 0,
+   "expected": "44%"
+  },
+  {
+   "value": 0.4413865635830063,
+   "digits": 1,
+   "expected": "44.1%"
+  },
+  {
+   "value": 0.4413865635830063,
+   "digits": 2,
+   "expected": "44.14%"
+  },
+  {
+   "value": 1.4792878183999023,
+   "digits": 0,
+   "expected": "148%"
+  },
+  {
+   "value": 1.4792878183999023,
+   "digits": 1,
+   "expected": "147.9%"
+  },
+  {
+   "value": 1.4792878183999023,
+   "digits": 2,
+   "expected": "147.93%"
+  },
+  {
+   "value": 0.9657743598291448,
+   "digits": 0,
+   "expected": "97%"
+  },
+  {
+   "value": 0.9657743598291448,
+   "digits": 1,
+   "expected": "96.6%"
+  },
+  {
+   "value": 0.9657743598291448,
+   "digits": 2,
+   "expected": "96.58%"
+  },
+  {
+   "value": -0.6462134037175523,
+   "digits": 0,
+   "expected": "-65%"
+  },
+  {
+   "value": -0.6462134037175523,
+   "digits": 1,
+   "expected": "-64.6%"
+  },
+  {
+   "value": -0.6462134037175523,
+   "digits": 2,
+   "expected": "-64.62%"
+  },
+  {
+   "value": -0.34262567265986754,
+   "digits": 0,
+   "expected": "-34%"
+  },
+  {
+   "value": -0.34262567265986754,
+   "digits": 1,
+   "expected": "-34.3%"
+  },
+  {
+   "value": -0.34262567265986754,
+   "digits": 2,
+   "expected": "-34.26%"
+  },
+  {
+   "value": 0.5059581476525645,
+   "digits": 0,
+   "expected": "51%"
+  },
+  {
+   "value": 0.5059581476525645,
+   "digits": 1,
+   "expected": "50.6%"
+  },
+  {
+   "value": 0.5059581476525645,
+   "digits": 2,
+   "expected": "50.60%"
+  },
+  {
+   "value": -1.4323112158332343,
+   "digits": 0,
+   "expected": "-143%"
+  },
+  {
+   "value": -1.4323112158332343,
+   "digits": 1,
+   "expected": "-143.2%"
+  },
+  {
+   "value": -1.4323112158332343,
+   "digits": 2,
+   "expected": "-143.23%"
+  },
+  {
+   "value": -0.11491414110070242,
+   "digits": 0,
+   "expected": "-11%"
+  },
+  {
+   "value": -0.11491414110070242,
+   "digits": 1,
+   "expected": "-11.5%"
+  },
+  {
+   "value": -0.11491414110070242,
+   "digits": 2,
+   "expected": "-11.49%"
+  },
+  {
+   "value": -0.9958548632803663,
+   "digits": 0,
+   "expected": "-100%"
+  },
+  {
+   "value": -0.9958548632803663,
+   "digits": 1,
+   "expected": "-99.6%"
+  },
+  {
+   "value": -0.9958548632803663,
+   "digits": 2,
+   "expected": "-99.59%"
+  },
+  {
+   "value": -1.1487126165548043,
+   "digits": 0,
+   "expected": "-115%"
+  },
+  {
+   "value": -1.1487126165548043,
+   "digits": 1,
+   "expected": "-114.9%"
+  },
+  {
+   "value": -1.1487126165548043,
+   "digits": 2,
+   "expected": "-114.87%"
+  },
+  {
+   "value": -1.323136742006069,
+   "digits": 0,
+   "expected": "-132%"
+  },
+  {
+   "value": -1.323136742006069,
+   "digits": 1,
+   "expected": "-132.3%"
+  },
+  {
+   "value": -1.323136742006069,
+   "digits": 2,
+   "expected": "-132.31%"
+  },
+  {
+   "value": 0.804698965417562,
+   "digits": 0,
+   "expected": "80%"
+  },
+  {
+   "value": 0.804698965417562,
+   "digits": 1,
+   "expected": "80.5%"
+  },
+  {
+   "value": 0.804698965417562,
+   "digits": 2,
+   "expected": "80.47%"
+  },
+  {
+   "value": -1.1119793339439474,
+   "digits": 0,
+   "expected": "-111%"
+  },
+  {
+   "value": -1.1119793339439474,
+   "digits": 1,
+   "expected": "-111.2%"
+  },
+  {
+   "value": -1.1119793339439474,
+   "digits": 2,
+   "expected": "-111.20%"
+  },
+  {
+   "value": -0.7571554989092572,
+   "digits": 0,
+   "expected": "-76%"
+  },
+  {
+   "value": -0.7571554989092572,
+   "digits": 1,
+   "expected": "-75.7%"
+  },
+  {
+   "value": -0.7571554989092572,
+   "digits": 2,
+   "expected": "-75.72%"
+  },
+  {
+   "value": -0.3271508906003189,
+   "digits": 0,
+   "expected": "-33%"
+  },
+  {
+   "value": -0.3271508906003189,
+   "digits": 1,
+   "expected": "-32.7%"
+  },
+  {
+   "value": -0.3271508906003189,
+   "digits": 2,
+   "expected": "-32.72%"
+  },
+  {
+   "value": 1.1142659223788982,
+   "digits": 0,
+   "expected": "111%"
+  },
+  {
+   "value": 1.1142659223788982,
+   "digits": 1,
+   "expected": "111.4%"
+  },
+  {
+   "value": 1.1142659223788982,
+   "digits": 2,
+   "expected": "111.43%"
+  },
+  {
+   "value": -1.2582560963995841,
+   "digits": 0,
+   "expected": "-126%"
+  },
+  {
+   "value": -1.2582560963995841,
+   "digits": 1,
+   "expected": "-125.8%"
+  },
+  {
+   "value": -1.2582560963995841,
+   "digits": 2,
+   "expected": "-125.83%"
+  },
+  {
+   "value": -0.152437797152007,
+   "digits": 0,
+   "expected": "-15%"
+  },
+  {
+   "value": -0.152437797152007,
+   "digits": 1,
+   "expected": "-15.2%"
+  },
+  {
+   "value": -0.152437797152007,
+   "digits": 2,
+   "expected": "-15.24%"
+  },
+  {
+   "value": 0.1483197274321122,
+   "digits": 0,
+   "expected": "15%"
+  },
+  {
+   "value": 0.1483197274321122,
+   "digits": 1,
+   "expected": "14.8%"
+  },
+  {
+   "value": 0.1483197274321122,
+   "digits": 2,
+   "expected": "14.83%"
+  },
+  {
+   "value": 1.1501514793245375,
+   "digits": 0,
+   "expected": "115%"
+  },
+  {
+   "value": 1.1501514793245375,
+   "digits": 1,
+   "expected": "115.0%"
+  },
+  {
+   "value": 1.1501514793245375,
+   "digits": 2,
+   "expected": "115.02%"
+  },
+  {
+   "value": 0.9578395135072242,
+   "digits": 0,
+   "expected": "96%"
+  },
+  {
+   "value": 0.9578395135072242,
+   "digits": 1,
+   "expected": "95.8%"
+  },
+  {
+   "value": 0.9578395135072242,
+   "digits": 2,
+   "expected": "95.78%"
+  },
+  {
+   "value": 1.0919534090955456,
+   "digits": 0,
+   "expected": "109%"
+  },
+  {
+   "value": 1.0919534090955456,
+   "digits": 1,
+   "expected": "109.2%"
+  },
+  {
+   "value": 1.0919534090955456,
+   "digits": 2,
+   "expected": "109.20%"
+  },
+  {
+   "value": -0.6647368064583086,
+   "digits": 0,
+   "expected": "-66%"
+  },
+  {
+   "value": -0.6647368064583086,
+   "digits": 1,
+   "expected": "-66.5%"
+  },
+  {
+   "value": -0.6647368064583086,
+   "digits": 2,
+   "expected": "-66.47%"
+  },
+  {
+   "value": -0.25411044836490415,
+   "digits": 0,
+   "expected": "-25%"
+  },
+  {
+   "value": -0.25411044836490415,
+   "digits": 1,
+   "expected": "-25.4%"
+  },
+  {
+   "value": -0.25411044836490415,
+   "digits": 2,
+   "expected": "-25.41%"
+  },
+  {
+   "value": -0.42368650400512564,
+   "digits": 0,
+   "expected": "-42%"
+  },
+  {
+   "value": -0.42368650400512564,
+   "digits": 1,
+   "expected": "-42.4%"
+  },
+  {
+   "value": -0.42368650400512564,
+   "digits": 2,
+   "expected": "-42.37%"
+  },
+  {
+   "value": 1.152578481594651,
+   "digits": 0,
+   "expected": "115%"
+  },
+  {
+   "value": 1.152578481594651,
+   "digits": 1,
+   "expected": "115.3%"
+  },
+  {
+   "value": 1.152578481594651,
+   "digits": 2,
+   "expected": "115.26%"
+  },
+  {
+   "value": 1.3731936118919736,
+   "digits": 0,
+   "expected": "137%"
+  },
+  {
+   "value": 1.3731936118919736,
+   "digits": 1,
+   "expected": "137.3%"
+  },
+  {
+   "value": 1.3731936118919736,
+   "digits": 2,
+   "expected": "137.32%"
+  },
+  {
+   "value": -1.0472372826266731,
+   "digits": 0,
+   "expected": "-105%"
+  },
+  {
+   "value": -1.0472372826266731,
+   "digits": 1,
+   "expected": "-104.7%"
+  },
+  {
+   "value": -1.0472372826266731,
+   "digits": 2,
+   "expected": "-104.72%"
+  },
+  {
+   "value": -0.971346814528889,
+   "digits": 0,
+   "expected": "-97%"
+  },
+  {
+   "value": -0.971346814528889,
+   "digits": 1,
+   "expected": "-97.1%"
+  },
+  {
+   "value": -0.971346814528889,
+   "digits": 2,
+   "expected": "-97.13%"
+  },
+  {
+   "value": -0.8041293995413927,
+   "digits": 0,
+   "expected": "-80%"
+  },
+  {
+   "value": -0.8041293995413927,
+   "digits": 1,
+   "expected": "-80.4%"
+  },
+  {
+   "value": -0.8041293995413927,
+   "digits": 2,
+   "expected": "-80.41%"
+  },
+  {
+   "value": -0.7999917489574166,
+   "digits": 0,
+   "expected": "-80%"
+  },
+  {
+   "value": -0.7999917489574166,
+   "digits": 1,
+   "expected": "-80.0%"
+  },
+  {
+   "value": -0.7999917489574166,
+   "digits": 2,
+   "expected": "-80.00%"
+  },
+  {
+   "value": -0.045111808975930145,
+   "digits": 0,
+   "expected": "-5%"
+  },
+  {
+   "value": -0.045111808975930145,
+   "digits": 1,
+   "expected": "-4.5%"
+  },
+  {
+   "value": -0.045111808975930145,
+   "digits": 2,
+   "expected": "-4.51%"
+  },
+  {
+   "value": 0.2673705111967668,
+   "digits": 0,
+   "expected": "27%"
+  },
+  {
+   "value": 0.2673705111967668,
+   "digits": 1,
+   "expected": "26.7%"
+  },
+  {
+   "value": 0.2673705111967668,
+   "digits": 2,
+   "expected": "26.74%"
+  },
+  {
+   "value": -0.7117601421043862,
+   "digits": 0,
+   "expected": "-71%"
+  },
+  {
+   "value": -0.7117601421043862,
+   "digits": 1,
+   "expected": "-71.2%"
+  },
+  {
+   "value": -0.7117601421043862,
+   "digits": 2,
+   "expected": "-71.18%"
+  },
+  {
+   "value": -1.487719189844808,
+   "digits": 0,
+   "expected": "-149%"
+  },
+  {
+   "value": -1.487719189844808,
+   "digits": 1,
+   "expected": "-148.8%"
+  },
+  {
+   "value": -1.487719189844808,
+   "digits": 2,
+   "expected": "-148.77%"
+  },
+  {
+   "value": -0.24316049662401618,
+   "digits": 0,
+   "expected": "-24%"
+  },
+  {
+   "value": -0.24316049662401618,
+   "digits": 1,
+   "expected": "-24.3%"
+  },
+  {
+   "value": -0.24316049662401618,
+   "digits": 2,
+   "expected": "-24.32%"
+  },
+  {
+   "value": -0.392239281315824,
+   "digits": 0,
+   "expected": "-39%"
+  },
+  {
+   "value": -0.392239281315824,
+   "digits": 1,
+   "expected": "-39.2%"
+  },
+  {
+   "value": -0.392239281315824,
+   "digits": 2,
+   "expected": "-39.22%"
+  },
+  {
+   "value": 0.19902367111917574,
+   "digits": 0,
+   "expected": "20%"
+  },
+  {
+   "value": 0.19902367111917574,
+   "digits": 1,
+   "expected": "19.9%"
+  },
+  {
+   "value": 0.19902367111917574,
+   "digits": 2,
+   "expected": "19.90%"
+  },
+  {
+   "value": 1.359293776575286,
+   "digits": 0,
+   "expected": "136%"
+  },
+  {
+   "value": 1.359293776575286,
+   "digits": 1,
+   "expected": "135.9%"
+  },
+  {
+   "value": 1.359293776575286,
+   "digits": 2,
+   "expected": "135.93%"
+  },
+  {
+   "value": 0.5714809714079339,
+   "digits": 0,
+   "expected": "57%"
+  },
+  {
+   "value": 0.5714809714079339,
+   "digits": 1,
+   "expected": "57.1%"
+  },
+  {
+   "value": 0.5714809714079339,
+   "digits": 2,
+   "expected": "57.15%"
+  },
+  {
+   "value": 0.04647429921233526,
+   "digits": 0,
+   "expected": "5%"
+  },
+  {
+   "value": 0.04647429921233526,
+   "digits": 1,
+   "expected": "4.6%"
+  },
+  {
+   "value": 0.04647429921233526,
+   "digits": 2,
+   "expected": "4.65%"
+  },
+  {
+   "value": 0.3527782482273829,
+   "digits": 0,
+   "expected": "35%"
+  },
+  {
+   "value": 0.3527782482273829,
+   "digits": 1,
+   "expected": "35.3%"
+  },
+  {
+   "value": 0.3527782482273829,
+   "digits": 2,
+   "expected": "35.28%"
+  },
+  {
+   "value": 0.5286002473485043,
+   "digits": 0,
+   "expected": "53%"
+  },
+  {
+   "value": 0.5286002473485043,
+   "digits": 1,
+   "expected": "52.9%"
+  },
+  {
+   "value": 0.5286002473485043,
+   "digits": 2,
+   "expected": "52.86%"
+  },
+  {
+   "value": -1.3380213203286293,
+   "digits": 0,
+   "expected": "-134%"
+  },
+  {
+   "value": -1.3380213203286293,
+   "digits": 1,
+   "expected": "-133.8%"
+  },
+  {
+   "value": -1.3380213203286293,
+   "digits": 2,
+   "expected": "-133.80%"
+  },
+  {
+   "value": 1.1985990301738565,
+   "digits": 0,
+   "expected": "120%"
+  },
+  {
+   "value": 1.1985990301738565,
+   "digits": 1,
+   "expected": "119.9%"
+  },
+  {
+   "value": 1.1985990301738565,
+   "digits": 2,
+   "expected": "119.86%"
+  },
+  {
+   "value": 0.8399084721182186,
+   "digits": 0,
+   "expected": "84%"
+  },
+  {
+   "value": 0.8399084721182186,
+   "digits": 1,
+   "expected": "84.0%"
+  },
+  {
+   "value": 0.8399084721182186,
+   "digits": 2,
+   "expected": "83.99%"
+  },
+  {
+   "value": 1.1235395524034297,
+   "digits": 0,
+   "expected": "112%"
+  },
+  {
+   "value": 1.1235395524034297,
+   "digits": 1,
+   "expected": "112.4%"
+  },
+  {
+   "value": 1.1235395524034297,
+   "digits": 2,
+   "expected": "112.35%"
+  },
+  {
+   "value": 0.8936193635896981,
+   "digits": 0,
+   "expected": "89%"
+  },
+  {
+   "value": 0.8936193635896981,
+   "digits": 1,
+   "expected": "89.4%"
+  },
+  {
+   "value": 0.8936193635896981,
+   "digits": 2,
+   "expected": "89.36%"
+  },
+  {
+   "value": -0.3228632793261941,
+   "digits": 0,
+   "expected": "-32%"
+  },
+  {
+   "value": -0.3228632793261941,
+   "digits": 1,
+   "expected": "-32.3%"
+  },
+  {
+   "value": -0.3228632793261941,
+   "digits": 2,
+   "expected": "-32.29%"
+  },
+  {
+   "value": -0.30306350303918106,
+   "digits": 0,
+   "expected": "-30%"
+  },
+  {
+   "value": -0.30306350303918106,
+   "digits": 1,
+   "expected": "-30.3%"
+  },
+  {
+   "value": -0.30306350303918106,
+   "digits": 2,
+   "expected": "-30.31%"
+  },
+  {
+   "value": -1.189388718869027,
+   "digits": 0,
+   "expected": "-119%"
+  },
+  {
+   "value": -1.189388718869027,
+   "digits": 1,
+   "expected": "-118.9%"
+  },
+  {
+   "value": -1.189388718869027,
+   "digits": 2,
+   "expected": "-118.94%"
+  },
+  {
+   "value": 0.40286869705712713,
+   "digits": 0,
+   "expected": "40%"
+  },
+  {
+   "value": 0.40286869705712713,
+   "digits": 1,
+   "expected": "40.3%"
+  },
+  {
+   "value": 0.40286869705712713,
+   "digits": 2,
+   "expected": "40.29%"
+  },
+  {
+   "value": -1.3132565351439371,
+   "digits": 0,
+   "expected": "-131%"
+  },
+  {
+   "value": -1.3132565351439371,
+   "digits": 1,
+   "expected": "-131.3%"
+  },
+  {
+   "value": -1.3132565351439371,
+   "digits": 2,
+   "expected": "-131.33%"
+  },
+  {
+   "value": -1.2979571524709255,
+   "digits": 0,
+   "expected": "-130%"
+  },
+  {
+   "value": -1.2979571524709255,
+   "digits": 1,
+   "expected": "-129.8%"
+  },
+  {
+   "value": -1.2979571524709255,
+   "digits": 2,
+   "expected": "-129.80%"
+  },
+  {
+   "value": -0.8737104436615066,
+   "digits": 0,
+   "expected": "-87%"
+  },
+  {
+   "value": -0.8737104436615066,
+   "digits": 1,
+   "expected": "-87.4%"
+  },
+  {
+   "value": -0.8737104436615066,
+   "digits": 2,
+   "expected": "-87.37%"
+  },
+  {
+   "value": -1.013090436683708,
+   "digits": 0,
+   "expected": "-101%"
+  },
+  {
+   "value": -1.013090436683708,
+   "digits": 1,
+   "expected": "-101.3%"
+  },
+  {
+   "value": -1.013090436683708,
+   "digits": 2,
+   "expected": "-101.31%"
+  },
+  {
+   "value": -0.4798390433029698,
+   "digits": 0,
+   "expected": "-48%"
+  },
+  {
+   "value": -0.4798390433029698,
+   "digits": 1,
+   "expected": "-48.0%"
+  },
+  {
+   "value": -0.4798390433029698,
+   "digits": 2,
+   "expected": "-47.98%"
+  },
+  {
+   "value": -1.3422731883291992,
+   "digits": 0,
+   "expected": "-134%"
+  },
+  {
+   "value": -1.3422731883291992,
+   "digits": 1,
+   "expected": "-134.2%"
+  },
+  {
+   "value": -1.3422731883291992,
+   "digits": 2,
+   "expected": "-134.23%"
+  },
+  {
+   "value": -1.49930015429593,
+   "digits": 0,
+   "expected": "-150%"
+  },
+  {
+   "value": -1.49930015429593,
+   "digits": 1,
+   "expected": "-149.9%"
+  },
+  {
+   "value": -1.49930015429593,
+   "digits": 2,
+   "expected": "-149.93%"
+  },
+  {
+   "value": -1.0462052031617162,
+   "digits": 0,
+   "expected": "-105%"
+  },
+  {
+   "value": -1.0462052031617162,
+   "digits": 1,
+   "expected": "-104.6%"
+  },
+  {
+   "value": -1.0462052031617162,
+   "digits": 2,
+   "expected": "-104.62%"
+  },
+  {
+   "value": -1.1956068959322104,
+   "digits": 0,
+   "expected": "-120%"
+  },
+  {
+   "value": -1.1956068959322104,
+   "digits": 1,
+   "expected": "-119.6%"
+  },
+  {
+   "value": -1.1956068959322104,
+   "digits": 2,
+   "expected": "-119.56%"
+  },
+  {
+   "value": -0.40917023389628704,
+   "digits": 0,
+   "expected": "-41%"
+  },
+  {
+   "value": -0.40917023389628704,
+   "digits": 1,
+   "expected": "-40.9%"
+  },
+  {
+   "value": -0.40917023389628704,
+   "digits": 2,
+   "expected": "-40.92%"
+  },
+  {
+   "value": -1.423497340001563,
+   "digits": 0,
+   "expected": "-142%"
+  },
+  {
+   "value": -1.423497340001563,
+   "digits": 1,
+   "expected": "-142.3%"
+  },
+  {
+   "value": -1.423497340001563,
+   "digits": 2,
+   "expected": "-142.35%"
+  },
+  {
+   "value": 1.122997132121459,
+   "digits": 0,
+   "expected": "112%"
+  },
+  {
+   "value": 1.122997132121459,
+   "digits": 1,
+   "expected": "112.3%"
+  },
+  {
+   "value": 1.122997132121459,
+   "digits": 2,
+   "expected": "112.30%"
+  },
+  {
+   "value": 0.3422069633654363,
+   "digits": 0,
+   "expected": "34%"
+  },
+  {
+   "value": 0.3422069633654363,
+   "digits": 1,
+   "expected": "34.2%"
+  },
+  {
+   "value": 0.3422069633654363,
+   "digits": 2,
+   "expected": "34.22%"
+  },
+  {
+   "value": -1.0543485440073257,
+   "digits": 0,
+   "expected": "-105%"
+  },
+  {
+   "value": -1.0543485440073257,
+   "digits": 1,
+   "expected": "-105.4%"
+  },
+  {
+   "value": -1.0543485440073257,
+   "digits": 2,
+   "expected": "-105.43%"
+  },
+  {
+   "value": -0.7432267303287682,
+   "digits": 0,
+   "expected": "-74%"
+  },
+  {
+   "value": -0.7432267303287682,
+   "digits": 1,
+   "expected": "-74.3%"
+  },
+  {
+   "value": -0.7432267303287682,
+   "digits": 2,
+   "expected": "-74.32%"
+  },
+  {
+   "value": -0.4578313618388954,
+   "digits": 0,
+   "expected": "-46%"
+  },
+  {
+   "value": -0.4578313618388954,
+   "digits": 1,
+   "expected": "-45.8%"
+  },
+  {
+   "value": -0.4578313618388954,
+   "digits": 2,
+   "expected": "-45.78%"
+  },
+  {
+   "value": -0.40750968141515265,
+   "digits": 0,
+   "expected": "-41%"
+  },
+  {
+   "value": -0.40750968141515265,
+   "digits": 1,
+   "expected": "-40.8%"
+  },
+  {
+   "value": -0.40750968141515265,
+   "digits": 2,
+   "expected": "-40.75%"
+  },
+  {
+   "value": -1.1314733077134154,
+   "digits": 0,
+   "expected": "-113%"
+  },
+  {
+   "value": -1.1314733077134154,
+   "digits": 1,
+   "expected": "-113.1%"
+  },
+  {
+   "value": -1.1314733077134154,
+   "digits": 2,
+   "expected": "-113.15%"
+  },
+  {
+   "value": 1.0468107794538448,
+   "digits": 0,
+   "expected": "105%"
+  },
+  {
+   "value": 1.0468107794538448,
+   "digits": 1,
+   "expected": "104.7%"
+  },
+  {
+   "value": 1.0468107794538448,
+   "digits": 2,
+   "expected": "104.68%"
+  },
+  {
+   "value": 1.4793081651141415,
+   "digits": 0,
+   "expected": "148%"
+  },
+  {
+   "value": 1.4793081651141415,
+   "digits": 1,
+   "expected": "147.9%"
+  },
+  {
+   "value": 1.4793081651141415,
+   "digits": 2,
+   "expected": "147.93%"
+  },
+  {
+   "value": -0.1020316225201987,
+   "digits": 0,
+   "expected": "-10%"
+  },
+  {
+   "value": -0.1020316225201987,
+   "digits": 1,
+   "expected": "-10.2%"
+  },
+  {
+   "value": -0.1020316225201987,
+   "digits": 2,
+   "expected": "-10.20%"
+  },
+  {
+   "value": -0.04849603075119169,
+   "digits": 0,
+   "expected": "-5%"
+  },
+  {
+   "value": -0.04849603075119169,
+   "digits": 1,
+   "expected": "-4.8%"
+  },
+  {
+   "value": -0.04849603075119169,
+   "digits": 2,
+   "expected": "-4.85%"
+  },
+  {
+   "value": -1.2423460153315031,
+   "digits": 0,
+   "expected": "-124%"
+  },
+  {
+   "value": -1.2423460153315031,
+   "digits": 1,
+   "expected": "-124.2%"
+  },
+  {
+   "value": -1.2423460153315031,
+   "digits": 2,
+   "expected": "-124.23%"
+  },
+  {
+   "value": -1.1934371497554945,
+   "digits": 0,
+   "expected": "-119%"
+  },
+  {
+   "value": -1.1934371497554945,
+   "digits": 1,
+   "expected": "-119.3%"
+  },
+  {
+   "value": -1.1934371497554945,
+   "digits": 2,
+   "expected": "-119.34%"
+  },
+  {
+   "value": -0.47209248527099446,
+   "digits": 0,
+   "expected": "-47%"
+  },
+  {
+   "value": -0.47209248527099446,
+   "digits": 1,
+   "expected": "-47.2%"
+  },
+  {
+   "value": -0.47209248527099446,
+   "digits": 2,
+   "expected": "-47.21%"
+  },
+  {
+   "value": -0.7057293248484597,
+   "digits": 0,
+   "expected": "-71%"
+  },
+  {
+   "value": -0.7057293248484597,
+   "digits": 1,
+   "expected": "-70.6%"
+  },
+  {
+   "value": -0.7057293248484597,
+   "digits": 2,
+   "expected": "-70.57%"
+  }
+ ],
+ "signed_pct": [
+  {
+   "value": 0.1375,
+   "digits": 1,
+   "expected": "+13.8%"
+  },
+  {
+   "value": 0.1375,
+   "digits": 2,
+   "expected": "+13.75%"
+  },
+  {
+   "value": 0.0875,
+   "digits": 1,
+   "expected": "+8.8%"
+  },
+  {
+   "value": 0.0875,
+   "digits": 2,
+   "expected": "+8.75%"
+  },
+  {
+   "value": 0.125,
+   "digits": 1,
+   "expected": "+12.5%"
+  },
+  {
+   "value": 0.125,
+   "digits": 2,
+   "expected": "+12.50%"
+  },
+  {
+   "value": 0.0005,
+   "digits": 1,
+   "expected": "+0.1%"
+  },
+  {
+   "value": 0.0005,
+   "digits": 2,
+   "expected": "+0.05%"
+  },
+  {
+   "value": 0.00049999,
+   "digits": 1,
+   "expected": "+0.0%"
+  },
+  {
+   "value": 0.00049999,
+   "digits": 2,
+   "expected": "+0.05%"
+  },
+  {
+   "value": 0.995,
+   "digits": 1,
+   "expected": "+99.5%"
+  },
+  {
+   "value": 0.995,
+   "digits": 2,
+   "expected": "+99.50%"
+  },
+  {
+   "value": 0.9995,
+   "digits": 1,
+   "expected": "+100.0%"
+  },
+  {
+   "value": 0.9995,
+   "digits": 2,
+   "expected": "+99.95%"
+  },
+  {
+   "value": 1.0,
+   "digits": 1,
+   "expected": "+100.0%"
+  },
+  {
+   "value": 1.0,
+   "digits": 2,
+   "expected": "+100.00%"
+  },
+  {
+   "value": 0.0,
+   "digits": 1,
+   "expected": "+0.0%"
+  },
+  {
+   "value": 0.0,
+   "digits": 2,
+   "expected": "+0.00%"
+  },
+  {
+   "value": 1e-05,
+   "digits": 1,
+   "expected": "+0.0%"
+  },
+  {
+   "value": 1e-05,
+   "digits": 2,
+   "expected": "+0.00%"
+  },
+  {
+   "value": 0.045,
+   "digits": 1,
+   "expected": "+4.5%"
+  },
+  {
+   "value": 0.045,
+   "digits": 2,
+   "expected": "+4.50%"
+  },
+  {
+   "value": 0.0455,
+   "digits": 1,
+   "expected": "+4.6%"
+  },
+  {
+   "value": 0.0455,
+   "digits": 2,
+   "expected": "+4.55%"
+  },
+  {
+   "value": 0.04549999,
+   "digits": 1,
+   "expected": "+4.5%"
+  },
+  {
+   "value": 0.04549999,
+   "digits": 2,
+   "expected": "+4.55%"
+  },
+  {
+   "value": 0.15,
+   "digits": 1,
+   "expected": "+15.0%"
+  },
+  {
+   "value": 0.15,
+   "digits": 2,
+   "expected": "+15.00%"
+  },
+  {
+   "value": 0.085,
+   "digits": 1,
+   "expected": "+8.5%"
+  },
+  {
+   "value": 0.085,
+   "digits": 2,
+   "expected": "+8.50%"
+  },
+  {
+   "value": 0.0725,
+   "digits": 1,
+   "expected": "+7.3%"
+  },
+  {
+   "value": 0.0725,
+   "digits": 2,
+   "expected": "+7.25%"
+  },
+  {
+   "value": 0.01,
+   "digits": 1,
+   "expected": "+1.0%"
+  },
+  {
+   "value": 0.01,
+   "digits": 2,
+   "expected": "+1.00%"
+  },
+  {
+   "value": 0.2,
+   "digits": 1,
+   "expected": "+20.0%"
+  },
+  {
+   "value": 0.2,
+   "digits": 2,
+   "expected": "+20.00%"
+  },
+  {
+   "value": 0.3,
+   "digits": 1,
+   "expected": "+30.0%"
+  },
+  {
+   "value": 0.3,
+   "digits": 2,
+   "expected": "+30.00%"
+  },
+  {
+   "value": 0.30000000000000004,
+   "digits": 1,
+   "expected": "+30.0%"
+  },
+  {
+   "value": 0.30000000000000004,
+   "digits": 2,
+   "expected": "+30.00%"
+  },
+  {
+   "value": 0.3333333333333333,
+   "digits": 1,
+   "expected": "+33.3%"
+  },
+  {
+   "value": 0.3333333333333333,
+   "digits": 2,
+   "expected": "+33.33%"
+  },
+  {
+   "value": 0.6666666666666666,
+   "digits": 1,
+   "expected": "+66.7%"
+  },
+  {
+   "value": 0.6666666666666666,
+   "digits": 2,
+   "expected": "+66.67%"
+  },
+  {
+   "value": 1.2345,
+   "digits": 1,
+   "expected": "+123.5%"
+  },
+  {
+   "value": 1.2345,
+   "digits": 2,
+   "expected": "+123.45%"
+  },
+  {
+   "value": 12.345,
+   "digits": 1,
+   "expected": "+1234.5%"
+  },
+  {
+   "value": 12.345,
+   "digits": 2,
+   "expected": "+1234.50%"
+  },
+  {
+   "value": -0.1375,
+   "digits": 1,
+   "expected": "−13.8%"
+  },
+  {
+   "value": -0.1375,
+   "digits": 2,
+   "expected": "−13.75%"
+  },
+  {
+   "value": -0.0875,
+   "digits": 1,
+   "expected": "−8.8%"
+  },
+  {
+   "value": -0.0875,
+   "digits": 2,
+   "expected": "−8.75%"
+  },
+  {
+   "value": -0.125,
+   "digits": 1,
+   "expected": "−12.5%"
+  },
+  {
+   "value": -0.125,
+   "digits": 2,
+   "expected": "−12.50%"
+  },
+  {
+   "value": -0.0005,
+   "digits": 1,
+   "expected": "−0.1%"
+  },
+  {
+   "value": -0.0005,
+   "digits": 2,
+   "expected": "−0.05%"
+  },
+  {
+   "value": -0.00049999,
+   "digits": 1,
+   "expected": "−0.0%"
+  },
+  {
+   "value": -0.00049999,
+   "digits": 2,
+   "expected": "−0.05%"
+  },
+  {
+   "value": -0.995,
+   "digits": 1,
+   "expected": "−99.5%"
+  },
+  {
+   "value": -0.995,
+   "digits": 2,
+   "expected": "−99.50%"
+  },
+  {
+   "value": -0.9995,
+   "digits": 1,
+   "expected": "−100.0%"
+  },
+  {
+   "value": -0.9995,
+   "digits": 2,
+   "expected": "−99.95%"
+  },
+  {
+   "value": -1.0,
+   "digits": 1,
+   "expected": "−100.0%"
+  },
+  {
+   "value": -1.0,
+   "digits": 2,
+   "expected": "−100.00%"
+  },
+  {
+   "value": -0.0,
+   "digits": 1,
+   "expected": "+0.0%"
+  },
+  {
+   "value": -0.0,
+   "digits": 2,
+   "expected": "+0.00%"
+  },
+  {
+   "value": -1e-05,
+   "digits": 1,
+   "expected": "−0.0%"
+  },
+  {
+   "value": -1e-05,
+   "digits": 2,
+   "expected": "−0.00%"
+  },
+  {
+   "value": -0.045,
+   "digits": 1,
+   "expected": "−4.5%"
+  },
+  {
+   "value": -0.045,
+   "digits": 2,
+   "expected": "−4.50%"
+  },
+  {
+   "value": -0.0455,
+   "digits": 1,
+   "expected": "−4.6%"
+  },
+  {
+   "value": -0.0455,
+   "digits": 2,
+   "expected": "−4.55%"
+  },
+  {
+   "value": -0.04549999,
+   "digits": 1,
+   "expected": "−4.5%"
+  },
+  {
+   "value": -0.04549999,
+   "digits": 2,
+   "expected": "−4.55%"
+  },
+  {
+   "value": -0.15,
+   "digits": 1,
+   "expected": "−15.0%"
+  },
+  {
+   "value": -0.15,
+   "digits": 2,
+   "expected": "−15.00%"
+  },
+  {
+   "value": -0.085,
+   "digits": 1,
+   "expected": "−8.5%"
+  },
+  {
+   "value": -0.085,
+   "digits": 2,
+   "expected": "−8.50%"
+  },
+  {
+   "value": -0.0725,
+   "digits": 1,
+   "expected": "−7.3%"
+  },
+  {
+   "value": -0.0725,
+   "digits": 2,
+   "expected": "−7.25%"
+  },
+  {
+   "value": -0.01,
+   "digits": 1,
+   "expected": "−1.0%"
+  },
+  {
+   "value": -0.01,
+   "digits": 2,
+   "expected": "−1.00%"
+  },
+  {
+   "value": -0.2,
+   "digits": 1,
+   "expected": "−20.0%"
+  },
+  {
+   "value": -0.2,
+   "digits": 2,
+   "expected": "−20.00%"
+  },
+  {
+   "value": -0.3,
+   "digits": 1,
+   "expected": "−30.0%"
+  },
+  {
+   "value": -0.3,
+   "digits": 2,
+   "expected": "−30.00%"
+  },
+  {
+   "value": -0.30000000000000004,
+   "digits": 1,
+   "expected": "−30.0%"
+  },
+  {
+   "value": -0.30000000000000004,
+   "digits": 2,
+   "expected": "−30.00%"
+  },
+  {
+   "value": -0.3333333333333333,
+   "digits": 1,
+   "expected": "−33.3%"
+  },
+  {
+   "value": -0.3333333333333333,
+   "digits": 2,
+   "expected": "−33.33%"
+  },
+  {
+   "value": -0.6666666666666666,
+   "digits": 1,
+   "expected": "−66.7%"
+  },
+  {
+   "value": -0.6666666666666666,
+   "digits": 2,
+   "expected": "−66.67%"
+  },
+  {
+   "value": -1.2345,
+   "digits": 1,
+   "expected": "−123.5%"
+  },
+  {
+   "value": -1.2345,
+   "digits": 2,
+   "expected": "−123.45%"
+  },
+  {
+   "value": -12.345,
+   "digits": 1,
+   "expected": "−1234.5%"
+  },
+  {
+   "value": -12.345,
+   "digits": 2,
+   "expected": "−1234.50%"
+  },
+  {
+   "value": -0.5285017055005129,
+   "digits": 1,
+   "expected": "−52.9%"
+  },
+  {
+   "value": -0.5285017055005129,
+   "digits": 2,
+   "expected": "−52.85%"
+  },
+  {
+   "value": -1.0474524782264942,
+   "digits": 1,
+   "expected": "−104.7%"
+  },
+  {
+   "value": -1.0474524782264942,
+   "digits": 2,
+   "expected": "−104.75%"
+  },
+  {
+   "value": 0.4528034191195611,
+   "digits": 1,
+   "expected": "+45.3%"
+  },
+  {
+   "value": 0.4528034191195611,
+   "digits": 2,
+   "expected": "+45.28%"
+  },
+  {
+   "value": -1.2826911399973717,
+   "digits": 1,
+   "expected": "−128.3%"
+  },
+  {
+   "value": -1.2826911399973717,
+   "digits": 2,
+   "expected": "−128.27%"
+  },
+  {
+   "value": 0.10764601292006759,
+   "digits": 1,
+   "expected": "+10.8%"
+  },
+  {
+   "value": 0.10764601292006759,
+   "digits": 2,
+   "expected": "+10.76%"
+  },
+  {
+   "value": -0.4029332492622433,
+   "digits": 1,
+   "expected": "−40.3%"
+  },
+  {
+   "value": -0.4029332492622433,
+   "digits": 2,
+   "expected": "−40.29%"
+  },
+  {
+   "value": -1.3260032256758796,
+   "digits": 1,
+   "expected": "−132.6%"
+  },
+  {
+   "value": -1.3260032256758796,
+   "digits": 2,
+   "expected": "−132.60%"
+  },
+  {
+   "value": 0.02230719956826066,
+   "digits": 1,
+   "expected": "+2.2%"
+  },
+  {
+   "value": 0.02230719956826066,
+   "digits": 2,
+   "expected": "+2.23%"
+  },
+  {
+   "value": -1.3875130246740452,
+   "digits": 1,
+   "expected": "−138.8%"
+  },
+  {
+   "value": -1.3875130246740452,
+   "digits": 2,
+   "expected": "−138.75%"
+  },
+  {
+   "value": -0.19906294901284238,
+   "digits": 1,
+   "expected": "−19.9%"
+  },
+  {
+   "value": -0.19906294901284238,
+   "digits": 2,
+   "expected": "−19.91%"
+  },
+  {
+   "value": -1.2904337292761432,
+   "digits": 1,
+   "expected": "−129.0%"
+  },
+  {
+   "value": -1.2904337292761432,
+   "digits": 2,
+   "expected": "−129.04%"
+  },
+  {
+   "value": -1.227860959968405,
+   "digits": 1,
+   "expected": "−122.8%"
+  },
+  {
+   "value": -1.227860959968405,
+   "digits": 2,
+   "expected": "−122.79%"
+  },
+  {
+   "value": -0.2264424325724581,
+   "digits": 1,
+   "expected": "−22.6%"
+  },
+  {
+   "value": -0.2264424325724581,
+   "digits": 2,
+   "expected": "−22.64%"
+  },
+  {
+   "value": 0.9805563740161141,
+   "digits": 1,
+   "expected": "+98.1%"
+  },
+  {
+   "value": 0.9805563740161141,
+   "digits": 2,
+   "expected": "+98.06%"
+  },
+  {
+   "value": -1.1285941165510631,
+   "digits": 1,
+   "expected": "−112.9%"
+  },
+  {
+   "value": -1.1285941165510631,
+   "digits": 2,
+   "expected": "−112.86%"
+  },
+  {
+   "value": -0.8302831061789564,
+   "digits": 1,
+   "expected": "−83.0%"
+  },
+  {
+   "value": -0.8302831061789564,
+   "digits": 2,
+   "expected": "−83.03%"
+  },
+  {
+   "value": 0.3822996672167678,
+   "digits": 1,
+   "expected": "+38.2%"
+  },
+  {
+   "value": 0.3822996672167678,
+   "digits": 2,
+   "expected": "+38.23%"
+  },
+  {
+   "value": 1.3431268273710169,
+   "digits": 1,
+   "expected": "+134.3%"
+  },
+  {
+   "value": 1.3431268273710169,
+   "digits": 2,
+   "expected": "+134.31%"
+  },
+  {
+   "value": 0.2313088458524959,
+   "digits": 1,
+   "expected": "+23.1%"
+  },
+  {
+   "value": 0.2313088458524959,
+   "digits": 2,
+   "expected": "+23.13%"
+  },
+  {
+   "value": -0.30995857604765953,
+   "digits": 1,
+   "expected": "−31.0%"
+  },
+  {
+   "value": -0.30995857604765953,
+   "digits": 2,
+   "expected": "−31.00%"
+  },
+  {
+   "value": 1.42876531677876,
+   "digits": 1,
+   "expected": "+142.9%"
+  },
+  {
+   "value": 1.42876531677876,
+   "digits": 2,
+   "expected": "+142.88%"
+  },
+  {
+   "value": -1.3602519581467312,
+   "digits": 1,
+   "expected": "−136.0%"
+  },
+  {
+   "value": -1.3602519581467312,
+   "digits": 2,
+   "expected": "−136.03%"
+  },
+  {
+   "value": 1.0754053771460388,
+   "digits": 1,
+   "expected": "+107.5%"
+  },
+  {
+   "value": 1.0754053771460388,
+   "digits": 2,
+   "expected": "+107.54%"
+  },
+  {
+   "value": -0.6311721410049712,
+   "digits": 1,
+   "expected": "−63.1%"
+  },
+  {
+   "value": -0.6311721410049712,
+   "digits": 2,
+   "expected": "−63.12%"
+  },
+  {
+   "value": -1.0672347499276875,
+   "digits": 1,
+   "expected": "−106.7%"
+  },
+  {
+   "value": -1.0672347499276875,
+   "digits": 2,
+   "expected": "−106.72%"
+  },
+  {
+   "value": -1.1466232857648948,
+   "digits": 1,
+   "expected": "−114.7%"
+  },
+  {
+   "value": -1.1466232857648948,
+   "digits": 2,
+   "expected": "−114.66%"
+  },
+  {
+   "value": -0.5745545276941969,
+   "digits": 1,
+   "expected": "−57.5%"
+  },
+  {
+   "value": -0.5745545276941969,
+   "digits": 2,
+   "expected": "−57.46%"
+  },
+  {
+   "value": 0.9483790773600944,
+   "digits": 1,
+   "expected": "+94.8%"
+  },
+  {
+   "value": 0.9483790773600944,
+   "digits": 2,
+   "expected": "+94.84%"
+  },
+  {
+   "value": -0.9578208602281876,
+   "digits": 1,
+   "expected": "−95.8%"
+  },
+  {
+   "value": -0.9578208602281876,
+   "digits": 2,
+   "expected": "−95.78%"
+  },
+  {
+   "value": 0.24480049098739887,
+   "digits": 1,
+   "expected": "+24.5%"
+  },
+  {
+   "value": 0.24480049098739887,
+   "digits": 2,
+   "expected": "+24.48%"
+  },
+  {
+   "value": 0.41674040677855206,
+   "digits": 1,
+   "expected": "+41.7%"
+  },
+  {
+   "value": 0.41674040677855206,
+   "digits": 2,
+   "expected": "+41.67%"
+  },
+  {
+   "value": -0.38280737182280644,
+   "digits": 1,
+   "expected": "−38.3%"
+  },
+  {
+   "value": -0.38280737182280644,
+   "digits": 2,
+   "expected": "−38.28%"
+  },
+  {
+   "value": 0.14323339712867345,
+   "digits": 1,
+   "expected": "+14.3%"
+  },
+  {
+   "value": 0.14323339712867345,
+   "digits": 2,
+   "expected": "+14.32%"
+  },
+  {
+   "value": -1.3116330750800307,
+   "digits": 1,
+   "expected": "−131.2%"
+  },
+  {
+   "value": -1.3116330750800307,
+   "digits": 2,
+   "expected": "−131.16%"
+  },
+  {
+   "value": -1.321196490101302,
+   "digits": 1,
+   "expected": "−132.1%"
+  },
+  {
+   "value": -1.321196490101302,
+   "digits": 2,
+   "expected": "−132.12%"
+  },
+  {
+   "value": -0.8821238615420204,
+   "digits": 1,
+   "expected": "−88.2%"
+  },
+  {
+   "value": -0.8821238615420204,
+   "digits": 2,
+   "expected": "−88.21%"
+  },
+  {
+   "value": 0.5411999195453578,
+   "digits": 1,
+   "expected": "+54.1%"
+  },
+  {
+   "value": 0.5411999195453578,
+   "digits": 2,
+   "expected": "+54.12%"
+  },
+  {
+   "value": -0.21722308299179138,
+   "digits": 1,
+   "expected": "−21.7%"
+  },
+  {
+   "value": -0.21722308299179138,
+   "digits": 2,
+   "expected": "−21.72%"
+  },
+  {
+   "value": -0.5575584888696254,
+   "digits": 1,
+   "expected": "−55.8%"
+  },
+  {
+   "value": -0.5575584888696254,
+   "digits": 2,
+   "expected": "−55.76%"
+  },
+  {
+   "value": 0.2566855905229162,
+   "digits": 1,
+   "expected": "+25.7%"
+  },
+  {
+   "value": 0.2566855905229162,
+   "digits": 2,
+   "expected": "+25.67%"
+  },
+  {
+   "value": -0.14044687088767382,
+   "digits": 1,
+   "expected": "−14.0%"
+  },
+  {
+   "value": -0.14044687088767382,
+   "digits": 2,
+   "expected": "−14.04%"
+  },
+  {
+   "value": -0.6006990094089529,
+   "digits": 1,
+   "expected": "−60.1%"
+  },
+  {
+   "value": -0.6006990094089529,
+   "digits": 2,
+   "expected": "−60.07%"
+  },
+  {
+   "value": 0.8831384445674733,
+   "digits": 1,
+   "expected": "+88.3%"
+  },
+  {
+   "value": 0.8831384445674733,
+   "digits": 2,
+   "expected": "+88.31%"
+  },
+  {
+   "value": 0.5969833011887138,
+   "digits": 1,
+   "expected": "+59.7%"
+  },
+  {
+   "value": 0.5969833011887138,
+   "digits": 2,
+   "expected": "+59.70%"
+  },
+  {
+   "value": -0.7677104678335414,
+   "digits": 1,
+   "expected": "−76.8%"
+  },
+  {
+   "value": -0.7677104678335414,
+   "digits": 2,
+   "expected": "−76.77%"
+  },
+  {
+   "value": 0.22327113077601313,
+   "digits": 1,
+   "expected": "+22.3%"
+  },
+  {
+   "value": 0.22327113077601313,
+   "digits": 2,
+   "expected": "+22.33%"
+  },
+  {
+   "value": 0.07558951143435433,
+   "digits": 1,
+   "expected": "+7.6%"
+  },
+  {
+   "value": 0.07558951143435433,
+   "digits": 2,
+   "expected": "+7.56%"
+  },
+  {
+   "value": 1.1254124867202866,
+   "digits": 1,
+   "expected": "+112.5%"
+  },
+  {
+   "value": 1.1254124867202866,
+   "digits": 2,
+   "expected": "+112.54%"
+  },
+  {
+   "value": 0.6883358683176528,
+   "digits": 1,
+   "expected": "+68.8%"
+  },
+  {
+   "value": 0.6883358683176528,
+   "digits": 2,
+   "expected": "+68.83%"
+  },
+  {
+   "value": -0.6361867053294404,
+   "digits": 1,
+   "expected": "−63.6%"
+  },
+  {
+   "value": -0.6361867053294404,
+   "digits": 2,
+   "expected": "−63.62%"
+  },
+  {
+   "value": 1.4405245424777462,
+   "digits": 1,
+   "expected": "+144.1%"
+  },
+  {
+   "value": 1.4405245424777462,
+   "digits": 2,
+   "expected": "+144.05%"
+  },
+  {
+   "value": -1.1458026652351136,
+   "digits": 1,
+   "expected": "−114.6%"
+  },
+  {
+   "value": -1.1458026652351136,
+   "digits": 2,
+   "expected": "−114.58%"
+  },
+  {
+   "value": -0.24563153464431853,
+   "digits": 1,
+   "expected": "−24.6%"
+  },
+  {
+   "value": -0.24563153464431853,
+   "digits": 2,
+   "expected": "−24.56%"
+  },
+  {
+   "value": 0.7714227886957481,
+   "digits": 1,
+   "expected": "+77.1%"
+  },
+  {
+   "value": 0.7714227886957481,
+   "digits": 2,
+   "expected": "+77.14%"
+  },
+  {
+   "value": -1.0440463960184858,
+   "digits": 1,
+   "expected": "−104.4%"
+  },
+  {
+   "value": -1.0440463960184858,
+   "digits": 2,
+   "expected": "−104.40%"
+  },
+  {
+   "value": -0.033110698572583086,
+   "digits": 1,
+   "expected": "−3.3%"
+  },
+  {
+   "value": -0.033110698572583086,
+   "digits": 2,
+   "expected": "−3.31%"
+  },
+  {
+   "value": -1.3823782288576871,
+   "digits": 1,
+   "expected": "−138.2%"
+  },
+  {
+   "value": -1.3823782288576871,
+   "digits": 2,
+   "expected": "−138.24%"
+  },
+  {
+   "value": 0.5046475696031854,
+   "digits": 1,
+   "expected": "+50.5%"
+  },
+  {
+   "value": 0.5046475696031854,
+   "digits": 2,
+   "expected": "+50.46%"
+  },
+  {
+   "value": 0.7937125986384395,
+   "digits": 1,
+   "expected": "+79.4%"
+  },
+  {
+   "value": 0.7937125986384395,
+   "digits": 2,
+   "expected": "+79.37%"
+  },
+  {
+   "value": 0.219077820832152,
+   "digits": 1,
+   "expected": "+21.9%"
+  },
+  {
+   "value": 0.219077820832152,
+   "digits": 2,
+   "expected": "+21.91%"
+  },
+  {
+   "value": 1.1264334354926646,
+   "digits": 1,
+   "expected": "+112.6%"
+  },
+  {
+   "value": 1.1264334354926646,
+   "digits": 2,
+   "expected": "+112.64%"
+  },
+  {
+   "value": -0.5587574614557097,
+   "digits": 1,
+   "expected": "−55.9%"
+  },
+  {
+   "value": -0.5587574614557097,
+   "digits": 2,
+   "expected": "−55.88%"
+  },
+  {
+   "value": 0.585886098820978,
+   "digits": 1,
+   "expected": "+58.6%"
+  },
+  {
+   "value": 0.585886098820978,
+   "digits": 2,
+   "expected": "+58.59%"
+  },
+  {
+   "value": 0.2831096313150554,
+   "digits": 1,
+   "expected": "+28.3%"
+  },
+  {
+   "value": 0.2831096313150554,
+   "digits": 2,
+   "expected": "+28.31%"
+  },
+  {
+   "value": 0.23968561284747647,
+   "digits": 1,
+   "expected": "+24.0%"
+  },
+  {
+   "value": 0.23968561284747647,
+   "digits": 2,
+   "expected": "+23.97%"
+  },
+  {
+   "value": -0.13138400609576095,
+   "digits": 1,
+   "expected": "−13.1%"
+  },
+  {
+   "value": -0.13138400609576095,
+   "digits": 2,
+   "expected": "−13.14%"
+  },
+  {
+   "value": 1.0199033415376242,
+   "digits": 1,
+   "expected": "+102.0%"
+  },
+  {
+   "value": 1.0199033415376242,
+   "digits": 2,
+   "expected": "+101.99%"
+  },
+  {
+   "value": 1.334043285323812,
+   "digits": 1,
+   "expected": "+133.4%"
+  },
+  {
+   "value": 1.334043285323812,
+   "digits": 2,
+   "expected": "+133.40%"
+  },
+  {
+   "value": -0.07770498774106649,
+   "digits": 1,
+   "expected": "−7.8%"
+  },
+  {
+   "value": -0.07770498774106649,
+   "digits": 2,
+   "expected": "−7.77%"
+  },
+  {
+   "value": 0.4924566164240234,
+   "digits": 1,
+   "expected": "+49.2%"
+  },
+  {
+   "value": 0.4924566164240234,
+   "digits": 2,
+   "expected": "+49.25%"
+  },
+  {
+   "value": -1.3179917172083409,
+   "digits": 1,
+   "expected": "−131.8%"
+  },
+  {
+   "value": -1.3179917172083409,
+   "digits": 2,
+   "expected": "−131.80%"
+  },
+  {
+   "value": 0.6044760639132716,
+   "digits": 1,
+   "expected": "+60.4%"
+  },
+  {
+   "value": 0.6044760639132716,
+   "digits": 2,
+   "expected": "+60.45%"
+  },
+  {
+   "value": 0.4413865635830063,
+   "digits": 1,
+   "expected": "+44.1%"
+  },
+  {
+   "value": 0.4413865635830063,
+   "digits": 2,
+   "expected": "+44.14%"
+  },
+  {
+   "value": 1.4792878183999023,
+   "digits": 1,
+   "expected": "+147.9%"
+  },
+  {
+   "value": 1.4792878183999023,
+   "digits": 2,
+   "expected": "+147.93%"
+  },
+  {
+   "value": 0.9657743598291448,
+   "digits": 1,
+   "expected": "+96.6%"
+  },
+  {
+   "value": 0.9657743598291448,
+   "digits": 2,
+   "expected": "+96.58%"
+  },
+  {
+   "value": -0.6462134037175523,
+   "digits": 1,
+   "expected": "−64.6%"
+  },
+  {
+   "value": -0.6462134037175523,
+   "digits": 2,
+   "expected": "−64.62%"
+  },
+  {
+   "value": -0.34262567265986754,
+   "digits": 1,
+   "expected": "−34.3%"
+  },
+  {
+   "value": -0.34262567265986754,
+   "digits": 2,
+   "expected": "−34.26%"
+  },
+  {
+   "value": 0.5059581476525645,
+   "digits": 1,
+   "expected": "+50.6%"
+  },
+  {
+   "value": 0.5059581476525645,
+   "digits": 2,
+   "expected": "+50.60%"
+  },
+  {
+   "value": -1.4323112158332343,
+   "digits": 1,
+   "expected": "−143.2%"
+  },
+  {
+   "value": -1.4323112158332343,
+   "digits": 2,
+   "expected": "−143.23%"
+  },
+  {
+   "value": -0.11491414110070242,
+   "digits": 1,
+   "expected": "−11.5%"
+  },
+  {
+   "value": -0.11491414110070242,
+   "digits": 2,
+   "expected": "−11.49%"
+  },
+  {
+   "value": -0.9958548632803663,
+   "digits": 1,
+   "expected": "−99.6%"
+  },
+  {
+   "value": -0.9958548632803663,
+   "digits": 2,
+   "expected": "−99.59%"
+  },
+  {
+   "value": -1.1487126165548043,
+   "digits": 1,
+   "expected": "−114.9%"
+  },
+  {
+   "value": -1.1487126165548043,
+   "digits": 2,
+   "expected": "−114.87%"
+  },
+  {
+   "value": -1.323136742006069,
+   "digits": 1,
+   "expected": "−132.3%"
+  },
+  {
+   "value": -1.323136742006069,
+   "digits": 2,
+   "expected": "−132.31%"
+  },
+  {
+   "value": 0.804698965417562,
+   "digits": 1,
+   "expected": "+80.5%"
+  },
+  {
+   "value": 0.804698965417562,
+   "digits": 2,
+   "expected": "+80.47%"
+  },
+  {
+   "value": -1.1119793339439474,
+   "digits": 1,
+   "expected": "−111.2%"
+  },
+  {
+   "value": -1.1119793339439474,
+   "digits": 2,
+   "expected": "−111.20%"
+  },
+  {
+   "value": -0.7571554989092572,
+   "digits": 1,
+   "expected": "−75.7%"
+  },
+  {
+   "value": -0.7571554989092572,
+   "digits": 2,
+   "expected": "−75.72%"
+  },
+  {
+   "value": -0.3271508906003189,
+   "digits": 1,
+   "expected": "−32.7%"
+  },
+  {
+   "value": -0.3271508906003189,
+   "digits": 2,
+   "expected": "−32.72%"
+  },
+  {
+   "value": 1.1142659223788982,
+   "digits": 1,
+   "expected": "+111.4%"
+  },
+  {
+   "value": 1.1142659223788982,
+   "digits": 2,
+   "expected": "+111.43%"
+  },
+  {
+   "value": -1.2582560963995841,
+   "digits": 1,
+   "expected": "−125.8%"
+  },
+  {
+   "value": -1.2582560963995841,
+   "digits": 2,
+   "expected": "−125.83%"
+  },
+  {
+   "value": -0.152437797152007,
+   "digits": 1,
+   "expected": "−15.2%"
+  },
+  {
+   "value": -0.152437797152007,
+   "digits": 2,
+   "expected": "−15.24%"
+  },
+  {
+   "value": 0.1483197274321122,
+   "digits": 1,
+   "expected": "+14.8%"
+  },
+  {
+   "value": 0.1483197274321122,
+   "digits": 2,
+   "expected": "+14.83%"
+  },
+  {
+   "value": 1.1501514793245375,
+   "digits": 1,
+   "expected": "+115.0%"
+  },
+  {
+   "value": 1.1501514793245375,
+   "digits": 2,
+   "expected": "+115.02%"
+  },
+  {
+   "value": 0.9578395135072242,
+   "digits": 1,
+   "expected": "+95.8%"
+  },
+  {
+   "value": 0.9578395135072242,
+   "digits": 2,
+   "expected": "+95.78%"
+  },
+  {
+   "value": 1.0919534090955456,
+   "digits": 1,
+   "expected": "+109.2%"
+  },
+  {
+   "value": 1.0919534090955456,
+   "digits": 2,
+   "expected": "+109.20%"
+  },
+  {
+   "value": -0.6647368064583086,
+   "digits": 1,
+   "expected": "−66.5%"
+  },
+  {
+   "value": -0.6647368064583086,
+   "digits": 2,
+   "expected": "−66.47%"
+  },
+  {
+   "value": -0.25411044836490415,
+   "digits": 1,
+   "expected": "−25.4%"
+  },
+  {
+   "value": -0.25411044836490415,
+   "digits": 2,
+   "expected": "−25.41%"
+  },
+  {
+   "value": -0.42368650400512564,
+   "digits": 1,
+   "expected": "−42.4%"
+  },
+  {
+   "value": -0.42368650400512564,
+   "digits": 2,
+   "expected": "−42.37%"
+  },
+  {
+   "value": 1.152578481594651,
+   "digits": 1,
+   "expected": "+115.3%"
+  },
+  {
+   "value": 1.152578481594651,
+   "digits": 2,
+   "expected": "+115.26%"
+  },
+  {
+   "value": 1.3731936118919736,
+   "digits": 1,
+   "expected": "+137.3%"
+  },
+  {
+   "value": 1.3731936118919736,
+   "digits": 2,
+   "expected": "+137.32%"
+  },
+  {
+   "value": -1.0472372826266731,
+   "digits": 1,
+   "expected": "−104.7%"
+  },
+  {
+   "value": -1.0472372826266731,
+   "digits": 2,
+   "expected": "−104.72%"
+  },
+  {
+   "value": -0.971346814528889,
+   "digits": 1,
+   "expected": "−97.1%"
+  },
+  {
+   "value": -0.971346814528889,
+   "digits": 2,
+   "expected": "−97.13%"
+  },
+  {
+   "value": -0.8041293995413927,
+   "digits": 1,
+   "expected": "−80.4%"
+  },
+  {
+   "value": -0.8041293995413927,
+   "digits": 2,
+   "expected": "−80.41%"
+  },
+  {
+   "value": -0.7999917489574166,
+   "digits": 1,
+   "expected": "−80.0%"
+  },
+  {
+   "value": -0.7999917489574166,
+   "digits": 2,
+   "expected": "−80.00%"
+  },
+  {
+   "value": -0.045111808975930145,
+   "digits": 1,
+   "expected": "−4.5%"
+  },
+  {
+   "value": -0.045111808975930145,
+   "digits": 2,
+   "expected": "−4.51%"
+  },
+  {
+   "value": 0.2673705111967668,
+   "digits": 1,
+   "expected": "+26.7%"
+  },
+  {
+   "value": 0.2673705111967668,
+   "digits": 2,
+   "expected": "+26.74%"
+  },
+  {
+   "value": -0.7117601421043862,
+   "digits": 1,
+   "expected": "−71.2%"
+  },
+  {
+   "value": -0.7117601421043862,
+   "digits": 2,
+   "expected": "−71.18%"
+  },
+  {
+   "value": -1.487719189844808,
+   "digits": 1,
+   "expected": "−148.8%"
+  },
+  {
+   "value": -1.487719189844808,
+   "digits": 2,
+   "expected": "−148.77%"
+  },
+  {
+   "value": -0.24316049662401618,
+   "digits": 1,
+   "expected": "−24.3%"
+  },
+  {
+   "value": -0.24316049662401618,
+   "digits": 2,
+   "expected": "−24.32%"
+  },
+  {
+   "value": -0.392239281315824,
+   "digits": 1,
+   "expected": "−39.2%"
+  },
+  {
+   "value": -0.392239281315824,
+   "digits": 2,
+   "expected": "−39.22%"
+  },
+  {
+   "value": 0.19902367111917574,
+   "digits": 1,
+   "expected": "+19.9%"
+  },
+  {
+   "value": 0.19902367111917574,
+   "digits": 2,
+   "expected": "+19.90%"
+  },
+  {
+   "value": 1.359293776575286,
+   "digits": 1,
+   "expected": "+135.9%"
+  },
+  {
+   "value": 1.359293776575286,
+   "digits": 2,
+   "expected": "+135.93%"
+  },
+  {
+   "value": 0.5714809714079339,
+   "digits": 1,
+   "expected": "+57.1%"
+  },
+  {
+   "value": 0.5714809714079339,
+   "digits": 2,
+   "expected": "+57.15%"
+  },
+  {
+   "value": 0.04647429921233526,
+   "digits": 1,
+   "expected": "+4.6%"
+  },
+  {
+   "value": 0.04647429921233526,
+   "digits": 2,
+   "expected": "+4.65%"
+  },
+  {
+   "value": 0.3527782482273829,
+   "digits": 1,
+   "expected": "+35.3%"
+  },
+  {
+   "value": 0.3527782482273829,
+   "digits": 2,
+   "expected": "+35.28%"
+  },
+  {
+   "value": 0.5286002473485043,
+   "digits": 1,
+   "expected": "+52.9%"
+  },
+  {
+   "value": 0.5286002473485043,
+   "digits": 2,
+   "expected": "+52.86%"
+  },
+  {
+   "value": -1.3380213203286293,
+   "digits": 1,
+   "expected": "−133.8%"
+  },
+  {
+   "value": -1.3380213203286293,
+   "digits": 2,
+   "expected": "−133.80%"
+  },
+  {
+   "value": 1.1985990301738565,
+   "digits": 1,
+   "expected": "+119.9%"
+  },
+  {
+   "value": 1.1985990301738565,
+   "digits": 2,
+   "expected": "+119.86%"
+  },
+  {
+   "value": 0.8399084721182186,
+   "digits": 1,
+   "expected": "+84.0%"
+  },
+  {
+   "value": 0.8399084721182186,
+   "digits": 2,
+   "expected": "+83.99%"
+  },
+  {
+   "value": 1.1235395524034297,
+   "digits": 1,
+   "expected": "+112.4%"
+  },
+  {
+   "value": 1.1235395524034297,
+   "digits": 2,
+   "expected": "+112.35%"
+  },
+  {
+   "value": 0.8936193635896981,
+   "digits": 1,
+   "expected": "+89.4%"
+  },
+  {
+   "value": 0.8936193635896981,
+   "digits": 2,
+   "expected": "+89.36%"
+  },
+  {
+   "value": -0.3228632793261941,
+   "digits": 1,
+   "expected": "−32.3%"
+  },
+  {
+   "value": -0.3228632793261941,
+   "digits": 2,
+   "expected": "−32.29%"
+  },
+  {
+   "value": -0.30306350303918106,
+   "digits": 1,
+   "expected": "−30.3%"
+  },
+  {
+   "value": -0.30306350303918106,
+   "digits": 2,
+   "expected": "−30.31%"
+  },
+  {
+   "value": -1.189388718869027,
+   "digits": 1,
+   "expected": "−118.9%"
+  },
+  {
+   "value": -1.189388718869027,
+   "digits": 2,
+   "expected": "−118.94%"
+  },
+  {
+   "value": 0.40286869705712713,
+   "digits": 1,
+   "expected": "+40.3%"
+  },
+  {
+   "value": 0.40286869705712713,
+   "digits": 2,
+   "expected": "+40.29%"
+  },
+  {
+   "value": -1.3132565351439371,
+   "digits": 1,
+   "expected": "−131.3%"
+  },
+  {
+   "value": -1.3132565351439371,
+   "digits": 2,
+   "expected": "−131.33%"
+  },
+  {
+   "value": -1.2979571524709255,
+   "digits": 1,
+   "expected": "−129.8%"
+  },
+  {
+   "value": -1.2979571524709255,
+   "digits": 2,
+   "expected": "−129.80%"
+  },
+  {
+   "value": -0.8737104436615066,
+   "digits": 1,
+   "expected": "−87.4%"
+  },
+  {
+   "value": -0.8737104436615066,
+   "digits": 2,
+   "expected": "−87.37%"
+  },
+  {
+   "value": -1.013090436683708,
+   "digits": 1,
+   "expected": "−101.3%"
+  },
+  {
+   "value": -1.013090436683708,
+   "digits": 2,
+   "expected": "−101.31%"
+  },
+  {
+   "value": -0.4798390433029698,
+   "digits": 1,
+   "expected": "−48.0%"
+  },
+  {
+   "value": -0.4798390433029698,
+   "digits": 2,
+   "expected": "−47.98%"
+  },
+  {
+   "value": -1.3422731883291992,
+   "digits": 1,
+   "expected": "−134.2%"
+  },
+  {
+   "value": -1.3422731883291992,
+   "digits": 2,
+   "expected": "−134.23%"
+  },
+  {
+   "value": -1.49930015429593,
+   "digits": 1,
+   "expected": "−149.9%"
+  },
+  {
+   "value": -1.49930015429593,
+   "digits": 2,
+   "expected": "−149.93%"
+  },
+  {
+   "value": -1.0462052031617162,
+   "digits": 1,
+   "expected": "−104.6%"
+  },
+  {
+   "value": -1.0462052031617162,
+   "digits": 2,
+   "expected": "−104.62%"
+  },
+  {
+   "value": -1.1956068959322104,
+   "digits": 1,
+   "expected": "−119.6%"
+  },
+  {
+   "value": -1.1956068959322104,
+   "digits": 2,
+   "expected": "−119.56%"
+  },
+  {
+   "value": -0.40917023389628704,
+   "digits": 1,
+   "expected": "−40.9%"
+  },
+  {
+   "value": -0.40917023389628704,
+   "digits": 2,
+   "expected": "−40.92%"
+  },
+  {
+   "value": -1.423497340001563,
+   "digits": 1,
+   "expected": "−142.3%"
+  },
+  {
+   "value": -1.423497340001563,
+   "digits": 2,
+   "expected": "−142.35%"
+  },
+  {
+   "value": 1.122997132121459,
+   "digits": 1,
+   "expected": "+112.3%"
+  },
+  {
+   "value": 1.122997132121459,
+   "digits": 2,
+   "expected": "+112.30%"
+  },
+  {
+   "value": 0.3422069633654363,
+   "digits": 1,
+   "expected": "+34.2%"
+  },
+  {
+   "value": 0.3422069633654363,
+   "digits": 2,
+   "expected": "+34.22%"
+  },
+  {
+   "value": -1.0543485440073257,
+   "digits": 1,
+   "expected": "−105.4%"
+  },
+  {
+   "value": -1.0543485440073257,
+   "digits": 2,
+   "expected": "−105.43%"
+  },
+  {
+   "value": -0.7432267303287682,
+   "digits": 1,
+   "expected": "−74.3%"
+  },
+  {
+   "value": -0.7432267303287682,
+   "digits": 2,
+   "expected": "−74.32%"
+  },
+  {
+   "value": -0.4578313618388954,
+   "digits": 1,
+   "expected": "−45.8%"
+  },
+  {
+   "value": -0.4578313618388954,
+   "digits": 2,
+   "expected": "−45.78%"
+  },
+  {
+   "value": -0.40750968141515265,
+   "digits": 1,
+   "expected": "−40.8%"
+  },
+  {
+   "value": -0.40750968141515265,
+   "digits": 2,
+   "expected": "−40.75%"
+  },
+  {
+   "value": -1.1314733077134154,
+   "digits": 1,
+   "expected": "−113.1%"
+  },
+  {
+   "value": -1.1314733077134154,
+   "digits": 2,
+   "expected": "−113.15%"
+  },
+  {
+   "value": 1.0468107794538448,
+   "digits": 1,
+   "expected": "+104.7%"
+  },
+  {
+   "value": 1.0468107794538448,
+   "digits": 2,
+   "expected": "+104.68%"
+  },
+  {
+   "value": 1.4793081651141415,
+   "digits": 1,
+   "expected": "+147.9%"
+  },
+  {
+   "value": 1.4793081651141415,
+   "digits": 2,
+   "expected": "+147.93%"
+  },
+  {
+   "value": -0.1020316225201987,
+   "digits": 1,
+   "expected": "−10.2%"
+  },
+  {
+   "value": -0.1020316225201987,
+   "digits": 2,
+   "expected": "−10.20%"
+  },
+  {
+   "value": -0.04849603075119169,
+   "digits": 1,
+   "expected": "−4.8%"
+  },
+  {
+   "value": -0.04849603075119169,
+   "digits": 2,
+   "expected": "−4.85%"
+  },
+  {
+   "value": -1.2423460153315031,
+   "digits": 1,
+   "expected": "−124.2%"
+  },
+  {
+   "value": -1.2423460153315031,
+   "digits": 2,
+   "expected": "−124.23%"
+  },
+  {
+   "value": -1.1934371497554945,
+   "digits": 1,
+   "expected": "−119.3%"
+  },
+  {
+   "value": -1.1934371497554945,
+   "digits": 2,
+   "expected": "−119.34%"
+  },
+  {
+   "value": -0.47209248527099446,
+   "digits": 1,
+   "expected": "−47.2%"
+  },
+  {
+   "value": -0.47209248527099446,
+   "digits": 2,
+   "expected": "−47.21%"
+  },
+  {
+   "value": -0.7057293248484597,
+   "digits": 1,
+   "expected": "−70.6%"
+  },
+  {
+   "value": -0.7057293248484597,
+   "digits": 2,
+   "expected": "−70.57%"
+  }
+ ],
+ "cr": [
+  {
+   "value": 0.0,
+   "digits": 0,
+   "expected": "₹0 Cr"
+  },
+  {
+   "value": 0.0,
+   "digits": 1,
+   "expected": "₹0.0 Cr"
+  },
+  {
+   "value": 0.05,
+   "digits": 0,
+   "expected": "₹0 Cr"
+  },
+  {
+   "value": 0.05,
+   "digits": 1,
+   "expected": "₹0.1 Cr"
+  },
+  {
+   "value": 0.04999,
+   "digits": 0,
+   "expected": "₹0 Cr"
+  },
+  {
+   "value": 0.04999,
+   "digits": 1,
+   "expected": "₹0.0 Cr"
+  },
+  {
+   "value": 0.95,
+   "digits": 0,
+   "expected": "₹1 Cr"
+  },
+  {
+   "value": 0.95,
+   "digits": 1,
+   "expected": "₹1.0 Cr"
+  },
+  {
+   "value": 137.5,
+   "digits": 0,
+   "expected": "₹138 Cr"
+  },
+  {
+   "value": 137.5,
+   "digits": 1,
+   "expected": "₹137.5 Cr"
+  },
+  {
+   "value": 137.25,
+   "digits": 0,
+   "expected": "₹137 Cr"
+  },
+  {
+   "value": 137.25,
+   "digits": 1,
+   "expected": "₹137.3 Cr"
+  },
+  {
+   "value": 137.35,
+   "digits": 0,
+   "expected": "₹137 Cr"
+  },
+  {
+   "value": 137.35,
+   "digits": 1,
+   "expected": "₹137.4 Cr"
+  },
+  {
+   "value": 1000.0,
+   "digits": 0,
+   "expected": "₹1,000 Cr"
+  },
+  {
+   "value": 1000.0,
+   "digits": 1,
+   "expected": "₹1,000.0 Cr"
+  },
+  {
+   "value": 1234.56,
+   "digits": 0,
+   "expected": "₹1,235 Cr"
+  },
+  {
+   "value": 1234.56,
+   "digits": 1,
+   "expected": "₹1,234.6 Cr"
+  },
+  {
+   "value": 12345.678,
+   "digits": 0,
+   "expected": "₹12,346 Cr"
+  },
+  {
+   "value": 12345.678,
+   "digits": 1,
+   "expected": "₹12,345.7 Cr"
+  },
+  {
+   "value": 999999.95,
+   "digits": 0,
+   "expected": "₹1,000,000 Cr"
+  },
+  {
+   "value": 999999.95,
+   "digits": 1,
+   "expected": "₹1,000,000.0 Cr"
+  },
+  {
+   "value": 0.30000000000000004,
+   "digits": 0,
+   "expected": "₹0 Cr"
+  },
+  {
+   "value": 0.30000000000000004,
+   "digits": 1,
+   "expected": "₹0.3 Cr"
+  },
+  {
+   "value": 45.0,
+   "digits": 0,
+   "expected": "₹45 Cr"
+  },
+  {
+   "value": 45.0,
+   "digits": 1,
+   "expected": "₹45.0 Cr"
+  },
+  {
+   "value": 63.7,
+   "digits": 0,
+   "expected": "₹64 Cr"
+  },
+  {
+   "value": 63.7,
+   "digits": 1,
+   "expected": "₹63.7 Cr"
+  },
+  {
+   "value": 39.7,
+   "digits": 0,
+   "expected": "₹40 Cr"
+  },
+  {
+   "value": 39.7,
+   "digits": 1,
+   "expected": "₹39.7 Cr"
+  },
+  {
+   "value": -0.0,
+   "digits": 0,
+   "expected": "₹-0 Cr"
+  },
+  {
+   "value": -0.0,
+   "digits": 1,
+   "expected": "₹-0.0 Cr"
+  },
+  {
+   "value": -0.05,
+   "digits": 0,
+   "expected": "₹-0 Cr"
+  },
+  {
+   "value": -0.05,
+   "digits": 1,
+   "expected": "₹-0.1 Cr"
+  },
+  {
+   "value": -0.04999,
+   "digits": 0,
+   "expected": "₹-0 Cr"
+  },
+  {
+   "value": -0.04999,
+   "digits": 1,
+   "expected": "₹-0.0 Cr"
+  },
+  {
+   "value": -0.95,
+   "digits": 0,
+   "expected": "₹-1 Cr"
+  },
+  {
+   "value": -0.95,
+   "digits": 1,
+   "expected": "₹-1.0 Cr"
+  },
+  {
+   "value": -137.5,
+   "digits": 0,
+   "expected": "₹-138 Cr"
+  },
+  {
+   "value": -137.5,
+   "digits": 1,
+   "expected": "₹-137.5 Cr"
+  },
+  {
+   "value": -137.25,
+   "digits": 0,
+   "expected": "₹-137 Cr"
+  },
+  {
+   "value": -137.25,
+   "digits": 1,
+   "expected": "₹-137.3 Cr"
+  },
+  {
+   "value": -137.35,
+   "digits": 0,
+   "expected": "₹-137 Cr"
+  },
+  {
+   "value": -137.35,
+   "digits": 1,
+   "expected": "₹-137.4 Cr"
+  },
+  {
+   "value": -1000.0,
+   "digits": 0,
+   "expected": "₹-1,000 Cr"
+  },
+  {
+   "value": -1000.0,
+   "digits": 1,
+   "expected": "₹-1,000.0 Cr"
+  },
+  {
+   "value": -1234.56,
+   "digits": 0,
+   "expected": "₹-1,235 Cr"
+  },
+  {
+   "value": -1234.56,
+   "digits": 1,
+   "expected": "₹-1,234.6 Cr"
+  },
+  {
+   "value": -12345.678,
+   "digits": 0,
+   "expected": "₹-12,346 Cr"
+  },
+  {
+   "value": -12345.678,
+   "digits": 1,
+   "expected": "₹-12,345.7 Cr"
+  },
+  {
+   "value": -999999.95,
+   "digits": 0,
+   "expected": "₹-1,000,000 Cr"
+  },
+  {
+   "value": -999999.95,
+   "digits": 1,
+   "expected": "₹-1,000,000.0 Cr"
+  },
+  {
+   "value": -0.30000000000000004,
+   "digits": 0,
+   "expected": "₹-0 Cr"
+  },
+  {
+   "value": -0.30000000000000004,
+   "digits": 1,
+   "expected": "₹-0.3 Cr"
+  },
+  {
+   "value": -45.0,
+   "digits": 0,
+   "expected": "₹-45 Cr"
+  },
+  {
+   "value": -45.0,
+   "digits": 1,
+   "expected": "₹-45.0 Cr"
+  },
+  {
+   "value": -63.7,
+   "digits": 0,
+   "expected": "₹-64 Cr"
+  },
+  {
+   "value": -63.7,
+   "digits": 1,
+   "expected": "₹-63.7 Cr"
+  },
+  {
+   "value": -39.7,
+   "digits": 0,
+   "expected": "₹-40 Cr"
+  },
+  {
+   "value": -39.7,
+   "digits": 1,
+   "expected": "₹-39.7 Cr"
+  },
+  {
+   "value": 4144.276890607803,
+   "digits": 0,
+   "expected": "₹4,144 Cr"
+  },
+  {
+   "value": 4144.276890607803,
+   "digits": 1,
+   "expected": "₹4,144.3 Cr"
+  },
+  {
+   "value": 807.1930526321574,
+   "digits": 0,
+   "expected": "₹807 Cr"
+  },
+  {
+   "value": 807.1930526321574,
+   "digits": 1,
+   "expected": "₹807.2 Cr"
+  },
+  {
+   "value": 115.47860522624076,
+   "digits": 0,
+   "expected": "₹115 Cr"
+  },
+  {
+   "value": 115.47860522624076,
+   "digits": 1,
+   "expected": "₹115.5 Cr"
+  },
+  {
+   "value": 4754.927864373511,
+   "digits": 0,
+   "expected": "₹4,755 Cr"
+  },
+  {
+   "value": 4754.927864373511,
+   "digits": 1,
+   "expected": "₹4,754.9 Cr"
+  },
+  {
+   "value": 2641.286975210624,
+   "digits": 0,
+   "expected": "₹2,641 Cr"
+  },
+  {
+   "value": 2641.286975210624,
+   "digits": 1,
+   "expected": "₹2,641.3 Cr"
+  },
+  {
+   "value": 733.0126944954535,
+   "digits": 0,
+   "expected": "₹733 Cr"
+  },
+  {
+   "value": 733.0126944954535,
+   "digits": 1,
+   "expected": "₹733.0 Cr"
+  },
+  {
+   "value": 2715.862129410572,
+   "digits": 0,
+   "expected": "₹2,716 Cr"
+  },
+  {
+   "value": 2715.862129410572,
+   "digits": 1,
+   "expected": "₹2,715.9 Cr"
+  },
+  {
+   "value": 135.21245711084262,
+   "digits": 0,
+   "expected": "₹135 Cr"
+  },
+  {
+   "value": 135.21245711084262,
+   "digits": 1,
+   "expected": "₹135.2 Cr"
+  },
+  {
+   "value": 2640.5472046915324,
+   "digits": 0,
+   "expected": "₹2,641 Cr"
+  },
+  {
+   "value": 2640.5472046915324,
+   "digits": 1,
+   "expected": "₹2,640.5 Cr"
+  },
+  {
+   "value": 4892.506213594864,
+   "digits": 0,
+   "expected": "₹4,893 Cr"
+  },
+  {
+   "value": 4892.506213594864,
+   "digits": 1,
+   "expected": "₹4,892.5 Cr"
+  },
+  {
+   "value": 4316.625151448345,
+   "digits": 0,
+   "expected": "₹4,317 Cr"
+  },
+  {
+   "value": 4316.625151448345,
+   "digits": 1,
+   "expected": "₹4,316.6 Cr"
+  },
+  {
+   "value": 3480.9839295390093,
+   "digits": 0,
+   "expected": "₹3,481 Cr"
+  },
+  {
+   "value": 3480.9839295390093,
+   "digits": 1,
+   "expected": "₹3,481.0 Cr"
+  },
+  {
+   "value": 1305.5759861468098,
+   "digits": 0,
+   "expected": "₹1,306 Cr"
+  },
+  {
+   "value": 1305.5759861468098,
+   "digits": 1,
+   "expected": "₹1,305.6 Cr"
+  },
+  {
+   "value": 1833.4989588058943,
+   "digits": 0,
+   "expected": "₹1,833 Cr"
+  },
+  {
+   "value": 1833.4989588058943,
+   "digits": 1,
+   "expected": "₹1,833.5 Cr"
+  },
+  {
+   "value": 835.2101726716816,
+   "digits": 0,
+   "expected": "₹835 Cr"
+  },
+  {
+   "value": 835.2101726716816,
+   "digits": 1,
+   "expected": "₹835.2 Cr"
+  },
+  {
+   "value": 3859.6895420101564,
+   "digits": 0,
+   "expected": "₹3,860 Cr"
+  },
+  {
+   "value": 3859.6895420101564,
+   "digits": 1,
+   "expected": "₹3,859.7 Cr"
+  },
+  {
+   "value": 2662.961987464395,
+   "digits": 0,
+   "expected": "₹2,663 Cr"
+  },
+  {
+   "value": 2662.961987464395,
+   "digits": 1,
+   "expected": "₹2,663.0 Cr"
+  },
+  {
+   "value": 3895.274456690886,
+   "digits": 0,
+   "expected": "₹3,895 Cr"
+  },
+  {
+   "value": 3895.274456690886,
+   "digits": 1,
+   "expected": "₹3,895.3 Cr"
+  },
+  {
+   "value": 1648.324975238812,
+   "digits": 0,
+   "expected": "₹1,648 Cr"
+  },
+  {
+   "value": 1648.324975238812,
+   "digits": 1,
+   "expected": "₹1,648.3 Cr"
+  },
+  {
+   "value": 1115.2083655159256,
+   "digits": 0,
+   "expected": "₹1,115 Cr"
+  },
+  {
+   "value": 1115.2083655159256,
+   "digits": 1,
+   "expected": "₹1,115.2 Cr"
+  },
+  {
+   "value": 4057.556233867975,
+   "digits": 0,
+   "expected": "₹4,058 Cr"
+  },
+  {
+   "value": 4057.556233867975,
+   "digits": 1,
+   "expected": "₹4,057.6 Cr"
+  },
+  {
+   "value": 4924.630252954454,
+   "digits": 0,
+   "expected": "₹4,925 Cr"
+  },
+  {
+   "value": 4924.630252954454,
+   "digits": 1,
+   "expected": "₹4,924.6 Cr"
+  },
+  {
+   "value": 4263.1439937333025,
+   "digits": 0,
+   "expected": "₹4,263 Cr"
+  },
+  {
+   "value": 4263.1439937333025,
+   "digits": 1,
+   "expected": "₹4,263.1 Cr"
+  },
+  {
+   "value": 4030.3929239283375,
+   "digits": 0,
+   "expected": "₹4,030 Cr"
+  },
+  {
+   "value": 4030.3929239283375,
+   "digits": 1,
+   "expected": "₹4,030.4 Cr"
+  },
+  {
+   "value": 4091.664716626866,
+   "digits": 0,
+   "expected": "₹4,092 Cr"
+  },
+  {
+   "value": 4091.664716626866,
+   "digits": 1,
+   "expected": "₹4,091.7 Cr"
+  },
+  {
+   "value": 3699.3651018785704,
+   "digits": 0,
+   "expected": "₹3,699 Cr"
+  },
+  {
+   "value": 3699.3651018785704,
+   "digits": 1,
+   "expected": "₹3,699.4 Cr"
+  },
+  {
+   "value": 1133.6974501579245,
+   "digits": 0,
+   "expected": "₹1,134 Cr"
+  },
+  {
+   "value": 1133.6974501579245,
+   "digits": 1,
+   "expected": "₹1,133.7 Cr"
+  },
+  {
+   "value": 2588.193621217528,
+   "digits": 0,
+   "expected": "₹2,588 Cr"
+  },
+  {
+   "value": 2588.193621217528,
+   "digits": 1,
+   "expected": "₹2,588.2 Cr"
+  },
+  {
+   "value": 1777.812716774791,
+   "digits": 0,
+   "expected": "₹1,778 Cr"
+  },
+  {
+   "value": 1777.812716774791,
+   "digits": 1,
+   "expected": "₹1,777.8 Cr"
+  },
+  {
+   "value": 144.90075370682698,
+   "digits": 0,
+   "expected": "₹145 Cr"
+  },
+  {
+   "value": 144.90075370682698,
+   "digits": 1,
+   "expected": "₹144.9 Cr"
+  },
+  {
+   "value": 139.68537711032235,
+   "digits": 0,
+   "expected": "₹140 Cr"
+  },
+  {
+   "value": 139.68537711032235,
+   "digits": 1,
+   "expected": "₹139.7 Cr"
+  },
+  {
+   "value": 1397.0926952451491,
+   "digits": 0,
+   "expected": "₹1,397 Cr"
+  },
+  {
+   "value": 1397.0926952451491,
+   "digits": 1,
+   "expected": "₹1,397.1 Cr"
+  },
+  {
+   "value": 1295.8718163387828,
+   "digits": 0,
+   "expected": "₹1,296 Cr"
+  },
+  {
+   "value": 1295.8718163387828,
+   "digits": 1,
+   "expected": "₹1,295.9 Cr"
+  },
+  {
+   "value": 3462.6097085006168,
+   "digits": 0,
+   "expected": "₹3,463 Cr"
+  },
+  {
+   "value": 3462.6097085006168,
+   "digits": 1,
+   "expected": "₹3,462.6 Cr"
+  },
+  {
+   "value": 4782.575381706689,
+   "digits": 0,
+   "expected": "₹4,783 Cr"
+  },
+  {
+   "value": 4782.575381706689,
+   "digits": 1,
+   "expected": "₹4,782.6 Cr"
+  },
+  {
+   "value": 2236.1383888336172,
+   "digits": 0,
+   "expected": "₹2,236 Cr"
+  },
+  {
+   "value": 2236.1383888336172,
+   "digits": 1,
+   "expected": "₹2,236.1 Cr"
+  },
+  {
+   "value": 4685.106006381212,
+   "digits": 0,
+   "expected": "₹4,685 Cr"
+  },
+  {
+   "value": 4685.106006381212,
+   "digits": 1,
+   "expected": "₹4,685.1 Cr"
+  },
+  {
+   "value": 4940.190291014301,
+   "digits": 0,
+   "expected": "₹4,940 Cr"
+  },
+  {
+   "value": 4940.190291014301,
+   "digits": 1,
+   "expected": "₹4,940.2 Cr"
+  },
+  {
+   "value": 4775.0031566066655,
+   "digits": 0,
+   "expected": "₹4,775 Cr"
+  },
+  {
+   "value": 4775.0031566066655,
+   "digits": 1,
+   "expected": "₹4,775.0 Cr"
+  },
+  {
+   "value": 1823.1794268093304,
+   "digits": 0,
+   "expected": "₹1,823 Cr"
+  },
+  {
+   "value": 1823.1794268093304,
+   "digits": 1,
+   "expected": "₹1,823.2 Cr"
+  },
+  {
+   "value": 1102.3116149811874,
+   "digits": 0,
+   "expected": "₹1,102 Cr"
+  },
+  {
+   "value": 1102.3116149811874,
+   "digits": 1,
+   "expected": "₹1,102.3 Cr"
+  },
+  {
+   "value": 1134.2291336536398,
+   "digits": 0,
+   "expected": "₹1,134 Cr"
+  },
+  {
+   "value": 1134.2291336536398,
+   "digits": 1,
+   "expected": "₹1,134.2 Cr"
+  },
+  {
+   "value": 983.5308170965861,
+   "digits": 0,
+   "expected": "₹984 Cr"
+  },
+  {
+   "value": 983.5308170965861,
+   "digits": 1,
+   "expected": "₹983.5 Cr"
+  },
+  {
+   "value": 1021.8668163811151,
+   "digits": 0,
+   "expected": "₹1,022 Cr"
+  },
+  {
+   "value": 1021.8668163811151,
+   "digits": 1,
+   "expected": "₹1,021.9 Cr"
+  },
+  {
+   "value": 3120.3319871890913,
+   "digits": 0,
+   "expected": "₹3,120 Cr"
+  },
+  {
+   "value": 3120.3319871890913,
+   "digits": 1,
+   "expected": "₹3,120.3 Cr"
+  },
+  {
+   "value": 4501.541689420571,
+   "digits": 0,
+   "expected": "₹4,502 Cr"
+  },
+  {
+   "value": 4501.541689420571,
+   "digits": 1,
+   "expected": "₹4,501.5 Cr"
+  },
+  {
+   "value": 4202.177636396449,
+   "digits": 0,
+   "expected": "₹4,202 Cr"
+  },
+  {
+   "value": 4202.177636396449,
+   "digits": 1,
+   "expected": "₹4,202.2 Cr"
+  },
+  {
+   "value": 2397.367131307691,
+   "digits": 0,
+   "expected": "₹2,397 Cr"
+  },
+  {
+   "value": 2397.367131307691,
+   "digits": 1,
+   "expected": "₹2,397.4 Cr"
+  },
+  {
+   "value": 3264.890214205045,
+   "digits": 0,
+   "expected": "₹3,265 Cr"
+  },
+  {
+   "value": 3264.890214205045,
+   "digits": 1,
+   "expected": "₹3,264.9 Cr"
+  },
+  {
+   "value": 3998.218724248301,
+   "digits": 0,
+   "expected": "₹3,998 Cr"
+  },
+  {
+   "value": 3998.218724248301,
+   "digits": 1,
+   "expected": "₹3,998.2 Cr"
+  },
+  {
+   "value": 423.8924322519005,
+   "digits": 0,
+   "expected": "₹424 Cr"
+  },
+  {
+   "value": 423.8924322519005,
+   "digits": 1,
+   "expected": "₹423.9 Cr"
+  },
+  {
+   "value": 3302.9282510244707,
+   "digits": 0,
+   "expected": "₹3,303 Cr"
+  },
+  {
+   "value": 3302.9282510244707,
+   "digits": 1,
+   "expected": "₹3,302.9 Cr"
+  },
+  {
+   "value": 4548.885687758615,
+   "digits": 0,
+   "expected": "₹4,549 Cr"
+  },
+  {
+   "value": 4548.885687758615,
+   "digits": 1,
+   "expected": "₹4,548.9 Cr"
+  },
+  {
+   "value": 3911.51442049045,
+   "digits": 0,
+   "expected": "₹3,912 Cr"
+  },
+  {
+   "value": 3911.51442049045,
+   "digits": 1,
+   "expected": "₹3,911.5 Cr"
+  },
+  {
+   "value": 3750.702299152292,
+   "digits": 0,
+   "expected": "₹3,751 Cr"
+  },
+  {
+   "value": 3750.702299152292,
+   "digits": 1,
+   "expected": "₹3,750.7 Cr"
+  },
+  {
+   "value": 2390.1637229700013,
+   "digits": 0,
+   "expected": "₹2,390 Cr"
+  },
+  {
+   "value": 2390.1637229700013,
+   "digits": 1,
+   "expected": "₹2,390.2 Cr"
+  },
+  {
+   "value": 892.6085916878678,
+   "digits": 0,
+   "expected": "₹893 Cr"
+  },
+  {
+   "value": 892.6085916878678,
+   "digits": 1,
+   "expected": "₹892.6 Cr"
+  },
+  {
+   "value": 3945.677155101382,
+   "digits": 0,
+   "expected": "₹3,946 Cr"
+  },
+  {
+   "value": 3945.677155101382,
+   "digits": 1,
+   "expected": "₹3,945.7 Cr"
+  },
+  {
+   "value": 1662.5859993230497,
+   "digits": 0,
+   "expected": "₹1,663 Cr"
+  },
+  {
+   "value": 1662.5859993230497,
+   "digits": 1,
+   "expected": "₹1,662.6 Cr"
+  },
+  {
+   "value": 4004.1178444834554,
+   "digits": 0,
+   "expected": "₹4,004 Cr"
+  },
+  {
+   "value": 4004.1178444834554,
+   "digits": 1,
+   "expected": "₹4,004.1 Cr"
+  }
+ ],
+ "signed_cr": [
+  {
+   "value": 0.0,
+   "digits": 0,
+   "expected": "+₹0 Cr"
+  },
+  {
+   "value": 0.0,
+   "digits": 1,
+   "expected": "+₹0.0 Cr"
+  },
+  {
+   "value": 0.05,
+   "digits": 0,
+   "expected": "+₹0 Cr"
+  },
+  {
+   "value": 0.05,
+   "digits": 1,
+   "expected": "+₹0.1 Cr"
+  },
+  {
+   "value": 0.04999,
+   "digits": 0,
+   "expected": "+₹0 Cr"
+  },
+  {
+   "value": 0.04999,
+   "digits": 1,
+   "expected": "+₹0.0 Cr"
+  },
+  {
+   "value": 0.95,
+   "digits": 0,
+   "expected": "+₹1 Cr"
+  },
+  {
+   "value": 0.95,
+   "digits": 1,
+   "expected": "+₹1.0 Cr"
+  },
+  {
+   "value": 137.5,
+   "digits": 0,
+   "expected": "+₹138 Cr"
+  },
+  {
+   "value": 137.5,
+   "digits": 1,
+   "expected": "+₹137.5 Cr"
+  },
+  {
+   "value": 137.25,
+   "digits": 0,
+   "expected": "+₹137 Cr"
+  },
+  {
+   "value": 137.25,
+   "digits": 1,
+   "expected": "+₹137.3 Cr"
+  },
+  {
+   "value": 137.35,
+   "digits": 0,
+   "expected": "+₹137 Cr"
+  },
+  {
+   "value": 137.35,
+   "digits": 1,
+   "expected": "+₹137.4 Cr"
+  },
+  {
+   "value": 1000.0,
+   "digits": 0,
+   "expected": "+₹1,000 Cr"
+  },
+  {
+   "value": 1000.0,
+   "digits": 1,
+   "expected": "+₹1,000.0 Cr"
+  },
+  {
+   "value": 1234.56,
+   "digits": 0,
+   "expected": "+₹1,235 Cr"
+  },
+  {
+   "value": 1234.56,
+   "digits": 1,
+   "expected": "+₹1,234.6 Cr"
+  },
+  {
+   "value": 12345.678,
+   "digits": 0,
+   "expected": "+₹12,346 Cr"
+  },
+  {
+   "value": 12345.678,
+   "digits": 1,
+   "expected": "+₹12,345.7 Cr"
+  },
+  {
+   "value": 999999.95,
+   "digits": 0,
+   "expected": "+₹1,000,000 Cr"
+  },
+  {
+   "value": 999999.95,
+   "digits": 1,
+   "expected": "+₹1,000,000.0 Cr"
+  },
+  {
+   "value": 0.30000000000000004,
+   "digits": 0,
+   "expected": "+₹0 Cr"
+  },
+  {
+   "value": 0.30000000000000004,
+   "digits": 1,
+   "expected": "+₹0.3 Cr"
+  },
+  {
+   "value": 45.0,
+   "digits": 0,
+   "expected": "+₹45 Cr"
+  },
+  {
+   "value": 45.0,
+   "digits": 1,
+   "expected": "+₹45.0 Cr"
+  },
+  {
+   "value": 63.7,
+   "digits": 0,
+   "expected": "+₹64 Cr"
+  },
+  {
+   "value": 63.7,
+   "digits": 1,
+   "expected": "+₹63.7 Cr"
+  },
+  {
+   "value": 39.7,
+   "digits": 0,
+   "expected": "+₹40 Cr"
+  },
+  {
+   "value": 39.7,
+   "digits": 1,
+   "expected": "+₹39.7 Cr"
+  },
+  {
+   "value": -0.0,
+   "digits": 0,
+   "expected": "+₹0 Cr"
+  },
+  {
+   "value": -0.0,
+   "digits": 1,
+   "expected": "+₹0.0 Cr"
+  },
+  {
+   "value": -0.05,
+   "digits": 0,
+   "expected": "−₹0 Cr"
+  },
+  {
+   "value": -0.05,
+   "digits": 1,
+   "expected": "−₹0.1 Cr"
+  },
+  {
+   "value": -0.04999,
+   "digits": 0,
+   "expected": "−₹0 Cr"
+  },
+  {
+   "value": -0.04999,
+   "digits": 1,
+   "expected": "−₹0.0 Cr"
+  },
+  {
+   "value": -0.95,
+   "digits": 0,
+   "expected": "−₹1 Cr"
+  },
+  {
+   "value": -0.95,
+   "digits": 1,
+   "expected": "−₹1.0 Cr"
+  },
+  {
+   "value": -137.5,
+   "digits": 0,
+   "expected": "−₹138 Cr"
+  },
+  {
+   "value": -137.5,
+   "digits": 1,
+   "expected": "−₹137.5 Cr"
+  },
+  {
+   "value": -137.25,
+   "digits": 0,
+   "expected": "−₹137 Cr"
+  },
+  {
+   "value": -137.25,
+   "digits": 1,
+   "expected": "−₹137.3 Cr"
+  },
+  {
+   "value": -137.35,
+   "digits": 0,
+   "expected": "−₹137 Cr"
+  },
+  {
+   "value": -137.35,
+   "digits": 1,
+   "expected": "−₹137.4 Cr"
+  },
+  {
+   "value": -1000.0,
+   "digits": 0,
+   "expected": "−₹1,000 Cr"
+  },
+  {
+   "value": -1000.0,
+   "digits": 1,
+   "expected": "−₹1,000.0 Cr"
+  },
+  {
+   "value": -1234.56,
+   "digits": 0,
+   "expected": "−₹1,235 Cr"
+  },
+  {
+   "value": -1234.56,
+   "digits": 1,
+   "expected": "−₹1,234.6 Cr"
+  },
+  {
+   "value": -12345.678,
+   "digits": 0,
+   "expected": "−₹12,346 Cr"
+  },
+  {
+   "value": -12345.678,
+   "digits": 1,
+   "expected": "−₹12,345.7 Cr"
+  },
+  {
+   "value": -999999.95,
+   "digits": 0,
+   "expected": "−₹1,000,000 Cr"
+  },
+  {
+   "value": -999999.95,
+   "digits": 1,
+   "expected": "−₹1,000,000.0 Cr"
+  },
+  {
+   "value": -0.30000000000000004,
+   "digits": 0,
+   "expected": "−₹0 Cr"
+  },
+  {
+   "value": -0.30000000000000004,
+   "digits": 1,
+   "expected": "−₹0.3 Cr"
+  },
+  {
+   "value": -45.0,
+   "digits": 0,
+   "expected": "−₹45 Cr"
+  },
+  {
+   "value": -45.0,
+   "digits": 1,
+   "expected": "−₹45.0 Cr"
+  },
+  {
+   "value": -63.7,
+   "digits": 0,
+   "expected": "−₹64 Cr"
+  },
+  {
+   "value": -63.7,
+   "digits": 1,
+   "expected": "−₹63.7 Cr"
+  },
+  {
+   "value": -39.7,
+   "digits": 0,
+   "expected": "−₹40 Cr"
+  },
+  {
+   "value": -39.7,
+   "digits": 1,
+   "expected": "−₹39.7 Cr"
+  },
+  {
+   "value": 4144.276890607803,
+   "digits": 0,
+   "expected": "+₹4,144 Cr"
+  },
+  {
+   "value": 4144.276890607803,
+   "digits": 1,
+   "expected": "+₹4,144.3 Cr"
+  },
+  {
+   "value": 807.1930526321574,
+   "digits": 0,
+   "expected": "+₹807 Cr"
+  },
+  {
+   "value": 807.1930526321574,
+   "digits": 1,
+   "expected": "+₹807.2 Cr"
+  },
+  {
+   "value": 115.47860522624076,
+   "digits": 0,
+   "expected": "+₹115 Cr"
+  },
+  {
+   "value": 115.47860522624076,
+   "digits": 1,
+   "expected": "+₹115.5 Cr"
+  },
+  {
+   "value": 4754.927864373511,
+   "digits": 0,
+   "expected": "+₹4,755 Cr"
+  },
+  {
+   "value": 4754.927864373511,
+   "digits": 1,
+   "expected": "+₹4,754.9 Cr"
+  },
+  {
+   "value": 2641.286975210624,
+   "digits": 0,
+   "expected": "+₹2,641 Cr"
+  },
+  {
+   "value": 2641.286975210624,
+   "digits": 1,
+   "expected": "+₹2,641.3 Cr"
+  },
+  {
+   "value": 733.0126944954535,
+   "digits": 0,
+   "expected": "+₹733 Cr"
+  },
+  {
+   "value": 733.0126944954535,
+   "digits": 1,
+   "expected": "+₹733.0 Cr"
+  },
+  {
+   "value": 2715.862129410572,
+   "digits": 0,
+   "expected": "+₹2,716 Cr"
+  },
+  {
+   "value": 2715.862129410572,
+   "digits": 1,
+   "expected": "+₹2,715.9 Cr"
+  },
+  {
+   "value": 135.21245711084262,
+   "digits": 0,
+   "expected": "+₹135 Cr"
+  },
+  {
+   "value": 135.21245711084262,
+   "digits": 1,
+   "expected": "+₹135.2 Cr"
+  },
+  {
+   "value": 2640.5472046915324,
+   "digits": 0,
+   "expected": "+₹2,641 Cr"
+  },
+  {
+   "value": 2640.5472046915324,
+   "digits": 1,
+   "expected": "+₹2,640.5 Cr"
+  },
+  {
+   "value": 4892.506213594864,
+   "digits": 0,
+   "expected": "+₹4,893 Cr"
+  },
+  {
+   "value": 4892.506213594864,
+   "digits": 1,
+   "expected": "+₹4,892.5 Cr"
+  },
+  {
+   "value": 4316.625151448345,
+   "digits": 0,
+   "expected": "+₹4,317 Cr"
+  },
+  {
+   "value": 4316.625151448345,
+   "digits": 1,
+   "expected": "+₹4,316.6 Cr"
+  },
+  {
+   "value": 3480.9839295390093,
+   "digits": 0,
+   "expected": "+₹3,481 Cr"
+  },
+  {
+   "value": 3480.9839295390093,
+   "digits": 1,
+   "expected": "+₹3,481.0 Cr"
+  },
+  {
+   "value": 1305.5759861468098,
+   "digits": 0,
+   "expected": "+₹1,306 Cr"
+  },
+  {
+   "value": 1305.5759861468098,
+   "digits": 1,
+   "expected": "+₹1,305.6 Cr"
+  },
+  {
+   "value": 1833.4989588058943,
+   "digits": 0,
+   "expected": "+₹1,833 Cr"
+  },
+  {
+   "value": 1833.4989588058943,
+   "digits": 1,
+   "expected": "+₹1,833.5 Cr"
+  },
+  {
+   "value": 835.2101726716816,
+   "digits": 0,
+   "expected": "+₹835 Cr"
+  },
+  {
+   "value": 835.2101726716816,
+   "digits": 1,
+   "expected": "+₹835.2 Cr"
+  },
+  {
+   "value": 3859.6895420101564,
+   "digits": 0,
+   "expected": "+₹3,860 Cr"
+  },
+  {
+   "value": 3859.6895420101564,
+   "digits": 1,
+   "expected": "+₹3,859.7 Cr"
+  },
+  {
+   "value": 2662.961987464395,
+   "digits": 0,
+   "expected": "+₹2,663 Cr"
+  },
+  {
+   "value": 2662.961987464395,
+   "digits": 1,
+   "expected": "+₹2,663.0 Cr"
+  },
+  {
+   "value": 3895.274456690886,
+   "digits": 0,
+   "expected": "+₹3,895 Cr"
+  },
+  {
+   "value": 3895.274456690886,
+   "digits": 1,
+   "expected": "+₹3,895.3 Cr"
+  },
+  {
+   "value": 1648.324975238812,
+   "digits": 0,
+   "expected": "+₹1,648 Cr"
+  },
+  {
+   "value": 1648.324975238812,
+   "digits": 1,
+   "expected": "+₹1,648.3 Cr"
+  },
+  {
+   "value": 1115.2083655159256,
+   "digits": 0,
+   "expected": "+₹1,115 Cr"
+  },
+  {
+   "value": 1115.2083655159256,
+   "digits": 1,
+   "expected": "+₹1,115.2 Cr"
+  },
+  {
+   "value": 4057.556233867975,
+   "digits": 0,
+   "expected": "+₹4,058 Cr"
+  },
+  {
+   "value": 4057.556233867975,
+   "digits": 1,
+   "expected": "+₹4,057.6 Cr"
+  },
+  {
+   "value": 4924.630252954454,
+   "digits": 0,
+   "expected": "+₹4,925 Cr"
+  },
+  {
+   "value": 4924.630252954454,
+   "digits": 1,
+   "expected": "+₹4,924.6 Cr"
+  },
+  {
+   "value": 4263.1439937333025,
+   "digits": 0,
+   "expected": "+₹4,263 Cr"
+  },
+  {
+   "value": 4263.1439937333025,
+   "digits": 1,
+   "expected": "+₹4,263.1 Cr"
+  },
+  {
+   "value": 4030.3929239283375,
+   "digits": 0,
+   "expected": "+₹4,030 Cr"
+  },
+  {
+   "value": 4030.3929239283375,
+   "digits": 1,
+   "expected": "+₹4,030.4 Cr"
+  },
+  {
+   "value": 4091.664716626866,
+   "digits": 0,
+   "expected": "+₹4,092 Cr"
+  },
+  {
+   "value": 4091.664716626866,
+   "digits": 1,
+   "expected": "+₹4,091.7 Cr"
+  },
+  {
+   "value": 3699.3651018785704,
+   "digits": 0,
+   "expected": "+₹3,699 Cr"
+  },
+  {
+   "value": 3699.3651018785704,
+   "digits": 1,
+   "expected": "+₹3,699.4 Cr"
+  },
+  {
+   "value": 1133.6974501579245,
+   "digits": 0,
+   "expected": "+₹1,134 Cr"
+  },
+  {
+   "value": 1133.6974501579245,
+   "digits": 1,
+   "expected": "+₹1,133.7 Cr"
+  },
+  {
+   "value": 2588.193621217528,
+   "digits": 0,
+   "expected": "+₹2,588 Cr"
+  },
+  {
+   "value": 2588.193621217528,
+   "digits": 1,
+   "expected": "+₹2,588.2 Cr"
+  },
+  {
+   "value": 1777.812716774791,
+   "digits": 0,
+   "expected": "+₹1,778 Cr"
+  },
+  {
+   "value": 1777.812716774791,
+   "digits": 1,
+   "expected": "+₹1,777.8 Cr"
+  },
+  {
+   "value": 144.90075370682698,
+   "digits": 0,
+   "expected": "+₹145 Cr"
+  },
+  {
+   "value": 144.90075370682698,
+   "digits": 1,
+   "expected": "+₹144.9 Cr"
+  },
+  {
+   "value": 139.68537711032235,
+   "digits": 0,
+   "expected": "+₹140 Cr"
+  },
+  {
+   "value": 139.68537711032235,
+   "digits": 1,
+   "expected": "+₹139.7 Cr"
+  },
+  {
+   "value": 1397.0926952451491,
+   "digits": 0,
+   "expected": "+₹1,397 Cr"
+  },
+  {
+   "value": 1397.0926952451491,
+   "digits": 1,
+   "expected": "+₹1,397.1 Cr"
+  },
+  {
+   "value": 1295.8718163387828,
+   "digits": 0,
+   "expected": "+₹1,296 Cr"
+  },
+  {
+   "value": 1295.8718163387828,
+   "digits": 1,
+   "expected": "+₹1,295.9 Cr"
+  },
+  {
+   "value": 3462.6097085006168,
+   "digits": 0,
+   "expected": "+₹3,463 Cr"
+  },
+  {
+   "value": 3462.6097085006168,
+   "digits": 1,
+   "expected": "+₹3,462.6 Cr"
+  },
+  {
+   "value": 4782.575381706689,
+   "digits": 0,
+   "expected": "+₹4,783 Cr"
+  },
+  {
+   "value": 4782.575381706689,
+   "digits": 1,
+   "expected": "+₹4,782.6 Cr"
+  },
+  {
+   "value": 2236.1383888336172,
+   "digits": 0,
+   "expected": "+₹2,236 Cr"
+  },
+  {
+   "value": 2236.1383888336172,
+   "digits": 1,
+   "expected": "+₹2,236.1 Cr"
+  },
+  {
+   "value": 4685.106006381212,
+   "digits": 0,
+   "expected": "+₹4,685 Cr"
+  },
+  {
+   "value": 4685.106006381212,
+   "digits": 1,
+   "expected": "+₹4,685.1 Cr"
+  },
+  {
+   "value": 4940.190291014301,
+   "digits": 0,
+   "expected": "+₹4,940 Cr"
+  },
+  {
+   "value": 4940.190291014301,
+   "digits": 1,
+   "expected": "+₹4,940.2 Cr"
+  },
+  {
+   "value": 4775.0031566066655,
+   "digits": 0,
+   "expected": "+₹4,775 Cr"
+  },
+  {
+   "value": 4775.0031566066655,
+   "digits": 1,
+   "expected": "+₹4,775.0 Cr"
+  },
+  {
+   "value": 1823.1794268093304,
+   "digits": 0,
+   "expected": "+₹1,823 Cr"
+  },
+  {
+   "value": 1823.1794268093304,
+   "digits": 1,
+   "expected": "+₹1,823.2 Cr"
+  },
+  {
+   "value": 1102.3116149811874,
+   "digits": 0,
+   "expected": "+₹1,102 Cr"
+  },
+  {
+   "value": 1102.3116149811874,
+   "digits": 1,
+   "expected": "+₹1,102.3 Cr"
+  },
+  {
+   "value": 1134.2291336536398,
+   "digits": 0,
+   "expected": "+₹1,134 Cr"
+  },
+  {
+   "value": 1134.2291336536398,
+   "digits": 1,
+   "expected": "+₹1,134.2 Cr"
+  },
+  {
+   "value": 983.5308170965861,
+   "digits": 0,
+   "expected": "+₹984 Cr"
+  },
+  {
+   "value": 983.5308170965861,
+   "digits": 1,
+   "expected": "+₹983.5 Cr"
+  },
+  {
+   "value": 1021.8668163811151,
+   "digits": 0,
+   "expected": "+₹1,022 Cr"
+  },
+  {
+   "value": 1021.8668163811151,
+   "digits": 1,
+   "expected": "+₹1,021.9 Cr"
+  },
+  {
+   "value": 3120.3319871890913,
+   "digits": 0,
+   "expected": "+₹3,120 Cr"
+  },
+  {
+   "value": 3120.3319871890913,
+   "digits": 1,
+   "expected": "+₹3,120.3 Cr"
+  },
+  {
+   "value": 4501.541689420571,
+   "digits": 0,
+   "expected": "+₹4,502 Cr"
+  },
+  {
+   "value": 4501.541689420571,
+   "digits": 1,
+   "expected": "+₹4,501.5 Cr"
+  },
+  {
+   "value": 4202.177636396449,
+   "digits": 0,
+   "expected": "+₹4,202 Cr"
+  },
+  {
+   "value": 4202.177636396449,
+   "digits": 1,
+   "expected": "+₹4,202.2 Cr"
+  },
+  {
+   "value": 2397.367131307691,
+   "digits": 0,
+   "expected": "+₹2,397 Cr"
+  },
+  {
+   "value": 2397.367131307691,
+   "digits": 1,
+   "expected": "+₹2,397.4 Cr"
+  },
+  {
+   "value": 3264.890214205045,
+   "digits": 0,
+   "expected": "+₹3,265 Cr"
+  },
+  {
+   "value": 3264.890214205045,
+   "digits": 1,
+   "expected": "+₹3,264.9 Cr"
+  },
+  {
+   "value": 3998.218724248301,
+   "digits": 0,
+   "expected": "+₹3,998 Cr"
+  },
+  {
+   "value": 3998.218724248301,
+   "digits": 1,
+   "expected": "+₹3,998.2 Cr"
+  },
+  {
+   "value": 423.8924322519005,
+   "digits": 0,
+   "expected": "+₹424 Cr"
+  },
+  {
+   "value": 423.8924322519005,
+   "digits": 1,
+   "expected": "+₹423.9 Cr"
+  },
+  {
+   "value": 3302.9282510244707,
+   "digits": 0,
+   "expected": "+₹3,303 Cr"
+  },
+  {
+   "value": 3302.9282510244707,
+   "digits": 1,
+   "expected": "+₹3,302.9 Cr"
+  },
+  {
+   "value": 4548.885687758615,
+   "digits": 0,
+   "expected": "+₹4,549 Cr"
+  },
+  {
+   "value": 4548.885687758615,
+   "digits": 1,
+   "expected": "+₹4,548.9 Cr"
+  },
+  {
+   "value": 3911.51442049045,
+   "digits": 0,
+   "expected": "+₹3,912 Cr"
+  },
+  {
+   "value": 3911.51442049045,
+   "digits": 1,
+   "expected": "+₹3,911.5 Cr"
+  },
+  {
+   "value": 3750.702299152292,
+   "digits": 0,
+   "expected": "+₹3,751 Cr"
+  },
+  {
+   "value": 3750.702299152292,
+   "digits": 1,
+   "expected": "+₹3,750.7 Cr"
+  },
+  {
+   "value": 2390.1637229700013,
+   "digits": 0,
+   "expected": "+₹2,390 Cr"
+  },
+  {
+   "value": 2390.1637229700013,
+   "digits": 1,
+   "expected": "+₹2,390.2 Cr"
+  },
+  {
+   "value": 892.6085916878678,
+   "digits": 0,
+   "expected": "+₹893 Cr"
+  },
+  {
+   "value": 892.6085916878678,
+   "digits": 1,
+   "expected": "+₹892.6 Cr"
+  },
+  {
+   "value": 3945.677155101382,
+   "digits": 0,
+   "expected": "+₹3,946 Cr"
+  },
+  {
+   "value": 3945.677155101382,
+   "digits": 1,
+   "expected": "+₹3,945.7 Cr"
+  },
+  {
+   "value": 1662.5859993230497,
+   "digits": 0,
+   "expected": "+₹1,663 Cr"
+  },
+  {
+   "value": 1662.5859993230497,
+   "digits": 1,
+   "expected": "+₹1,662.6 Cr"
+  },
+  {
+   "value": 4004.1178444834554,
+   "digits": 0,
+   "expected": "+₹4,004 Cr"
+  },
+  {
+   "value": 4004.1178444834554,
+   "digits": 1,
+   "expected": "+₹4,004.1 Cr"
+  }
+ ]
+}

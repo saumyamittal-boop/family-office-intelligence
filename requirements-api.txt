@@ -1,0 +1,7 @@
+# Extra packages for the FastAPI backend (api/). Install on top of requirements.txt:
+#   pip install -r requirements.txt -r requirements-api.txt -r requirements-dev.txt
+# Kept out of requirements.txt on purpose: Streamlit Community Cloud installs that file for the live app.
+fastapi==0.146.0
+pydantic==2.14.1
+uvicorn==0.54.0
+httpx==0.28.1

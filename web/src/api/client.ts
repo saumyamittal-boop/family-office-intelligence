@@ -1,0 +1,66 @@
+import type { components } from "./schema";
+
+export type Schemas = components["schemas"];
+export type Analysis = Schemas["AnalysisOut"];
+export type PortfolioOut = Schemas["PortfolioOut"];
+export type PortfolioDetail = Schemas["PortfolioDetail"];
+export type SessionInfo = Schemas["SessionOut"];
+export type ProfileSummary = Schemas["ProfileSummary"];
+export type Meta = Schemas["MetaOut"];
+export type Basis = Schemas["AnalysisOut"]["basis"];
+export type DemoFamily = Schemas["DemoRequest"]["family"];
+
+/** What the server says went wrong, in words that can be shown to a person. */
+export class ApiError extends Error {
+  constructor(
+    public readonly status: number,
+    message: string,
+    public readonly problems: string[] | null = null,
+  ) {
+    super(message);
+    this.name = "ApiError";
+  }
+}
+
+// Kept in memory only (never in localStorage): it is re-issued by /api/auth/me after a reload.
+let csrfToken = "";
+export function setCsrf(token: string): void {
+  csrfToken = token;
+}
+
+async function request<T>(method: "GET" | "POST" | "PUT" | "DELETE", path: string, body?: unknown): Promise<T> {
+  const headers: Record<string, string> = {};
+  if (body !== undefined) headers["Content-Type"] = "application/json";
+  if (method !== "GET") headers["X-CSRF-Token"] = csrfToken;
+
+  let response: Response;
+  try {
+    response = await fetch(path, {
+      method,
+      headers,
+      body: body === undefined ? undefined : JSON.stringify(body),
+      credentials: "same-origin",
+    });
+  } catch {
+    throw new ApiError(0, "Can't reach the server. Check that the API is running, then try again.");
+  }
+
+  if (response.status === 204) return undefined as T;
+  const data = (await response.json().catch(() => null)) as { detail?: string; problems?: string[] | null } | null;
+  if (!response.ok) {
+    throw new ApiError(response.status, data?.detail ?? "Something went wrong.", data?.problems ?? null);
+  }
+  return data as T;
+}
+
+export const api = {
+  meta: () => request<Meta>("GET", "/api/meta"),
+  me: () => request<SessionInfo>("GET", "/api/auth/me"),
+  login: (username: string, password: string) => request<SessionInfo>("POST", "/api/auth/login", { username, password }),
+  signup: (username: string, password: string) => request<SessionInfo>("POST", "/api/auth/signup", { username, password }),
+  demo: (family: DemoFamily) => request<SessionInfo>("POST", "/api/auth/demo", { family }),
+  logout: () => request<void>("POST", "/api/auth/logout"),
+  profiles: () => request<ProfileSummary[]>("GET", "/api/profiles"),
+  analysis: (profileId: number, basis: Basis) =>
+    request<Analysis>("GET", `/api/profiles/${profileId}/analysis?basis=${basis}`),
+};

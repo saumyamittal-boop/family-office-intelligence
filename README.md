@@ -13,7 +13,7 @@ towards a mix that fits your limits, check risk and liquidity, and stress-test t
 ## Set up on a new machine (Windows PowerShell)
 
 ```powershell
-cd D:amily-office-intelligence
+cd D:\family-office-intelligence
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements-dev.txt
@@ -53,6 +53,47 @@ Then open http://localhost:8501.
 
 The sidebar switches between your profiles and has a "Stricter liquidity cover" toggle.
 
+## React + FastAPI version (branch `react-migration`, Phase 1 of 8)
+
+A new front end (React, Vite, TypeScript) and back end (FastAPI) over the same engine. Streamlit stays on `main`.
+Decisions: [ADR-0017](docs/adr/0017-react-fastapi-migration.md). Status and evidence: [docs/migration/phase-1-report.md](docs/migration/phase-1-report.md).
+Protected assumptions: [docs/protected-assumptions.md](docs/protected-assumptions.md).
+
+Needs Python 3.12 and Node 24 (npm 11). One-time setup:
+
+```powershell
+cd D:\family-office-intelligence
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt -r requirements-api.txt -r requirements-dev.txt
+cd web
+npm install
+```
+
+Run it in two terminals (the API uses port 8100; 8000 is often taken):
+
+```powershell
+# terminal 1: API
+cd D:\family-office-intelligence
+.\.venv\Scripts\python.exe -m uvicorn api.main:app --port 8100
+
+# terminal 2: web app
+cd D:\family-office-intelligence\web
+npm run dev
+```
+
+Open http://localhost:5173. The API docs are at http://127.0.0.1:8100/docs. Settings are listed in
+[.env.example](.env.example); none is required. The database defaults to `data/app.db`, shared with the Streamlit app.
+
+Checks (all should pass):
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q            # engine, golden master, API, security, Streamlit app
+cd web
+npm run typecheck; npm test; npm run build         # types, component tests, production build
+```
+
+After changing an API model: `python tools/export_openapi.py`, then `npm run gen:api` in `web/`
+(`tests/test_openapi_contract.py` fails until you do).
+
 ## Put it online
 
 See [docs/deployment.md](docs/deployment.md): options, the recommended route (Streamlit Community Cloud), step-by-step
@@ -86,8 +127,12 @@ cd D:\family-office-intelligence
 | `fo/data.py` | Synthetic sample returns; loads a real snapshot if `data/snapshot/daily_returns.csv` exists |
 | `fo/personas.py` | Profile model, the three demo families, serialisation |
 | `.streamlit/config.toml` | Theme: Inter font, one green accent, large radii, pill buttons |
-| `tests/` | Engine, accounts and end-to-end app tests |
-| `docs/` | Requirements, decision records, persona and assumption drafts |
+| `fo/profile_form.py` | Profile validation rules shared by the Streamlit page and the API |
+| `api/` | FastAPI backend: routers, schemas, sessions, migrations, cached engine service |
+| `web/` | React + Vite + TypeScript front end and its generated API types |
+| `tools/` | Golden-master, OpenAPI and formatter-vector generators |
+| `tests/` | Engine, golden master, accounts, API, security and end-to-end app tests |
+| `docs/` | Requirements, decision records, protected assumptions, migration reports |
 
 ## Look and feel
 

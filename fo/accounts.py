@@ -17,7 +17,7 @@ import re
 import secrets
 import sqlite3
 from contextlib import contextmanager
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from .personas import PERSONAS, Profile, profile_from_dict, profile_to_dict, starter_profile
@@ -142,6 +142,39 @@ def demo_user(username: str, path: Path | str | None = None) -> dict | None:
     with _db(path) as con:
         row = con.execute("SELECT id, username FROM users WHERE username = ? AND is_demo = 1", (username,)).fetchone()
     return {"id": row["id"], "username": row["username"], "is_demo": True} if row else None
+
+
+# ---- Private demo copies (used by the API, ADR-0017) ----------------------------------------------
+THROWAWAY = 2  # users.is_demo value for a short-lived private copy of a demo family
+connect = _db  # the API opens its own tables (sessions, migrations) through the same connection helper
+
+
+def create_throwaway_demo(family: str, path: Path | str | None = None) -> dict | None:
+    """A private, short-lived copy of a pristine demo family, so nobody edits a shared one.
+
+    Cannot sign in with a password (authenticate() refuses every demo row); only a server-issued session reaches it.
+    """
+    if family not in DEMO_ACCOUNTS:
+        return None
+    persona = PERSONAS[DEMO_ACCOUNTS[family]]
+    username = f"demo-{family}-{secrets.token_hex(4)}"
+    with _db(path) as con:
+        cur = con.execute(
+            "INSERT INTO users (username, salt, hash, is_demo, created) VALUES (?, ?, ?, ?, ?)",
+            (username, secrets.token_bytes(16), secrets.token_bytes(32), THROWAWAY, _now()),
+        )
+        con.execute(
+            "INSERT INTO profiles (user_id, name, data, updated) VALUES (?, ?, ?, ?)",
+            (cur.lastrowid, persona.name, json.dumps(profile_to_dict(persona)), _now()),
+        )
+        return {"id": int(cur.lastrowid), "username": username, "is_demo": True}
+
+
+def purge_throwaways(older_than_hours: float = 24.0, path: Path | str | None = None) -> int:
+    """Delete demo copies (their profiles and sessions go with them) older than the given age."""
+    cutoff = (datetime.now(timezone.utc) - timedelta(hours=older_than_hours)).isoformat(timespec="seconds")
+    with _db(path) as con:
+        return con.execute("DELETE FROM users WHERE is_demo = ? AND created < ?", (THROWAWAY, cutoff)).rowcount
 
 
 # ---- Profiles (always scoped to the owning user) ------------------------------------------------

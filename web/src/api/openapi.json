@@ -1,0 +1,2188 @@
+{
+  "components": {
+    "schemas": {
+      "ActionRow": {
+        "properties": {
+          "asset_class": {
+            "title": "Asset Class",
+            "type": "string"
+          },
+          "change_cr": {
+            "title": "Change Cr",
+            "type": "number"
+          },
+          "current_cr": {
+            "title": "Current Cr",
+            "type": "number"
+          },
+          "current_share": {
+            "title": "Current Share",
+            "type": "number"
+          },
+          "recommended_cr": {
+            "title": "Recommended Cr",
+            "type": "number"
+          },
+          "recommended_share": {
+            "title": "Recommended Share",
+            "type": "number"
+          }
+        },
+        "required": [
+          "asset_class",
+          "current_share",
+          "recommended_share",
+          "current_cr",
+          "recommended_cr",
+          "change_cr"
+        ],
+        "title": "ActionRow",
+        "type": "object"
+      },
+      "AnalysisOut": {
+        "properties": {
+          "basis": {
+            "enum": [
+              "all",
+              "strict"
+            ],
+            "title": "Basis",
+            "type": "string"
+          },
+          "basis_label": {
+            "title": "Basis Label",
+            "type": "string"
+          },
+          "comparison": {
+            "items": {
+              "$ref": "#/components/schemas/CompareRow"
+            },
+            "title": "Comparison",
+            "type": "array"
+          },
+          "comparison_insights": {
+            "items": {
+              "$ref": "#/components/schemas/InsightOut"
+            },
+            "title": "Comparison Insights",
+            "type": "array"
+          },
+          "comparison_scenario": {
+            "title": "Comparison Scenario",
+            "type": "string"
+          },
+          "current": {
+            "$ref": "#/components/schemas/PortfolioOut"
+          },
+          "current_projection": {
+            "items": {
+              "$ref": "#/components/schemas/ProjectionRow"
+            },
+            "title": "Current Projection",
+            "type": "array"
+          },
+          "data_source": {
+            "title": "Data Source",
+            "type": "string"
+          },
+          "options": {
+            "items": {
+              "$ref": "#/components/schemas/PortfolioDetail"
+            },
+            "title": "Options",
+            "type": "array"
+          },
+          "profile_id": {
+            "title": "Profile Id",
+            "type": "integer"
+          },
+          "upcoming_outflows": {
+            "items": {
+              "$ref": "#/components/schemas/OutflowRow"
+            },
+            "title": "Upcoming Outflows",
+            "type": "array"
+          }
+        },
+        "required": [
+          "profile_id",
+          "basis",
+          "basis_label",
+          "data_source",
+          "current",
+          "current_projection",
+          "options",
+          "upcoming_outflows",
+          "comparison_scenario",
+          "comparison",
+          "comparison_insights"
+        ],
+        "title": "AnalysisOut",
+        "type": "object"
+      },
+      "CompareRow": {
+        "properties": {
+          "cover_held": {
+            "title": "Cover Held",
+            "type": "boolean"
+          },
+          "cover_ratio_after": {
+            "title": "Cover Ratio After",
+            "type": "number"
+          },
+          "exp_real": {
+            "title": "Exp Real",
+            "type": "number"
+          },
+          "exp_return": {
+            "title": "Exp Return",
+            "type": "number"
+          },
+          "max_dd": {
+            "title": "Max Dd",
+            "type": "number"
+          },
+          "option": {
+            "title": "Option",
+            "type": "string"
+          },
+          "real_corpus_multiple": {
+            "title": "Real Corpus Multiple",
+            "type": "number"
+          },
+          "value_change": {
+            "title": "Value Change",
+            "type": "number"
+          },
+          "value_change_cr": {
+            "title": "Value Change Cr",
+            "type": "number"
+          },
+          "within_drawdown_limit": {
+            "title": "Within Drawdown Limit",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "option",
+          "value_change",
+          "value_change_cr",
+          "within_drawdown_limit",
+          "cover_ratio_after",
+          "cover_held",
+          "real_corpus_multiple",
+          "exp_return",
+          "exp_real",
+          "max_dd"
+        ],
+        "title": "CompareRow",
+        "type": "object"
+      },
+      "Credentials": {
+        "additionalProperties": false,
+        "properties": {
+          "password": {
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Password",
+            "type": "string"
+          },
+          "username": {
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Username",
+            "type": "string"
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ],
+        "title": "Credentials",
+        "type": "object"
+      },
+      "DemoRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "family": {
+            "enum": [
+              "legacy",
+              "business",
+              "nextgen",
+              "gap"
+            ],
+            "title": "Family",
+            "type": "string"
+          }
+        },
+        "required": [
+          "family"
+        ],
+        "title": "DemoRequest",
+        "type": "object"
+      },
+      "IlliquidModel": {
+        "additionalProperties": false,
+        "properties": {
+          "corr_with_equity": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Corr With Equity",
+            "type": "number"
+          },
+          "description": {
+            "maxLength": 60,
+            "title": "Description",
+            "type": "string"
+          },
+          "expected_return": {
+            "maximum": 0.4,
+            "minimum": -0.1,
+            "title": "Expected Return",
+            "type": "number"
+          },
+          "lock_in_years": {
+            "maximum": 30.0,
+            "minimum": 0.0,
+            "title": "Lock In Years",
+            "type": "integer"
+          },
+          "volatility": {
+            "maximum": 0.8,
+            "minimum": 0.0,
+            "title": "Volatility",
+            "type": "number"
+          }
+        },
+        "required": [
+          "description",
+          "expected_return",
+          "volatility",
+          "lock_in_years",
+          "corr_with_equity"
+        ],
+        "title": "IlliquidModel",
+        "type": "object"
+      },
+      "InsightOut": {
+        "properties": {
+          "body": {
+            "title": "Body",
+            "type": "string"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title"
+          },
+          "tone": {
+            "enum": [
+              "good",
+              "warn",
+              "info"
+            ],
+            "title": "Tone",
+            "type": "string"
+          }
+        },
+        "required": [
+          "tone",
+          "body"
+        ],
+        "title": "InsightOut",
+        "type": "object"
+      },
+      "LadderRow": {
+        "properties": {
+          "liquid_value_cr": {
+            "title": "Liquid Value Cr",
+            "type": "number"
+          },
+          "months_covered": {
+            "title": "Months Covered",
+            "type": "number"
+          },
+          "outflows_cr": {
+            "title": "Outflows Cr",
+            "type": "number"
+          },
+          "year": {
+            "title": "Year",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "year",
+          "outflows_cr",
+          "liquid_value_cr",
+          "months_covered"
+        ],
+        "title": "LadderRow",
+        "type": "object"
+      },
+      "LimitModel": {
+        "additionalProperties": false,
+        "properties": {
+          "max": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Max",
+            "type": "number"
+          },
+          "min": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Min",
+            "type": "number"
+          }
+        },
+        "required": [
+          "min",
+          "max"
+        ],
+        "title": "LimitModel",
+        "type": "object"
+      },
+      "MetaOut": {
+        "properties": {
+          "app": {
+            "title": "App",
+            "type": "string"
+          },
+          "asset_classes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Asset Classes",
+            "type": "array"
+          },
+          "cover_bases": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Cover Bases",
+            "type": "object"
+          },
+          "data_source": {
+            "title": "Data Source",
+            "type": "string"
+          },
+          "demo_families": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Demo Families",
+            "type": "array"
+          },
+          "demo_login": {
+            "title": "Demo Login",
+            "type": "boolean"
+          },
+          "disclaimer": {
+            "title": "Disclaimer",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "app",
+          "version",
+          "data_source",
+          "disclaimer",
+          "asset_classes",
+          "cover_bases",
+          "demo_login",
+          "demo_families"
+        ],
+        "title": "MetaOut",
+        "type": "object"
+      },
+      "OneOffModel": {
+        "additionalProperties": false,
+        "properties": {
+          "amount_cr": {
+            "exclusiveMinimum": 0.0,
+            "maximum": 10000000.0,
+            "title": "Amount Cr",
+            "type": "number"
+          },
+          "year": {
+            "maximum": 60.0,
+            "minimum": 1.0,
+            "title": "Year",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "year",
+          "amount_cr"
+        ],
+        "title": "OneOffModel",
+        "type": "object"
+      },
+      "OutflowRow": {
+        "properties": {
+          "one_off_cr": {
+            "title": "One Off Cr",
+            "type": "number"
+          },
+          "spending_cr": {
+            "title": "Spending Cr",
+            "type": "number"
+          },
+          "total_cr": {
+            "title": "Total Cr",
+            "type": "number"
+          },
+          "year": {
+            "title": "Year",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "year",
+          "spending_cr",
+          "one_off_cr",
+          "total_cr"
+        ],
+        "title": "OutflowRow",
+        "type": "object"
+      },
+      "PortfolioDetail": {
+        "properties": {
+          "action_plan": {
+            "items": {
+              "$ref": "#/components/schemas/ActionRow"
+            },
+            "title": "Action Plan",
+            "type": "array"
+          },
+          "insights": {
+            "items": {
+              "$ref": "#/components/schemas/InsightOut"
+            },
+            "title": "Insights",
+            "type": "array"
+          },
+          "ladder": {
+            "items": {
+              "$ref": "#/components/schemas/LadderRow"
+            },
+            "title": "Ladder",
+            "type": "array"
+          },
+          "portfolio": {
+            "$ref": "#/components/schemas/PortfolioOut"
+          },
+          "projection": {
+            "items": {
+              "$ref": "#/components/schemas/ProjectionRow"
+            },
+            "title": "Projection",
+            "type": "array"
+          },
+          "scenarios": {
+            "items": {
+              "$ref": "#/components/schemas/ScenarioRow"
+            },
+            "title": "Scenarios",
+            "type": "array"
+          }
+        },
+        "required": [
+          "portfolio",
+          "action_plan",
+          "scenarios",
+          "insights",
+          "ladder",
+          "projection"
+        ],
+        "title": "PortfolioDetail",
+        "type": "object"
+      },
+      "PortfolioOut": {
+        "properties": {
+          "available_cover_cr": {
+            "title": "Available Cover Cr",
+            "type": "number"
+          },
+          "basis": {
+            "enum": [
+              "all",
+              "strict"
+            ],
+            "title": "Basis",
+            "type": "string"
+          },
+          "bounds_hit": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Bounds Hit",
+            "type": "array"
+          },
+          "cost_of_liquidity": {
+            "title": "Cost Of Liquidity",
+            "type": "number"
+          },
+          "cover_fraction": {
+            "title": "Cover Fraction",
+            "type": "number"
+          },
+          "cvar21": {
+            "title": "Cvar21",
+            "type": "number"
+          },
+          "dd_ok": {
+            "title": "Dd Ok",
+            "type": "boolean"
+          },
+          "exp_real": {
+            "title": "Exp Real",
+            "type": "number"
+          },
+          "exp_return": {
+            "title": "Exp Return",
+            "type": "number"
+          },
+          "explanation": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Explanation",
+            "type": "array"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "lam_base": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lam Base"
+          },
+          "lam_used": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lam Used"
+          },
+          "liquid_return": {
+            "title": "Liquid Return",
+            "type": "number"
+          },
+          "liquidity_binding": {
+            "title": "Liquidity Binding",
+            "type": "boolean"
+          },
+          "liquidity_infeasible": {
+            "title": "Liquidity Infeasible",
+            "type": "boolean"
+          },
+          "max_dd": {
+            "title": "Max Dd",
+            "type": "number"
+          },
+          "meets_target": {
+            "title": "Meets Target",
+            "type": "boolean"
+          },
+          "optimiser_converged": {
+            "title": "Optimiser Converged",
+            "type": "boolean"
+          },
+          "required_cover_cr": {
+            "title": "Required Cover Cr",
+            "type": "number"
+          },
+          "target_gap": {
+            "title": "Target Gap",
+            "type": "number"
+          },
+          "vol": {
+            "title": "Vol",
+            "type": "number"
+          },
+          "weights_sleeve": {
+            "items": {
+              "type": "number"
+            },
+            "title": "Weights Sleeve",
+            "type": "array"
+          },
+          "weights_total": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Weights Total",
+            "type": "object"
+          }
+        },
+        "required": [
+          "label",
+          "basis",
+          "weights_total",
+          "weights_sleeve",
+          "exp_return",
+          "exp_real",
+          "vol",
+          "max_dd",
+          "cvar21",
+          "dd_ok",
+          "meets_target",
+          "target_gap",
+          "required_cover_cr",
+          "available_cover_cr",
+          "cover_fraction",
+          "liquidity_binding",
+          "liquidity_infeasible",
+          "cost_of_liquidity",
+          "liquid_return",
+          "lam_base",
+          "lam_used",
+          "bounds_hit",
+          "explanation",
+          "optimiser_converged"
+        ],
+        "title": "PortfolioOut",
+        "type": "object"
+      },
+      "Problem": {
+        "description": "The one error shape every endpoint uses. `problems` lists field-level messages when there are several.",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "string"
+          },
+          "problems": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Problems"
+          }
+        },
+        "required": [
+          "detail"
+        ],
+        "title": "Problem",
+        "type": "object"
+      },
+      "ProfileIn": {
+        "additionalProperties": false,
+        "properties": {
+          "annual_spending_cr": {
+            "maximum": 100000.0,
+            "minimum": 0.0,
+            "title": "Annual Spending Cr",
+            "type": "number"
+          },
+          "corpus_cr": {
+            "maximum": 1000000.0,
+            "minimum": 1.0,
+            "title": "Corpus Cr",
+            "type": "number"
+          },
+          "cover_months": {
+            "maximum": 240.0,
+            "minimum": 1.0,
+            "title": "Cover Months",
+            "type": "integer"
+          },
+          "deciding_constraint": {
+            "default": "",
+            "maxLength": 200,
+            "title": "Deciding Constraint",
+            "type": "string"
+          },
+          "holdings": {
+            "additionalProperties": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            "description": "Share of the whole corpus per class, including 'Illiquid'.",
+            "title": "Holdings",
+            "type": "object"
+          },
+          "horizon_years": {
+            "maximum": 60.0,
+            "minimum": 1.0,
+            "title": "Horizon Years",
+            "type": "integer"
+          },
+          "illiquid": {
+            "$ref": "#/components/schemas/IlliquidModel"
+          },
+          "limits": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/LimitModel"
+            },
+            "description": "Allowed share of the liquid part, per market class.",
+            "title": "Limits",
+            "type": "object"
+          },
+          "max_drawdown": {
+            "maximum": 0.8,
+            "minimum": 0.01,
+            "title": "Max Drawdown",
+            "type": "number"
+          },
+          "name": {
+            "maxLength": 60,
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "one_offs": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/OneOffModel"
+            },
+            "maxItems": 10,
+            "title": "One Offs",
+            "type": "array"
+          },
+          "target_real_return": {
+            "maximum": 0.25,
+            "minimum": -0.05,
+            "title": "Target Real Return",
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "corpus_cr",
+          "annual_spending_cr",
+          "horizon_years",
+          "max_drawdown",
+          "cover_months",
+          "target_real_return",
+          "holdings",
+          "illiquid",
+          "limits"
+        ],
+        "title": "ProfileIn",
+        "type": "object"
+      },
+      "ProfileOut": {
+        "additionalProperties": false,
+        "properties": {
+          "annual_spending_cr": {
+            "maximum": 100000.0,
+            "minimum": 0.0,
+            "title": "Annual Spending Cr",
+            "type": "number"
+          },
+          "corpus_cr": {
+            "maximum": 1000000.0,
+            "minimum": 1.0,
+            "title": "Corpus Cr",
+            "type": "number"
+          },
+          "cover_months": {
+            "maximum": 240.0,
+            "minimum": 1.0,
+            "title": "Cover Months",
+            "type": "integer"
+          },
+          "deciding_constraint": {
+            "default": "",
+            "maxLength": 200,
+            "title": "Deciding Constraint",
+            "type": "string"
+          },
+          "holdings": {
+            "additionalProperties": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            "description": "Share of the whole corpus per class, including 'Illiquid'.",
+            "title": "Holdings",
+            "type": "object"
+          },
+          "horizon_years": {
+            "maximum": 60.0,
+            "minimum": 1.0,
+            "title": "Horizon Years",
+            "type": "integer"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "illiquid": {
+            "$ref": "#/components/schemas/IlliquidModel"
+          },
+          "limits": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/LimitModel"
+            },
+            "description": "Allowed share of the liquid part, per market class.",
+            "title": "Limits",
+            "type": "object"
+          },
+          "max_drawdown": {
+            "maximum": 0.8,
+            "minimum": 0.01,
+            "title": "Max Drawdown",
+            "type": "number"
+          },
+          "name": {
+            "maxLength": 60,
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "one_offs": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/OneOffModel"
+            },
+            "maxItems": 10,
+            "title": "One Offs",
+            "type": "array"
+          },
+          "target_real_return": {
+            "maximum": 0.25,
+            "minimum": -0.05,
+            "title": "Target Real Return",
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "corpus_cr",
+          "annual_spending_cr",
+          "horizon_years",
+          "max_drawdown",
+          "cover_months",
+          "target_real_return",
+          "holdings",
+          "illiquid",
+          "limits",
+          "id"
+        ],
+        "title": "ProfileOut",
+        "type": "object"
+      },
+      "ProfileSummary": {
+        "properties": {
+          "corpus_cr": {
+            "title": "Corpus Cr",
+            "type": "number"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "corpus_cr"
+        ],
+        "title": "ProfileSummary",
+        "type": "object"
+      },
+      "ProjectionRow": {
+        "properties": {
+          "nominal_cr": {
+            "title": "Nominal Cr",
+            "type": "number"
+          },
+          "real_cr": {
+            "title": "Real Cr",
+            "type": "number"
+          },
+          "year": {
+            "title": "Year",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "year",
+          "nominal_cr",
+          "real_cr"
+        ],
+        "title": "ProjectionRow",
+        "type": "object"
+      },
+      "ScenarioRow": {
+        "properties": {
+          "cover_held": {
+            "title": "Cover Held",
+            "type": "boolean"
+          },
+          "cover_ratio": {
+            "title": "Cover Ratio",
+            "type": "number"
+          },
+          "real_corpus_multiple": {
+            "title": "Real Corpus Multiple",
+            "type": "number"
+          },
+          "scenario": {
+            "title": "Scenario",
+            "type": "string"
+          },
+          "value_change": {
+            "title": "Value Change",
+            "type": "number"
+          },
+          "value_change_cr": {
+            "title": "Value Change Cr",
+            "type": "number"
+          },
+          "within_drawdown_limit": {
+            "title": "Within Drawdown Limit",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "scenario",
+          "value_change",
+          "value_change_cr",
+          "within_drawdown_limit",
+          "cover_ratio",
+          "cover_held",
+          "real_corpus_multiple"
+        ],
+        "title": "ScenarioRow",
+        "type": "object"
+      },
+      "SessionOut": {
+        "properties": {
+          "csrf_token": {
+            "title": "Csrf Token",
+            "type": "string"
+          },
+          "default_basis": {
+            "default": "all",
+            "enum": [
+              "all",
+              "strict"
+            ],
+            "title": "Default Basis",
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/UserOut"
+          }
+        },
+        "required": [
+          "user",
+          "csrf_token"
+        ],
+        "title": "SessionOut",
+        "type": "object"
+      },
+      "UserOut": {
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "is_demo": {
+            "title": "Is Demo",
+            "type": "boolean"
+          },
+          "username": {
+            "title": "Username",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "username",
+          "is_demo"
+        ],
+        "title": "UserOut",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "title": "Family Office Intelligence API",
+    "version": "0.1.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/api/auth/demo": {
+      "post": {
+        "description": "A private, throwaway copy of a demo family: edits never reach anyone else's copy.",
+        "operationId": "demo_api_auth_demo_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Demo",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "operationId": "login_api_auth_login_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Credentials"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Login",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/auth/logout": {
+      "post": {
+        "operationId": "logout_api_auth_logout_post",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Logout",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/auth/me": {
+      "get": {
+        "operationId": "me_api_auth_me_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Me",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/auth/signup": {
+      "post": {
+        "operationId": "signup_api_auth_signup_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Credentials"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Signup",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/health": {
+      "get": {
+        "operationId": "health_api_health_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Health",
+        "tags": [
+          "meta"
+        ]
+      }
+    },
+    "/api/meta": {
+      "get": {
+        "operationId": "meta_api_meta_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetaOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Meta",
+        "tags": [
+          "meta"
+        ]
+      }
+    },
+    "/api/profiles": {
+      "get": {
+        "operationId": "list_profiles_api_profiles_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ProfileSummary"
+                  },
+                  "title": "Response List Profiles Api Profiles Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "List Profiles",
+        "tags": [
+          "profiles"
+        ]
+      },
+      "post": {
+        "operationId": "create_profile_api_profiles_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Create Profile",
+        "tags": [
+          "profiles"
+        ]
+      }
+    },
+    "/api/profiles/{profile_id}": {
+      "delete": {
+        "operationId": "delete_profile_api_profiles__profile_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Delete Profile",
+        "tags": [
+          "profiles"
+        ]
+      },
+      "get": {
+        "operationId": "get_profile_api_profiles__profile_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Get Profile",
+        "tags": [
+          "profiles"
+        ]
+      },
+      "put": {
+        "operationId": "update_profile_api_profiles__profile_id__put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Update Profile",
+        "tags": [
+          "profiles"
+        ]
+      }
+    },
+    "/api/profiles/{profile_id}/analysis": {
+      "get": {
+        "operationId": "analysis_api_profiles__profile_id__analysis_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Which assets count towards the liquidity cover.",
+            "in": "query",
+            "name": "basis",
+            "required": false,
+            "schema": {
+              "default": "all",
+              "description": "Which assets count towards the liquidity cover.",
+              "enum": [
+                "all",
+                "strict"
+              ],
+              "title": "Basis",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalysisOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Analysis",
+        "tags": [
+          "profiles"
+        ]
+      }
+    }
+  }
+}

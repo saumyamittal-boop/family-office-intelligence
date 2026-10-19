@@ -3,7 +3,8 @@ import streamlit as st
 
 from fo import accounts, session, ui
 from fo.data import ASSET_CLASSES
-from fo.personas import ILLIQUID, IlliquidBucket, Profile, starter_profile
+from fo.personas import ILLIQUID, Profile, starter_profile
+from fo.profile_form import build_profile
 
 uid = session.user()["id"]
 pid, p = session.active_profile()
@@ -15,58 +16,13 @@ def _new_blank() -> None:
 
 
 def _build(inputs: dict) -> tuple[Profile | None, list[str]]:
-    """Turn the form values into a Profile, or explain what is wrong."""
-    errors: list[str] = []
-    name = inputs["name"].strip()
-    if not name:
-        errors.append("Give the profile a name.")
-
-    holds = {c: v / 100 for c, v in inputs["holdings"].items()}
-    total = sum(holds.values())
-    if abs(total - 1.0) > 0.005:
-        errors.append(f"Holdings add up to {total * 100:.1f}%. They need to add up to 100%.")
-    elif total > 0:
-        holds = {c: v / total for c, v in holds.items()}
-    if holds.get(ILLIQUID, 0) > 0.95:
-        errors.append("Illiquid holdings can be at most 95% of the corpus; the model needs a liquid part to allocate.")
-
-    limits = {}
-    lim = inputs["limits"]
-    for _, row in lim.iterrows():
-        lo, hi = float(row["Minimum (%)"]) / 100, float(row["Maximum (%)"]) / 100
-        if not (0 <= lo <= hi <= 1):
-            errors.append(f"{row['Asset class']}: the minimum must be between 0% and the maximum, and the maximum at most 100%.")
-        limits[row["Asset class"]] = (lo, hi)
-    if limits and (sum(v[0] for v in limits.values()) > 1 + 1e-9 or sum(v[1] for v in limits.values()) < 1 - 1e-9):
-        errors.append("The class limits can't add up to 100% of the liquid part: minimums must total at most 100% "
-                      "and maximums at least 100%.")
-
-    one_offs = []
-    rows = inputs["one_offs"].dropna(how="any")
-    if len(rows) > 3:
-        errors.append("Enter at most three one-off outflows.")
-    for _, row in rows.iterrows():
-        year, amount = int(row["Year"]), float(row["Amount (₹ Cr)"])
-        if not 1 <= year <= inputs["horizon"]:
-            errors.append(f"A one-off outflow in year {year} is outside the {inputs['horizon']}-year horizon.")
-        if amount <= 0:
-            errors.append("One-off amounts must be above zero.")
-        one_offs.append((year, amount))
-
-    if errors:
-        return None, errors
-    return (
-        Profile(
-            key=p.key, name=name, deciding_constraint=p.deciding_constraint, corpus_cr=inputs["corpus"],
-            holdings=holds,
-            illiquid=IlliquidBucket(inputs["ill_desc"].strip() or "Illiquid holdings", inputs["ill_ret"] / 100,
-                                    inputs["ill_vol"] / 100, inputs["lock"], inputs["corr"]),
-            annual_spending_cr=inputs["spending"], one_offs=tuple(sorted(one_offs)), horizon_years=inputs["horizon"],
-            max_drawdown=inputs["max_dd"] / 100, cover_months=inputs["cover"], limits=limits,
-            target_real_return=inputs["target"] / 100,
-        ),
-        [],
-    )
+    """Turn the form values into a Profile, or explain what is wrong (the rules live in fo.profile_form)."""
+    raw = {
+        **inputs,
+        "limits": [(r["Asset class"], r["Minimum (%)"], r["Maximum (%)"]) for _, r in inputs["limits"].iterrows()],
+        "one_offs": [(r["Year"], r["Amount (₹ Cr)"]) for _, r in inputs["one_offs"].dropna(how="any").iterrows()],
+    }
+    return build_profile(raw, key=p.key, deciding_constraint=p.deciding_constraint)
 
 
 head, action = st.columns([4, 1], vertical_alignment="center")
