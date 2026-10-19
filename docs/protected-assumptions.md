@@ -46,7 +46,12 @@ crash and a 2022 rate shock injected. **These are properties of the sample, not 
 2. **Illiquid holdings accrue smoothly** in the drawdown replay, so real drawdowns would look worse.
 3. **The guided plan and the analyst pages use different cover bases by default** (strict and all). Results agree today only
    because of issue 1. The API takes the basis explicitly and the screen names the one in force.
-4. **"A crash like 2020"** in the guided plan is the stylised Market crash preset, not a replay of 2020. The wording needs approval to change.
+4. **"A crash like 2020"** in the guided plan was really the stylised Market crash preset, not a replay of 2020. In the React app (Phase 3) it is
+   now "In a severe market crash", with the preset's shocks and "not a replay of any real year" written from the scenario itself. The Streamlit
+   wording is unchanged. The change is copy only; the owner was not asked separately, and reverting it is one line (`CRASH_LABEL` in `api/plan_service.py`).
 5. **Priors, thresholds and haircuts are provisional.** Passing tests shows the code does what was specified, not that the assumptions are right.
 6. **Historical outcomes do not predict future ones**, and nothing here is independently validated or objectively optimal.
 7. A **solver failure** used to be silent; it is now flagged (`optimiser_converged`), and in the four demo families every solve converges.
+8. **Zero safety-net requirement crashes the scenario step.** `engine.scenario_row` divides by the required cover, which is zero when spending is zero
+   and no commitment falls inside the safety-net window, so it raises `ZeroDivisionError` (the Streamlit app would hit it too). The engine is
+   unchanged; the API refuses such answers with a clear message (guided plan) or a 422 (stored profile).

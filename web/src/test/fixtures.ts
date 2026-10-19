@@ -62,6 +62,7 @@ export function analysis(overrides: Partial<Analysis> = {}): Analysis {
     insights: [{ tone: "warn", title: "Liquidity shortfall", body: "Counted liquid assets are below the need." }],
     ladder: [],
     projection: projection(growth),
+    year_range: { low: -0.03, median: 0.09, high: 0.21, worst: -0.12, best: 0.33 },
   });
   return {
     profile_id: 1,

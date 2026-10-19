@@ -188,6 +188,16 @@ class CompareRow(BaseModel):
     max_dd: float
 
 
+class YearRange(BaseModel):
+    """How a year has turned out in the sample history: the middle 80% of years, the median, and the extremes."""
+
+    low: float
+    median: float
+    high: float
+    worst: float
+    best: float
+
+
 class PortfolioDetail(BaseModel):
     portfolio: PortfolioOut
     action_plan: list[ActionRow]
@@ -195,6 +205,7 @@ class PortfolioDetail(BaseModel):
     insights: list[InsightOut]
     ladder: list[LadderRow]
     projection: list[ProjectionRow]
+    year_range: YearRange
 
 
 class AnalysisOut(BaseModel):

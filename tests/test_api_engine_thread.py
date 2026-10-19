@@ -31,8 +31,15 @@ def test_a_slow_analysis_answers_busy_in_time_instead_of_hanging(make_client):
     assert waited < 1.2, f"the request should give up after about 0.3 s, took {waited:.2f} s"
 
     service._compute = real_compute
-    time.sleep(1.8)  # let the slow job finish; its answer lands in the cache
-    assert c.get(f"/api/profiles/{pid}/analysis").status_code == 200  # the service recovered by itself
+    # The slow job is still running on the engine thread. Once it finishes its answer lands in the cache, and the service recovers
+    # by itself. Poll instead of sleeping a fixed time, so a busy machine cannot make this test flaky.
+    status = 503
+    for _ in range(40):
+        time.sleep(0.5)
+        status = c.get(f"/api/profiles/{pid}/analysis").status_code
+        if status == 200:
+            break
+    assert status == 200
 
 
 def test_a_request_that_gave_up_while_queued_is_not_computed_later(make_client):

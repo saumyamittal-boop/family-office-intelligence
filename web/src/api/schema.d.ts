@@ -126,6 +126,80 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/plan/config": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Plan Config
+         * @description The questions, choices and bounds. Public: it describes the form, not anybody's data.
+         */
+        get: operations["plan_config_api_plan_config_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/plan/preview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Plan Preview
+         * @description Instant read-out of what the answers mean so far. No optimiser, so it is safe to call as a person types.
+         */
+        post: operations["plan_preview_api_plan_preview_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/plan/save": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Plan Save */
+        post: operations["plan_save_api_plan_save_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/plan/strategies": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Plan Strategies */
+        post: operations["plan_strategies_api_plan_strategies_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/profiles": {
         parameters: {
             query?: never;
@@ -226,6 +300,63 @@ export interface components {
             /** Upcoming Outflows */
             upcoming_outflows: components["schemas"]["OutflowRow"][];
         };
+        /** Bounds */
+        Bounds: {
+            /** Max */
+            max: number;
+            /** Min */
+            min: number;
+        };
+        /** ClassInfo */
+        ClassInfo: {
+            /** Description */
+            description: string;
+            /** Label */
+            label: string;
+            /** Name */
+            name: string;
+        };
+        /** ComfortLoss */
+        ComfortLoss: {
+            /**
+             * Key
+             * @enum {string}
+             */
+            key: "Protect" | "Balance" | "Grow";
+            /** Loss Cr */
+            loss_cr: number | null;
+            /** Max Drawdown */
+            max_drawdown: number;
+        };
+        /** ComfortOption */
+        ComfortOption: {
+            /** Blurb */
+            blurb: string;
+            /** Headline */
+            headline: string;
+            /**
+             * Key
+             * @enum {string}
+             */
+            key: "Protect" | "Balance" | "Grow";
+            /** Letter */
+            letter: string;
+            /** Max Drawdown */
+            max_drawdown: number;
+            /** Portfolio */
+            portfolio: string;
+            /** Target Real Return */
+            target_real_return: number;
+        };
+        /** CommitmentIn */
+        CommitmentIn: {
+            /** Amount Cr */
+            amount_cr: number;
+            /** Kind */
+            kind: string;
+            /** Year */
+            year: number;
+        };
         /** CompareRow */
         CompareRow: {
             /** Cover Held */
@@ -248,6 +379,20 @@ export interface components {
             value_change_cr: number;
             /** Within Drawdown Limit */
             within_drawdown_limit: boolean;
+        };
+        /** CrashInfo */
+        CrashInfo: {
+            /** Description */
+            description: string;
+            /** Label */
+            label: string;
+        };
+        /** CrashResult */
+        CrashResult: {
+            /** Value Change */
+            value_change: number;
+            /** Value Change Cr */
+            value_change_cr: number;
         };
         /** Credentials */
         Credentials: {
@@ -346,6 +491,146 @@ export interface components {
             /** Year */
             year: number;
         };
+        /** PlanActionRow */
+        PlanActionRow: {
+            /** Asset Class */
+            asset_class: string;
+            /** Change Cr */
+            change_cr: number;
+            /** Current Cr */
+            current_cr: number;
+            /** Current Share */
+            current_share: number;
+            /** Instrument Name */
+            instrument_name: string;
+            /** Instrument Note */
+            instrument_note: string;
+            /** Recommended Cr */
+            recommended_cr: number;
+            /** Recommended Share */
+            recommended_share: number;
+        };
+        /** PlanAnswersIn */
+        PlanAnswersIn: {
+            /**
+             * Amounts
+             * @description What the family owns today, in INR crore per class including 'Illiquid'. Omit for a typical split.
+             */
+            amounts?: {
+                [key: string]: number;
+            } | null;
+            /**
+             * Commitments
+             * @default []
+             */
+            commitments: components["schemas"]["CommitmentIn"][];
+            /** Months */
+            months: number;
+            /** Name */
+            name: string;
+            /**
+             * Risk
+             * @enum {string}
+             */
+            risk: "Protect" | "Balance" | "Grow";
+            /** Spending */
+            spending: number;
+            /** Wealth */
+            wealth: number;
+        };
+        /** PlanConfigOut */
+        PlanConfigOut: {
+            /** Classes */
+            classes: components["schemas"]["ClassInfo"][];
+            /** Comfort */
+            comfort: components["schemas"]["ComfortOption"][];
+            /** Commitment Kinds */
+            commitment_kinds: string[];
+            crash: components["schemas"]["CrashInfo"];
+            defaults: components["schemas"]["PlanDefaults"];
+            /** Horizon Years */
+            horizon_years: number;
+            /** Max Commitments */
+            max_commitments: number;
+            months: components["schemas"]["Bounds"];
+            spending: components["schemas"]["Bounds"];
+            /** Steps */
+            steps: string[];
+            wealth: components["schemas"]["Bounds"];
+        };
+        /** PlanDefaults */
+        PlanDefaults: {
+            /** Months */
+            months: number;
+            /** Name */
+            name: string;
+            /**
+             * Risk
+             * @enum {string}
+             */
+            risk: "Protect" | "Balance" | "Grow";
+            /** Spending */
+            spending: number;
+            /** Wealth */
+            wealth: number;
+        };
+        /** PlanPreviewOut */
+        PlanPreviewOut: {
+            /**
+             * Amounts Differ From Wealth
+             * @default false
+             */
+            amounts_differ_from_wealth: boolean;
+            /** Amounts Total Cr */
+            amounts_total_cr?: number | null;
+            /** Comfort */
+            comfort: components["schemas"]["ComfortLoss"][];
+            /** Corpus Cr */
+            corpus_cr?: number | null;
+            /**
+             * Effects
+             * @default []
+             */
+            effects: string[];
+            /** Illiquid Cr */
+            illiquid_cr?: number | null;
+            /** Illiquid Share */
+            illiquid_share?: number | null;
+            /** Liquid Cr */
+            liquid_cr?: number | null;
+            /** Near Outflows Cr */
+            near_outflows_cr?: number | null;
+            /** Near Outflows Share Of Liquid */
+            near_outflows_share_of_liquid?: number | null;
+            /**
+             * Outflows
+             * @default []
+             */
+            outflows: components["schemas"]["OutflowRow"][];
+            /** Problems */
+            problems: string[];
+            safety_net?: components["schemas"]["SafetyNet"] | null;
+            /** Typical Amounts */
+            typical_amounts: {
+                [key: string]: number;
+            };
+        };
+        /** PlanStrategiesOut */
+        PlanStrategiesOut: {
+            /** Basis Label */
+            basis_label: string;
+            /** Commitments */
+            commitments: components["schemas"]["CommitmentIn"][];
+            /** Corpus Cr */
+            corpus_cr: number;
+            crash: components["schemas"]["CrashInfo"];
+            /** Data Source */
+            data_source: string;
+            /** Profile Name */
+            profile_name: string;
+            /** Strategies */
+            strategies: components["schemas"]["StrategyOut"][];
+        };
         /** PortfolioDetail */
         PortfolioDetail: {
             /** Action Plan */
@@ -359,6 +644,7 @@ export interface components {
             projection: components["schemas"]["ProjectionRow"][];
             /** Scenarios */
             scenarios: components["schemas"]["ScenarioRow"][];
+            year_range: components["schemas"]["YearRange"];
         };
         /** PortfolioOut */
         PortfolioOut: {
@@ -530,6 +816,32 @@ export interface components {
             /** Year */
             year: number;
         };
+        /** SafetyNet */
+        SafetyNet: {
+            /** Commitments Cr */
+            commitments_cr: number;
+            /** Months */
+            months: number;
+            /** Required Cr */
+            required_cr: number;
+            /** Spending Cr */
+            spending_cr: number;
+        };
+        /** SaveOut */
+        SaveOut: {
+            /** Created */
+            created: boolean;
+            profile: components["schemas"]["ProfileOut"];
+        };
+        /** SaveRequest */
+        SaveRequest: {
+            answers: components["schemas"]["PlanAnswersIn"];
+            /**
+             * Strategy
+             * @enum {string}
+             */
+            strategy: "Protect" | "Balance" | "Grow";
+        };
         /** ScenarioRow */
         ScenarioRow: {
             /** Cover Held */
@@ -559,6 +871,49 @@ export interface components {
             default_basis: "all" | "strict";
             user: components["schemas"]["UserOut"];
         };
+        /** StrategyOut */
+        StrategyOut: {
+            /** Action Plan */
+            action_plan: components["schemas"]["PlanActionRow"][];
+            /** Blurb */
+            blurb: string;
+            /** Cover Ratio */
+            cover_ratio: number;
+            crash: components["schemas"]["CrashResult"];
+            /** Description */
+            description: string[];
+            /** Headline */
+            headline: string;
+            /** Illiquid Cr */
+            illiquid_cr: number;
+            /** Illiquid Name */
+            illiquid_name: string;
+            /** Illiquid Note */
+            illiquid_note: string;
+            /**
+             * Key
+             * @enum {string}
+             */
+            key: "Protect" | "Balance" | "Grow";
+            /** Letter */
+            letter: string;
+            /**
+             * Meets Goal Of
+             * @description For each comfort level: whether this strategy's expected real return reaches that level's goal.
+             */
+            meets_goal_of: {
+                [key: string]: boolean;
+            };
+            portfolio: components["schemas"]["PortfolioOut"];
+            /**
+             * Within Comfort Of
+             * @description For each comfort level a family might choose: whether this strategy's worst historical fall fits it.
+             */
+            within_comfort_of: {
+                [key: string]: boolean;
+            };
+            year_range: components["schemas"]["YearRange"];
+        };
         /** UserOut */
         UserOut: {
             /** Id */
@@ -567,6 +922,22 @@ export interface components {
             is_demo: boolean;
             /** Username */
             username: string;
+        };
+        /**
+         * YearRange
+         * @description How a year has turned out in the sample history: the middle 80% of years, the median, and the extremes.
+         */
+        YearRange: {
+            /** Best */
+            best: number;
+            /** High */
+            high: number;
+            /** Low */
+            low: number;
+            /** Median */
+            median: number;
+            /** Worst */
+            worst: number;
         };
     };
     responses: never;
@@ -1038,6 +1409,350 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["MetaOut"];
+                };
+            };
+        };
+    };
+    plan_config_api_plan_config_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PlanConfigOut"];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+        };
+    };
+    plan_preview_api_plan_preview_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PlanAnswersIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PlanPreviewOut"];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+        };
+    };
+    plan_save_api_plan_save_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SaveRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SaveOut"];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+        };
+    };
+    plan_strategies_api_plan_strategies_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PlanAnswersIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PlanStrategiesOut"];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
                 };
             };
         };

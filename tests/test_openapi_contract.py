@@ -19,13 +19,14 @@ def test_every_endpoint_is_in_the_contract_and_states_how_it_authenticates():
     expected = {
         "/api/health", "/api/meta", "/api/auth/login", "/api/auth/signup", "/api/auth/demo", "/api/auth/me",
         "/api/auth/logout", "/api/profiles", "/api/profiles/{profile_id}", "/api/profiles/{profile_id}/analysis",
+        "/api/plan/config", "/api/plan/preview", "/api/plan/strategies", "/api/plan/save",
     }
     assert set(paths) == expected
 
 
 def test_typescript_types_exist_and_name_the_main_shapes():
     text = SCHEMA_TS.read_text(encoding="utf-8")
-    for name in ("AnalysisOut", "PortfolioOut", "ProfileIn", "SessionOut", "Problem"):
+    for name in ("AnalysisOut", "PortfolioOut", "ProfileIn", "SessionOut", "Problem", "PlanAnswersIn", "PlanStrategiesOut", "PlanPreviewOut"):
         assert name in text, f"{name} missing from schema.d.ts; run npm run gen:api"
     assert "optimiser_converged" in text
 

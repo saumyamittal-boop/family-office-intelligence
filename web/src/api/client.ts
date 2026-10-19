@@ -9,6 +9,13 @@ export type ProfileSummary = Schemas["ProfileSummary"];
 export type Meta = Schemas["MetaOut"];
 export type Basis = Schemas["AnalysisOut"]["basis"];
 export type DemoFamily = Schemas["DemoRequest"]["family"];
+export type PlanAnswers = Schemas["PlanAnswersIn"];
+export type PlanConfig = Schemas["PlanConfigOut"];
+export type PlanPreview = Schemas["PlanPreviewOut"];
+export type PlanStrategies = Schemas["PlanStrategiesOut"];
+export type Strategy = Schemas["StrategyOut"];
+export type RiskKey = PlanAnswers["risk"];
+export type Commitment = Schemas["CommitmentIn"];
 
 /** What the server says went wrong, in words that can be shown to a person. */
 export class ApiError extends Error {
@@ -63,4 +70,9 @@ export const api = {
   profiles: () => request<ProfileSummary[]>("GET", "/api/profiles"),
   analysis: (profileId: number, basis: Basis) =>
     request<Analysis>("GET", `/api/profiles/${profileId}/analysis?basis=${basis}`),
+  planConfig: () => request<PlanConfig>("GET", "/api/plan/config"),
+  planPreview: (answers: PlanAnswers) => request<PlanPreview>("POST", "/api/plan/preview", answers),
+  planStrategies: (answers: PlanAnswers) => request<PlanStrategies>("POST", "/api/plan/strategies", answers),
+  planSave: (answers: PlanAnswers, strategy: RiskKey) =>
+    request<Schemas["SaveOut"]>("POST", "/api/plan/save", { answers, strategy }),
 };

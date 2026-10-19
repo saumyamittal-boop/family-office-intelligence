@@ -78,5 +78,7 @@ def analysis(
         return svc.analyse(profile_id, profile, basis)
     except ValueError as err:  # e.g. class limits that cannot add up to 100%
         raise ApiError(422, f"This profile can't be analysed yet: {err}") from None
+    except ZeroDivisionError:  # the engine divides by the safety-net requirement, which is zero with no spending
+        raise ApiError(422, "This profile can't be analysed yet: it needs some yearly spending, or a commitment inside the safety-net window.") from None
     except AnalysisTimeout:
         raise ApiError(503, "The allocation model is busy. Please try again in a minute.", headers={"Retry-After": "30"}) from None

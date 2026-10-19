@@ -2,9 +2,10 @@ import { screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import App from "./App";
-import type { Analysis } from "./api/client";
+import type { Analysis, PlanAnswers } from "./api/client";
 import { analysis, META, portfolio, session } from "./test/fixtures";
-import { json, renderWithProviders, serve } from "./test/render";
+import { json, jsonBy, renderWithProviders, serve } from "./test/render";
+import { CONFIG, previewFor } from "./test/planFixtures";
 
 const PROFILES = [{ id: 1, name: "Gap family", corpus_cr: 1000 }];
 
@@ -170,5 +171,53 @@ describe("overview", () => {
     renderWithProviders(<App />, "/?profile=1&basis=all");
     await screen.findByText("8.8%");
     expect(screen.getByRole("combobox", { name: /towards the safety net/i })).toHaveValue("all");
+  });
+});
+
+describe("where a person lands after signing in", () => {
+  const asha = { ...session, user: { id: 9, username: "asha", is_demo: false } };
+  const routes = (extra: Record<string, () => Response> = {}) =>
+    serve({
+      "GET /api/auth/me": json({ detail: "Please sign in." }, 401),
+      "GET /api/meta": json(META),
+      "GET /api/profiles": json(PROFILES),
+      "GET /api/profiles/1/analysis": json(analysis()),
+      "GET /api/plan/config": json(CONFIG),
+      "POST /api/plan/preview": jsonBy<PlanAnswers>(previewFor),
+      "POST /api/auth/signup": json(asha, 201),
+      "POST /api/auth/login": json(asha),
+      ...extra,
+    });
+
+  it("a brand-new account lands on the guided plan, as in the Streamlit app", async () => {
+    routes();
+    const user = userEvent.setup();
+    renderWithProviders(<App />);
+    await user.click(await screen.findByRole("tab", { name: "Create account" }));
+    await user.type(screen.getByLabelText("Choose a username"), "asha");
+    await user.type(screen.getByLabelText("Choose a password"), "a long enough pass");
+    await user.click(screen.getByRole("button", { name: "Create account" }));
+    expect(await screen.findByRole("heading", { name: "Plan my money" })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: "Tell us about the family" })).toBeInTheDocument();
+    await waitFor(() => expect(window.sessionStorage.getItem("foi.fresh-signup")).toBeNull()); // used up
+  });
+
+  it("an existing account that logs in lands on the overview, not the plan", async () => {
+    routes();
+    const user = userEvent.setup();
+    renderWithProviders(<App />);
+    await user.type(await screen.findByLabelText("Username"), "asha");
+    await user.type(screen.getByLabelText("Password"), "a long enough pass");
+    await user.click(screen.getByRole("button", { name: "Log in" }));
+    expect(await screen.findByRole("heading", { name: "Welcome back, asha" })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "Plan my money" })).not.toBeInTheDocument();
+  });
+
+  it("a demo family still opens on the overview", async () => {
+    routes({ "POST /api/auth/demo": json(session) });
+    const user = userEvent.setup();
+    renderWithProviders(<App />);
+    await user.click(await screen.findByRole("button", { name: /liquidity-gap example/ }));
+    expect(await screen.findByRole("heading", { name: "Welcome to the demo" })).toBeInTheDocument();
   });
 });

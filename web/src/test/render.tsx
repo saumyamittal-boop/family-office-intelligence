@@ -19,7 +19,7 @@ export function renderWithProviders(ui: ReactElement, route = "/") {
   );
 }
 
-type Route = (init: RequestInit | undefined) => Response | Promise<Response>;
+export type Route = (init: RequestInit | undefined) => Response | Promise<Response>;
 
 /** Replace fetch with canned answers, keyed "METHOD /path" (query strings are ignored). Returns the recorded calls. */
 export function serve(routes: Record<string, Route>) {
@@ -37,3 +37,9 @@ export const json =
   (body: unknown, status = 200) =>
   () =>
     new Response(JSON.stringify(body), { status });
+
+/** A canned answer that depends on the JSON the app sent, for testing things that must follow what was typed. */
+export const jsonBy =
+  <T,>(make: (body: T) => unknown, status = 200): Route =>
+  (init) =>
+    new Response(JSON.stringify(make(JSON.parse(String(init?.body ?? "null")) as T)), { status });

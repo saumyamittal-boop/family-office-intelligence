@@ -30,6 +30,7 @@ vi.stubGlobal("ResizeObserver", ResizeObserverStub);
 
 beforeEach(() => {
   window.localStorage.clear();
+  window.sessionStorage.clear();
   document.documentElement.setAttribute("data-theme", "light");
   Element.prototype.hasPointerCapture = () => false;
   Element.prototype.setPointerCapture = () => {};

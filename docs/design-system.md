@@ -46,6 +46,17 @@ the personalised dashboard in phase 4.
 | Charts | `ChartFrame` (text summary, chart or table), `AllocationChart`, `ProjectionChart`, `OutflowsChart`, `ScenarioChart` (Recharts) |
 | Layout | `AppShell`, collapsible `Sidebar` (a drawer on small screens), `Topbar`, `WorkspaceBar` |
 
+## Live behaviour (Phase 3)
+
+| Pattern | Where | Rule |
+|---|---|---|
+| Stale-while-revalidate | live read-out, strategies | Keep the previous result on screen, dim it, and say "Updating…"; never blank it |
+| Debounced input | answers | 350 ms for the read-out, 600 ms for strategies |
+| Own-the-typing number box | `ui/NumberField` | Accepts empty, half-typed and comma-grouped numbers; reports a number or null; shows its own range message |
+| Step focus | `plan/StepFrame` | Moving to a step focuses its heading; the page's first open does not steal focus |
+| Instant switches | comfort level | Anything derivable from data already on the page must not call the server |
+| Draft | `plan/draft` | Session storage only, read defensively, never sent anywhere |
+
 ## Layout
 
 The sidebar is 15.5 rem, or 4.5 rem collapsed to icons; its state is remembered. Below 900 px it becomes a drawer. The selected family and

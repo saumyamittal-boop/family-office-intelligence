@@ -6,7 +6,6 @@ no logos, names or assets. Everything user-supplied is HTML-escaped before it re
 from __future__ import annotations
 
 import html
-from decimal import ROUND_HALF_UP, Decimal
 
 import plotly.graph_objects as go
 import streamlit as st
@@ -124,44 +123,8 @@ def esc(text) -> str:
     return html.escape(str(text))
 
 
-def cr(value: float, digits: int = 1) -> str:
-    text = _half_up(value, digits)
-    return text if text == "n/a" else f"₹{_with_commas(text)} Cr"
-
-
-def _with_commas(text: str) -> str:
-    """Group the whole-number part of a decimal string in thousands: '-1234.50' -> '-1,234.50'."""
-    sign = "-" if text.startswith("-") else ""
-    whole, _, fraction = text.lstrip("-").partition(".")
-    return f"{sign}{int(whole):,}" + (f".{fraction}" if fraction else "")
-
-
-def _half_up(value: float, digits: int) -> str:
-    """Round half up on the decimal text, so 13.75 shows as 13.8 (float formatting would give 13.7)."""
-    value = float(value)  # numpy floats have a repr that Decimal cannot read
-    if value != value or value in (float("inf"), float("-inf")):
-        return "n/a"
-    exact = Decimal(str(round(value, 9)))
-    return str(exact.quantize(Decimal(1).scaleb(-digits), rounding=ROUND_HALF_UP))
-
-
-def pct(value: float, digits: int = 1) -> str:
-    text = _half_up(value * 100, digits)
-    return text if text == "n/a" else f"{text}%"
-
-
-def signed_cr(value: float, digits: int = 1) -> str:
-    text = _half_up(abs(float(value)), digits)
-    if text == "n/a":
-        return text
-    return f"{'+' if value >= 0 else '−'}₹{_with_commas(text)} Cr"
-
-
-def signed_pct(value: float, digits: int = 1) -> str:
-    text = _half_up(abs(float(value)) * 100, digits)
-    if text == "n/a":
-        return text
-    return f"{'+' if value >= 0 else '−'}{text}%"
+# The rounding rules live in fo.formatting (pure Python), shared with the API; re-exported here for the pages.
+from .formatting import cr, pct, signed_cr, signed_pct  # noqa: E402,F401
 
 
 # ---- HTML pieces ---------------------------------------------------------------------------------

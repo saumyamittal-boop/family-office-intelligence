@@ -20,6 +20,7 @@ from concurrent.futures import Future
 import pandas as pd
 
 from fo import engine
+from fo import plan as fo_plan
 from fo.personas import Profile, profile_to_dict
 
 from . import convert
@@ -114,6 +115,7 @@ class AnalysisService:
                 insights=convert.insights_out(engine.build_insights(profile, current, pf)),
                 ladder=convert.ladder_rows(engine.liquidity_ladder(profile, pf, years=min(profile.horizon_years, 12))),
                 projection=convert.projection_rows(engine.project_corpus(profile, pf.exp_return)),
+                year_range=s.YearRange(**fo_plan.rolling_year_range(pf.replay_returns)),
             )
             for pf in options
         ]

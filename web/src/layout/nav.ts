@@ -12,10 +12,7 @@ export type NavItem = {
 
 export const NAV: readonly NavItem[] = [
   { to: "/", label: "Overview", icon: "overview" },
-  {
-    to: "/plan", label: "Plan my money", icon: "plan", arrivesInPhase: 3,
-    description: "A six-step guided plan in plain language: wealth, spending, upcoming commitments, comfort with a bad year, your safety net and what you own, ending in Strategy A, B and C.",
-  },
+  { to: "/plan", label: "Plan my money", icon: "plan" },
   {
     to: "/recommendation", label: "Recommendation", icon: "recommendation", arrivesInPhase: 4,
     description: "Growth, Balanced and Defensive mixes with the full action plan, the reasons behind each, and the model's assumptions and limits.",

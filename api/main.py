@@ -16,7 +16,7 @@ from fo.security import Throttle
 from . import db, errors
 from .analysis import AnalysisService
 from .config import Settings
-from .routers import auth, meta, profiles
+from .routers import auth, meta, plan, profiles
 
 UNSAFE = {"POST", "PUT", "PATCH", "DELETE"}
 
@@ -28,6 +28,7 @@ def _throttles() -> dict[str, Throttle]:
         "login_ip": Throttle(30, 600),
         "signup_ip": Throttle(10, 3600),
         "demo_ip": Throttle(30, 3600),
+        "plan_user": Throttle(40, 60),
     }
 
 
@@ -80,6 +81,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(meta.router)
     app.include_router(auth.router)
     app.include_router(profiles.router)
+    app.include_router(plan.router)
     return app
 
 

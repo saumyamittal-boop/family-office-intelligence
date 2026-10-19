@@ -120,6 +120,160 @@
         "title": "AnalysisOut",
         "type": "object"
       },
+      "Bounds": {
+        "properties": {
+          "max": {
+            "title": "Max",
+            "type": "number"
+          },
+          "min": {
+            "title": "Min",
+            "type": "number"
+          }
+        },
+        "required": [
+          "min",
+          "max"
+        ],
+        "title": "Bounds",
+        "type": "object"
+      },
+      "ClassInfo": {
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "label",
+          "description"
+        ],
+        "title": "ClassInfo",
+        "type": "object"
+      },
+      "ComfortLoss": {
+        "properties": {
+          "key": {
+            "enum": [
+              "Protect",
+              "Balance",
+              "Grow"
+            ],
+            "title": "Key",
+            "type": "string"
+          },
+          "loss_cr": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Loss Cr"
+          },
+          "max_drawdown": {
+            "title": "Max Drawdown",
+            "type": "number"
+          }
+        },
+        "required": [
+          "key",
+          "max_drawdown",
+          "loss_cr"
+        ],
+        "title": "ComfortLoss",
+        "type": "object"
+      },
+      "ComfortOption": {
+        "properties": {
+          "blurb": {
+            "title": "Blurb",
+            "type": "string"
+          },
+          "headline": {
+            "title": "Headline",
+            "type": "string"
+          },
+          "key": {
+            "enum": [
+              "Protect",
+              "Balance",
+              "Grow"
+            ],
+            "title": "Key",
+            "type": "string"
+          },
+          "letter": {
+            "title": "Letter",
+            "type": "string"
+          },
+          "max_drawdown": {
+            "title": "Max Drawdown",
+            "type": "number"
+          },
+          "portfolio": {
+            "title": "Portfolio",
+            "type": "string"
+          },
+          "target_real_return": {
+            "title": "Target Real Return",
+            "type": "number"
+          }
+        },
+        "required": [
+          "key",
+          "letter",
+          "headline",
+          "blurb",
+          "max_drawdown",
+          "target_real_return",
+          "portfolio"
+        ],
+        "title": "ComfortOption",
+        "type": "object"
+      },
+      "CommitmentIn": {
+        "additionalProperties": false,
+        "properties": {
+          "amount_cr": {
+            "exclusiveMinimum": 0.0,
+            "maximum": 10000000.0,
+            "title": "Amount Cr",
+            "type": "number"
+          },
+          "kind": {
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "Kind",
+            "type": "string"
+          },
+          "year": {
+            "maximum": 25.0,
+            "minimum": 1.0,
+            "title": "Year",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "kind",
+          "year",
+          "amount_cr"
+        ],
+        "title": "CommitmentIn",
+        "type": "object"
+      },
       "CompareRow": {
         "properties": {
           "cover_held": {
@@ -176,6 +330,42 @@
           "max_dd"
         ],
         "title": "CompareRow",
+        "type": "object"
+      },
+      "CrashInfo": {
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          }
+        },
+        "required": [
+          "label",
+          "description"
+        ],
+        "title": "CrashInfo",
+        "type": "object"
+      },
+      "CrashResult": {
+        "properties": {
+          "value_change": {
+            "title": "Value Change",
+            "type": "number"
+          },
+          "value_change_cr": {
+            "title": "Value Change Cr",
+            "type": "number"
+          }
+        },
+        "required": [
+          "value_change",
+          "value_change_cr"
+        ],
+        "title": "CrashResult",
         "type": "object"
       },
       "Credentials": {
@@ -457,6 +647,423 @@
         "title": "OutflowRow",
         "type": "object"
       },
+      "PlanActionRow": {
+        "properties": {
+          "asset_class": {
+            "title": "Asset Class",
+            "type": "string"
+          },
+          "change_cr": {
+            "title": "Change Cr",
+            "type": "number"
+          },
+          "current_cr": {
+            "title": "Current Cr",
+            "type": "number"
+          },
+          "current_share": {
+            "title": "Current Share",
+            "type": "number"
+          },
+          "instrument_name": {
+            "title": "Instrument Name",
+            "type": "string"
+          },
+          "instrument_note": {
+            "title": "Instrument Note",
+            "type": "string"
+          },
+          "recommended_cr": {
+            "title": "Recommended Cr",
+            "type": "number"
+          },
+          "recommended_share": {
+            "title": "Recommended Share",
+            "type": "number"
+          }
+        },
+        "required": [
+          "asset_class",
+          "current_share",
+          "recommended_share",
+          "current_cr",
+          "recommended_cr",
+          "change_cr",
+          "instrument_name",
+          "instrument_note"
+        ],
+        "title": "PlanActionRow",
+        "type": "object"
+      },
+      "PlanAnswersIn": {
+        "additionalProperties": false,
+        "properties": {
+          "amounts": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "maximum": 1000000.0,
+                  "minimum": 0.0,
+                  "type": "number"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "What the family owns today, in INR crore per class including 'Illiquid'. Omit for a typical split.",
+            "title": "Amounts"
+          },
+          "commitments": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/CommitmentIn"
+            },
+            "maxItems": 10,
+            "title": "Commitments",
+            "type": "array"
+          },
+          "months": {
+            "maximum": 36.0,
+            "minimum": 3.0,
+            "title": "Months",
+            "type": "integer"
+          },
+          "name": {
+            "maxLength": 60,
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "risk": {
+            "enum": [
+              "Protect",
+              "Balance",
+              "Grow"
+            ],
+            "title": "Risk",
+            "type": "string"
+          },
+          "spending": {
+            "maximum": 100000.0,
+            "minimum": 0.0,
+            "title": "Spending",
+            "type": "number"
+          },
+          "wealth": {
+            "maximum": 1000000.0,
+            "minimum": 1.0,
+            "title": "Wealth",
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "wealth",
+          "spending",
+          "risk",
+          "months"
+        ],
+        "title": "PlanAnswersIn",
+        "type": "object"
+      },
+      "PlanConfigOut": {
+        "properties": {
+          "classes": {
+            "items": {
+              "$ref": "#/components/schemas/ClassInfo"
+            },
+            "title": "Classes",
+            "type": "array"
+          },
+          "comfort": {
+            "items": {
+              "$ref": "#/components/schemas/ComfortOption"
+            },
+            "title": "Comfort",
+            "type": "array"
+          },
+          "commitment_kinds": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Commitment Kinds",
+            "type": "array"
+          },
+          "crash": {
+            "$ref": "#/components/schemas/CrashInfo"
+          },
+          "defaults": {
+            "$ref": "#/components/schemas/PlanDefaults"
+          },
+          "horizon_years": {
+            "title": "Horizon Years",
+            "type": "integer"
+          },
+          "max_commitments": {
+            "title": "Max Commitments",
+            "type": "integer"
+          },
+          "months": {
+            "$ref": "#/components/schemas/Bounds"
+          },
+          "spending": {
+            "$ref": "#/components/schemas/Bounds"
+          },
+          "steps": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Steps",
+            "type": "array"
+          },
+          "wealth": {
+            "$ref": "#/components/schemas/Bounds"
+          }
+        },
+        "required": [
+          "steps",
+          "comfort",
+          "classes",
+          "commitment_kinds",
+          "max_commitments",
+          "horizon_years",
+          "wealth",
+          "spending",
+          "months",
+          "defaults",
+          "crash"
+        ],
+        "title": "PlanConfigOut",
+        "type": "object"
+      },
+      "PlanDefaults": {
+        "properties": {
+          "months": {
+            "title": "Months",
+            "type": "integer"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "risk": {
+            "enum": [
+              "Protect",
+              "Balance",
+              "Grow"
+            ],
+            "title": "Risk",
+            "type": "string"
+          },
+          "spending": {
+            "title": "Spending",
+            "type": "number"
+          },
+          "wealth": {
+            "title": "Wealth",
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "wealth",
+          "spending",
+          "risk",
+          "months"
+        ],
+        "title": "PlanDefaults",
+        "type": "object"
+      },
+      "PlanPreviewOut": {
+        "properties": {
+          "amounts_differ_from_wealth": {
+            "default": false,
+            "title": "Amounts Differ From Wealth",
+            "type": "boolean"
+          },
+          "amounts_total_cr": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Amounts Total Cr"
+          },
+          "comfort": {
+            "items": {
+              "$ref": "#/components/schemas/ComfortLoss"
+            },
+            "title": "Comfort",
+            "type": "array"
+          },
+          "corpus_cr": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Corpus Cr"
+          },
+          "effects": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Effects",
+            "type": "array"
+          },
+          "illiquid_cr": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Illiquid Cr"
+          },
+          "illiquid_share": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Illiquid Share"
+          },
+          "liquid_cr": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Liquid Cr"
+          },
+          "near_outflows_cr": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Near Outflows Cr"
+          },
+          "near_outflows_share_of_liquid": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Near Outflows Share Of Liquid"
+          },
+          "outflows": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/OutflowRow"
+            },
+            "title": "Outflows",
+            "type": "array"
+          },
+          "problems": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Problems",
+            "type": "array"
+          },
+          "safety_net": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SafetyNet"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "typical_amounts": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Typical Amounts",
+            "type": "object"
+          }
+        },
+        "required": [
+          "problems",
+          "typical_amounts",
+          "comfort"
+        ],
+        "title": "PlanPreviewOut",
+        "type": "object"
+      },
+      "PlanStrategiesOut": {
+        "properties": {
+          "basis_label": {
+            "title": "Basis Label",
+            "type": "string"
+          },
+          "commitments": {
+            "items": {
+              "$ref": "#/components/schemas/CommitmentIn"
+            },
+            "title": "Commitments",
+            "type": "array"
+          },
+          "corpus_cr": {
+            "title": "Corpus Cr",
+            "type": "number"
+          },
+          "crash": {
+            "$ref": "#/components/schemas/CrashInfo"
+          },
+          "data_source": {
+            "title": "Data Source",
+            "type": "string"
+          },
+          "profile_name": {
+            "title": "Profile Name",
+            "type": "string"
+          },
+          "strategies": {
+            "items": {
+              "$ref": "#/components/schemas/StrategyOut"
+            },
+            "title": "Strategies",
+            "type": "array"
+          }
+        },
+        "required": [
+          "profile_name",
+          "corpus_cr",
+          "strategies",
+          "commitments",
+          "crash",
+          "basis_label",
+          "data_source"
+        ],
+        "title": "PlanStrategiesOut",
+        "type": "object"
+      },
       "PortfolioDetail": {
         "properties": {
           "action_plan": {
@@ -496,6 +1103,9 @@
             },
             "title": "Scenarios",
             "type": "array"
+          },
+          "year_range": {
+            "$ref": "#/components/schemas/YearRange"
           }
         },
         "required": [
@@ -504,7 +1114,8 @@
           "scenarios",
           "insights",
           "ladder",
-          "projection"
+          "projection",
+          "year_range"
         ],
         "title": "PortfolioDetail",
         "type": "object"
@@ -940,6 +1551,74 @@
         "title": "ProjectionRow",
         "type": "object"
       },
+      "SafetyNet": {
+        "properties": {
+          "commitments_cr": {
+            "title": "Commitments Cr",
+            "type": "number"
+          },
+          "months": {
+            "title": "Months",
+            "type": "integer"
+          },
+          "required_cr": {
+            "title": "Required Cr",
+            "type": "number"
+          },
+          "spending_cr": {
+            "title": "Spending Cr",
+            "type": "number"
+          }
+        },
+        "required": [
+          "months",
+          "required_cr",
+          "spending_cr",
+          "commitments_cr"
+        ],
+        "title": "SafetyNet",
+        "type": "object"
+      },
+      "SaveOut": {
+        "properties": {
+          "created": {
+            "title": "Created",
+            "type": "boolean"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/ProfileOut"
+          }
+        },
+        "required": [
+          "profile",
+          "created"
+        ],
+        "title": "SaveOut",
+        "type": "object"
+      },
+      "SaveRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "answers": {
+            "$ref": "#/components/schemas/PlanAnswersIn"
+          },
+          "strategy": {
+            "enum": [
+              "Protect",
+              "Balance",
+              "Grow"
+            ],
+            "title": "Strategy",
+            "type": "string"
+          }
+        },
+        "required": [
+          "answers",
+          "strategy"
+        ],
+        "title": "SaveRequest",
+        "type": "object"
+      },
       "ScenarioRow": {
         "properties": {
           "cover_held": {
@@ -1009,6 +1688,105 @@
         "title": "SessionOut",
         "type": "object"
       },
+      "StrategyOut": {
+        "properties": {
+          "action_plan": {
+            "items": {
+              "$ref": "#/components/schemas/PlanActionRow"
+            },
+            "title": "Action Plan",
+            "type": "array"
+          },
+          "blurb": {
+            "title": "Blurb",
+            "type": "string"
+          },
+          "cover_ratio": {
+            "title": "Cover Ratio",
+            "type": "number"
+          },
+          "crash": {
+            "$ref": "#/components/schemas/CrashResult"
+          },
+          "description": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Description",
+            "type": "array"
+          },
+          "headline": {
+            "title": "Headline",
+            "type": "string"
+          },
+          "illiquid_cr": {
+            "title": "Illiquid Cr",
+            "type": "number"
+          },
+          "illiquid_name": {
+            "title": "Illiquid Name",
+            "type": "string"
+          },
+          "illiquid_note": {
+            "title": "Illiquid Note",
+            "type": "string"
+          },
+          "key": {
+            "enum": [
+              "Protect",
+              "Balance",
+              "Grow"
+            ],
+            "title": "Key",
+            "type": "string"
+          },
+          "letter": {
+            "title": "Letter",
+            "type": "string"
+          },
+          "meets_goal_of": {
+            "additionalProperties": {
+              "type": "boolean"
+            },
+            "description": "For each comfort level: whether this strategy's expected real return reaches that level's goal.",
+            "title": "Meets Goal Of",
+            "type": "object"
+          },
+          "portfolio": {
+            "$ref": "#/components/schemas/PortfolioOut"
+          },
+          "within_comfort_of": {
+            "additionalProperties": {
+              "type": "boolean"
+            },
+            "description": "For each comfort level a family might choose: whether this strategy's worst historical fall fits it.",
+            "title": "Within Comfort Of",
+            "type": "object"
+          },
+          "year_range": {
+            "$ref": "#/components/schemas/YearRange"
+          }
+        },
+        "required": [
+          "key",
+          "letter",
+          "headline",
+          "blurb",
+          "portfolio",
+          "within_comfort_of",
+          "meets_goal_of",
+          "year_range",
+          "crash",
+          "cover_ratio",
+          "description",
+          "action_plan",
+          "illiquid_cr",
+          "illiquid_name",
+          "illiquid_note"
+        ],
+        "title": "StrategyOut",
+        "type": "object"
+      },
       "UserOut": {
         "properties": {
           "id": {
@@ -1030,6 +1808,40 @@
           "is_demo"
         ],
         "title": "UserOut",
+        "type": "object"
+      },
+      "YearRange": {
+        "description": "How a year has turned out in the sample history: the middle 80% of years, the median, and the extremes.",
+        "properties": {
+          "best": {
+            "title": "Best",
+            "type": "number"
+          },
+          "high": {
+            "title": "High",
+            "type": "number"
+          },
+          "low": {
+            "title": "Low",
+            "type": "number"
+          },
+          "median": {
+            "title": "Median",
+            "type": "number"
+          },
+          "worst": {
+            "title": "Worst",
+            "type": "number"
+          }
+        },
+        "required": [
+          "low",
+          "median",
+          "high",
+          "worst",
+          "best"
+        ],
+        "title": "YearRange",
         "type": "object"
       }
     }
@@ -1556,6 +2368,402 @@
         "summary": "Meta",
         "tags": [
           "meta"
+        ]
+      }
+    },
+    "/api/plan/config": {
+      "get": {
+        "description": "The questions, choices and bounds. Public: it describes the form, not anybody's data.",
+        "operationId": "plan_config_api_plan_config_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlanConfigOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Plan Config",
+        "tags": [
+          "plan"
+        ]
+      }
+    },
+    "/api/plan/preview": {
+      "post": {
+        "description": "Instant read-out of what the answers mean so far. No optimiser, so it is safe to call as a person types.",
+        "operationId": "plan_preview_api_plan_preview_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlanAnswersIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlanPreviewOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Plan Preview",
+        "tags": [
+          "plan"
+        ]
+      }
+    },
+    "/api/plan/save": {
+      "post": {
+        "operationId": "plan_save_api_plan_save_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SaveOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Plan Save",
+        "tags": [
+          "plan"
+        ]
+      }
+    },
+    "/api/plan/strategies": {
+      "post": {
+        "operationId": "plan_strategies_api_plan_strategies_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlanAnswersIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlanStrategiesOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Plan Strategies",
+        "tags": [
+          "plan"
         ]
       }
     },
