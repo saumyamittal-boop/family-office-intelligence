@@ -4,6 +4,7 @@ import { useSession } from "./api/hooks";
 import type { SessionInfo } from "./api/client";
 import { AppShell } from "./layout/AppShell";
 import { ComingSoonPage } from "./pages/ComingSoonPage";
+import { HoldingsPage } from "./pages/HoldingsPage";
 import { LoginPage } from "./pages/LoginPage";
 import { RecommendationPage, RiskPage, ScenariosPage } from "./pages/AnalystPages";
 import { OverviewPage } from "./pages/OverviewPage";
@@ -33,6 +34,7 @@ function SignedIn({ session }: { session: SessionInfo }) {
           <Route path="risk" element={<RiskPage />} />
           <Route path="scenarios" element={<ScenariosPage />} />
           <Route path="profile" element={<ProfilePage />} />
+          <Route path="holdings" element={<HoldingsPage />} />
           <Route path="*" element={<ComingSoonPage />} />
         </Route>
       </Routes>

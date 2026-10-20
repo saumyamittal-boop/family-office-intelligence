@@ -17,8 +17,8 @@ from . import schemas as s
 FEATURED = 4
 MODULE_IDS: tuple[str, ...] = get_args(s.ModuleId)
 
-# Ready to show. Holdings consolidation needs the holdings import (Phase 5).
-AVAILABLE: tuple[str, ...] = tuple(m for m in MODULE_IDS if m != "holdings_consolidation")
+# Every module is ready to show (holdings consolidation arrived with the holdings import in Phase 5).
+AVAILABLE: tuple[str, ...] = MODULE_IDS
 
 DEFAULT_MODULES: tuple[str, ...] = (
     "allocation_actions",

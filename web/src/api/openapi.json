@@ -1,6 +1,34 @@
 {
   "components": {
     "schemas": {
+      "AccountTotal": {
+        "properties": {
+          "account": {
+            "title": "Account",
+            "type": "string"
+          },
+          "lines": {
+            "title": "Lines",
+            "type": "integer"
+          },
+          "share": {
+            "title": "Share",
+            "type": "number"
+          },
+          "total_cr": {
+            "title": "Total Cr",
+            "type": "number"
+          }
+        },
+        "required": [
+          "account",
+          "total_cr",
+          "share",
+          "lines"
+        ],
+        "title": "AccountTotal",
+        "type": "object"
+      },
       "ActionRow": {
         "properties": {
           "asset_class": {
@@ -165,6 +193,53 @@
         "title": "AnnualReturn",
         "type": "object"
       },
+      "ApplyIn": {
+        "additionalProperties": false,
+        "properties": {
+          "set_corpus": {
+            "default": false,
+            "description": "Also set the profile's corpus to the imported total.",
+            "title": "Set Corpus",
+            "type": "boolean"
+          }
+        },
+        "title": "ApplyIn",
+        "type": "object"
+      },
+      "ApplyOut": {
+        "properties": {
+          "after": {
+            "$ref": "#/components/schemas/HoldingsView"
+          },
+          "before": {
+            "$ref": "#/components/schemas/HoldingsView"
+          },
+          "changed": {
+            "title": "Changed",
+            "type": "boolean"
+          },
+          "notes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Notes",
+            "type": "array"
+          },
+          "saved": {
+            "title": "Saved",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "before",
+          "after",
+          "changed",
+          "saved",
+          "notes"
+        ],
+        "title": "ApplyOut",
+        "type": "object"
+      },
       "Bounds": {
         "properties": {
           "max": {
@@ -181,6 +256,42 @@
           "max"
         ],
         "title": "Bounds",
+        "type": "object"
+      },
+      "ClassCompare": {
+        "properties": {
+          "asset_class": {
+            "enum": [
+              "Large-cap equity",
+              "Mid-cap equity",
+              "Debt",
+              "Gold",
+              "Cash & liquid",
+              "Illiquid"
+            ],
+            "title": "Asset Class",
+            "type": "string"
+          },
+          "difference": {
+            "title": "Difference",
+            "type": "number"
+          },
+          "imported_share": {
+            "title": "Imported Share",
+            "type": "number"
+          },
+          "profile_share": {
+            "title": "Profile Share",
+            "type": "number"
+          }
+        },
+        "required": [
+          "asset_class",
+          "imported_share",
+          "profile_share",
+          "difference"
+        ],
+        "title": "ClassCompare",
         "type": "object"
       },
       "ClassInfo": {
@@ -204,6 +315,42 @@
           "description"
         ],
         "title": "ClassInfo",
+        "type": "object"
+      },
+      "ClassTotal": {
+        "properties": {
+          "asset_class": {
+            "enum": [
+              "Large-cap equity",
+              "Mid-cap equity",
+              "Debt",
+              "Gold",
+              "Cash & liquid",
+              "Illiquid"
+            ],
+            "title": "Asset Class",
+            "type": "string"
+          },
+          "lines": {
+            "title": "Lines",
+            "type": "integer"
+          },
+          "share": {
+            "title": "Share",
+            "type": "number"
+          },
+          "total_cr": {
+            "title": "Total Cr",
+            "type": "number"
+          }
+        },
+        "required": [
+          "asset_class",
+          "total_cr",
+          "share",
+          "lines"
+        ],
+        "title": "ClassTotal",
         "type": "object"
       },
       "ComfortLoss": {
@@ -388,6 +535,78 @@
           "max_dd"
         ],
         "title": "CompareRow",
+        "type": "object"
+      },
+      "ConsolidationOut": {
+        "properties": {
+          "by_account": {
+            "items": {
+              "$ref": "#/components/schemas/AccountTotal"
+            },
+            "title": "By Account",
+            "type": "array"
+          },
+          "by_class": {
+            "items": {
+              "$ref": "#/components/schemas/ClassTotal"
+            },
+            "title": "By Class",
+            "type": "array"
+          },
+          "compare": {
+            "items": {
+              "$ref": "#/components/schemas/ClassCompare"
+            },
+            "title": "Compare",
+            "type": "array"
+          },
+          "difference_cr": {
+            "description": "Imported total minus the profile's corpus.",
+            "title": "Difference Cr",
+            "type": "number"
+          },
+          "imports": {
+            "title": "Imports",
+            "type": "integer"
+          },
+          "lines": {
+            "title": "Lines",
+            "type": "integer"
+          },
+          "profile_corpus_cr": {
+            "title": "Profile Corpus Cr",
+            "type": "number"
+          },
+          "profile_id": {
+            "title": "Profile Id",
+            "type": "integer"
+          },
+          "top_positions": {
+            "description": "The largest holdings, with the same name added up across accounts.",
+            "items": {
+              "$ref": "#/components/schemas/PositionOut"
+            },
+            "title": "Top Positions",
+            "type": "array"
+          },
+          "total_cr": {
+            "title": "Total Cr",
+            "type": "number"
+          }
+        },
+        "required": [
+          "profile_id",
+          "imports",
+          "lines",
+          "total_cr",
+          "by_class",
+          "by_account",
+          "top_positions",
+          "profile_corpus_cr",
+          "difference_cr",
+          "compare"
+        ],
+        "title": "ConsolidationOut",
         "type": "object"
       },
       "CrashInfo": {
@@ -619,6 +838,61 @@
         "title": "DemoRequest",
         "type": "object"
       },
+      "FileIn": {
+        "additionalProperties": false,
+        "description": "A holdings file sent as JSON, so the API's JSON-only and size guards stay whole.",
+        "properties": {
+          "class_overrides": {
+            "additionalProperties": {
+              "enum": [
+                "Large-cap equity",
+                "Mid-cap equity",
+                "Debt",
+                "Gold",
+                "Cash & liquid",
+                "Illiquid"
+              ],
+              "type": "string"
+            },
+            "description": "Asset-class label as written in the file -> the class the person assigned to it.",
+            "maxProperties": 50,
+            "propertyNames": {
+              "maxLength": 60,
+              "minLength": 1
+            },
+            "title": "Class Overrides",
+            "type": "object"
+          },
+          "content_base64": {
+            "maxLength": 204808,
+            "minLength": 1,
+            "title": "Content Base64",
+            "type": "string"
+          },
+          "filename": {
+            "maxLength": 255,
+            "minLength": 1,
+            "title": "Filename",
+            "type": "string"
+          },
+          "unit": {
+            "default": "cr",
+            "enum": [
+              "cr",
+              "lakh",
+              "inr"
+            ],
+            "title": "Unit",
+            "type": "string"
+          }
+        },
+        "required": [
+          "filename",
+          "content_base64"
+        ],
+        "title": "FileIn",
+        "type": "object"
+      },
       "HistoryOut": {
         "properties": {
           "basis": {
@@ -680,6 +954,27 @@
         "title": "HistoryOut",
         "type": "object"
       },
+      "HoldingsView": {
+        "properties": {
+          "corpus_cr": {
+            "title": "Corpus Cr",
+            "type": "number"
+          },
+          "shares": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Shares",
+            "type": "object"
+          }
+        },
+        "required": [
+          "corpus_cr",
+          "shares"
+        ],
+        "title": "HoldingsView",
+        "type": "object"
+      },
       "IlliquidModel": {
         "additionalProperties": false,
         "properties": {
@@ -721,6 +1016,131 @@
           "corr_with_equity"
         ],
         "title": "IlliquidModel",
+        "type": "object"
+      },
+      "ImportIn": {
+        "additionalProperties": false,
+        "properties": {
+          "class_overrides": {
+            "additionalProperties": {
+              "enum": [
+                "Large-cap equity",
+                "Mid-cap equity",
+                "Debt",
+                "Gold",
+                "Cash & liquid",
+                "Illiquid"
+              ],
+              "type": "string"
+            },
+            "description": "Asset-class label as written in the file -> the class the person assigned to it.",
+            "maxProperties": 50,
+            "propertyNames": {
+              "maxLength": 60,
+              "minLength": 1
+            },
+            "title": "Class Overrides",
+            "type": "object"
+          },
+          "content_base64": {
+            "maxLength": 204808,
+            "minLength": 1,
+            "title": "Content Base64",
+            "type": "string"
+          },
+          "filename": {
+            "maxLength": 255,
+            "minLength": 1,
+            "title": "Filename",
+            "type": "string"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "maxLength": 60,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Defaults to the file name.",
+            "title": "Label"
+          },
+          "unit": {
+            "default": "cr",
+            "enum": [
+              "cr",
+              "lakh",
+              "inr"
+            ],
+            "title": "Unit",
+            "type": "string"
+          }
+        },
+        "required": [
+          "filename",
+          "content_base64"
+        ],
+        "title": "ImportIn",
+        "type": "object"
+      },
+      "ImportOut": {
+        "properties": {
+          "created": {
+            "title": "Created",
+            "type": "string"
+          },
+          "file_kind": {
+            "enum": [
+              "csv",
+              "xlsx"
+            ],
+            "title": "File Kind",
+            "type": "string"
+          },
+          "filename": {
+            "title": "Filename",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "row_count": {
+            "title": "Row Count",
+            "type": "integer"
+          },
+          "total_cr": {
+            "title": "Total Cr",
+            "type": "number"
+          },
+          "unit": {
+            "enum": [
+              "cr",
+              "lakh",
+              "inr"
+            ],
+            "title": "Unit",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "filename",
+          "file_kind",
+          "unit",
+          "row_count",
+          "total_cr",
+          "created"
+        ],
+        "title": "ImportOut",
         "type": "object"
       },
       "InsightOut": {
@@ -806,6 +1226,78 @@
           "max"
         ],
         "title": "LimitModel",
+        "type": "object"
+      },
+      "LineOut": {
+        "properties": {
+          "account": {
+            "title": "Account",
+            "type": "string"
+          },
+          "asset_class": {
+            "enum": [
+              "Large-cap equity",
+              "Mid-cap equity",
+              "Debt",
+              "Gold",
+              "Cash & liquid",
+              "Illiquid"
+            ],
+            "title": "Asset Class",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "row": {
+            "title": "Row",
+            "type": "integer"
+          },
+          "value_cr": {
+            "title": "Value Cr",
+            "type": "number"
+          }
+        },
+        "required": [
+          "row",
+          "name",
+          "asset_class",
+          "account",
+          "value_cr"
+        ],
+        "title": "LineOut",
+        "type": "object"
+      },
+      "MappedLabel": {
+        "properties": {
+          "asset_class": {
+            "enum": [
+              "Large-cap equity",
+              "Mid-cap equity",
+              "Debt",
+              "Gold",
+              "Cash & liquid",
+              "Illiquid"
+            ],
+            "title": "Asset Class",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "rows": {
+            "title": "Rows",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "label",
+          "asset_class",
+          "rows"
+        ],
+        "title": "MappedLabel",
         "type": "object"
       },
       "MetaOut": {
@@ -1642,6 +2134,169 @@
         "title": "PortfolioOut",
         "type": "object"
       },
+      "PositionOut": {
+        "properties": {
+          "accounts": {
+            "title": "Accounts",
+            "type": "integer"
+          },
+          "asset_class": {
+            "enum": [
+              "Large-cap equity",
+              "Mid-cap equity",
+              "Debt",
+              "Gold",
+              "Cash & liquid",
+              "Illiquid"
+            ],
+            "title": "Asset Class",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "share": {
+            "title": "Share",
+            "type": "number"
+          },
+          "value_cr": {
+            "title": "Value Cr",
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "asset_class",
+          "accounts",
+          "value_cr",
+          "share"
+        ],
+        "title": "PositionOut",
+        "type": "object"
+      },
+      "PreviewOut": {
+        "properties": {
+          "already_imported": {
+            "description": "The same data is already stored for this profile.",
+            "title": "Already Imported",
+            "type": "boolean"
+          },
+          "by_class": {
+            "items": {
+              "$ref": "#/components/schemas/ClassTotal"
+            },
+            "title": "By Class",
+            "type": "array"
+          },
+          "columns": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Which of the file's columns was used for name, asset_class, value and account.",
+            "title": "Columns",
+            "type": "object"
+          },
+          "file_kind": {
+            "enum": [
+              "csv",
+              "xlsx"
+            ],
+            "title": "File Kind",
+            "type": "string"
+          },
+          "filename": {
+            "title": "Filename",
+            "type": "string"
+          },
+          "ignored_columns": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Ignored Columns",
+            "type": "array"
+          },
+          "line_count": {
+            "title": "Line Count",
+            "type": "integer"
+          },
+          "lines": {
+            "description": "At most 200 lines; line_count is the full number.",
+            "items": {
+              "$ref": "#/components/schemas/LineOut"
+            },
+            "title": "Lines",
+            "type": "array"
+          },
+          "mapped": {
+            "items": {
+              "$ref": "#/components/schemas/MappedLabel"
+            },
+            "title": "Mapped",
+            "type": "array"
+          },
+          "ok": {
+            "description": "True when nothing blocks importing.",
+            "title": "Ok",
+            "type": "boolean"
+          },
+          "problems": {
+            "items": {
+              "$ref": "#/components/schemas/ProblemOut"
+            },
+            "title": "Problems",
+            "type": "array"
+          },
+          "rows_read": {
+            "title": "Rows Read",
+            "type": "integer"
+          },
+          "total_cr": {
+            "title": "Total Cr",
+            "type": "number"
+          },
+          "unit": {
+            "enum": [
+              "cr",
+              "lakh",
+              "inr"
+            ],
+            "title": "Unit",
+            "type": "string"
+          },
+          "unit_label": {
+            "title": "Unit Label",
+            "type": "string"
+          },
+          "unrecognised": {
+            "items": {
+              "$ref": "#/components/schemas/UnrecognisedLabel"
+            },
+            "title": "Unrecognised",
+            "type": "array"
+          }
+        },
+        "required": [
+          "ok",
+          "filename",
+          "file_kind",
+          "unit",
+          "unit_label",
+          "columns",
+          "ignored_columns",
+          "rows_read",
+          "line_count",
+          "total_cr",
+          "lines",
+          "by_class",
+          "mapped",
+          "unrecognised",
+          "problems",
+          "already_imported"
+        ],
+        "title": "PreviewOut",
+        "type": "object"
+      },
       "Problem": {
         "description": "The one error shape every endpoint uses. `problems` lists field-level messages when there are several.",
         "properties": {
@@ -1668,6 +2323,50 @@
           "detail"
         ],
         "title": "Problem",
+        "type": "object"
+      },
+      "ProblemOut": {
+        "properties": {
+          "field": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Field"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "row": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Row"
+          },
+          "severity": {
+            "enum": [
+              "error",
+              "warning"
+            ],
+            "title": "Severity",
+            "type": "string"
+          }
+        },
+        "required": [
+          "severity",
+          "message"
+        ],
+        "title": "ProblemOut",
         "type": "object"
       },
       "ProfileIn": {
@@ -2316,6 +3015,42 @@
           "illiquid_note"
         ],
         "title": "StrategyOut",
+        "type": "object"
+      },
+      "TemplateOut": {
+        "properties": {
+          "content": {
+            "title": "Content",
+            "type": "string"
+          },
+          "filename": {
+            "title": "Filename",
+            "type": "string"
+          }
+        },
+        "required": [
+          "filename",
+          "content"
+        ],
+        "title": "TemplateOut",
+        "type": "object"
+      },
+      "UnrecognisedLabel": {
+        "properties": {
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "rows": {
+            "title": "Rows",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "label",
+          "rows"
+        ],
+        "title": "UnrecognisedLabel",
         "type": "object"
       },
       "UserOut": {
@@ -3158,6 +3893,98 @@
         "summary": "Health",
         "tags": [
           "meta"
+        ]
+      }
+    },
+    "/api/holdings/template": {
+      "get": {
+        "description": "A small, valid example file. Public: it contains no one's data.",
+        "operationId": "template_api_holdings_template_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TemplateOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Template",
+        "tags": [
+          "holdings"
         ]
       }
     },
@@ -4321,6 +5148,784 @@
         "summary": "History",
         "tags": [
           "profiles"
+        ]
+      }
+    },
+    "/api/profiles/{profile_id}/holdings/apply": {
+      "post": {
+        "description": "Make the profile's holdings the imported ones. The person chooses this on purpose; nothing else ever does.",
+        "operationId": "apply_api_profiles__profile_id__holdings_apply_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplyIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplyOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Apply",
+        "tags": [
+          "holdings"
+        ]
+      }
+    },
+    "/api/profiles/{profile_id}/holdings/apply/preview": {
+      "post": {
+        "description": "What the profile would look like if the imported holdings were used. Changes nothing.",
+        "operationId": "apply_preview_api_profiles__profile_id__holdings_apply_preview_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplyIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplyOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Apply Preview",
+        "tags": [
+          "holdings"
+        ]
+      }
+    },
+    "/api/profiles/{profile_id}/holdings/consolidation": {
+      "get": {
+        "operationId": "consolidation_api_profiles__profile_id__holdings_consolidation_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsolidationOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Consolidation",
+        "tags": [
+          "holdings"
+        ]
+      }
+    },
+    "/api/profiles/{profile_id}/holdings/imports": {
+      "get": {
+        "operationId": "list_imports_api_profiles__profile_id__holdings_imports_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ImportOut"
+                  },
+                  "title": "Response List Imports Api Profiles  Profile Id  Holdings Imports Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "List Imports",
+        "tags": [
+          "holdings"
+        ]
+      },
+      "post": {
+        "description": "Read the file again and, if nothing blocks it, store it.",
+        "operationId": "add_import_api_profiles__profile_id__holdings_imports_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Add Import",
+        "tags": [
+          "holdings"
+        ]
+      }
+    },
+    "/api/profiles/{profile_id}/holdings/imports/{import_id}": {
+      "delete": {
+        "operationId": "delete_import_api_profiles__profile_id__holdings_imports__import_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "import_id",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Import Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Delete Import",
+        "tags": [
+          "holdings"
+        ]
+      }
+    },
+    "/api/profiles/{profile_id}/holdings/preview": {
+      "post": {
+        "description": "Read the file and say what it holds and what is wrong. Stores nothing.",
+        "operationId": "preview_api_profiles__profile_id__holdings_preview_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FileIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreviewOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Preview",
+        "tags": [
+          "holdings"
         ]
       }
     },

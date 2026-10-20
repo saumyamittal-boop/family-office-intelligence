@@ -131,6 +131,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/holdings/template": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Template
+         * @description A small, valid example file. Public: it contains no one's data.
+         */
+        get: operations["template_api_holdings_template_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/meta": {
         parameters: {
             query?: never;
@@ -296,6 +316,121 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/profiles/{profile_id}/holdings/apply": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Apply
+         * @description Make the profile's holdings the imported ones. The person chooses this on purpose; nothing else ever does.
+         */
+        post: operations["apply_api_profiles__profile_id__holdings_apply_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/profiles/{profile_id}/holdings/apply/preview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Apply Preview
+         * @description What the profile would look like if the imported holdings were used. Changes nothing.
+         */
+        post: operations["apply_preview_api_profiles__profile_id__holdings_apply_preview_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/profiles/{profile_id}/holdings/consolidation": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Consolidation */
+        get: operations["consolidation_api_profiles__profile_id__holdings_consolidation_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/profiles/{profile_id}/holdings/imports": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Imports */
+        get: operations["list_imports_api_profiles__profile_id__holdings_imports_get"];
+        put?: never;
+        /**
+         * Add Import
+         * @description Read the file again and, if nothing blocks it, store it.
+         */
+        post: operations["add_import_api_profiles__profile_id__holdings_imports_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/profiles/{profile_id}/holdings/imports/{import_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Delete Import */
+        delete: operations["delete_import_api_profiles__profile_id__holdings_imports__import_id__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/profiles/{profile_id}/holdings/preview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Preview
+         * @description Read the file and say what it holds and what is wrong. Stores nothing.
+         */
+        post: operations["preview_api_profiles__profile_id__holdings_preview_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/profiles/{profile_id}/scenarios": {
         parameters: {
             query?: never;
@@ -320,6 +455,17 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /** AccountTotal */
+        AccountTotal: {
+            /** Account */
+            account: string;
+            /** Lines */
+            lines: number;
+            /** Share */
+            share: number;
+            /** Total Cr */
+            total_cr: number;
+        };
         /** ActionRow */
         ActionRow: {
             /** Asset Class */
@@ -380,12 +526,46 @@ export interface components {
             /** Year */
             year: number;
         };
+        /** ApplyIn */
+        ApplyIn: {
+            /**
+             * Set Corpus
+             * @description Also set the profile's corpus to the imported total.
+             * @default false
+             */
+            set_corpus: boolean;
+        };
+        /** ApplyOut */
+        ApplyOut: {
+            after: components["schemas"]["HoldingsView"];
+            before: components["schemas"]["HoldingsView"];
+            /** Changed */
+            changed: boolean;
+            /** Notes */
+            notes: string[];
+            /** Saved */
+            saved: boolean;
+        };
         /** Bounds */
         Bounds: {
             /** Max */
             max: number;
             /** Min */
             min: number;
+        };
+        /** ClassCompare */
+        ClassCompare: {
+            /**
+             * Asset Class
+             * @enum {string}
+             */
+            asset_class: "Large-cap equity" | "Mid-cap equity" | "Debt" | "Gold" | "Cash & liquid" | "Illiquid";
+            /** Difference */
+            difference: number;
+            /** Imported Share */
+            imported_share: number;
+            /** Profile Share */
+            profile_share: number;
         };
         /** ClassInfo */
         ClassInfo: {
@@ -395,6 +575,20 @@ export interface components {
             label: string;
             /** Name */
             name: string;
+        };
+        /** ClassTotal */
+        ClassTotal: {
+            /**
+             * Asset Class
+             * @enum {string}
+             */
+            asset_class: "Large-cap equity" | "Mid-cap equity" | "Debt" | "Gold" | "Cash & liquid" | "Illiquid";
+            /** Lines */
+            lines: number;
+            /** Share */
+            share: number;
+            /** Total Cr */
+            total_cr: number;
         };
         /** ComfortLoss */
         ComfortLoss: {
@@ -464,6 +658,35 @@ export interface components {
             value_change_cr: number;
             /** Within Drawdown Limit */
             within_drawdown_limit: boolean;
+        };
+        /** ConsolidationOut */
+        ConsolidationOut: {
+            /** By Account */
+            by_account: components["schemas"]["AccountTotal"][];
+            /** By Class */
+            by_class: components["schemas"]["ClassTotal"][];
+            /** Compare */
+            compare: components["schemas"]["ClassCompare"][];
+            /**
+             * Difference Cr
+             * @description Imported total minus the profile's corpus.
+             */
+            difference_cr: number;
+            /** Imports */
+            imports: number;
+            /** Lines */
+            lines: number;
+            /** Profile Corpus Cr */
+            profile_corpus_cr: number;
+            /** Profile Id */
+            profile_id: number;
+            /**
+             * Top Positions
+             * @description The largest holdings, with the same name added up across accounts.
+             */
+            top_positions: components["schemas"]["PositionOut"][];
+            /** Total Cr */
+            total_cr: number;
         };
         /** CrashInfo */
         CrashInfo: {
@@ -554,6 +777,29 @@ export interface components {
              */
             family: "legacy" | "business" | "nextgen" | "gap";
         };
+        /**
+         * FileIn
+         * @description A holdings file sent as JSON, so the API's JSON-only and size guards stay whole.
+         */
+        FileIn: {
+            /**
+             * Class Overrides
+             * @description Asset-class label as written in the file -> the class the person assigned to it.
+             */
+            class_overrides?: {
+                [key: string]: "Large-cap equity" | "Mid-cap equity" | "Debt" | "Gold" | "Cash & liquid" | "Illiquid";
+            };
+            /** Content Base64 */
+            content_base64: string;
+            /** Filename */
+            filename: string;
+            /**
+             * Unit
+             * @default cr
+             * @enum {string}
+             */
+            unit: "cr" | "lakh" | "inr";
+        };
         /** HistoryOut */
         HistoryOut: {
             /**
@@ -585,6 +831,15 @@ export interface components {
              */
             step_days: number;
         };
+        /** HoldingsView */
+        HoldingsView: {
+            /** Corpus Cr */
+            corpus_cr: number;
+            /** Shares */
+            shares: {
+                [key: string]: number;
+            };
+        };
         /** IlliquidModel */
         IlliquidModel: {
             /** Corr With Equity */
@@ -597,6 +852,56 @@ export interface components {
             lock_in_years: number;
             /** Volatility */
             volatility: number;
+        };
+        /** ImportIn */
+        ImportIn: {
+            /**
+             * Class Overrides
+             * @description Asset-class label as written in the file -> the class the person assigned to it.
+             */
+            class_overrides?: {
+                [key: string]: "Large-cap equity" | "Mid-cap equity" | "Debt" | "Gold" | "Cash & liquid" | "Illiquid";
+            };
+            /** Content Base64 */
+            content_base64: string;
+            /** Filename */
+            filename: string;
+            /**
+             * Label
+             * @description Defaults to the file name.
+             */
+            label?: string | null;
+            /**
+             * Unit
+             * @default cr
+             * @enum {string}
+             */
+            unit: "cr" | "lakh" | "inr";
+        };
+        /** ImportOut */
+        ImportOut: {
+            /** Created */
+            created: string;
+            /**
+             * File Kind
+             * @enum {string}
+             */
+            file_kind: "csv" | "xlsx";
+            /** Filename */
+            filename: string;
+            /** Id */
+            id: number;
+            /** Label */
+            label: string;
+            /** Row Count */
+            row_count: number;
+            /** Total Cr */
+            total_cr: number;
+            /**
+             * Unit
+             * @enum {string}
+             */
+            unit: "cr" | "lakh" | "inr";
         };
         /** InsightOut */
         InsightOut: {
@@ -627,6 +932,34 @@ export interface components {
             max: number;
             /** Min */
             min: number;
+        };
+        /** LineOut */
+        LineOut: {
+            /** Account */
+            account: string;
+            /**
+             * Asset Class
+             * @enum {string}
+             */
+            asset_class: "Large-cap equity" | "Mid-cap equity" | "Debt" | "Gold" | "Cash & liquid" | "Illiquid";
+            /** Name */
+            name: string;
+            /** Row */
+            row: number;
+            /** Value Cr */
+            value_cr: number;
+        };
+        /** MappedLabel */
+        MappedLabel: {
+            /**
+             * Asset Class
+             * @enum {string}
+             */
+            asset_class: "Large-cap equity" | "Mid-cap equity" | "Debt" | "Gold" | "Cash & liquid" | "Illiquid";
+            /** Label */
+            label: string;
+            /** Rows */
+            rows: number;
         };
         /** MetaOut */
         MetaOut: {
@@ -921,6 +1254,77 @@ export interface components {
                 [key: string]: number;
             };
         };
+        /** PositionOut */
+        PositionOut: {
+            /** Accounts */
+            accounts: number;
+            /**
+             * Asset Class
+             * @enum {string}
+             */
+            asset_class: "Large-cap equity" | "Mid-cap equity" | "Debt" | "Gold" | "Cash & liquid" | "Illiquid";
+            /** Name */
+            name: string;
+            /** Share */
+            share: number;
+            /** Value Cr */
+            value_cr: number;
+        };
+        /** PreviewOut */
+        PreviewOut: {
+            /**
+             * Already Imported
+             * @description The same data is already stored for this profile.
+             */
+            already_imported: boolean;
+            /** By Class */
+            by_class: components["schemas"]["ClassTotal"][];
+            /**
+             * Columns
+             * @description Which of the file's columns was used for name, asset_class, value and account.
+             */
+            columns: {
+                [key: string]: string;
+            };
+            /**
+             * File Kind
+             * @enum {string}
+             */
+            file_kind: "csv" | "xlsx";
+            /** Filename */
+            filename: string;
+            /** Ignored Columns */
+            ignored_columns: string[];
+            /** Line Count */
+            line_count: number;
+            /**
+             * Lines
+             * @description At most 200 lines; line_count is the full number.
+             */
+            lines: components["schemas"]["LineOut"][];
+            /** Mapped */
+            mapped: components["schemas"]["MappedLabel"][];
+            /**
+             * Ok
+             * @description True when nothing blocks importing.
+             */
+            ok: boolean;
+            /** Problems */
+            problems: components["schemas"]["ProblemOut"][];
+            /** Rows Read */
+            rows_read: number;
+            /** Total Cr */
+            total_cr: number;
+            /**
+             * Unit
+             * @enum {string}
+             */
+            unit: "cr" | "lakh" | "inr";
+            /** Unit Label */
+            unit_label: string;
+            /** Unrecognised */
+            unrecognised: components["schemas"]["UnrecognisedLabel"][];
+        };
         /**
          * Problem
          * @description The one error shape every endpoint uses. `problems` lists field-level messages when there are several.
@@ -930,6 +1334,20 @@ export interface components {
             detail: string;
             /** Problems */
             problems?: string[] | null;
+        };
+        /** ProblemOut */
+        ProblemOut: {
+            /** Field */
+            field?: string | null;
+            /** Message */
+            message: string;
+            /** Row */
+            row?: number | null;
+            /**
+             * Severity
+             * @enum {string}
+             */
+            severity: "error" | "warning";
         };
         /** ProfileIn */
         ProfileIn: {
@@ -1210,6 +1628,20 @@ export interface components {
                 [key: string]: boolean;
             };
             year_range: components["schemas"]["YearRange"];
+        };
+        /** TemplateOut */
+        TemplateOut: {
+            /** Content */
+            content: string;
+            /** Filename */
+            filename: string;
+        };
+        /** UnrecognisedLabel */
+        UnrecognisedLabel: {
+            /** Label */
+            label: string;
+            /** Rows */
+            rows: number;
         };
         /** UserOut */
         UserOut: {
@@ -1939,6 +2371,89 @@ export interface operations {
                 };
                 content: {
                     "application/json": unknown;
+                };
+            };
+        };
+    };
+    template_api_holdings_template_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TemplateOut"];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
                 };
             };
         };
@@ -2843,6 +3358,616 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HistoryOut"];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+        };
+    };
+    apply_api_profiles__profile_id__holdings_apply_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                profile_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplyIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplyOut"];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+        };
+    };
+    apply_preview_api_profiles__profile_id__holdings_apply_preview_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                profile_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplyIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ApplyOut"];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+        };
+    };
+    consolidation_api_profiles__profile_id__holdings_consolidation_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                profile_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ConsolidationOut"];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+        };
+    };
+    list_imports_api_profiles__profile_id__holdings_imports_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                profile_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ImportOut"][];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+        };
+    };
+    add_import_api_profiles__profile_id__holdings_imports_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                profile_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ImportIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ImportOut"];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+        };
+    };
+    delete_import_api_profiles__profile_id__holdings_imports__import_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                profile_id: number;
+                import_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+        };
+    };
+    preview_api_profiles__profile_id__holdings_preview_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                profile_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FileIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PreviewOut"];
                 };
             };
             /** @description Not signed in. */

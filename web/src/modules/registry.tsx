@@ -7,6 +7,7 @@ import { ErrorState } from "../ui/States";
 import { AllocationActionsModule } from "./AllocationActionsModule";
 import { MODULES } from "./catalog";
 import { HistoricalPerformanceModule } from "./HistoricalPerformanceModule";
+import { HoldingsConsolidationModule } from "./HoldingsConsolidationModule";
 import { LiquidityCommitmentsModule } from "./LiquidityCommitmentsModule";
 import { NetWorthModule } from "./NetWorthModule";
 import { RationaleModule } from "./RationaleModule";
@@ -16,7 +17,7 @@ import type { ModuleContext, ModuleMode } from "./types";
 
 type ModuleView = ComponentType<{ ctx: ModuleContext; mode: ModuleMode }>;
 
-/** The modules that can be drawn today. Holdings consolidation is not here: it arrives with the holdings import (phase 5). */
+/** Every dashboard module. Each is also reachable from its own page, so none is lost by leaving it off the dashboard. */
 export const MODULE_VIEWS: Partial<Record<ModuleId, ModuleView>> = {
   allocation_actions: AllocationActionsModule,
   liquidity_commitments: LiquidityCommitmentsModule,
@@ -25,6 +26,7 @@ export const MODULE_VIEWS: Partial<Record<ModuleId, ModuleView>> = {
   net_worth_projection: NetWorthModule,
   historical_performance: HistoricalPerformanceModule,
   recommendation_rationale: RationaleModule,
+  holdings_consolidation: HoldingsConsolidationModule,
 };
 
 export function isBuilt(id: ModuleId): boolean {
@@ -53,7 +55,7 @@ export function ModuleCard({ id, ctx, search }: { id: ModuleId; ctx: ModuleConte
           <ErrorBoundary
             fallback={(retry) => <ErrorState title={`${info.title} couldn't be drawn`} message="The rest of the dashboard is unaffected." onRetry={retry} />}
           >
-            {View ? <View ctx={ctx} mode="card" /> : <p className="muted">This module arrives in a later phase.</p>}
+            {View ? <View ctx={ctx} mode="card" /> : <p className="muted">This module isn't ready yet.</p>}
           </ErrorBoundary>
         </div>
       </HeadingLevel.Provider>

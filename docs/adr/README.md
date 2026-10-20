@@ -21,11 +21,13 @@
 | [0017](0017-react-fastapi-migration.md) | React and FastAPI front and back end over the unchanged engine | accepted | 2026-10-19 |
 | [0018](0018-guided-plan-api-and-live-recalculation.md) | Guided plan API and live recalculation | accepted | 2026-10-19 |
 | [0019](0019-personalised-dashboard-and-analyst-workspace.md) | Personalised dashboard and analyst workspace | accepted | 2026-10-19 |
+| [0020](0020-holdings-import-and-consolidation.md) | Holdings import and consolidation | accepted | 2026-10-20 |
 
 ADR-0013 amends parts of ADR-0003, ADR-0005 and ADR-0006. ADR-0014 builds on ADR-0009 and ADR-0010. ADR-0016 builds on ADR-0010 and ADR-0014.
 ADR-0017 builds on ADR-0009, ADR-0010, ADR-0014 and ADR-0016 and leaves the engine decisions (0004 to 0007, 0013) untouched.
 ADR-0018 builds on ADR-0015 and ADR-0017.
 ADR-0019 builds on ADR-0017 and ADR-0018.
+ADR-0020 builds on ADR-0010, ADR-0011, ADR-0017 and ADR-0019.
 
 Requirements: [../requirements.md](../requirements.md). Blank template: [template.md](template.md).
 

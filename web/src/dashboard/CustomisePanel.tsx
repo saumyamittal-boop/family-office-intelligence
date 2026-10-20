@@ -60,7 +60,7 @@ function CustomiseForm({ saved, onDone }: { saved: Dashboard; onDone: (message: 
                 {MODULE_ORDER.map((m) => (
                   <option key={m} value={m} disabled={!available.has(m)}>
                     {MODULES[m].title}
-                    {available.has(m) ? "" : " (arrives in phase 5)"}
+                    {available.has(m) ? "" : " (not ready yet)"}
                   </option>
                 ))}
               </Select>
@@ -103,7 +103,7 @@ function CustomiseForm({ saved, onDone }: { saved: Dashboard; onDone: (message: 
                   <strong>{MODULES[id].title}</strong>
                   <p className="muted">{MODULES[id].summary}</p>
                 </div>
-                {!available.has(id) ? <Badge>Arrives in phase 5</Badge> : slot >= 0 ? <Badge tone="info">{`On your dashboard: ${slot + 1}`}</Badge> : <Badge>{`On the ${MODULES[id].pageLabel} page`}</Badge>}
+                {!available.has(id) ? <Badge>Not ready yet</Badge> : slot >= 0 ? <Badge tone="info">{`On your dashboard: ${slot + 1}`}</Badge> : <Badge>{`On the ${MODULES[id].pageLabel} page`}</Badge>}
               </li>
             );
           })}

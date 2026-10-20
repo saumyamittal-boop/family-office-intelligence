@@ -70,7 +70,7 @@ function ElsewhereList({ shown, search }: { shown: readonly ModuleId[]; search: 
                 <span className="sr-only">in {MODULES[id].pageLabel}</span>
               </ButtonLink>
             ) : (
-              <span className="muted">{MODULES[id].title} (arrives in phase 5)</span>
+              <span className="muted">{MODULES[id].title} (not ready yet)</span>
             )}
           </li>
         ))}

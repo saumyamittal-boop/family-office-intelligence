@@ -40,11 +40,11 @@ describe("navigation", () => {
   it("an unbuilt page is an honest placeholder with its phase, not invented numbers", async () => {
     const user = userEvent.setup();
     shell();
-    await user.click(screen.getByRole("link", { name: /Holdings/ }));
-    expect(screen.getByRole("heading", { name: "Holdings" })).toBeInTheDocument();
+    await user.click(screen.getByRole("link", { name: /Assistant/ }));
+    expect(screen.getByRole("heading", { name: "Assistant" })).toBeInTheDocument();
     expect(screen.getByText("Not built yet")).toBeInTheDocument();
-    expect(screen.getByText(/Planned for phase 5 of 8/)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /Holdings/ })).toHaveAttribute("aria-current", "page");
+    expect(screen.getByText(/Planned for phase 6 of 8/)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Assistant/ })).toHaveAttribute("aria-current", "page");
     expect(screen.queryByText(/₹/)).not.toBeInTheDocument();
   });
 
@@ -89,7 +89,7 @@ describe("collapsible sidebar", () => {
     await user.click(toggle);
     expect(screen.getByRole("button", { name: "Expand sidebar" })).toHaveAttribute("aria-expanded", "false");
     expect(document.querySelector(".shell")).toHaveClass("is-collapsed");
-    expect(screen.getByRole("link", { name: /Holdings.*coming soon/ })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Assistant.*coming soon/ })).toBeInTheDocument();
     expect(window.localStorage.getItem("foi.sidebar")).toBe("collapsed");
 
     unmount();

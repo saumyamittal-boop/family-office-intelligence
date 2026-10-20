@@ -21,6 +21,9 @@ def test_every_endpoint_is_in_the_contract_and_states_how_it_authenticates():
         "/api/auth/logout", "/api/profiles", "/api/profiles/{profile_id}", "/api/profiles/{profile_id}/analysis",
         "/api/plan/config", "/api/plan/preview", "/api/plan/strategies", "/api/plan/save",
         "/api/profiles/{profile_id}/history", "/api/profiles/{profile_id}/scenarios", "/api/dashboard",
+        "/api/holdings/template", "/api/profiles/{profile_id}/holdings/preview", "/api/profiles/{profile_id}/holdings/imports",
+        "/api/profiles/{profile_id}/holdings/imports/{import_id}", "/api/profiles/{profile_id}/holdings/consolidation",
+        "/api/profiles/{profile_id}/holdings/apply", "/api/profiles/{profile_id}/holdings/apply/preview",
     }
     assert set(paths) == expected
 

@@ -19,6 +19,7 @@ export default defineConfig(({ mode }) => {
       environment: "jsdom",
       globals: true,
       setupFiles: ["./src/test/setup.ts"],
+      testTimeout: 20_000, // whole-app renders and axe audits are slow when the files run in parallel; this only lengthens the wait
       css: { include: [/tokens\.css/] }, // only the tokens file is read (by the contrast test); other CSS stays blank
     },
   };

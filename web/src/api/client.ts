@@ -26,6 +26,13 @@ export type Dashboard = Schemas["DashboardOut"];
 export type ModuleId = Schemas["DashboardOut"]["modules"][number];
 export type ProfileFull = Schemas["ProfileOut"];
 export type ProfileInput = Schemas["ProfileIn"];
+export type HoldingsFile = Schemas["FileIn"];
+export type HoldingsPreview = Schemas["PreviewOut"];
+export type HoldingsImport = Schemas["ImportOut"];
+export type Consolidation = Schemas["ConsolidationOut"];
+export type ApplyResult = Schemas["ApplyOut"];
+export type AssetClass = Schemas["ClassTotal"]["asset_class"];
+export type HoldingsUnit = Schemas["FileIn"]["unit"];
 
 /** What the server says went wrong, in words that can be shown to a person. */
 export class ApiError extends Error {
@@ -88,6 +95,19 @@ export const api = {
     request<History>("GET", `/api/profiles/${profileId}/history?basis=${basis}`),
   scenario: (profileId: number, body: ScenarioRequest) =>
     request<ScenarioComparison>("POST", `/api/profiles/${profileId}/scenarios`, body),
+  holdingsTemplate: () => request<Schemas["TemplateOut"]>("GET", "/api/holdings/template"),
+  holdingsPreview: (profileId: number, body: HoldingsFile) =>
+    request<HoldingsPreview>("POST", `/api/profiles/${profileId}/holdings/preview`, body),
+  holdingsImport: (profileId: number, body: HoldingsFile & { label?: string | null }) =>
+    request<HoldingsImport>("POST", `/api/profiles/${profileId}/holdings/imports`, body),
+  holdingsImports: (profileId: number) => request<HoldingsImport[]>("GET", `/api/profiles/${profileId}/holdings/imports`),
+  holdingsDeleteImport: (profileId: number, importId: number) =>
+    request<void>("DELETE", `/api/profiles/${profileId}/holdings/imports/${importId}`),
+  holdingsConsolidation: (profileId: number) => request<Consolidation>("GET", `/api/profiles/${profileId}/holdings/consolidation`),
+  holdingsApplyPreview: (profileId: number, setCorpus: boolean) =>
+    request<ApplyResult>("POST", `/api/profiles/${profileId}/holdings/apply/preview`, { set_corpus: setCorpus }),
+  holdingsApply: (profileId: number, setCorpus: boolean) =>
+    request<ApplyResult>("POST", `/api/profiles/${profileId}/holdings/apply`, { set_corpus: setCorpus }),
   dashboard: () => request<Dashboard>("GET", "/api/dashboard"),
   saveDashboard: (modules: ModuleId[]) => request<Dashboard>("PUT", "/api/dashboard", { modules }),
   resetDashboard: () => request<Dashboard>("DELETE", "/api/dashboard"),

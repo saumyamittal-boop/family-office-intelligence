@@ -51,7 +51,7 @@ describe("the dashboard", () => {
     const rest = within(screen.getByRole("region", { name: "Not on your dashboard" }));
     expect(rest.getByRole("link", { name: /Net worth and projection in Recommendation/ })).toHaveAttribute("href", expect.stringMatching(/^\/recommendation/));
     expect(rest.getByRole("link", { name: /Historical performance in Risk and liquidity/ })).toHaveAttribute("href", expect.stringMatching(/^\/risk/));
-    expect(rest.getByText("Holdings consolidation (arrives in phase 5)")).toBeInTheDocument();
+    expect(rest.getByRole("link", { name: /Holdings consolidation in Holdings/ })).toHaveAttribute("href", expect.stringMatching(/^\/holdings/));
     expect(rest.queryByText(/Allocation and actions/)).not.toBeInTheDocument();
   });
 
@@ -126,12 +126,22 @@ describe("customising the dashboard", () => {
     expect(panel.getByRole("button", { name: "Save dashboard" })).toBeDisabled(); // nothing changed yet
   });
 
-  it("will not offer the module that is not built yet", async () => {
+  it("offers holdings consolidation like any other module", async () => {
     const { panel } = await open();
     const option = within(panel.getByRole("combobox", { name: "Slot 1" })).getByRole("option", { name: /Holdings consolidation/ });
+    expect(option).toBeEnabled();
+    expect(option).not.toHaveTextContent("not ready");
+  });
+
+  it("will not offer a module the server says is not ready", async () => {
+    const user = userEvent.setup();
+    await openDashboard(appRoutes(analysis(), { "GET /api/dashboard": json(dashboard(DEFAULT_MODULES, true, ["holdings_consolidation"])) }));
+    await user.click(screen.getByRole("button", { name: "Customise dashboard" }));
+    const panel = within(await screen.findByRole("dialog", { name: "Customise your dashboard" }));
+    const option = within(panel.getByRole("combobox", { name: "Slot 1" })).getByRole("option", { name: /Holdings consolidation/ });
     expect(option).toBeDisabled();
-    expect(option).toHaveTextContent("arrives in phase 5");
-    expect(panel.getByText("Arrives in phase 5")).toBeInTheDocument();
+    expect(option).toHaveTextContent("not ready yet");
+    expect(panel.getByText("Not ready yet")).toBeInTheDocument();
   });
 
   it("replaces a module by choosing another in its slot", async () => {

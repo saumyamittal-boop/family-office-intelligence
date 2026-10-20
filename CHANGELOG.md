@@ -2,6 +2,20 @@
 
 ## Unreleased: React + FastAPI migration (branch `react-migration`)
 
+### Phase 5: Holdings import and consolidation (2026-10-20)
+- Added the **Holdings** page: choose a CSV or Excel (`.xlsx`) statement, see exactly what was read (columns used, every line, totals by asset class, how each label was mapped) *before* anything is stored, then import it.
+  A template can be downloaded. Amounts can be in rupees crore, lakh or rupees (a unit named in the value column's heading wins). Labels the model does not know (for example plain "Equity") are never guessed: the person assigns a class.
+- Added the consolidated view: totals by asset class and by account, the five largest holdings across accounts (the same name in several accounts is added together), and a comparison with the profile's own holdings.
+  Imports can be listed and deleted (two clicks). The same data cannot be imported twice into one profile.
+- Added **"Use these holdings in my profile"** as a separate, explicit step with a before-and-after table (and an optional tick to set the corpus too). Nothing in a profile changes until it is pressed; the same rules as the profile editor
+  apply (for example illiquid holdings at most 95%), and analysis results are recalculated afterwards.
+- Dashboard module 8, **Holdings consolidation**, can now be chosen like any other (it was listed as "not ready" before).
+- Files are read defensively: 150 KB, 1,000 rows and 30 columns at most; Excel files are inspected before they are opened (macros, external links, ActiveX, embedded objects, path tricks, zip bombs and XML entity bombs are refused);
+  formulas and text starting `= + - @` are refused; the server parses again on import and never trusts the preview. Rate-limited, scoped to the signed-in account (another account's profile answers 404).
+- Added to the API (migration `003`, tables `holding_imports` and `holdings`): `GET /api/holdings/template`, and under `/api/profiles/{id}/`: `holdings/preview`, `holdings/imports` (create, list, delete), `holdings/consolidation`,
+  `holdings/apply/preview`, `holdings/apply`. New dependencies for the API only: `openpyxl`, `defusedxml`, `et-xmlfile` (pinned). The engine, the Streamlit app and every number are unchanged.
+- Decision: [ADR-0020](docs/adr/0020-holdings-import-and-consolidation.md). Details and evidence: [docs/migration/phase-5-report.md](docs/migration/phase-5-report.md).
+
 ### Development tooling (2026-10-20)
 - Recorded the design skills, hooks, Figma and Playwright setup and the separate free-model gateway in [docs/dev-tooling.md](docs/dev-tooling.md), with sources, pinned commits and how to undo each.
   No third-party file is stored in this repository and no app code or number changed.

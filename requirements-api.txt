@@ -5,3 +5,8 @@ fastapi==0.146.0
 pydantic==2.14.1
 uvicorn==0.54.0
 httpx==0.28.1
+# Holdings import (Phase 5): reading .xlsx files. defusedxml makes openpyxl refuse XML bombs and external entities;
+# the parser also refuses to read Excel files at all if defusedxml is missing.
+openpyxl==3.1.5
+defusedxml==0.7.1
+et-xmlfile==2.0.0

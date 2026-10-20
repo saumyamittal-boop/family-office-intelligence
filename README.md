@@ -53,12 +53,12 @@ Then open http://localhost:8501.
 
 The sidebar switches between your profiles and has a "Stricter liquidity cover" toggle.
 
-## React + FastAPI version (branch `react-migration`, Phase 4 of 8)
+## React + FastAPI version (branch `react-migration`, Phase 5 of 8)
 
 A new front end (React, Vite, TypeScript) and back end (FastAPI) over the same engine. Streamlit stays on `main`.
-Decisions: [ADR-0017](docs/adr/0017-react-fastapi-migration.md), [ADR-0018](docs/adr/0018-guided-plan-api-and-live-recalculation.md) and [ADR-0019](docs/adr/0019-personalised-dashboard-and-analyst-workspace.md). Status and evidence:
-[Phase 1](docs/migration/phase-1-report.md), [Phase 2](docs/migration/phase-2-report.md), [Phase 3](docs/migration/phase-3-report.md) and [Phase 4](docs/migration/phase-4-report.md).
-Look and feel: [docs/design-system.md](docs/design-system.md). Built so far: sign-in, the personalised dashboard (pick four of seven modules), the live guided plan ("Plan my money"), the Recommendation, Risk and liquidity, Scenarios and Family profile pages.
+Decisions: [ADR-0017](docs/adr/0017-react-fastapi-migration.md), [ADR-0018](docs/adr/0018-guided-plan-api-and-live-recalculation.md), [ADR-0019](docs/adr/0019-personalised-dashboard-and-analyst-workspace.md) and [ADR-0020](docs/adr/0020-holdings-import-and-consolidation.md). Status and evidence:
+[Phase 1](docs/migration/phase-1-report.md), [Phase 2](docs/migration/phase-2-report.md), [Phase 3](docs/migration/phase-3-report.md), [Phase 4](docs/migration/phase-4-report.md) and [Phase 5](docs/migration/phase-5-report.md).
+Look and feel: [docs/design-system.md](docs/design-system.md). Built so far: sign-in, the personalised dashboard (pick four of eight modules), the live guided plan ("Plan my money"), the Recommendation, Risk and liquidity, Scenarios and Family profile pages, and **Holdings**: import a statement as CSV or Excel (synthetic files only for now), see everything consolidated by asset class and account, and choose whether to use it in your profile.
 Protected assumptions: [docs/protected-assumptions.md](docs/protected-assumptions.md).
 
 Needs Python 3.12 and Node 24 (npm 11). One-time setup:

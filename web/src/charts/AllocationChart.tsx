@@ -16,10 +16,15 @@ export function AllocationChart({
   title,
   weights,
   corpusCr,
+  description = "Share of the whole corpus by asset class",
+  wording = { centre: "total corpus", share: "Share of corpus" },
 }: {
   title: string;
   weights: Record<string, number>;
   corpusCr: number;
+  description?: string;
+  /** What the centre of the donut and the share column call the whole: "corpus" unless the mix is of something else. */
+  wording?: { centre: string; share: string };
 }) {
   const patternId = useId().replace(/:/g, "");
   const names = [...Object.keys(weights).filter((n) => n !== ILLIQUID), ILLIQUID].filter((n) => n in weights);
@@ -32,14 +37,14 @@ export function AllocationChart({
 
   const columns: Column<Row>[] = [
     { key: "class", header: "Asset class", rowHeader: true, cell: (r) => label(r.name) },
-    { key: "share", header: "Share of corpus", align: "right", cell: (r) => pct(r.share) },
+    { key: "share", header: wording.share, align: "right", cell: (r) => pct(r.share) },
     { key: "amount", header: "Amount", align: "right", cell: (r) => cr(r.amountCr) },
   ];
 
   return (
     <ChartFrame
       title={title}
-      description="Share of the whole corpus by asset class"
+      description={description}
       summary={summary}
       height="auto"
       table={<DataTable caption={title} columns={columns} rows={rows} rowKey={(r) => r.name} />}
@@ -86,7 +91,7 @@ export function AllocationChart({
             </ResponsiveContainer>
             <div className="donut-centre">
               <b>{cr(corpusCr, 0)}</b>
-              <span>total corpus</span>
+              <span>{wording.centre}</span>
             </div>
           </div>
           <ul className="legend">

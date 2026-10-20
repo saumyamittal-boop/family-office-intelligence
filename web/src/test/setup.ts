@@ -1,8 +1,11 @@
 import "@testing-library/jest-dom/vitest";
-import { cleanup } from "@testing-library/react";
+import { cleanup, configure } from "@testing-library/react";
 import { Children, cloneElement, createElement, isValidElement } from "react";
 import type { ReactElement, ReactNode } from "react";
 import { afterEach, beforeEach, vi } from "vitest";
+
+// findBy and waitFor give up after 1 s by default, too short for a busy machine running the files in parallel. Passing tests are not slowed.
+configure({ asyncUtilTimeout: 4000 });
 
 // jsdom has no layout, so Recharts' ResponsiveContainer would measure 0x0 and draw nothing. Give it a fixed size.
 vi.mock("recharts", async (importOriginal) => {

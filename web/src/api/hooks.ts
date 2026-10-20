@@ -2,7 +2,7 @@ import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tansta
 import type { QueryClient } from "@tanstack/react-query";
 import { markFreshSignup } from "../plan/draft";
 import { api, ApiError, setCsrf } from "./client";
-import type { Basis, DemoFamily, ModuleId, ProfileInput, ScenarioRequest, SessionInfo } from "./client";
+import type { Basis, DemoFamily, HoldingsFile, ModuleId, ProfileInput, ScenarioRequest, SessionInfo } from "./client";
 
 export const keys = {
   session: ["session"] as const,
@@ -13,6 +13,9 @@ export const keys = {
   scenario: (id: number, request: ScenarioRequest | null) => ["scenario", id, JSON.stringify(request)] as const,
   dashboard: ["dashboard"] as const,
   profile: (id: number) => ["profile", id] as const,
+  holdingsImports: (id: number) => ["holdings", id, "imports"] as const,
+  consolidation: (id: number) => ["holdings", id, "consolidation"] as const,
+  applyPreview: (id: number, setCorpus: boolean, signature: string) => ["holdings", id, "apply", setCorpus, signature] as const,
 };
 
 /** The signed-in session, or null when nobody is signed in. */
@@ -148,6 +151,70 @@ export function useDeleteProfile() {
       client.removeQueries({ predicate: isResultOf(id) });
       client.removeQueries({ queryKey: keys.profile(id) });
       void client.invalidateQueries({ queryKey: keys.profiles });
+    },
+  });
+}
+
+/** What the person has imported for one family profile. */
+export function useHoldingsImports(profileId: number | null) {
+  return useQuery({
+    queryKey: keys.holdingsImports(profileId ?? 0), queryFn: () => api.holdingsImports(profileId as number),
+    enabled: profileId !== null, retry: false,
+  });
+}
+
+/** The imported holdings added up by asset class, account and name, compared with the profile. */
+export function useConsolidation(profileId: number | null) {
+  return useQuery({
+    queryKey: keys.consolidation(profileId ?? 0), queryFn: () => api.holdingsConsolidation(profileId as number),
+    enabled: profileId !== null, retry: false,
+  });
+}
+
+/** Reads a file on the server and says what is in it. Stores nothing. */
+export function usePreviewHoldings(profileId: number | null) {
+  return useMutation({ mutationFn: (body: HoldingsFile) => api.holdingsPreview(profileId as number, body) });
+}
+
+function refreshHoldings(client: QueryClient, profileId: number): void {
+  void client.invalidateQueries({ queryKey: ["holdings", profileId] });
+}
+
+export function useImportHoldings(profileId: number | null) {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: (body: HoldingsFile & { label?: string | null }) => api.holdingsImport(profileId as number, body),
+    onSuccess: () => refreshHoldings(client, profileId as number),
+  });
+}
+
+export function useDeleteHoldingsImport(profileId: number | null) {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: (importId: number) => api.holdingsDeleteImport(profileId as number, importId),
+    onSuccess: () => refreshHoldings(client, profileId as number),
+  });
+}
+
+/** What the profile would look like with the imported holdings. Changes nothing. */
+export function useApplyPreview(profileId: number | null, setCorpus: boolean, signature: string) {
+  return useQuery({
+    queryKey: keys.applyPreview(profileId ?? 0, setCorpus, signature), queryFn: () => api.holdingsApplyPreview(profileId as number, setCorpus),
+    enabled: profileId !== null, retry: false, staleTime: 0,
+  });
+}
+
+/** Makes the imported holdings the profile's. Everything computed from the profile is reset, as after any profile save. */
+export function useApplyHoldings(profileId: number | null) {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: (setCorpus: boolean) => api.holdingsApply(profileId as number, setCorpus),
+    onSuccess: () => {
+      const id = profileId as number;
+      resetResultsFor(client, id);
+      void client.invalidateQueries({ queryKey: keys.profile(id) });
+      void client.invalidateQueries({ queryKey: keys.profiles });
+      refreshHoldings(client, id);
     },
   });
 }

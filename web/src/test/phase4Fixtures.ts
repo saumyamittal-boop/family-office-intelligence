@@ -5,13 +5,15 @@ import type { Route } from "./render";
 
 export const DEFAULT_MODULES: ModuleId[] = ["allocation_actions", "liquidity_commitments", "risk_exposure", "stress_scenarios"];
 
-const CATALOG: Dashboard["catalog"] = [
+const ALL_MODULES = [
   "allocation_actions", "liquidity_commitments", "risk_exposure", "stress_scenarios", "net_worth_projection",
   "historical_performance", "recommendation_rationale", "holdings_consolidation",
-].map((id) => ({ id: id as ModuleId, available: id !== "holdings_consolidation" }));
+] as ModuleId[];
 
-export function dashboard(modules: ModuleId[] = DEFAULT_MODULES, isDefault = true): Dashboard {
-  return { modules, is_default: isDefault, updated: isDefault ? null : "2026-10-19T10:00:00+00:00", default_modules: DEFAULT_MODULES, catalog: CATALOG };
+/** `notReady` lists modules the server would mark unavailable (none, now that every module is built). */
+export function dashboard(modules: ModuleId[] = DEFAULT_MODULES, isDefault = true, notReady: ModuleId[] = []): Dashboard {
+  const catalog = ALL_MODULES.map((id) => ({ id, available: !notReady.includes(id) }));
+  return { modules, is_default: isDefault, updated: isDefault ? null : "2026-10-19T10:00:00+00:00", default_modules: DEFAULT_MODULES, catalog };
 }
 
 /** A short, believable history: eight steps over 2016 to 2019, a fall in 2018, for the current mix and the three options. */

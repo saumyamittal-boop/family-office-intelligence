@@ -50,11 +50,11 @@ def test_a_new_account_gets_the_default_four(me):
     assert body["default_modules"] == body["modules"]
 
 
-def test_the_catalog_lists_eight_modules_and_only_holdings_is_not_ready(me):
+def test_the_catalog_lists_eight_modules_and_every_one_is_ready(me):
     client, _ = me
     catalog = client.get("/api/dashboard").json()["catalog"]
     assert [m["id"] for m in catalog] == SEVEN + ["holdings_consolidation"]
-    assert {m["id"] for m in catalog if not m["available"]} == {"holdings_consolidation"}
+    assert all(m["available"] for m in catalog)
 
 
 # ---- Saving, ordering, restoring --------------------------------------------------------------------------------------
@@ -125,10 +125,19 @@ def test_anything_but_four_different_known_modules_is_refused(me, modules):
     assert client.get("/api/dashboard").json()["is_default"] is True  # a refused request saves nothing
 
 
-def test_the_module_that_is_not_built_yet_cannot_be_chosen(me):
+def test_holdings_consolidation_can_be_chosen_like_any_other_module(me):
     client, headers = me
-    r = client.put("/api/dashboard", json={"modules": PICK[:3] + ["holdings_consolidation"]}, headers=headers)
+    chosen = PICK[:3] + ["holdings_consolidation"]
+    assert client.put("/api/dashboard", json={"modules": chosen}, headers=headers).json()["modules"] == chosen
+    assert client.get("/api/dashboard").json()["modules"] == chosen
+
+
+def test_a_module_that_is_not_ready_is_refused_with_a_reason(me, monkeypatch):
+    client, headers = me
+    monkeypatch.setattr(dashboard, "AVAILABLE", tuple(m for m in dashboard.MODULE_IDS if m != "net_worth_projection"))
+    r = client.put("/api/dashboard", json={"modules": PICK}, headers=headers)  # PICK contains net_worth_projection
     assert r.status_code == 422 and "later phase" in r.json()["problems"][0]
+    assert [m["available"] for m in client.get("/api/dashboard").json()["catalog"] if m["id"] == "net_worth_projection"] == [False]
 
 
 def test_a_request_cannot_name_another_account_or_extra_fields(me):
@@ -179,7 +188,7 @@ def test_a_damaged_stored_choice_falls_back_to_the_default(me, db_path):
     client, _ = me
     user_id = client.get("/api/auth/me").json()["user"]["id"]
     for damaged in ("not json", json.dumps(["allocation_actions"]), json.dumps(["x", "y", "z", "w"]),
-                    json.dumps(["risk_exposure"] * 4), json.dumps({"a": 1}), json.dumps(PICK[:3] + ["holdings_consolidation"]),
+                    json.dumps(["risk_exposure"] * 4), json.dumps({"a": 1}), json.dumps(PICK[:3] + ["retired_module"]),
                     json.dumps([[1], [2], [3], [4]]), json.dumps([{"a": 1}] * 4), json.dumps([1, 2, 3, 4]), json.dumps([None] * 4), "null", ""):
         with sqlite3.connect(db_path) as con:
             con.execute("DELETE FROM dashboard_preferences")

@@ -4,6 +4,7 @@ import axe from "axe-core";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import App from "./App";
 import { analysis, META } from "./test/fixtures";
+import { CSV_TEXT, holdingsApp, previewWithProblems, withImports } from "./test/holdingsFixtures";
 import { appRoutes, dashboard } from "./test/phase4Fixtures";
 import { json, renderWithProviders, serve } from "./test/render";
 
@@ -185,6 +186,39 @@ describe.each(["light", "dark"] as const)("accessibility in the %s theme", (them
     expect(await audit()).toEqual([]);
   });
 
+  it("holdings page: choosing a file, problems in it, then the class assignment", async () => {
+    setTheme();
+    serve(holdingsApp({ "POST /api/profiles/1/holdings/preview": json(previewWithProblems()) }));
+    renderWithProviders(<App />, "/holdings");
+    await screen.findByRole("heading", { level: 1, name: "Holdings" });
+    expect(await audit()).toEqual([]); // nothing imported yet
+    await userEvent.setup().upload(await screen.findByLabelText("Holdings file"), new File([CSV_TEXT], "statement.csv", { type: "text/csv" }));
+    await screen.findByText("2 problems to fix:");
+    await userEvent.setup().click(screen.getByText(/Show the lines/));
+    expect(await audit()).toEqual([]);
+  });
+
+  it("holdings page: imported data, the consolidation tables and the apply card", async () => {
+    setTheme();
+    serve(withImports());
+    renderWithProviders(<App />, "/holdings");
+    await screen.findByRole("table", { name: "Imported holdings by account" });
+    await screen.findByRole("table", { name: "Profile holdings now and after using the imported holdings" });
+    expect(await audit()).toEqual([]);
+    await userEvent.setup().click(await screen.findByRole("button", { name: "Delete statement.csv" }));
+    await screen.findByRole("button", { name: "Yes, delete statement.csv" });
+    expect(await audit()).toEqual([]);
+  });
+
+  it("dashboard with the holdings consolidation module", async () => {
+    setTheme();
+    serve(withImports({ "GET /api/dashboard": json(dashboard(["holdings_consolidation", "allocation_actions", "risk_exposure", "stress_scenarios"], false)) }));
+    renderWithProviders(<App />);
+    await screen.findByRole("heading", { level: 2, name: "Holdings consolidation" });
+    await screen.findByRole("img", { name: /Consolidated holdings/ });
+    expect(await audit()).toEqual([]);
+  });
+
   it("loading, failure and placeholder pages", async () => {
     setTheme();
     serve({
@@ -197,7 +231,7 @@ describe.each(["light", "dark"] as const)("accessibility in the %s theme", (them
     unmount();
 
     signedIn();
-    renderWithProviders(<App />, "/holdings");
+    renderWithProviders(<App />, "/assistant");
     await waitFor(() => expect(screen.getByText("Not built yet")).toBeInTheDocument());
     expect(await audit()).toEqual([]);
   });

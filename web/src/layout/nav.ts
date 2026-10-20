@@ -16,10 +16,7 @@ export const NAV: readonly NavItem[] = [
   { to: "/recommendation", label: "Recommendation", icon: "recommendation" },
   { to: "/risk", label: "Risk and liquidity", icon: "risk" },
   { to: "/scenarios", label: "Scenarios", icon: "scenarios" },
-  {
-    to: "/holdings", label: "Holdings", icon: "holdings", arrivesInPhase: 5,
-    description: "Import holdings from a CSV or Excel file, check them, and see them consolidated by asset class.",
-  },
+  { to: "/holdings", label: "Holdings", icon: "holdings" },
   { to: "/profile", label: "Family profile", icon: "profile" },
   {
     to: "/assistant", label: "Assistant", icon: "assistant", arrivesInPhase: 6,

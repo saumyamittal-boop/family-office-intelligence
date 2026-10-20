@@ -40,5 +40,15 @@ def user_with_csrf(request: Request, user: dict = Depends(current_user)) -> dict
     return user
 
 
+def throttle(request: Request, user: dict, name: str, message: str) -> None:
+    """Allow a signed-in person only so many requests a minute to an endpoint that does real work (the limit is in api/main.py)."""
+    limit = request.app.state.throttles[name]
+    key = str(user["id"])
+    wait = limit.blocked_for(key)
+    if wait > 0:
+        raise ApiError(429, message, headers={"Retry-After": str(int(wait) + 1)})
+    limit.record_failure(key)
+
+
 def client_ip(request: Request) -> str:
     return request.client.host if request.client else "unknown"
