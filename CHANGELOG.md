@@ -2,6 +2,10 @@
 
 ## Unreleased: React + FastAPI migration (branch `react-migration`)
 
+### Development tooling (2026-10-20)
+- Recorded the design skills, hooks, Figma and Playwright setup and the separate free-model gateway in [docs/dev-tooling.md](docs/dev-tooling.md), with sources, pinned commits and how to undo each.
+  No third-party file is stored in this repository and no app code or number changed.
+
 ### Phase 4: Personalised dashboard and analyst workspace (2026-10-19)
 - Added the dashboard: the person picks exactly four of the modules, orders them, and the choice is saved to their account (restored after sign-out, private to the account, default allocation / liquidity / risk / stress scenarios).
   The customise panel has four slots (picking a module that is already used swaps the two), move up and down, a preview and a list of where every module lives. Warnings and the headline tiles are never hidden by the choice.
