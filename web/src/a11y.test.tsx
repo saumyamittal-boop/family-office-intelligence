@@ -3,7 +3,10 @@ import userEvent from "@testing-library/user-event";
 import axe from "axe-core";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import App from "./App";
+import { NAV } from "./layout/nav";
+import type { NavItem } from "./layout/nav";
 import { analysis, META } from "./test/fixtures";
+import { answerReply, assistantApp, clarifyReply, refusalReply } from "./test/explainFixtures";
 import { CSV_TEXT, holdingsApp, previewWithProblems, withImports } from "./test/holdingsFixtures";
 import { appRoutes, dashboard } from "./test/phase4Fixtures";
 import { json, renderWithProviders, serve } from "./test/render";
@@ -219,6 +222,51 @@ describe.each(["light", "dark"] as const)("accessibility in the %s theme", (them
     expect(await audit()).toEqual([]);
   });
 
+  it("assistant page: the starter questions", async () => {
+    setTheme();
+    serve(assistantApp());
+    renderWithProviders(<App />, "/assistant");
+    await screen.findByRole("button", { name: "Is my liquidity enough?" });
+    expect(await audit()).toEqual([]);
+  });
+
+  it("assistant page: an answer with its evidence open", async () => {
+    setTheme();
+    serve(assistantApp());
+    renderWithProviders(<App />, "/assistant");
+    await userEvent.setup().click(await screen.findByRole("button", { name: "Is my liquidity enough?" }));
+    const answer = await screen.findByRole("article", { name: "Is my liquidity enough?" });
+    await userEvent.setup().click(within(answer).getByText(/Show the evidence/));
+    expect(await audit()).toEqual([]);
+  });
+
+  it("assistant page: a refusal, then a question to choose between", async () => {
+    setTheme();
+    let n = 0;
+    serve(assistantApp(() => (n++ === 0 ? refusalReply : clarifyReply)));
+    renderWithProviders(<App />, "/assistant");
+    const user = userEvent.setup();
+    await user.type(await screen.findByRole("textbox", { name: "Your question" }), "which fund should I buy");
+    await user.click(screen.getByRole("button", { name: "Ask" }));
+    await screen.findByText("Outside what I do.");
+    expect(await audit()).toEqual([]);
+    await user.type(screen.getByRole("textbox", { name: "Your question" }), "x");
+    await user.click(screen.getByRole("button", { name: "Ask" }));
+    await screen.findByText("Which did you mean?");
+    expect(await audit()).toEqual([]);
+  });
+
+  it("the Why? panel beside a warning", async () => {
+    setTheme();
+    serve(assistantApp(() => answerReply()));
+    renderWithProviders(<App />);
+    const warnings = await screen.findByRole("region", { name: "Needs your attention" });
+    await userEvent.setup().click(within(warnings).getByRole("button", { name: /^Why\? Liquidity shortfall/ }));
+    const panel = await screen.findByRole("dialog");
+    await within(panel).findByText(/Over the next 24 months/);
+    expect(await audit()).toEqual([]);
+  });
+
   it("loading, failure and placeholder pages", async () => {
     setTheme();
     serve({
@@ -231,8 +279,14 @@ describe.each(["light", "dark"] as const)("accessibility in the %s theme", (them
     unmount();
 
     signedIn();
-    renderWithProviders(<App />, "/assistant");
-    await waitFor(() => expect(screen.getByText("Not built yet")).toBeInTheDocument());
-    expect(await audit()).toEqual([]);
+    const planned = { to: "/later", label: "Later page", icon: "info", arrivesInPhase: 8, description: "A page that is planned." } as const;
+    (NAV as NavItem[]).push(planned); // every page in the menu is built now: add a planned one for this check
+    try {
+      renderWithProviders(<App />, "/later");
+      await waitFor(() => expect(screen.getByText("Not built yet")).toBeInTheDocument());
+      expect(await audit()).toEqual([]);
+    } finally {
+      (NAV as NavItem[]).splice((NAV as NavItem[]).indexOf(planned), 1);
+    }
   });
 });

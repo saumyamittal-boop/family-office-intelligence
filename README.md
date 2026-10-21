@@ -53,19 +53,20 @@ Then open http://localhost:8501.
 
 The sidebar switches between your profiles and has a "Stricter liquidity cover" toggle.
 
-## React + FastAPI version (branch `react-migration`, Phase 5 of 8)
+## React + FastAPI version (branch `react-migration`, Phase 6 of 8)
 
 A new front end (React, Vite, TypeScript) and back end (FastAPI) over the same engine. Streamlit stays on `main`.
-Decisions: [ADR-0017](docs/adr/0017-react-fastapi-migration.md), [ADR-0018](docs/adr/0018-guided-plan-api-and-live-recalculation.md), [ADR-0019](docs/adr/0019-personalised-dashboard-and-analyst-workspace.md) and [ADR-0020](docs/adr/0020-holdings-import-and-consolidation.md). Status and evidence:
-[Phase 1](docs/migration/phase-1-report.md), [Phase 2](docs/migration/phase-2-report.md), [Phase 3](docs/migration/phase-3-report.md), [Phase 4](docs/migration/phase-4-report.md) and [Phase 5](docs/migration/phase-5-report.md).
-Look and feel: [docs/design-system.md](docs/design-system.md). Built so far: sign-in, the personalised dashboard (pick four of eight modules), the live guided plan ("Plan my money"), the Recommendation, Risk and liquidity, Scenarios and Family profile pages, and **Holdings**: import a statement as CSV or Excel (synthetic files only for now), see everything consolidated by asset class and account, and choose whether to use it in your profile.
+Decisions: [ADR-0017](docs/adr/0017-react-fastapi-migration.md), [ADR-0018](docs/adr/0018-guided-plan-api-and-live-recalculation.md), [ADR-0019](docs/adr/0019-personalised-dashboard-and-analyst-workspace.md), [ADR-0020](docs/adr/0020-holdings-import-and-consolidation.md) and [ADR-0021](docs/adr/0021-grounded-explainer-copilot.md). Status and evidence:
+[Phase 1](docs/migration/phase-1-report.md), [Phase 2](docs/migration/phase-2-report.md), [Phase 3](docs/migration/phase-3-report.md), [Phase 4](docs/migration/phase-4-report.md), [Phase 5](docs/migration/phase-5-report.md) and [Phase 6](docs/migration/phase-6-report.md).
+Look and feel: [docs/design-system.md](docs/design-system.md). Built so far: sign-in, the personalised dashboard (pick four of eight modules), the live guided plan ("Plan my money"), the Recommendation, Risk and liquidity, Scenarios and Family profile pages, and **Holdings**: import a statement as CSV or Excel (synthetic files only for now), see everything consolidated by asset class and account, and choose whether to use it in your profile; and the **Assistant**: choose or type a question about your family's results and get an answer written from the model's own numbers, with the evidence behind each figure. It never predicts or advises, uses no language model, and does not store your question.
 Protected assumptions: [docs/protected-assumptions.md](docs/protected-assumptions.md).
 
-Needs Python 3.12 and Node 24 (npm 11). One-time setup:
+Needs Python 3.12 and Node 24 (npm 11). One-time setup (the second command is optional: it fetches the 66 MB local model that lets the Assistant understand paraphrases, once, into `data/models/`; without it the Assistant still works with word matching only, and is less strict about declining requests):
 
 ```powershell
 cd D:\family-office-intelligence
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt -r requirements-api.txt -r requirements-dev.txt
+.\.venv\Scripts\python.exe tools\fetch_embedding_model.py
 cd web
 npm install
 ```

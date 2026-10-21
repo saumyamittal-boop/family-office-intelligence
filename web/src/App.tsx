@@ -4,6 +4,8 @@ import { useSession } from "./api/hooks";
 import type { SessionInfo } from "./api/client";
 import { AppShell } from "./layout/AppShell";
 import { ComingSoonPage } from "./pages/ComingSoonPage";
+import { ExplainProvider } from "./explain/ExplainContext";
+import { AssistantPage } from "./pages/AssistantPage";
 import { HoldingsPage } from "./pages/HoldingsPage";
 import { LoginPage } from "./pages/LoginPage";
 import { RecommendationPage, RiskPage, ScenariosPage } from "./pages/AnalystPages";
@@ -26,6 +28,7 @@ function Home({ session }: { session: SessionInfo }) {
 function SignedIn({ session }: { session: SessionInfo }) {
   return (
     <WorkspaceProvider session={session}>
+      <ExplainProvider>
       <Routes>
         <Route element={<AppShell session={session} />}>
           <Route index element={<Home session={session} />} />
@@ -35,9 +38,11 @@ function SignedIn({ session }: { session: SessionInfo }) {
           <Route path="scenarios" element={<ScenariosPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="holdings" element={<HoldingsPage />} />
+          <Route path="assistant" element={<AssistantPage />} />
           <Route path="*" element={<ComingSoonPage />} />
         </Route>
       </Routes>
+      </ExplainProvider>
     </WorkspaceProvider>
   );
 }

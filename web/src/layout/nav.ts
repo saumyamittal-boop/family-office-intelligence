@@ -19,7 +19,7 @@ export const NAV: readonly NavItem[] = [
   { to: "/holdings", label: "Holdings", icon: "holdings" },
   { to: "/profile", label: "Family profile", icon: "profile" },
   {
-    to: "/assistant", label: "Assistant", icon: "assistant", arrivesInPhase: 6,
-    description: "Ask why a recommendation looks the way it does. Answers will come only from the model's own verified outputs.",
+    to: "/assistant", label: "Assistant", icon: "assistant",
+    description: "Ask why a recommendation looks the way it does. Answers come only from the model's own results.",
   },
 ];

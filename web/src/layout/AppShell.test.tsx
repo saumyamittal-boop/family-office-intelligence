@@ -1,12 +1,18 @@
 import { screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Route, Routes } from "react-router-dom";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { NAV } from "./nav";
+import type { NavItem } from "./nav";
 import { ComingSoonPage } from "../pages/ComingSoonPage";
 import { renderWithProviders, serve } from "../test/render";
 import { session } from "../test/fixtures";
 import { AppShell } from "./AppShell";
-import { NAV } from "./nav";
+
+// Every page in the menu is built now, so the "not built yet" behaviour is tested with one planned page added for the test.
+const PLANNED: NavItem = { to: "/later", label: "Later page", icon: "info", arrivesInPhase: 8, description: "A page that is planned but not built." };
+beforeEach(() => (NAV as NavItem[]).push(PLANNED));
+afterEach(() => (NAV as NavItem[]).splice((NAV as NavItem[]).indexOf(PLANNED), 1));
 
 function shell(route = "/") {
   return renderWithProviders(
@@ -34,17 +40,18 @@ describe("navigation", () => {
   it("says which pages are not built yet", () => {
     shell();
     const nav = screen.getByRole("navigation", { name: "Main" });
-    expect(within(nav).getAllByText("Soon")).toHaveLength(NAV.filter((n) => n.arrivesInPhase).length);
+    expect(within(nav).getAllByText("Soon")).toHaveLength(1);
+    expect(within(nav).getByRole("link", { name: /Assistant/ }).textContent).not.toMatch(/Soon/); // the assistant is built
   });
 
   it("an unbuilt page is an honest placeholder with its phase, not invented numbers", async () => {
     const user = userEvent.setup();
     shell();
-    await user.click(screen.getByRole("link", { name: /Assistant/ }));
-    expect(screen.getByRole("heading", { name: "Assistant" })).toBeInTheDocument();
+    await user.click(screen.getByRole("link", { name: /Later page/ }));
+    expect(screen.getByRole("heading", { name: "Later page" })).toBeInTheDocument();
     expect(screen.getByText("Not built yet")).toBeInTheDocument();
-    expect(screen.getByText(/Planned for phase 6 of 8/)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /Assistant/ })).toHaveAttribute("aria-current", "page");
+    expect(screen.getByText(/Planned for phase 8 of 8/)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Later page/ })).toHaveAttribute("aria-current", "page");
     expect(screen.queryByText(/₹/)).not.toBeInTheDocument();
   });
 
@@ -89,7 +96,7 @@ describe("collapsible sidebar", () => {
     await user.click(toggle);
     expect(screen.getByRole("button", { name: "Expand sidebar" })).toHaveAttribute("aria-expanded", "false");
     expect(document.querySelector(".shell")).toHaveClass("is-collapsed");
-    expect(screen.getByRole("link", { name: /Assistant.*coming soon/ })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Later page.*coming soon/ })).toBeInTheDocument();
     expect(window.localStorage.getItem("foi.sidebar")).toBe("collapsed");
 
     unmount();

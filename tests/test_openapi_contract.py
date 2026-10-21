@@ -24,6 +24,7 @@ def test_every_endpoint_is_in_the_contract_and_states_how_it_authenticates():
         "/api/holdings/template", "/api/profiles/{profile_id}/holdings/preview", "/api/profiles/{profile_id}/holdings/imports",
         "/api/profiles/{profile_id}/holdings/imports/{import_id}", "/api/profiles/{profile_id}/holdings/consolidation",
         "/api/profiles/{profile_id}/holdings/apply", "/api/profiles/{profile_id}/holdings/apply/preview",
+        "/api/explain/catalog", "/api/profiles/{profile_id}/explain",
     }
     assert set(paths) == expected
 

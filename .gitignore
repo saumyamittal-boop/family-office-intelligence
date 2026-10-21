@@ -23,3 +23,6 @@ web/.vite/
 
 # Editor and tooling state
 .claude/
+
+# Local embedding model for the question router (tools/fetch_embedding_model.py puts it here)
+data/models/

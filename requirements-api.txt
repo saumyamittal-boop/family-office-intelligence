@@ -10,3 +10,19 @@ httpx==0.28.1
 openpyxl==3.1.5
 defusedxml==0.7.1
 et-xmlfile==2.0.0
+# Question router, embedding layer (Phase 6, optional): a small local model that understands paraphrases. The API runs without any of these (it
+# then uses the word matcher alone, which is less strict about refusals); `python tools/fetch_embedding_model.py` fetches the model files once.
+fastembed==0.9.0
+onnxruntime==1.31.0
+tokenizers==0.23.3
+huggingface_hub==1.33.0
+hf-xet==1.7.0
+filelock==4.2.4
+fsspec==2026.9.0
+flatbuffers==25.12.19
+loguru==0.7.3
+mmh3==5.3.1
+py_rust_stemmers==0.1.8
+PyYAML==6.0.3
+tqdm==4.70.1
+win32_setctime==1.2.0; sys_platform == "win32"

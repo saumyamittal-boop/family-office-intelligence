@@ -33,6 +33,11 @@ export type Consolidation = Schemas["ConsolidationOut"];
 export type ApplyResult = Schemas["ApplyOut"];
 export type AssetClass = Schemas["ClassTotal"]["asset_class"];
 export type HoldingsUnit = Schemas["FileIn"]["unit"];
+export type ExplainReply = Schemas["ReplyOut"];
+export type ExplainAnswer = Schemas["AnswerOut"];
+export type ExplainChip = Schemas["ChipOut"];
+export type ExplainCatalog = Schemas["CatalogOut"];
+export type ExplainAsk = Schemas["AskIn"];
 
 /** What the server says went wrong, in words that can be shown to a person. */
 export class ApiError extends Error {
@@ -108,6 +113,9 @@ export const api = {
     request<ApplyResult>("POST", `/api/profiles/${profileId}/holdings/apply/preview`, { set_corpus: setCorpus }),
   holdingsApply: (profileId: number, setCorpus: boolean) =>
     request<ApplyResult>("POST", `/api/profiles/${profileId}/holdings/apply`, { set_corpus: setCorpus }),
+  explainCatalog: () => request<ExplainCatalog>("GET", "/api/explain/catalog"),
+  explain: (profileId: number, body: ExplainAsk) =>
+    request<ExplainReply>("POST", `/api/profiles/${profileId}/explain`, body),
   dashboard: () => request<Dashboard>("GET", "/api/dashboard"),
   saveDashboard: (modules: ModuleId[]) => request<Dashboard>("PUT", "/api/dashboard", { modules }),
   resetDashboard: () => request<Dashboard>("DELETE", "/api/dashboard"),

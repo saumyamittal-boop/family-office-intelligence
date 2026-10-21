@@ -1,6 +1,11 @@
 import type { Analysis } from "../api/client";
+import { useExplain } from "../explain/ExplainContext";
 import { cr, tidyText, times } from "../format";
+import { Button } from "../ui/Button";
 import { Banner } from "../ui/Status";
+
+/** The question the assistant answers for each warning. */
+const WHY: Record<string, string> = { optimiser: "how_calculated", liquidity: "liquidity_enough", drawdown: "drawdown_meaning" };
 
 /**
  * Warnings that matter whatever else is on screen. They are worked out from the analysis alone, never from which
@@ -41,12 +46,16 @@ export function attentionItems(analysis: Analysis): { id: string; tone: "warn" |
 }
 
 export function AttentionBar({ analysis }: { analysis: Analysis }) {
+  const explain = useExplain();
   const items = attentionItems(analysis);
   if (items.length === 0) return null;
   return (
     <div className="stack" aria-label="Needs your attention" role="region">
       {items.map((item) => (
-        <Banner key={item.id} tone={item.tone} title={item.title} critical={item.tone === "bad"}>
+        <Banner
+          key={item.id} tone={item.tone} title={item.title} critical={item.tone === "bad"}
+          action={WHY[item.id] ? <Button variant="ghost" aria-label={`Why? ${item.title}`} onClick={() => explain.open({ intent: WHY[item.id]! })}>Why?</Button> : undefined}
+        >
           {tidyText(item.body)}
         </Banner>
       ))}

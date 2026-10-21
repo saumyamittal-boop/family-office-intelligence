@@ -114,6 +114,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/explain/catalog": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Catalog
+         * @description The questions that can be asked, grouped, and the parameters they take. Public: it holds no one's data.
+         */
+        get: operations["catalog_api_explain_catalog_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/health": {
         parameters: {
             query?: never;
@@ -290,6 +310,26 @@ export interface paths {
         get: operations["analysis_api_profiles__profile_id__analysis_get"];
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/profiles/{profile_id}/explain": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Ask
+         * @description Answer a question about this family's results, from the engine's own numbers. POST so the question never sits in a URL.
+         */
+        post: operations["ask_api_profiles__profile_id__explain_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -526,6 +566,35 @@ export interface components {
             /** Year */
             year: number;
         };
+        /** AnswerOut */
+        AnswerOut: {
+            /** Caveats */
+            caveats: string[];
+            /** Figures */
+            figures: components["schemas"]["FigureOut"][];
+            /** Follow Ups */
+            follow_ups: components["schemas"]["ChipOut"][];
+            /** Intent */
+            intent: string;
+            /**
+             * Lead
+             * @description The result in one plain sentence.
+             */
+            lead: string;
+            /** Links */
+            links: components["schemas"]["LinkOut"][];
+            /**
+             * Notes
+             * @description What was assumed because the question did not say (for example which mix).
+             */
+            notes: string[];
+            /** Sections */
+            sections: components["schemas"]["SectionOut"][];
+            /** Tables */
+            tables: components["schemas"]["TableOut"][];
+            /** Title */
+            title: string;
+        };
         /** ApplyIn */
         ApplyIn: {
             /**
@@ -546,12 +615,61 @@ export interface components {
             /** Saved */
             saved: boolean;
         };
+        /**
+         * AskIn
+         * @description A typed question, or a chosen question type (a chip or a "Why?" button) with its parameters.
+         */
+        AskIn: {
+            /**
+             * Basis
+             * @default all
+             * @enum {string}
+             */
+            basis: "all" | "strict";
+            /** Intent */
+            intent?: string | null;
+            /** Question */
+            question?: string | null;
+            /** Slots */
+            slots?: {
+                [key: string]: string;
+            };
+        };
         /** Bounds */
         Bounds: {
             /** Max */
             max: number;
             /** Min */
             min: number;
+        };
+        /** CatalogGroup */
+        CatalogGroup: {
+            /** Chips */
+            chips: components["schemas"]["ChipOut"][];
+            /** Title */
+            title: string;
+        };
+        /** CatalogOut */
+        CatalogOut: {
+            /** Groups */
+            groups: components["schemas"]["CatalogGroup"][];
+            /** Max Question Length */
+            max_question_length: number;
+            /** Options */
+            options: string[];
+            /** Scenarios */
+            scenarios: string[];
+        };
+        /** ChipOut */
+        ChipOut: {
+            /** Intent */
+            intent: string;
+            /** Label */
+            label: string;
+            /** Slots */
+            slots?: {
+                [key: string]: string;
+            };
         };
         /** ClassCompare */
         ClassCompare: {
@@ -777,6 +895,48 @@ export interface components {
              */
             family: "legacy" | "business" | "nextgen" | "gap";
         };
+        /** FigureOut */
+        FigureOut: {
+            /**
+             * Derived
+             * @description True when it is a simple sum, difference or ratio of figures that come straight from the engine.
+             */
+            derived: boolean;
+            /**
+             * Field
+             * @description Where it comes from in the engine's results (a path into the analysis, the profile, the history, the holdings), or how it was derived.
+             */
+            field: string;
+            /**
+             * In Table
+             * @default false
+             */
+            in_table: boolean;
+            /** Key */
+            key: string;
+            /** Label */
+            label: string;
+            /**
+             * Page
+             * @description The page of the app where the same figure can be seen.
+             */
+            page: string;
+            /**
+             * Shown
+             * @description Exactly how the figure appears in the answer.
+             */
+            shown: string;
+            /**
+             * Unit
+             * @enum {string}
+             */
+            unit: "cr" | "percent" | "ratio" | "months" | "years" | "count" | "date" | "text";
+            /**
+             * Value
+             * @description The unrounded number behind `shown`, when it is a number.
+             */
+            value: number | null;
+        };
         /**
          * FileIn
          * @description A holdings file sent as JSON, so the API's JSON-only and size guards stay whole.
@@ -948,6 +1108,16 @@ export interface components {
             row: number;
             /** Value Cr */
             value_cr: number;
+        };
+        /** LinkOut */
+        LinkOut: {
+            /** Label */
+            label: string;
+            /**
+             * To
+             * @description A path inside the app.
+             */
+            to: string;
         };
         /** MappedLabel */
         MappedLabel: {
@@ -1462,6 +1632,26 @@ export interface components {
             /** Min */
             min: number;
         };
+        /** ReplyOut */
+        ReplyOut: {
+            answer?: components["schemas"]["AnswerOut"] | null;
+            /**
+             * Confidence
+             * @description How close the question was to the matched question type (0 to 1). Absent for chips.
+             */
+            confidence?: number | null;
+            /** Intent */
+            intent?: string | null;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "answer" | "clarify" | "refusal" | "out_of_scope" | "empty";
+            /** Message */
+            message?: string | null;
+            /** Suggestions */
+            suggestions?: components["schemas"]["ChipOut"][];
+        };
         /** SafetyNet */
         SafetyNet: {
             /** Commitments Cr */
@@ -1574,6 +1764,19 @@ export interface components {
             /** Within Drawdown Limit */
             within_drawdown_limit: boolean;
         };
+        /** SectionOut */
+        SectionOut: {
+            /**
+             * From Engine
+             * @description True when the lines are the model's own wording, passed through unchanged.
+             * @default false
+             */
+            from_engine: boolean;
+            /** Heading */
+            heading: string;
+            /** Lines */
+            lines: string[];
+        };
         /** SessionOut */
         SessionOut: {
             /** Csrf Token */
@@ -1628,6 +1831,15 @@ export interface components {
                 [key: string]: boolean;
             };
             year_range: components["schemas"]["YearRange"];
+        };
+        /** TableOut */
+        TableOut: {
+            /** Caption */
+            caption: string;
+            /** Columns */
+            columns: string[];
+            /** Rows */
+            rows: string[][];
         };
         /** TemplateOut */
         TemplateOut: {
@@ -2288,6 +2500,89 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["DashboardOut"];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+        };
+    };
+    catalog_api_explain_catalog_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CatalogOut"];
                 };
             };
             /** @description Not signed in. */
@@ -3270,6 +3565,95 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["AnalysisOut"];
+                };
+            };
+            /** @description Not signed in. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Request could not be verified. */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Not found. */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Conflict. */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The request was not valid. */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description Too many attempts. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+            /** @description The allocation model is busy. */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Problem"];
+                };
+            };
+        };
+    };
+    ask_api_profiles__profile_id__explain_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                profile_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AskIn"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReplyOut"];
                 };
             };
             /** @description Not signed in. */

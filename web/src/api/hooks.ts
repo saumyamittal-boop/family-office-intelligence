@@ -2,7 +2,7 @@ import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tansta
 import type { QueryClient } from "@tanstack/react-query";
 import { markFreshSignup } from "../plan/draft";
 import { api, ApiError, setCsrf } from "./client";
-import type { Basis, DemoFamily, HoldingsFile, ModuleId, ProfileInput, ScenarioRequest, SessionInfo } from "./client";
+import type { Basis, DemoFamily, ExplainAsk, HoldingsFile, ModuleId, ProfileInput, ScenarioRequest, SessionInfo } from "./client";
 
 export const keys = {
   session: ["session"] as const,
@@ -261,4 +261,14 @@ export function useLogout() {
       client.setQueryData(keys.session, null);
     },
   });
+}
+
+/** The questions the assistant can answer. The same for everyone, so fetched once. */
+export function useExplainCatalog() {
+  return useQuery({ queryKey: ["explain", "catalog"], queryFn: api.explainCatalog, staleTime: Infinity, retry: false });
+}
+
+/** Ask the assistant. A mutation, not a query: a question is never cached, stored or put in a URL. */
+export function useAsk(profileId: number | null) {
+  return useMutation({ mutationFn: (body: ExplainAsk) => api.explain(profileId as number, body) });
 }

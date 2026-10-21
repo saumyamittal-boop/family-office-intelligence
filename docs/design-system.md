@@ -74,5 +74,11 @@ cover basis live in the address (`?profile=5&basis=strict`), so reloads and shar
 
 ## What is not built yet
 
-Pages marked "Soon" in the navigation (Holdings, Assistant) are honest placeholders with no invented numbers. The holdings import and the assistant belong to phases 5 and 6;
-the dashboard module "Holdings consolidation" waits for the former.
+Every page in the navigation is built. A page that is planned but not built appears with a "Soon" tag and is an honest placeholder with no invented numbers (`ComingSoonPage`);
+none is in that state now.
+
+## The Assistant
+
+Answers (`web/src/explain/`) are laid out the same way everywhere, on the Assistant page and in the "Why?" side panel: the result in one sentence, then a table when a comparison helps, then the reasons,
+then "Keep in mind", then a collapsed "Show the evidence" list of every figure with where it comes from, then links to the page that shows the same thing and chips for the next question.
+Questions are chips (pill buttons, 2.5 rem tall) so that the common ones need no typing. A refusal is a warning-toned banner that says what the assistant can do instead, never a dead end.

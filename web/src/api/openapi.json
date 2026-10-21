@@ -193,6 +193,87 @@
         "title": "AnnualReturn",
         "type": "object"
       },
+      "AnswerOut": {
+        "properties": {
+          "caveats": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Caveats",
+            "type": "array"
+          },
+          "figures": {
+            "items": {
+              "$ref": "#/components/schemas/FigureOut"
+            },
+            "title": "Figures",
+            "type": "array"
+          },
+          "follow_ups": {
+            "items": {
+              "$ref": "#/components/schemas/ChipOut"
+            },
+            "title": "Follow Ups",
+            "type": "array"
+          },
+          "intent": {
+            "title": "Intent",
+            "type": "string"
+          },
+          "lead": {
+            "description": "The result in one plain sentence.",
+            "title": "Lead",
+            "type": "string"
+          },
+          "links": {
+            "items": {
+              "$ref": "#/components/schemas/LinkOut"
+            },
+            "title": "Links",
+            "type": "array"
+          },
+          "notes": {
+            "description": "What was assumed because the question did not say (for example which mix).",
+            "items": {
+              "type": "string"
+            },
+            "title": "Notes",
+            "type": "array"
+          },
+          "sections": {
+            "items": {
+              "$ref": "#/components/schemas/SectionOut"
+            },
+            "title": "Sections",
+            "type": "array"
+          },
+          "tables": {
+            "items": {
+              "$ref": "#/components/schemas/TableOut"
+            },
+            "title": "Tables",
+            "type": "array"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "intent",
+          "title",
+          "lead",
+          "sections",
+          "tables",
+          "figures",
+          "caveats",
+          "notes",
+          "links",
+          "follow_ups"
+        ],
+        "title": "AnswerOut",
+        "type": "object"
+      },
       "ApplyIn": {
         "additionalProperties": false,
         "properties": {
@@ -240,6 +321,54 @@
         "title": "ApplyOut",
         "type": "object"
       },
+      "AskIn": {
+        "description": "A typed question, or a chosen question type (a chip or a \"Why?\" button) with its parameters.",
+        "properties": {
+          "basis": {
+            "default": "all",
+            "enum": [
+              "all",
+              "strict"
+            ],
+            "title": "Basis",
+            "type": "string"
+          },
+          "intent": {
+            "anyOf": [
+              {
+                "maxLength": 40,
+                "pattern": "^[a-z_]+$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Intent"
+          },
+          "question": {
+            "anyOf": [
+              {
+                "maxLength": 300,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Question"
+          },
+          "slots": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Slots",
+            "type": "object"
+          }
+        },
+        "title": "AskIn",
+        "type": "object"
+      },
       "Bounds": {
         "properties": {
           "max": {
@@ -256,6 +385,89 @@
           "max"
         ],
         "title": "Bounds",
+        "type": "object"
+      },
+      "CatalogGroup": {
+        "properties": {
+          "chips": {
+            "items": {
+              "$ref": "#/components/schemas/ChipOut"
+            },
+            "title": "Chips",
+            "type": "array"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "chips"
+        ],
+        "title": "CatalogGroup",
+        "type": "object"
+      },
+      "CatalogOut": {
+        "properties": {
+          "groups": {
+            "items": {
+              "$ref": "#/components/schemas/CatalogGroup"
+            },
+            "title": "Groups",
+            "type": "array"
+          },
+          "max_question_length": {
+            "title": "Max Question Length",
+            "type": "integer"
+          },
+          "options": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Options",
+            "type": "array"
+          },
+          "scenarios": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Scenarios",
+            "type": "array"
+          }
+        },
+        "required": [
+          "groups",
+          "options",
+          "scenarios",
+          "max_question_length"
+        ],
+        "title": "CatalogOut",
+        "type": "object"
+      },
+      "ChipOut": {
+        "properties": {
+          "intent": {
+            "title": "Intent",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "slots": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Slots",
+            "type": "object"
+          }
+        },
+        "required": [
+          "intent",
+          "label"
+        ],
+        "title": "ChipOut",
         "type": "object"
       },
       "ClassCompare": {
@@ -838,6 +1050,81 @@
         "title": "DemoRequest",
         "type": "object"
       },
+      "FigureOut": {
+        "properties": {
+          "derived": {
+            "description": "True when it is a simple sum, difference or ratio of figures that come straight from the engine.",
+            "title": "Derived",
+            "type": "boolean"
+          },
+          "field": {
+            "description": "Where it comes from in the engine's results (a path into the analysis, the profile, the history, the holdings), or how it was derived.",
+            "title": "Field",
+            "type": "string"
+          },
+          "in_table": {
+            "default": false,
+            "title": "In Table",
+            "type": "boolean"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "page": {
+            "description": "The page of the app where the same figure can be seen.",
+            "title": "Page",
+            "type": "string"
+          },
+          "shown": {
+            "description": "Exactly how the figure appears in the answer.",
+            "title": "Shown",
+            "type": "string"
+          },
+          "unit": {
+            "enum": [
+              "cr",
+              "percent",
+              "ratio",
+              "months",
+              "years",
+              "count",
+              "date",
+              "text"
+            ],
+            "title": "Unit",
+            "type": "string"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The unrounded number behind `shown`, when it is a number.",
+            "title": "Value"
+          }
+        },
+        "required": [
+          "key",
+          "label",
+          "shown",
+          "value",
+          "unit",
+          "field",
+          "page",
+          "derived"
+        ],
+        "title": "FigureOut",
+        "type": "object"
+      },
       "FileIn": {
         "additionalProperties": false,
         "description": "A holdings file sent as JSON, so the API's JSON-only and size guards stay whole.",
@@ -1267,6 +1554,25 @@
           "value_cr"
         ],
         "title": "LineOut",
+        "type": "object"
+      },
+      "LinkOut": {
+        "properties": {
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "to": {
+            "description": "A path inside the app.",
+            "title": "To",
+            "type": "string"
+          }
+        },
+        "required": [
+          "label",
+          "to"
+        ],
+        "title": "LinkOut",
         "type": "object"
       },
       "MappedLabel": {
@@ -2637,6 +2943,77 @@
         "title": "Range",
         "type": "object"
       },
+      "ReplyOut": {
+        "properties": {
+          "answer": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AnswerOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "confidence": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "How close the question was to the matched question type (0 to 1). Absent for chips.",
+            "title": "Confidence"
+          },
+          "intent": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Intent"
+          },
+          "kind": {
+            "enum": [
+              "answer",
+              "clarify",
+              "refusal",
+              "out_of_scope",
+              "empty"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "message": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Message"
+          },
+          "suggestions": {
+            "items": {
+              "$ref": "#/components/schemas/ChipOut"
+            },
+            "title": "Suggestions",
+            "type": "array"
+          }
+        },
+        "required": [
+          "kind"
+        ],
+        "title": "ReplyOut",
+        "type": "object"
+      },
       "SafetyNet": {
         "properties": {
           "commitments_cr": {
@@ -2892,6 +3269,33 @@
         "title": "ScenarioRow",
         "type": "object"
       },
+      "SectionOut": {
+        "properties": {
+          "from_engine": {
+            "default": false,
+            "description": "True when the lines are the model's own wording, passed through unchanged.",
+            "title": "From Engine",
+            "type": "boolean"
+          },
+          "heading": {
+            "title": "Heading",
+            "type": "string"
+          },
+          "lines": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Lines",
+            "type": "array"
+          }
+        },
+        "required": [
+          "heading",
+          "lines"
+        ],
+        "title": "SectionOut",
+        "type": "object"
+      },
       "SessionOut": {
         "properties": {
           "csrf_token": {
@@ -3015,6 +3419,38 @@
           "illiquid_note"
         ],
         "title": "StrategyOut",
+        "type": "object"
+      },
+      "TableOut": {
+        "properties": {
+          "caption": {
+            "title": "Caption",
+            "type": "string"
+          },
+          "columns": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Columns",
+            "type": "array"
+          },
+          "rows": {
+            "items": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "title": "Rows",
+            "type": "array"
+          }
+        },
+        "required": [
+          "caption",
+          "columns",
+          "rows"
+        ],
+        "title": "TableOut",
         "type": "object"
       },
       "TemplateOut": {
@@ -3874,6 +4310,98 @@
         "summary": "Save Dashboard",
         "tags": [
           "dashboard"
+        ]
+      }
+    },
+    "/api/explain/catalog": {
+      "get": {
+        "description": "The questions that can be asked, grouped, and the parameters they take. Public: it holds no one's data.",
+        "operationId": "catalog_api_explain_catalog_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Catalog",
+        "tags": [
+          "explain"
         ]
       }
     },
@@ -5027,6 +5555,121 @@
         "summary": "Analysis",
         "tags": [
           "profiles"
+        ]
+      }
+    },
+    "/api/profiles/{profile_id}/explain": {
+      "post": {
+        "description": "Answer a question about this family's results, from the engine's own numbers. POST so the question never sits in a URL.",
+        "operationId": "ask_api_profiles__profile_id__explain_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AskIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not signed in."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Request could not be verified."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Not found."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Conflict."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The request was not valid."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "Too many attempts."
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            },
+            "description": "The allocation model is busy."
+          }
+        },
+        "summary": "Ask",
+        "tags": [
+          "explain"
         ]
       }
     },

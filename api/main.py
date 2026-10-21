@@ -13,10 +13,10 @@ from fastapi.responses import JSONResponse
 from fo.data import load_returns
 from fo.security import Throttle
 
-from . import db, errors
+from . import db, errors, explain_service
 from .analysis import AnalysisService
 from .config import Settings
-from .routers import auth, dashboard, holdings, meta, plan, profiles
+from .routers import auth, dashboard, explain, holdings, meta, plan, profiles
 
 UNSAFE = {"POST", "PUT", "PATCH", "DELETE"}
 
@@ -30,6 +30,7 @@ def _throttles() -> dict[str, Throttle]:
         "demo_ip": Throttle(30, 3600),
         "plan_user": Throttle(40, 60),
         "holdings_user": Throttle(60, 60),
+        "explain_user": Throttle(60, 60),
     }
 
 
@@ -41,6 +42,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         db.migrate()
         daily, source = load_returns()
         app.state.analysis = AnalysisService(daily, source, cfg.analysis_timeout)
+        explain_service.MATCHER.warm()  # loads the embedding model if it is present; costs about a second, once
         yield
         app.state.analysis.close()
 
@@ -85,6 +87,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(plan.router)
     app.include_router(dashboard.router)
     app.include_router(holdings.router)
+    app.include_router(explain.router)
     return app
 
 

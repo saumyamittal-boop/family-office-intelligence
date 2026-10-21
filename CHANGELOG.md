@@ -2,6 +2,18 @@
 
 ## Unreleased: React + FastAPI migration (branch `react-migration`)
 
+### Phase 6: Grounded explainer (2026-10-21)
+- **Embedding layer (added later the same day, with approval):** a small local model (BAAI/bge-small-en-v1.5, 66 MB, fetched once by `tools/fetch_embedding_model.py`, never downloaded by the server, hash-checked, optional) now helps the router understand
+  paraphrases and decline requests the fixed patterns missed. On a fresh question set written before any experiment it scored **79% right against 71% for the word matcher alone**, with fewer wrong answers and fewer unsafe slips; the 85% bar was still missed. See the report.
+- Added the **Assistant** page: question chips for the common questions, a box for your own words, and a "Why?" button beside each warning and under "About this number". Every answer is written from a reviewed template filled with
+  the model's own results: the result in one sentence, a comparison, the reasons, what to keep in mind, and a collapsed list of every figure with where it comes from. No language model is used, nothing is predicted or advised, and the question is not stored or logged.
+- Twenty question types (your mix, why not a riskier one, what would change, liquidity, outflows, drawdown, CVaR, scenarios, history, projection, illiquid holdings, imported holdings, the method, and more). Asking for advice, a market prediction,
+  an action, or trying to make the assistant break its rules each gets a fixed reply that says what it can do instead.
+- Added to the API: `GET /api/explain/catalog` and `POST /api/profiles/{id}/explain` (rate-limited, scoped to the signed-in account; a typed question is matched by a plain-Python router in `fo/question_match.py`, no model or network).
+- Checked by: a test that fails if any digit reaches a sentence without a registered figure; a test that every figure equals the engine value at the path it names (3,440 figures in 336 answers, across the four demo families and both cover bases); a frozen question set
+  of 640 questions in five splits. **The router missed its accuracy bars on fresh questions**: 79% right on the untouched final set against a bar of 85% (71% for the word matcher alone); the safety property held in every split except one slip in the first held-out run and one in the final run, both fixed. See the report and [ADR-0021](docs/adr/0021-grounded-explainer-copilot.md).
+- Decision: [ADR-0021](docs/adr/0021-grounded-explainer-copilot.md). Details and evidence: [docs/migration/phase-6-report.md](docs/migration/phase-6-report.md) and [the evaluation protocol](docs/migration/phase-6-evaluation-protocol.md).
+
 ### Phase 5: Holdings import and consolidation (2026-10-20)
 - Added the **Holdings** page: choose a CSV or Excel (`.xlsx`) statement, see exactly what was read (columns used, every line, totals by asset class, how each label was mapped) *before* anything is stored, then import it.
   A template can be downloaded. Amounts can be in rupees crore, lakh or rupees (a unit named in the value column's heading wins). Labels the model does not know (for example plain "Equity") are never guessed: the person assigns a class.
