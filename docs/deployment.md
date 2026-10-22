@@ -1,5 +1,9 @@
 # Deployment guide
 
+> This guide is for the **Streamlit app on `main`**. For the React + FastAPI version (branch `react-migration`) see
+> [deployment-react.md](deployment-react.md). The opening paragraphs below were written before the Streamlit app was deployed on 18 Oct 2026;
+> the section "Deployed on 18 Oct 2026" is the current state.
+
 Goal: give the mentor a link he can open on any day, as he asked on the 17 Oct call. The app is ready to deploy
 (see "What is already done"). What is left needs **your accounts and decisions**: a GitHub account, a hosting
 choice, and whether the link should be private. Nothing has been published or pushed.

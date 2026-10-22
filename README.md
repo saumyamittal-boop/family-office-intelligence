@@ -1,74 +1,40 @@
 # Family Office Intelligence (prototype)
 
-A capital-allocation decision-support app for a family office: see the whole picture, get a buy and sell plan
-towards a mix that fits your limits, check risk and liquidity, and stress-test the plan. Built from
-[docs/requirements.md](docs/requirements.md).
+A capital-allocation decision-support app for a family office: see the whole picture, get a buy and sell plan towards a mix that fits the
+family's own limits, check risk and liquidity, and stress-test the plan. Built from [docs/requirements.md](docs/requirements.md) as a BCom
+Financial Analytics capstone.
 
-**Important**
-- The market data is **synthetic sample data** (`fo/data.py`), not real NSE, AMFI or RBI data.
-- The three demo families are fictional, and their numbers are drafts (docs/personas-and-assumptions.md).
-- Output is an **illustrative simulation, not investment advice**. Use synthetic data only; never enter real
-  client data or reuse a real password.
+> **Important**
+> - **Illustrative simulation, not investment advice.** Results depend on the data, assumptions, and methodology used. Historical outcomes do not
+>   guarantee future performance.
+> - The market data is **synthetic sample data** (`fo/data.py`), not real NSE, AMFI or RBI data. The three demo families are fictional and their
+>   numbers are drafts ([docs/personas-and-assumptions.md](docs/personas-and-assumptions.md)).
+> - **Use synthetic data only.** Never enter real client data, a real statement or a real password. Real data stays blocked until the gate in
+>   [docs/production-readiness.md](docs/production-readiness.md) is closed. Nothing here claims regulatory compliance, independent validation or
+>   production authentication.
 
-## Set up on a new machine (Windows PowerShell)
+## Two versions
+
+| | React + FastAPI | Streamlit |
+|---|---|---|
+| Branch | `react-migration` (all eight phases built; **not pushed**) | `main` (the live mentor demo) |
+| Entry | `api/main.py` + `web/` | `app.py` |
+| Docs | everything in [docs/](docs/README.md) | [Streamlit sections below](#streamlit-version-main), [docs/deployment.md](docs/deployment.md) |
+
+Both run the same financial engine (`fo/`). Its numbers are protected by a golden-master test ([docs/protected-assumptions.md](docs/protected-assumptions.md)).
+
+## Quick start: React + FastAPI
+
+Needs Python 3.12 and Node 24 (npm 11) on Windows PowerShell. Microsoft Edge is needed only for the browser tests. Details, timings and
+troubleshooting: [docs/setup.md](docs/setup.md).
 
 ```powershell
 cd D:\family-office-intelligence
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements-dev.txt
-```
-
-(`requirements.txt` is the runtime set that a host installs; `requirements-dev.txt` adds the test tools.)
-
-## Run it (Windows PowerShell)
-
-```powershell
-cd D:\family-office-intelligence
-.\.venv\Scripts\Activate.ps1
-streamlit run app.py
-```
-
-Then open http://localhost:8501.
-
-## Signing in
-
-- **Explore a demo family** with one click on the login screen (Legacy-conservative, Business-heavy,
-  Next-gen growth, and the ₹1,000 Cr liquidity-gap example, which opens with the stricter liquidity cover on so
-  its shortfall shows at once). Demo accounts have no password.
-- **Create your own account** on the "Create account" tab. Passwords are hashed with scrypt and stored in a
-  local SQLite file (`data/app.db`). Each account sees only its own profiles.
-- Refreshing the browser page signs you out. That is how Streamlit sessions work; it is a known limitation.
-
-## What is in the app
-
-| Page | What it does |
-|---|---|
-| **Overview** | Family corpus and projection, allocation donut, the buy and sell plan, key numbers, insights, planned outflows |
-| **Plan my money** | A six-step guided flow in plain language (wealth, spending, upcoming commitments, comfort with a bad year, safety net, what you own), ending in Strategy A, B and C with typical-year range, worst year, a 2020-style crash, and what to buy. New accounts start here |
-| **Recommendation** | Choose Growth, Balanced or Defensive; see the allocation, the action plan with amounts, why, and a comparison with the current mix |
-| **Risk and liquidity** | Drawdown against your limit, historical replay, CVaR, and a year-by-year liquidity ladder |
-| **Scenarios** | Five preset stress tests, a build-your-own scenario, and a side-by-side comparison of your current mix and the three options under any of them |
-| **Family profile** | Edit every input (corpus, holdings, outflows, limits, illiquid assets, targets); keep several profiles per account |
-
-The sidebar switches between your profiles and has a "Stricter liquidity cover" toggle.
-
-## React + FastAPI version (branch `react-migration`, Phase 6 of 8)
-
-A new front end (React, Vite, TypeScript) and back end (FastAPI) over the same engine. Streamlit stays on `main`.
-Decisions: [ADR-0017](docs/adr/0017-react-fastapi-migration.md), [ADR-0018](docs/adr/0018-guided-plan-api-and-live-recalculation.md), [ADR-0019](docs/adr/0019-personalised-dashboard-and-analyst-workspace.md), [ADR-0020](docs/adr/0020-holdings-import-and-consolidation.md) and [ADR-0021](docs/adr/0021-grounded-explainer-copilot.md). Status and evidence:
-[Phase 1](docs/migration/phase-1-report.md), [Phase 2](docs/migration/phase-2-report.md), [Phase 3](docs/migration/phase-3-report.md), [Phase 4](docs/migration/phase-4-report.md), [Phase 5](docs/migration/phase-5-report.md) and [Phase 6](docs/migration/phase-6-report.md).
-Look and feel: [docs/design-system.md](docs/design-system.md). Built so far: sign-in, the personalised dashboard (pick four of eight modules), the live guided plan ("Plan my money"), the Recommendation, Risk and liquidity, Scenarios and Family profile pages, and **Holdings**: import a statement as CSV or Excel (synthetic files only for now), see everything consolidated by asset class and account, and choose whether to use it in your profile; and the **Assistant**: choose or type a question about your family's results and get an answer written from the model's own numbers, with the evidence behind each figure. It never predicts or advises, uses no language model, and does not store your question.
-Protected assumptions: [docs/protected-assumptions.md](docs/protected-assumptions.md).
-
-Needs Python 3.12 and Node 24 (npm 11). One-time setup (the second command is optional: it fetches the 66 MB local model that lets the Assistant understand paraphrases, once, into `data/models/`; without it the Assistant still works with word matching only, and is less strict about declining requests):
-
-```powershell
-cd D:\family-office-intelligence
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt -r requirements-api.txt -r requirements-dev.txt
-.\.venv\Scripts\python.exe tools\fetch_embedding_model.py
+.\.venv\Scripts\python.exe tools\fetch_embedding_model.py     # optional: 66 MB local model for the Assistant, fetched once into data\models\
 cd web
-npm install
+npm ci
 ```
 
 Run it in two terminals (the API uses port 8100; 8000 is often taken):
@@ -83,76 +49,106 @@ cd D:\family-office-intelligence\web
 npm run dev
 ```
 
-Open http://localhost:5173. The API docs are at http://127.0.0.1:8100/docs. Settings are listed in
-[.env.example](.env.example); none is required. The database defaults to `data/app.db`, shared with the Streamlit app.
+Open http://localhost:5173 and pick one of the demo families under "Or explore a demo family". The API's interactive pages are at http://127.0.0.1:8100/docs. Nothing is required
+in the way of settings ([docs/configuration.md](docs/configuration.md)); the database defaults to `data/app.db`, shared with the Streamlit app.
 
-Checks (all should pass):
+Checks (all should pass; results and timings in [docs/testing.md](docs/testing.md)):
 
 ```powershell
-.\.venv\Scripts\python.exe -m pytest -q            # engine, golden master, API, security, Streamlit app
+.\.venv\Scripts\python.exe -m pytest -q            # engine, golden master, API, security, documentation, Streamlit app
 cd web
 npm run typecheck; npm test; npm run build         # types, component tests, production build
-npm run e2e                                        # 29 browser tests in Edge (own ports and throwaway database)
+npm run e2e                                        # browser tests in Edge (own ports and a throwaway database)
 ```
 
-After changing an API model: `python tools/export_openapi.py`, then `npm run gen:api` in `web/`
-(`tests/test_openapi_contract.py` fails until you do).
+After changing an API model: `.\.venv\Scripts\python.exe tools\export_openapi.py`, `.\.venv\Scripts\python.exe tools\export_api_docs.py`, then
+`npm run gen:api` in `web/` (tests fail until you do).
 
-## Put it online
+## Documentation
 
-See [docs/deployment.md](docs/deployment.md): options, the recommended route (Streamlit Community Cloud), step-by-step
-instructions, and the known limits. Optional settings, supplied as environment variables or Streamlit secrets:
+Start at [docs/README.md](docs/README.md). The essentials:
 
-| Setting | Effect |
+| | |
 |---|---|
-| `FO_ACCESS_CODE` | Visitors must enter this code before seeing anything, including the demo buttons |
-| `FO_MAX_ACCOUNTS` | Cap on self-registered accounts (default 200) |
-| `FO_DB_PATH` | Where the SQLite database lives (use a persistent volume when hosting) |
+| [Architecture](docs/architecture.md) | What it is, how it is built, one request end to end |
+| [Setup](docs/setup.md) | Clean-machine install, startup, what was verified |
+| [Configuration](docs/configuration.md) | Every setting (environment variable) |
+| [Database](docs/database.md) | Tables, migrations, backup |
+| [API](docs/api.md) | All 32 operations (generated from the code) |
+| [Methodology](docs/methodology.md) | The financial method, assumptions and limits |
+| [Holdings import](docs/holdings-import.md) | CSV / Excel format and rules |
+| [Testing](docs/testing.md) | How to run and extend the tests |
+| [Deployment](docs/deployment-react.md) | How a host would run it (designed, not deployed) |
+| [Production readiness](docs/production-readiness.md) | What stands between this and real data |
+| [Limitations](docs/limitations.md) | Built / partly built / not built; known defects |
+| [Handover](docs/handover.md) | Taking over the project; troubleshooting |
+| [Change log](CHANGELOG.md) · [Phase reports](docs/migration/phase-8-report.md) · [Decisions](docs/adr/README.md) | History and reasons |
 
-## Run the tests
+## What is in the app
+
+| Page | What it does | In Streamlit |
+|---|---|---|
+| **Overview** | Family corpus and projection, allocation, the buy and sell plan, key numbers, insights, planned outflows. In the React version a dashboard of four modules chosen from eight | yes |
+| **Plan my money** | A six-step guided flow in plain language (wealth, spending, upcoming commitments, comfort with a bad year, safety net, what you own), ending in Strategy A, B and C with typical-year range, worst year, a severe-crash result, and what to buy. New accounts start here | yes |
+| **Recommendation** | Choose Growth, Balanced or Defensive; see the allocation, the action plan with amounts, why, and a comparison with the current mix | yes |
+| **Risk and liquidity** | Drawdown against your limit, historical replay, CVaR, and a year-by-year liquidity ladder | yes |
+| **Scenarios** | Five preset stress tests, a build-your-own scenario, and a side-by-side comparison of your current mix and the three options under any of them | yes |
+| **Family profile** | Edit every input (corpus, holdings, outflows, limits, illiquid assets, targets); keep several profiles per account | yes |
+| **Holdings** | Import a statement as CSV or Excel (synthetic files only), see everything consolidated by asset class and account, and choose whether to use it in a profile | React only |
+| **Assistant** | Choose or type a question about the family's results and get an answer written from the model's own numbers, with the evidence behind each figure. It never predicts or advises, uses no language model, and does not store the question | React only |
+
+## Streamlit version (`main`)
 
 ```powershell
 cd D:\family-office-intelligence
-.\.venv\Scripts\python.exe -m pytest -q
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements-dev.txt        # requirements.txt is the runtime set a host installs; -dev adds the test tools
+streamlit run app.py                       # then open http://localhost:8501
 ```
+
+- **Explore a demo family** with one click on the login screen (Legacy-conservative, Business-heavy, Next-gen growth, and the ₹1,000 Cr liquidity-gap
+  example, which opens with the stricter liquidity cover on so its shortfall shows at once). Demo accounts have no password.
+- **Create your own account** on the "Create account" tab. Passwords are hashed with scrypt and stored in a local SQLite file (`data/app.db`). Each
+  account sees only its own profiles. Refreshing the browser page signs you out; that is how Streamlit sessions work.
+- The sidebar switches between your profiles and has a "Stricter liquidity cover" toggle.
+- **Put it online:** [docs/deployment.md](docs/deployment.md) (recommended route: Streamlit Community Cloud). Optional settings, as environment variables or
+  Streamlit secrets: `FO_ACCESS_CODE` (visitors must enter a code first), `FO_MAX_ACCOUNTS` (cap on sign-ups, default 200), `FO_DB_PATH` (where the
+  database lives; use a persistent volume when hosting). The `Dockerfile` is for this version only and has not been build-tested.
 
 ## Layout
 
 | Path | Purpose |
 |---|---|
-| `app.py` | Entry point: theme, sign-in gate, top navigation, sidebar |
-| `app_pages/` | The pages, the login screen and the optional access-code gate |
 | `fo/engine.py` | Estimation, constrained optimiser, drawdown replay, liquidity, scenarios, action plan, insights |
-| `fo/accounts.py` | Accounts and per-user profile storage (SQLite, scrypt) |
-| `fo/session.py` | Shared state and cached analysis for the pages |
-| `fo/settings.py`, `fo/security.py` | Deployment settings; login and access-code throttling |
-| `Dockerfile`, `.dockerignore` | Container setup for a persistent host (not yet build-tested) |
-| `fo/ui.py` | Look and feel: CSS, cards, rows, pills, charts |
-| `fo/data.py` | Synthetic sample returns; loads a real snapshot if `data/snapshot/daily_returns.csv` exists |
-| `fo/personas.py` | Profile model, the three demo families, serialisation |
-| `.streamlit/config.toml` | Theme: Inter font, one green accent, large radii, pill buttons |
-| `fo/profile_form.py` | Profile validation rules shared by the Streamlit page and the API |
-| `api/` | FastAPI backend: routers, schemas, sessions, migrations, cached engine service |
-| `web/` | React + Vite + TypeScript front end and its generated API types |
-| `tools/` | Golden-master, OpenAPI and formatter-vector generators |
-| `tests/` | Engine, golden master, accounts, API, security and end-to-end app tests |
-| `docs/` | Requirements, decision records, protected assumptions, migration reports |
+| `fo/data.py`, `fo/personas.py`, `fo/plan.py` | Synthetic returns (loads a real snapshot if `data/snapshot/daily_returns.csv` exists), the profile model and demo families, the guided plan |
+| `fo/accounts.py`, `fo/security.py`, `fo/settings.py` | Accounts and per-user profiles (SQLite, scrypt); login and request throttling; Streamlit settings |
+| `fo/profile_form.py`, `fo/holdings_import.py` | Profile validation and the holdings parser, shared by both front ends and the API |
+| `fo/question_*.py` | The Assistant's question router (word matcher, optional local embedding model, hybrid) |
+| `api/` | FastAPI back end: routers, schemas, sessions, guards, migrations, cached engine service, Assistant answers |
+| `web/` | React + Vite + TypeScript front end, its generated API types and its browser tests (`e2e/`) |
+| `app.py`, `app_pages/`, `fo/ui.py`, `fo/session.py`, `.streamlit/` | The Streamlit app |
+| `tools/` | Generators (golden master, OpenAPI, API reference, formatter vectors), model fetcher, question evaluation |
+| `tests/` | Engine, golden master, accounts, API, security, documentation and Streamlit app tests |
+| `docs/` | Documentation, decision records (`adr/`), phase reports (`migration/`) |
+| `Dockerfile`, `.dockerignore` | Container setup for the Streamlit app (not build-tested) |
 
 ## Look and feel
 
-The style is inspired by IndMoney's public website: white canvas, near-black text, one green accent, soft
-cards and pill buttons. Only layout and style patterns are borrowed; there are no logos, names or assets.
+The style is inspired by IndMoney's public website: white canvas, near-black text, one green accent, soft cards and pill buttons. Only layout
+and style patterns are borrowed; there are no logos, names or assets. See [docs/design-system.md](docs/design-system.md).
 
 ## Known simplifications and limits
 
-- The three risk levels sit 75%, 50% and 25% of the way, in volatility, from the lowest-risk to the
-  highest-return mix the class limits allow (a refinement of ADR-0004).
-- The sample data is calibrated so each class's realised average return equals its target (12%, 14%, 7%, 8%,
-  6%). That is a property of the sample, not evidence about real markets.
-- The drawdown replay holds constant weights (daily rebalancing) with no costs; illiquid holdings accrue
-  smoothly, so real drawdowns would look worse.
-- Scenario shock sizes are fixed placeholders; the full build calibrates them from the data snapshot.
-- With the drafted personas, the liquidity-cover constraint never binds (the class limits already keep far
-  more than the needed cash counted). How to fix that is still to be decided with the project owner.
-- Not built yet: a real data snapshot, the walk-forward backtest, the cross-check against PyPortfolioOpt,
-  password reset, and staying signed in across a browser refresh.
+The full, current list is [docs/limitations.md](docs/limitations.md). In short:
+
+- The three risk levels sit 75%, 50% and 25% of the way, in volatility, from the lowest-risk to the highest-return mix the class limits allow
+  (a refinement of ADR-0004).
+- The sample data is calibrated so each class's realised average return equals its target (12%, 14%, 7%, 8%, 6%). That is a property of the sample,
+  not evidence about real markets.
+- The drawdown replay holds constant weights (daily rebalancing) with no costs; illiquid holdings accrue smoothly, so real drawdowns would look worse.
+- Scenario shock sizes are fixed placeholders, not calibrated from data.
+- With the drafted personas, the liquidity-cover constraint never binds (the class limits already keep far more than the needed cash counted). How to
+  fix that is still to be decided with the project owner.
+- Not built: a real data snapshot, a walk-forward backtest, a cross-check against PyPortfolioOpt, password reset, account deletion and data export,
+  encryption at rest, a Linux or container run. See [docs/production-readiness.md](docs/production-readiness.md).
