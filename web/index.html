@@ -6,19 +6,7 @@
     <meta name="color-scheme" content="light dark" />
     <meta name="description" content="Illustrative capital-allocation decision support for family offices. Synthetic data only." />
     <title>Family Office Intelligence</title>
-    <script>
-      /* Apply the saved or system theme before first paint, so a dark-mode user never sees a white flash. */
-      (function () {
-        try {
-          var saved = window.localStorage.getItem("foi.theme");
-          var dark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-          var theme = saved === "light" || saved === "dark" ? saved : dark ? "dark" : "light";
-          document.documentElement.setAttribute("data-theme", theme);
-        } catch (e) {
-          /* storage blocked: keep the default */
-        }
-      })();
-    </script>
+    <script src="/theme-init.js"></script>
   </head>
   <body>
     <div id="root"></div>

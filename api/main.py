@@ -16,6 +16,7 @@ from fo.security import Throttle
 from . import db, errors, explain_service
 from .analysis import AnalysisService
 from .config import Settings
+from .guards import BodyGuard
 from .routers import auth, dashboard, explain, holdings, meta, plan, profiles
 
 UNSAFE = {"POST", "PUT", "PATCH", "DELETE"}
@@ -31,6 +32,8 @@ def _throttles() -> dict[str, Throttle]:
         "plan_user": Throttle(40, 60),
         "holdings_user": Throttle(60, 60),
         "explain_user": Throttle(60, 60),
+        "analysis_user": Throttle(240, 60),  # the allocation model is one shared thread: nobody may hog it
+        "scenarios_user": Throttle(90, 60),
     }
 
 
@@ -59,12 +62,6 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @app.middleware("http")
     async def guard(request: Request, call_next):
         if request.method in UNSAFE:
-            raw_length = request.headers.get("content-length", "0")
-            length = int(raw_length) if raw_length.isdigit() else 0
-            if length > cfg.max_body_bytes:
-                return JSONResponse({"detail": "That request is too large.", "problems": None}, status_code=413)
-            if length > 0 and not request.headers.get("content-type", "").lower().startswith("application/json"):
-                return JSONResponse({"detail": "Send JSON.", "problems": None}, status_code=415)
             origin = request.headers.get("origin")
             if origin and origin not in allowed_origins and origin != f"{request.url.scheme}://{request.headers.get('host', '')}":
                 return JSONResponse({"detail": "This origin is not allowed.", "problems": None}, status_code=403)
@@ -74,7 +71,12 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         response.headers["Referrer-Policy"] = "no-referrer"
         if request.url.path.startswith("/api"):
             response.headers["Cache-Control"] = "no-store"
+            response.headers["Content-Security-Policy"] = "default-src 'none'; frame-ancestors 'none'"  # an API answer is data, never a page
+        if request.url.scheme == "https" or cfg.cookie_secure:
+            response.headers["Strict-Transport-Security"] = "max-age=15552000"  # tell the browser to keep using https
         return response
+
+    app.add_middleware(BodyGuard, max_bytes=cfg.max_body_bytes)  # counts the bytes that arrive; wraps the guard above
 
     app.add_middleware(
         CORSMiddleware, allow_origins=list(cfg.cors_origins), allow_credentials=True,

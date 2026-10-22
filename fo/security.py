@@ -11,11 +11,26 @@ import time
 
 
 class Throttle:
+    MAX_KEYS = 20_000  # more than this many people being counted at once is an attack, not a crowd: the oldest are forgotten
+
     def __init__(self, max_failures: int = 5, window_seconds: float = 600.0, clock=time.monotonic):
         self.max_failures = max_failures
         self.window = window_seconds
         self._clock = clock
         self._failures: dict[str, list[float]] = {}
+        self._next_sweep = 1024
+        self._last_sweep = clock()
+
+    def _sweep(self) -> None:
+        """Forget keys whose attempts have all expired, so a stream of one-off names cannot make the table grow without end."""
+        cutoff = self._clock() - self.window
+        for key in [k for k, times in self._failures.items() if not times or times[-1] <= cutoff]:
+            del self._failures[key]
+        if len(self._failures) > self.MAX_KEYS:  # everyone still active: drop the quietest tenth
+            for key in sorted(self._failures, key=lambda k: self._failures[k][-1])[: self.MAX_KEYS // 10]:
+                del self._failures[key]
+        self._next_sweep = max(1024, 2 * len(self._failures))
+        self._last_sweep = self._clock()
 
     def _recent(self, key: str) -> list[float]:
         cutoff = self._clock() - self.window
@@ -31,6 +46,8 @@ class Throttle:
         return max(0.0, recent[0] + self.window - self._clock())
 
     def record_failure(self, key: str) -> None:
+        if len(self._failures) >= self._next_sweep or self._clock() - self._last_sweep >= self.window:
+            self._sweep()
         self._recent(key).append(self._clock())
 
     def reset(self, key: str) -> None:

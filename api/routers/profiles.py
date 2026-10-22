@@ -1,7 +1,7 @@
 """Family profiles. Every query is scoped to the signed-in user, who comes from the session and nowhere else."""
 from __future__ import annotations
 
-from fastapi import APIRouter, Depends, Path, Query
+from fastapi import APIRouter, Depends, Path, Query, Request
 
 from fo import accounts, engine
 
@@ -16,6 +16,7 @@ router = APIRouter(prefix="/api/profiles", tags=["profiles"], responses=s.ERRORS
 
 ProfileId = Path(ge=1, le=2**31 - 1)
 NOT_FOUND = "Profile not found."  # also what you get for somebody else's profile: its existence is not revealed
+BUSY = "You are asking for results very quickly. Wait a few seconds and try again."
 
 
 def _own(user: dict, profile_id: int):
@@ -84,17 +85,20 @@ BasisQuery = Query("all", description="Which assets count towards the liquidity 
 
 @router.get("/{profile_id}/analysis", response_model=s.AnalysisOut)
 def analysis(
+    request: Request,
     profile_id: int = ProfileId,
     basis: s.Basis = BasisQuery,
     user: dict = Depends(deps.current_user),
     svc: AnalysisService = Depends(deps.service),
 ):
     profile = _own(user, profile_id)
+    deps.throttle(request, user, "analysis_user", BUSY)
     return _run(lambda: svc.analyse(profile_id, profile, basis))
 
 
 @router.get("/{profile_id}/history", response_model=s.HistoryOut)
 def history(
+    request: Request,
     profile_id: int = ProfileId,
     basis: s.Basis = BasisQuery,
     user: dict = Depends(deps.current_user),
@@ -102,18 +106,21 @@ def history(
 ):
     """How the current mix and each recommendation would have behaved over the sample years."""
     profile = _own(user, profile_id)
+    deps.throttle(request, user, "analysis_user", BUSY)
     return _run(lambda: svc.history(profile_id, profile, basis))
 
 
 @router.post("/{profile_id}/scenarios", response_model=s.ScenarioComparison)
 def scenarios(
     body: s.ScenarioRequest,
+    request: Request,
     profile_id: int = ProfileId,
     user: dict = Depends(deps.user_with_csrf),
     svc: AnalysisService = Depends(deps.service),
 ):
     """Hit the current mix and each recommendation with one scenario: a built-in one or the six custom dials."""
     profile = _own(user, profile_id)
+    deps.throttle(request, user, "scenarios_user", BUSY)
     try:
         scenario_module.resolve(body)  # reject a bad request before any engine work
     except ValueError as err:

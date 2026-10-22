@@ -21,11 +21,14 @@ def _default_basis(user: dict) -> str:
     return "strict" if user["is_demo"] and len(parts) == 3 and parts[1] in accounts.STRICT_COVER_DEMOS else "all"
 
 
-def _open_session(user: dict, response: Response, cfg: Settings) -> s.SessionOut:
+def _open_session(user: dict, request: Request, response: Response, cfg: Settings) -> s.SessionOut:
+    """A fresh token every time. The one this browser held before (if any) is retired, so nothing planted earlier survives a sign-in."""
+    sessions.destroy(deps.session_token(request))
+    sessions.purge_expired()
     token = sessions.create(user["id"], cfg.session_hours)
     response.set_cookie(
         sessions.COOKIE, token, max_age=int(cfg.session_hours * 3600), httponly=True, samesite="lax",
-        secure=cfg.cookie_secure, path="/",
+        secure=cfg.cookie_secure or request.url.scheme == "https", path="/",  # never in the clear over https, whether or not the flag was set
     )
     return s.SessionOut(
         user=s.UserOut(**user), csrf_token=sessions.csrf_for(token), default_basis=_default_basis(user)
@@ -55,7 +58,7 @@ def login(body: s.Credentials, request: Request, response: Response, cfg: Settin
         limits["login_ip"].record_failure(ip)
         raise ApiError(401, NOT_FOUND_OR_WRONG)
     limits["login_user"].reset(name)
-    return _open_session(user, response, cfg)
+    return _open_session(user, request, response, cfg)
 
 
 @router.post("/signup", response_model=s.SessionOut, status_code=201)
@@ -68,7 +71,7 @@ def signup(body: s.Credentials, request: Request, response: Response, cfg: Setti
         user = accounts.create_user(body.username, body.password, max_accounts=cfg.max_accounts)
     except ValueError as err:
         raise ApiError(422, str(err)) from None
-    return _open_session(user, response, cfg)
+    return _open_session(user, request, response, cfg)
 
 
 @router.post("/demo", response_model=s.SessionOut)
@@ -81,11 +84,10 @@ def demo(body: s.DemoRequest, request: Request, response: Response, cfg: Setting
     _check(limits["demo_ip"], ip)
     limits["demo_ip"].record_failure(ip)
     accounts.purge_throwaways(cfg.demo_hours)
-    sessions.purge_expired()
     user = accounts.create_throwaway_demo(body.family)
     if user is None:
         raise ApiError(404, "Not found.")
-    return _open_session(user, response, cfg)
+    return _open_session(user, request, response, cfg)
 
 
 @router.get("/me", response_model=s.SessionOut)

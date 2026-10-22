@@ -26,3 +26,8 @@ web/.vite/
 
 # Local embedding model for the question router (tools/fetch_embedding_model.py puts it here)
 data/models/
+
+# Playwright output (web/e2e)
+web/test-results/
+web/playwright-report/
+web/blob-report/

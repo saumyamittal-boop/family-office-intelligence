@@ -92,6 +92,7 @@ Checks (all should pass):
 .\.venv\Scripts\python.exe -m pytest -q            # engine, golden master, API, security, Streamlit app
 cd web
 npm run typecheck; npm test; npm run build         # types, component tests, production build
+npm run e2e                                        # 29 browser tests in Edge (own ports and throwaway database)
 ```
 
 After changing an API model: `python tools/export_openapi.py`, then `npm run gen:api` in `web/`

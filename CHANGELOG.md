@@ -2,6 +2,15 @@
 
 ## Unreleased: React + FastAPI migration (branch `react-migration`)
 
+### Phase 7: Security and regression hardening (2026-10-22)
+- Reviewed sign-in, sessions, CSRF, passwords, isolation between accounts, uploads, errors, configuration and secrets, and turned each claim into a test that walks the API's own OpenAPI document (a new endpoint fails the review until it is classified).
+- **Fixed seven weaknesses**: the size and JSON-only limits could be skipped by a chunked upload (a new body guard counts the bytes that actually arrive); the session cookie is now `Secure` whenever the request is HTTPS, with HSTS; API answers carry a
+  Content-Security-Policy; every sign-in issues a fresh session, retires the browser's old one and clears expired ones; the throttle can no longer grow without limit; `/analysis`, `/history` and `/scenarios` are rate-limited per person so nobody can hog the single allocation thread;
+  and the page's inline theme script moved to its own file so a strict production Content-Security-Policy works (defined once in `web/security-headers.ts` and proved by a browser test).
+- Added 66 Python tests (52 security, 14 financial invariants on random valid profiles through the API) and **29 browser tests** (`npm run e2e`: real Edge, real API and engine, throwaway database, own ports). Thirteen deliberate breakages of security controls were each caught, then reverted.
+- Dependency audits: npm clean; Python advisories only in Pillow 12.3.0 (not usable by any code path; both Streamlit and the embedding library cap it below the fixed 13). The list of unresolved limitations is in the report.
+- Details and evidence: [docs/migration/phase-7-report.md](docs/migration/phase-7-report.md). No financial assumption, number or engine file changed.
+
 ### Phase 6: Grounded explainer (2026-10-21)
 - **Embedding layer (added later the same day, with approval):** a small local model (BAAI/bge-small-en-v1.5, 66 MB, fetched once by `tools/fetch_embedding_model.py`, never downloaded by the server, hash-checked, optional) now helps the router understand
   paraphrases and decline requests the fixed patterns missed. On a fresh question set written before any experiment it scored **79% right against 71% for the word matcher alone**, with fewer wrong answers and fewer unsafe slips; the 85% bar was still missed. See the report.
