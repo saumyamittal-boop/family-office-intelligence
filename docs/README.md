@@ -26,6 +26,7 @@
 | Hosting the React + FastAPI version | [deployment-react.md](deployment-react.md) |
 | Hosting the Streamlit version (`main`) | [deployment.md](deployment.md) |
 | Audit of the React version for a shareable link, with scores and evidence | [audit-shared-link.md](audit-shared-link.md) |
+| Evaluation of the web app against the master-prompt checklist (239 items) | [evaluation-master-checklist.md](evaluation-master-checklist.md) |
 | The plan for sharing the React version, hosting it, and the sign-in question (a proposal) | [plan-sharing-and-deployment.md](plan-sharing-and-deployment.md), [ADR-0022](adr/0022-authentication-own-or-managed.md) |
 
 ## Background and history

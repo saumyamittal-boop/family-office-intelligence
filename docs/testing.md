@@ -83,7 +83,7 @@ Phase 8, 2026-10-22, Windows 11, Python 3.12.10, Node 24.21.0, Edge, on a machin
 
 | Suite | Result | Time |
 |---|---|---|
-| `pytest -q` | 910 passed, 1 expected failure (`xfail`), 1 warning (900 at Phase 8; 10 more were added on 2026-10-23 for the demo kit and the new documents) | 6 min |
+| `pytest -q` | 924 passed, 1 expected failure (`xfail`), 1 warning (900 at Phase 8; 24 more were added on 2026-10-23 for the demo kit, the password gate and the new documents) | 6 min |
 | `npm run typecheck` | clean (app and browser-test configurations) | 6 s |
 | `npm test` | 548 passed in 24 files | 46 s |
 | `npm run build` | ok; about 960 KB of JavaScript (285 KB gzipped) | 6 s |
