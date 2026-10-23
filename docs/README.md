@@ -25,6 +25,8 @@
 | Running and extending the tests | [testing.md](testing.md) |
 | Hosting the React + FastAPI version | [deployment-react.md](deployment-react.md) |
 | Hosting the Streamlit version (`main`) | [deployment.md](deployment.md) |
+| Audit of the React version for a shareable link, with scores and evidence | [audit-shared-link.md](audit-shared-link.md) |
+| The plan for sharing the React version, hosting it, and the sign-in question (a proposal) | [plan-sharing-and-deployment.md](plan-sharing-and-deployment.md), [ADR-0022](adr/0022-authentication-own-or-managed.md) |
 
 ## Background and history
 
@@ -35,7 +37,8 @@
 | What each migration phase did, tested and left open | [migration/](migration/phase-8-report.md) (`phase-1-report.md` … `phase-8-report.md`) |
 | Mentor feedback and what came of it | [backlog-from-mentor-feedback.md](backlog-from-mentor-feedback.md) |
 | Look and feel | [design-system.md](design-system.md), [dev-tooling.md](dev-tooling.md) |
-| Demo script | [demo-script.md](demo-script.md) |
+| Demo script (Streamlit version, 3 minutes) | [demo-script.md](demo-script.md) |
+| Demo script (React version, in person, with a one-click launcher in `demo/`) | [demo-script-react.md](demo-script-react.md) |
 | Change log | [../CHANGELOG.md](../CHANGELOG.md) |
 
 ## Which documents are generated

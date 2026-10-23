@@ -26,6 +26,7 @@ For whoever picks this project up next (including the project owner in six month
 | Task | Do this |
 |---|---|
 | Run it | [setup.md](setup.md) |
+| Show it to someone in person | Double-click `demo\start-demo.cmd` (a fresh private database, the built app, a check of every figure the script quotes), follow [demo-script-react.md](demo-script-react.md), stop with `demo\stop-demo.cmd`. If a number on screen changes, `tests/test_demo_script.py` fails until the script is updated |
 | Run all checks | `docs/testing.md` |
 | Change an API model or add an endpoint | Edit the code, then `python tools/export_openapi.py`, `python tools/export_api_docs.py` (add a one-line purpose for a new operation in that script), and `npm run gen:api` in `web/`. Three tests fail until you do |
 | Add a database table or column | New numbered file in `api/migrations/`; see [database.md](database.md) |

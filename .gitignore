@@ -31,3 +31,6 @@ data/models/
 web/test-results/
 web/playwright-report/
 web/blob-report/
+
+# Demo tunnel program (demo/share-demo.cmd): downloaded by hand, never committed
+demo/bin/

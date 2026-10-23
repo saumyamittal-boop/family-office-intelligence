@@ -105,7 +105,7 @@ The repository was cloned afresh into an empty folder (`git clone --branch react
 | `npm run typecheck` | ok (app and browser-test configs) | 18 s |
 | `npm test` | 548 passed in 24 files | 126 s |
 | `npm run build` | ok, `dist` about 960 KB of JavaScript (285 KB gzipped); chunk-size warning is expected | 16 s |
-| `pytest` | 774 passed, 1 expected failure (the documentation tests added later bring this to 900) | 875 s (the laptop was also busy with other jobs) |
+| `pytest` | 774 passed, 1 expected failure (the documentation and demo tests added later bring this to 910) | 875 s (the laptop was also busy with other jobs) |
 | `npm run e2e` | first run 28 passed, 1 failed (a slow page load while the laptop was busy); second run on a quiet machine 29 passed | 172 s, then 78 s |
 
 Problems found while doing this, and what was done about them:

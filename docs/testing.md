@@ -40,6 +40,7 @@ The browser tests need Microsoft Edge installed (nothing is downloaded), free po
 | Security: `test_security_review.py`, `test_accounts.py` | Sessions, CSRF, `Origin`, body guard, throttles, account isolation on every profile route, error bodies that never echo input, headers, upload attacks; one walk over the API's own OpenAPI document so a new route cannot skip the checks |
 | Holdings: `test_holdings_import.py` | CSV and Excel parsing, units, class labels, hostile files (zip bombs, macros, formulas, control characters, huge rows) |
 | Assistant: `test_explain_answers.py`, `test_explain_golden.py`, `test_question_match.py`, `test_question_hybrid.py` | A digit cannot reach an answer without a registered source figure; every figure equals the engine's value at the path it names; refusals; the router on 640 questions in five pinned splits |
+| Demo kit: `test_demo_script.py` | Every figure quoted in `docs/demo-script-react.md` equals what the application produces (the same check the launcher runs), the demo statement is the synthetic ₹1,000 Cr file, and the launcher uses its own database |
 | Contract and docs: `test_openapi_contract.py`, `test_api_docs.py`, `test_docs.py`, `test_format_vectors.py`, `test_profile_vectors.py` | The committed OpenAPI file, TypeScript types and `docs/api.md` match the code; links resolve; documented settings, defaults and assumptions equal the code's; no document claims compliance or validation; Python and TypeScript formatters agree |
 | Streamlit: `test_app.py`, `test_deploy.py`, `test_profile_form.py` | The original app still runs through its pages; deployment gate and settings |
 
@@ -82,7 +83,7 @@ Phase 8, 2026-10-22, Windows 11, Python 3.12.10, Node 24.21.0, Edge, on a machin
 
 | Suite | Result | Time |
 |---|---|---|
-| `pytest -q` | 900 passed, 1 expected failure (`xfail`), 1 warning | 6 min |
+| `pytest -q` | 910 passed, 1 expected failure (`xfail`), 1 warning (900 at Phase 8; 10 more were added on 2026-10-23 for the demo kit and the new documents) | 6 min |
 | `npm run typecheck` | clean (app and browser-test configurations) | 6 s |
 | `npm test` | 548 passed in 24 files | 46 s |
 | `npm run build` | ok; about 960 KB of JavaScript (285 KB gzipped) | 6 s |
