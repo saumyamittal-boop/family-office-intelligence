@@ -8,7 +8,9 @@ WORKDIR /src/web
 COPY web/package.json web/package-lock.json ./
 RUN npm ci --no-audit --no-fund
 COPY web/ ./
-RUN npm run build
+# `vite build` alone, as demo/start-demo.ps1 does: `npm run build` also type-checks, and one web test imports tests/golden/,
+# which .dockerignore leaves out. The type check runs in development (npm run build / npm test), not here.
+RUN node node_modules/vite/bin/vite.js build
 
 # 2. The server: the app's Python packages, the code it runs, and the built web app. No database, no market snapshot
 #    (the app then uses its built-in synthetic sample, as the laptop demo does), no tests or docs.
