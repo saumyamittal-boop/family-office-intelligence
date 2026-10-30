@@ -1,5 +1,6 @@
 """The password gate that fronts a shared demo: nothing reaches the app without the password, and what reaches it is what the app expects."""
 import base64
+import time
 
 import httpx
 import pytest
@@ -99,6 +100,53 @@ def test_cookies_and_security_headers_come_back_whole(client):
     page = client.get("/page", headers=basic(PASSWORD))
     assert page.headers["content-security-policy"] == "default-src 'self'" and page.text == "<html>page</html>"
     assert page.headers["x-robots-tag"] == "noindex, nofollow"
+
+
+BROWSER = {"Accept": "text/html,application/xhtml+xml,*/*;q=0.8"}
+
+
+def sign_in(client, password=PASSWORD, next_path="/", origin=PUBLIC):
+    return client.post(gate.LOGIN_PATH, data={"password": password, "next": next_path}, headers={"Origin": origin}, follow_redirects=False)
+
+
+def test_a_browser_gets_a_password_page_not_a_popup(client):
+    r = client.get("/plan?step=2", headers=BROWSER)
+    assert r.status_code == 401 and "www-authenticate" not in r.headers
+    assert 'name="password"' in r.text and 'value="/plan?step=2"' in r.text
+    assert "frame-ancestors 'none'" in r.headers["content-security-policy"]
+    assert client.get(gate.LOGIN_PATH).status_code == 200
+
+
+def test_the_page_sets_a_cookie_that_lets_the_browser_in(client):
+    r = sign_in(client, next_path="/plan?step=2")
+    assert r.status_code == 303 and r.headers["location"] == "/plan?step=2"
+    cookie = r.headers["set-cookie"]
+    assert cookie.startswith(f"{gate.COOKIE}=") and "HttpOnly" in cookie and "Secure" in cookie and "SameSite=lax" in cookie
+    page = client.get("/plan", headers=BROWSER).json()  # the client keeps the cookie
+    assert page["host"] == "web.test"
+    client.cookies.set("fo_session", "abc")
+    api = client.get("/api/health").json()
+    assert api["host"] == "api.test"
+    assert gate.COOKIE not in api["headers"].get("cookie", "") and "fo_session=abc" in api["headers"]["cookie"]  # the gate's cookie stays at the gate
+
+
+def test_a_wrong_or_forged_cookie_is_refused(client):
+    assert sign_in(client, "wrong").status_code == 401
+    assert "not right" in sign_in(client, "wrong").text
+    client.cookies.set(gate.COOKIE, f"{int(time.time()) + 3600}.{'0' * 64}")
+    assert client.get("/", headers=BROWSER).status_code == 401
+
+
+def test_wrong_page_tries_count_towards_the_lock(client):
+    for _ in range(gate.MAX_WRONG_PER_MINUTE):
+        sign_in(client, "wrong")
+    assert sign_in(client).status_code == 429
+
+
+def test_the_page_only_sends_visitors_to_this_site_and_only_from_this_site(client):
+    for bad in ("//evil.example/x", "https://evil.example", "/\\evil.example", gate.LOGIN_PATH):
+        assert sign_in(client, next_path=bad).headers["location"] == "/"
+    assert sign_in(client, origin="https://evil.example").status_code == 403
 
 
 def test_a_missing_upstream_is_a_clear_502_not_a_crash():
